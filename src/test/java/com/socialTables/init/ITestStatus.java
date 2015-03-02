@@ -3,7 +3,7 @@ package com.socialTables.init;
 /**
  * Definitions of test statuses
  * 
- * @author DELL
+ * @author Nishil
  *
  */
 public interface ITestStatus {

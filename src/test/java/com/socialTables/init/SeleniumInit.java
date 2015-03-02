@@ -24,6 +24,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
+import com.socialTables.HomePage.indexPages.HomePageIdexPage;
+import com.socialTables.events.verifications.DashboardPage;
 import com.socialTables.general.GeneralIndexPage;
 
 
@@ -40,6 +42,11 @@ public class SeleniumInit implements ILoggerStatus {
 	protected static String test_data_folder_path = null;
 
 	// Variables For Login 
+	public String userName_Owner="nishil.patel@kiwiqa.com";
+	public String userName_Admin="nishilpatel81@gmail.com";
+	public String userName_Planner="piyush.patel@kiwiqa.com";
+	public String userName_LPlanner="smit.kotadiya@kiwiqa.com";
+	public String password_Owner="patel22781";
 	
 	// screen-shot folder
 	protected static String screenshot_folder_path = null;
@@ -50,7 +57,9 @@ public class SeleniumInit implements ILoggerStatus {
 	Common common = new Common(driver);
 
 	/* Page's declaration */
-	GeneralIndexPage generalIndexPage;
+	public GeneralIndexPage generalIndexPage;
+	public HomePageIdexPage homePageIndexPage;
+	public DashboardPage dashboardPage;
 
 	
 	
@@ -236,6 +245,8 @@ public class SeleniumInit implements ILoggerStatus {
 		
 		//Initialization of object.
 		generalIndexPage = new GeneralIndexPage(driver);
+		homePageIndexPage = new HomePageIdexPage(driver);
+		dashboardPage = new DashboardPage(driver);
 	
 		
 
@@ -362,7 +373,7 @@ public class SeleniumInit implements ILoggerStatus {
 	 *            Message/Log to be reported.
 	 */
 	public static void log(String msg) {
-		Reporter.log(msg);
+		Reporter.log("<br></br>"+msg);
 	}
 
 }
