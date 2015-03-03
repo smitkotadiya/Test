@@ -1,0 +1,49 @@
+package com.socialTables.events.verifications;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+import com.socialTables.general.AbstractPage;
+import com.socialTables.init.Common;
+
+public class EventCreationPage extends AbstractPage
+{
+
+	@FindBy(xpath=".//*[@id='dialog-header']/h3[contains(.,'Event Information')]")
+	private WebElement verifyEventCreationForm;
+	@FindBy(xpath=".//*[@id='dialog-header']/h3[contains(.,'Room Settings')]")
+	private WebElement verifyRoomSetingForm;
+	
+	Common common = new Common(driver);
+	public EventCreationPage(WebDriver driver) 
+	{
+		super(driver);
+		// TODO Auto-generated constructor stub
+	}
+
+	public boolean verifyEventCreationPage()
+	{
+		if(verifyEventCreationForm.isDisplayed())
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public boolean verifyRoomSettingPage()
+	{
+		if(verifyRoomSetingForm.isDisplayed())
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+}

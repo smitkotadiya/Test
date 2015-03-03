@@ -16,12 +16,45 @@
 	<parameter name="selenium.browser" value="firefox" />
 	<parameter name="selenium.url" value="https://dev.socialtables.com/" />
  
- <test 	name="To verify login functionality with valid credentials.">
+<!--  <test 	name="To verify login functionality with valid credentials.">
 	<classes>
 		<class
 			name="com.socialTables.HomePage.Index.HomePageIndex">
 			<methods>
 				<include name="login_ValidCredential" />
+			</methods>
+		</class>
+	</classes>
+</test> 
+
+<test 	name="To verify login functionality with Invalid credentials.">
+	<classes>
+		<class
+			name="com.socialTables.HomePage.Index.HomePageIndex">
+			<methods>
+				<include name="login_InValidCredential" />
+			</methods>
+		</class>
+	</classes>
+</test> 
+
+<test 	name="To verify login functionality with null input.">
+	<classes>
+		<class
+			name="com.socialTables.HomePage.Index.HomePageIndex">
+			<methods>
+				<include name="login_nullValidCredential" />
+			</methods>
+		</class>
+	</classes>
+</test> 
+ -->
+<test 	name="To verify New Event functionality..">
+	<classes>
+		<class
+			name="com.socialTables.events.Index.EventIndex">
+			<methods>
+				<include name="createEventFunctionality" />
 			</methods>
 		</class>
 	</classes>

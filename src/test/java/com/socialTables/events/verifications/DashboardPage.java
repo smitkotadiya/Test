@@ -1,5 +1,8 @@
 package com.socialTables.events.verifications;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -31,6 +34,32 @@ public class DashboardPage extends AbstractPage
 		{
 			return false;
 		}
+	}
+	
+	public boolean verifyAddedEvent(int numOfEvents,String eventName)
+	{
+		int numOfEventsAfterAdditon = common.getNumOfElements(driver, By.xpath(".//*[@id='list-container']/a"));
+		boolean bool = false;
+		if(numOfEventsAfterAdditon==numOfEvents+1)
+		{
+			List<WebElement> eles = driver.findElements(By.xpath(".//*[@id='list-container']/a/span[3]"));
+			for(WebElement ele:eles)
+			{
+				if(ele.getText().equalsIgnoreCase(eventName))
+				{
+					bool = true;
+				}
+				else
+				{
+					bool = false;
+				}
+			}
+		}
+		else
+		{
+			bool = false;
+		}
+		return bool;
 	}
 
 }

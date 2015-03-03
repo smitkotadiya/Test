@@ -487,6 +487,13 @@ public class Common {
 		// this.waitForAjax("0");
 	}
 
+	public void clickOn(WebDriver driver,WebElement element)
+	{
+//		JavascriptExecutor js = (JavascriptExecutor) driver;
+//		js.executeScript("arguments[0].setAttribute('style', arguments[1]);", element, "color: yellow; border: 2px solid yellow;");
+		element.click();
+	}
+	
 	/**
 	 * Generates random symbols;
 	 * 
@@ -816,5 +823,13 @@ public class Common {
 		return selectedOption;
 	}
 	
+	public int getNumOfElements(WebDriver driver,By by)
+	{
+		int i=0;
+		List<WebElement> ele = driver.findElements(by);
+		i=ele.size();
+		System.out.println("Total Number Of Elements Are >>> "+i);
+		return i;
+	}
 	
 }

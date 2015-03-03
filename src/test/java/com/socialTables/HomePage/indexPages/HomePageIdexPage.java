@@ -28,10 +28,19 @@ public class HomePageIdexPage extends AbstractPage
 	
 	public DashboardPage login(String userName,String password)
 	{
-		common.type(txtEmail, userName);
-		common.type(txtPassword, password);
-		btnLogin.click();
-		common.pause(5);
+		if(userName.length()>0)
+		{
+			common.type(txtEmail, userName);
+			common.type(txtPassword, password);
+			btnLogin.click();
+			common.pause(5);
+		}
+		else
+		{
+			btnLogin.click();
+			common.pause(5);
+		}
+		
 		return new DashboardPage(driver);
 	}
 

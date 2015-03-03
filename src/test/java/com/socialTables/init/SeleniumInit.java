@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 import org.openqa.selenium.By;
@@ -24,8 +25,12 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
+import com.opera.core.systems.internal.ImplicitWait;
+import com.socialTables.HomePage.Verifications.HomeVerificationPage;
 import com.socialTables.HomePage.indexPages.HomePageIdexPage;
+import com.socialTables.events.IndexPages.EventIndexPage;
 import com.socialTables.events.verifications.DashboardPage;
+import com.socialTables.events.verifications.EventCreationPage;
 import com.socialTables.general.GeneralIndexPage;
 
 
@@ -58,8 +63,15 @@ public class SeleniumInit implements ILoggerStatus {
 
 	/* Page's declaration */
 	public GeneralIndexPage generalIndexPage;
+	
+	//Home Page Module
 	public HomePageIdexPage homePageIndexPage;
+	public HomeVerificationPage homeVerificationPage;
+	
+	//Event Module
 	public DashboardPage dashboardPage;
+	public EventIndexPage eventIndexPage;
+	public EventCreationPage eventCreationPage;
 
 	
 	
@@ -240,16 +252,18 @@ public class SeleniumInit implements ILoggerStatus {
 	
 		
 		driver = new RemoteWebDriver(remote_grid, capability);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.get(testUrl);
 		driver.manage().window().maximize();
 		
 		//Initialization of object.
 		generalIndexPage = new GeneralIndexPage(driver);
 		homePageIndexPage = new HomePageIdexPage(driver);
+		homeVerificationPage = new HomeVerificationPage(driver);
+		eventIndexPage = new EventIndexPage(driver);
+		eventCreationPage = new EventCreationPage(driver);
 		dashboardPage = new DashboardPage(driver);
 	
-		
-
 	} 
 
 	/**
