@@ -16,7 +16,7 @@
 	<parameter name="selenium.browser" value="firefox" />
 	<parameter name="selenium.url" value="https://dev.socialtables.com/" />
  
-<!--  <test 	name="To verify login functionality with valid credentials.">
+  <test 	name="To verify login functionality with valid credentials.">
 	<classes>
 		<class
 			name="com.socialTables.HomePage.Index.HomePageIndex">
@@ -48,16 +48,6 @@
 		</class>
 	</classes>
 </test> 
- -->
-<test 	name="To verify New Event functionality..">
-	<classes>
-		<class
-			name="com.socialTables.events.Index.EventIndex">
-			<methods>
-				<include name="createEventFunctionality" />
-			</methods>
-		</class>
-	</classes>
-</test> 
+ 
 
 </suite>
