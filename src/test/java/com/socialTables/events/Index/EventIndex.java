@@ -285,7 +285,7 @@ public class EventIndex extends SeleniumInit
 		}
 	}
 	
-	@Test(groups={"Events","Filteration"})
+	@Test(groups={"Events"})
 	public void eventFiltrationFunctionality() throws InterruptedException
 	{
 		Common common = new Common(driver);
@@ -294,8 +294,83 @@ public class EventIndex extends SeleniumInit
 		String categoryName = "";
 		String locationName="";
 		 
-		
 		log("<b><ul>Testcase ID: TC_EV_005</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button.");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully.");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		By By_Author = By.id("filterAuthor");
+		By By_Category = By.id("filterCategory");
+		By By_Location = By.id("filterLocation");
+		authorName = common.selectRandomOptionFromCombo(By_Author, driver);
+		log("Step 6: Select any author from combo box. ");
+		dashboardPage = eventIndexPage.filteration("Author", authorName);
+		log("Step 7: Verify filteration By Author.");
+		if(dashboardPage.verifyFilterationByAuthor(authorName))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		common.refresh(driver);
+		categoryName = common.selectRandomOptionFromCombo(By_Category, driver);
+		
+		log("Step 8: Select any category from combo box. ");
+		dashboardPage = eventIndexPage.filteration("Category", categoryName);
+		log("Step 9: Verify filteration By Category.");
+		if(dashboardPage.verifyFilterationByCategory(categoryName))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		common.refresh(driver);
+		locationName = common.selectRandomOptionFromCombo(By_Location, driver);
+		log("Step 10: Select any location from combo box. ");
+		dashboardPage = eventIndexPage.filteration("location", locationName);
+		log("Step 11: Verify filteration By location.");
+		if(dashboardPage.verifyFilterationByLocation(locationName))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+	}
+	
+	@Test
+	public void searchEventFunctionality()
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		log("<b><ul>Testcase ID: TC_EV_006</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
@@ -314,43 +389,11 @@ public class EventIndex extends SeleniumInit
 			log("Fail");
 			numOfFailure++;
 		}
-		By By_Author = By.id("filterAuthor");
-		By By_Category = By.id("filterCategory");
-		By By_Location = By.id("filterLocation");
-		authorName = common.selectRandomOptionFromCombo(By_Author, driver);
-		log("Step 6: Select any author from combo box ");
-		dashboardPage = eventIndexPage.filteration("Author", authorName);
-		log("Step 7: Verify filteration By Author");
-		if(dashboardPage.verifyFilterationByAuthor(authorName))
-		{
-			log("<Strong><font color=#008000>Pass</font></strong>");
-		}
-		else
-		{
-			log("Fail");
-			numOfFailure++;
-		}
-		common.refresh(driver);
-		categoryName = common.selectRandomOptionFromCombo(By_Category, driver);
-		
-		log("Step 8: Select any category from combo box ");
-		dashboardPage = eventIndexPage.filteration("Category", categoryName);
-		log("Step 9: Verify filteration By Category");
-		if(dashboardPage.verifyFilterationByCategory(categoryName))
-		{
-			log("<Strong><font color=#008000>Pass</font></strong>");
-		}
-		else
-		{
-			log("Fail");
-			numOfFailure++;
-		}
-		common.refresh(driver);
-		locationName = common.selectRandomOptionFromCombo(By_Location, driver);
-		log("Step 10: Select any location from combo box ");
-		dashboardPage = eventIndexPage.filteration("location", locationName);
-		log("Step 11: Verify filteration By location");
-		if(dashboardPage.verifyFilterationByLocation(locationName))
+		String searchString = driver.findElement(By.xpath(".//*[@id='list-container']/a[not(contains(@style,'display: none;'))]/span[@class='name']")).getText();
+		log("Step 6: Search any existing event");
+		dashboardPage = eventIndexPage.searchEvent(searchString);
+		log("Step 7: Verify Ssearch result");
+		if(dashboardPage.verifySearchFunctionality(searchString))
 		{
 			log("<Strong><font color=#008000>Pass</font></strong>");
 		}
@@ -365,5 +408,5 @@ public class EventIndex extends SeleniumInit
 			Assert.assertTrue(false);
 		}
 	}
-	
+
 }

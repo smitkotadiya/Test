@@ -17,7 +17,7 @@
 	<parameter name="selenium.url" value="https://dev.socialtables.com/" />
  
  
-<test 	name="To verify New Event functionality..">
+<test 	name="To verify New Event functionality.">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -26,6 +26,55 @@
 			</methods>
 		</class>
 	</classes>
+</test>
+<test 	name="To verify View Event functionality.">
+	<classes>
+		<class
+			name="com.socialTables.events.Index.EventIndex">
+			<methods>
+				<include name="viewEventFunctionality" />
+			</methods>
+		</class>
+	</classes>
 </test> 
-
+<test 	name="To verify Delete Event functionality.">
+	<classes>
+		<class
+			name="com.socialTables.events.Index.EventIndex">
+			<methods>
+				<include name="deleteEventFunctionality" />
+			</methods>
+		</class>
+	</classes>
+</test>
+<test 	name="To verify event counter label functionality.">
+	<classes>
+		<class
+			name="com.socialTables.events.Index.EventIndex">
+			<methods>
+				<include name="eventCounterFunctionality" />
+			</methods>
+		</class>
+	</classes>
+</test>
+<test 	name="To verify all Filtration functionality..">
+	<classes>
+		<class
+			name="com.socialTables.events.Index.EventIndex">
+			<methods>
+				<include name="eventFiltrationFunctionality" />
+			</methods>
+		</class>
+	</classes>
+</test>
+<test 	name="To verify Seach  Event functionality..">
+	<classes>
+		<class
+			name="com.socialTables.events.Index.EventIndex">
+			<methods>
+				<include name="searchEventFunctionality" />
+			</methods>
+		</class>
+	</classes>
+</test>
 </suite>

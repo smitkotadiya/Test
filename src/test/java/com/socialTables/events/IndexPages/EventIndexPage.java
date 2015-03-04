@@ -43,6 +43,9 @@ public class EventIndexPage extends AbstractPage
 	private WebElement filterLocation;
 	
 	
+	@FindBy(id="search")
+	private WebElement txtSearch;
+	
 	//div[@class='event-type-container']/div/input[@value='gala']
 	Common common = new Common(driver);
 
@@ -129,6 +132,12 @@ public class EventIndexPage extends AbstractPage
 			common.selectFromComboByVisibleElement(filterLocation, value);
 		}
 		
+		return new DashboardPage(driver);
+	}
+	
+	public DashboardPage searchEvent(String searchString)
+	{
+		common.type(txtSearch, searchString);
 		return new DashboardPage(driver);
 	}
 }

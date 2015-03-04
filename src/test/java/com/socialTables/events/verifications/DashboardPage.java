@@ -197,4 +197,24 @@ public class DashboardPage extends AbstractPage
 			return true;
 		}
 	}
+
+	public boolean verifySearchFunctionality(String seachString)
+	{
+		boolean bool=false;
+		List<WebElement> eles = driver.findElements(By.xpath(".//*[@id='list-container']/a[not(contains(@style,'display: none;'))]/span[@class='name']"));
+		for(WebElement ele:eles)
+		{
+			if(ele.getText().equalsIgnoreCase(seachString))
+			{
+				bool=true;
+				break;
+			}
+			else
+			{
+				bool = false;
+			}
+		}
+		return bool;
+	}
+
 }
