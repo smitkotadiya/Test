@@ -88,5 +88,113 @@ public class DashboardPage extends AbstractPage
 		}
 		return bool;
 	}
+	
+	public boolean verifyEventCounterFunctionlaity(String modifyCriteria,int numOfEvents)
+	{
+		boolean bool = false;
+		String numOfEventInLable = driver.findElement(By.xpath("//div[@class='count_box']")).getText();
+		int numOfEventsAfterModify = Integer.parseInt(numOfEventInLable);
+		if(modifyCriteria.equalsIgnoreCase("Add"))
+		{
+			if(numOfEvents==numOfEventsAfterModify-1)
+			{
+				bool = true;
+			}
+			else
+			{
+				bool = false;
+			}
+		}
+		else
+		{
+			if(numOfEvents==numOfEventsAfterModify+1)
+			{
+				bool = true;
+			}
+			else
+			{
+				bool = false;
+			}
+		}
+		return bool;
+	}
 
+	public boolean verifyFilterationByAuthor(String value)
+	{
+		boolean bool = false;
+		try{
+		List<WebElement> eles = driver.findElements(By.xpath(".//*[@id='list-container']/a[not(contains(@style,'display: none;'))]/span[@class='author']"));
+		for(WebElement ele:eles)
+		{
+			if(!ele.getText().equalsIgnoreCase(value))
+			{
+				bool= false;
+				break;
+			}
+			else
+			{
+				bool= true;
+			}
+		}
+			return bool;	
+		}
+		catch(Exception e)
+		{
+			log("There is no data available for this filteration criteria");
+			return true;
+		}
+	}
+	
+	public boolean verifyFilterationByLocation(String value)
+	{
+		boolean bool = false;
+		try{
+		List<WebElement> eles = driver.findElements(By.xpath(".//*[@id='list-container']/a[not(contains(@style,'display: none;'))]/span[@class='location']"));
+		for(WebElement ele:eles)
+		{
+			if(!ele.getText().equalsIgnoreCase(value))
+			{
+				bool= false;
+				break;
+			}
+			else
+			{
+				bool= true;
+			}
+		}
+		return bool;
+		}
+		catch(Exception e)
+		{
+			log("There is no data available for this filteration criteria");
+			return true;
+		}
+		
+	}
+	
+	public boolean verifyFilterationByCategory(String value)
+	{
+		boolean bool = false;
+		try{
+		List<WebElement> eles = driver.findElements(By.xpath(".//*[@id='list-container']/a[not(contains(@style,'display: none;'))]/span[@class='category']"));
+		for(WebElement ele:eles)
+		{
+			if(!ele.getText().equalsIgnoreCase(value))
+			{
+				bool= false;
+				break;
+			}
+			else
+			{
+				bool= true;
+			}
+		}
+		return bool;
+		}
+		catch(Exception e)
+		{
+			log("There is no data available for this filteration criteria");
+			return true;
+		}
+	}
 }

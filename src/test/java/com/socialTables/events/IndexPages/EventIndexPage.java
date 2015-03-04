@@ -34,6 +34,14 @@ public class EventIndexPage extends AbstractPage
 	@FindBy(id="close-edit")
 	private WebElement btnDoneInRoomSetting;
 	
+	//filteration combo
+	@FindBy(id="filterAuthor")
+	private WebElement filterAuthor;
+	@FindBy(id="filterCategory")
+	private WebElement filterCategory;
+	@FindBy(id="filterLocation")
+	private WebElement filterLocation;
+	
 	
 	//div[@class='event-type-container']/div/input[@value='gala']
 	Common common = new Common(driver);
@@ -92,10 +100,35 @@ public class EventIndexPage extends AbstractPage
 	
 	public DashboardPage clickOnDeleteEvent()
 	{
-		driver.findElement(By.xpath(".//*[@id='list-container']/a[1]/span[@class='eventTools']/i[1]")).click();
+		try{
+		driver.findElement(By.xpath(".//*[@id='list-container']/a[not(contains(@style,'display: none;'))][1]/span[@class='eventTools']/i[1]")).click();
+		}
+		catch(Exception e)
+		{
+			log("There is no existing event available to delete");
+		}
 		common.pause(2);
+		
 		driver.findElement(By.xpath("//button[contains(.,'OK')]")).click();
 		common.pause(2);
+		return new DashboardPage(driver);
+	}
+	
+	public DashboardPage filteration(String criteria,String value)
+	{
+		if(criteria.equalsIgnoreCase("Author"))
+		{
+			common.selectFromComboByVisibleElement(filterAuthor, value);
+		}
+		else if(criteria.equalsIgnoreCase("Category"))
+		{
+			common.selectFromComboByVisibleElement(filterCategory, value);
+		}
+		else
+		{
+			common.selectFromComboByVisibleElement(filterLocation, value);
+		}
+		
 		return new DashboardPage(driver);
 	}
 }

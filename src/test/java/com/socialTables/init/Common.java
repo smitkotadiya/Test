@@ -806,7 +806,7 @@ public class Common {
 		ArrayList<String> arrayOfAllOption=new ArrayList<String>();
 		for(WebElement ele:getAllOption)
 		{
-			if(!ele.getText().equalsIgnoreCase("Select"))
+			if(!ele.getText().startsWith("All"))
 			{
 				arrayOfAllOption.add(ele.getText());
 			}
@@ -830,6 +830,11 @@ public class Common {
 		i=ele.size();
 		System.out.println("Total Number Of Elements Are >>> "+i);
 		return i;
+	}
+	
+	public void refresh(WebDriver driver)
+	{
+		driver.navigate().refresh();
 	}
 	
 }
