@@ -84,4 +84,118 @@ public class EventIndex extends SeleniumInit
 			Assert.assertTrue(false);
 		}
 	}
+	
+	@Test(groups={"Events"})
+	public void viewEventFunctionality()
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		int numOfEventsInGrid = 0;
+		String eventName = "";
+		log("<b><ul>Testcase ID: TC_EV_002</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		eventName = driver.findElement(By.xpath(".//*[@id='list-container']/a[not(contains(@style,'display: none;'))][1]/span[@class='name']")).getText();
+		System.out.println("========"+eventName);
+		log("Step 6: Click on any existing event");
+		eventCreationPage = eventIndexPage.clickOnEvent();
+		//try{
+			log("Step 7: Verify Event Creation Page");
+			if(eventCreationPage.verifyEventNameHeader(eventName))
+			{
+				log("<Strong><font color=#008000>Pass</font></strong>");
+			}
+			else
+			{
+				log("Fail");
+				numOfFailure++;
+			}
+		//}
+		//catch(Exception e)
+		//{
+			//log("There may be problem to verify event creation page/page loading issue");
+		//}
+			
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+	}
+	
+	@Test(groups={"Events"})
+	public void deleteEventFunctionality()
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		int numOfEventsInGrid = 0;
+		String eventName = "";
+		log("<b><ul>Testcase ID: TC_EV_002</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		eventName = driver.findElement(By.xpath(".//*[@id='list-container']/a[1]")).getText();
+		numOfEventsInGrid = common.getNumOfElements(driver, By.xpath(".//*[@id='list-container']/a"));
+		try
+		{
+			log("Step 6: Try to delete any existing event");
+			dashboardPage = eventIndexPage.clickOnDeleteEvent();
+			try{
+				log("Step 7: Verify deleted event is not display on grid");
+				if(dashboardPage.verifyDeletedEvent(numOfEventsInGrid, eventName))
+				{
+					log("<Strong><font color=#008000>Pass</font></strong>");
+				}
+				else
+				{
+					log("Fail");
+					numOfFailure++;
+				}
+			}
+			catch(Exception e)
+			{
+				log("There may be problem to verify delete event or page loading issue");
+			}
+		}
+		catch(Exception e)
+		{
+			log("There is no existing event available to delete");
+		}
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+	}
+	
 }

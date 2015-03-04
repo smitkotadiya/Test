@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.URL;
+import java.util.List;
+import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
@@ -18,14 +20,15 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import org.testng.IResultMap;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
+import org.testng.internal.Utils;
 
-import com.opera.core.systems.internal.ImplicitWait;
 import com.socialTables.HomePage.Verifications.HomeVerificationPage;
 import com.socialTables.HomePage.indexPages.HomePageIdexPage;
 import com.socialTables.events.IndexPages.EventIndexPage;
@@ -245,11 +248,10 @@ public class SeleniumInit implements ILoggerStatus {
 	
 			capability.setJavascriptEnabled(true);
 			capability.setBrowserName("safari");
-//			//capability.setCapability(SafariDriver.CLEAN_SESSION_CAPABILITY, profile);
+			//capability.setCapability(SafariDriver.CLEAN_SESSION_CAPABILITY, profile);
 			 this.driver = new SafariDriver(capability);
 		}		
 		
-	
 		
 		driver = new RemoteWebDriver(remote_grid, capability);
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -265,6 +267,36 @@ public class SeleniumInit implements ILoggerStatus {
 		dashboardPage = new DashboardPage(driver);
 	
 	} 
+	
+	/**
+	 * Failure Reason Method.
+	 * @param tests
+	 */
+	private void getShortException(IResultMap tests) {
+
+        for (ITestResult result : tests.getAllResults()) {
+            
+            Throwable exception = result.getThrowable();
+            List<String> msgs = Reporter.getOutput(result);
+            boolean hasReporterOutput = msgs.size() > 0;
+            boolean hasThrowable = exception != null;
+            if (hasThrowable) {
+                boolean wantsMinimalOutput = result.getStatus() == ITestResult.SUCCESS;
+                if (hasReporterOutput) {
+                    log("<h3>"
+                            + (wantsMinimalOutput ? "Expected Exception"
+                                    : "Failure Reason:") + "</h3>");
+                }
+
+                // Getting first line of the stack trace
+                String str = Utils.stackTrace(exception, true)[0];
+                Scanner scanner = new Scanner(str);
+                String firstLine = scanner.nextLine();
+                log(firstLine);
+            }
+        }
+    }
+	
 
 	/**
 	 * After Method
@@ -272,13 +304,13 @@ public class SeleniumInit implements ILoggerStatus {
 	 * @param testResult
 	 */
 	
-	
 	@AfterMethod(alwaysRun = true)
 	public void tearDown(ITestResult testResult) {
+		
+		ITestContext ex = testResult.getTestContext();
+		
 		try {
-
 			 testName = testResult.getName();
-
 			if (!testResult.isSuccess()) {
 
 				/* Print test result to Jenkins Console */
@@ -295,6 +327,7 @@ public class SeleniumInit implements ILoggerStatus {
 						+ testName;
 				Reporter.log("<br> <b>Please look to the screenshot - </b>");
 				common.makeScreenshot(driver, screenshotName);
+				getShortException(ex.getFailedTests());
 			} 
 			else 
 			{

@@ -76,4 +76,26 @@ public class EventIndexPage extends AbstractPage
 		common.pause(2);
 		return new DashboardPage(driver);
 	}
+	
+	public EventCreationPage clickOnEvent()
+	{
+		try{
+		driver.findElement(By.xpath(".//*[@id='list-container']/a[not(contains(@style,'display: none;'))][1]")).click();
+		}
+		catch(Exception e)
+		{
+			log("There is no existing event available to view");
+		}
+		common.pause(4);
+		return new EventCreationPage(driver);
+	}
+	
+	public DashboardPage clickOnDeleteEvent()
+	{
+		driver.findElement(By.xpath(".//*[@id='list-container']/a[1]/span[@class='eventTools']/i[1]")).click();
+		common.pause(2);
+		driver.findElement(By.xpath("//button[contains(.,'OK')]")).click();
+		common.pause(2);
+		return new DashboardPage(driver);
+	}
 }

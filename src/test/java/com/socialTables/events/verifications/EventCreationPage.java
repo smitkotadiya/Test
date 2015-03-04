@@ -1,5 +1,6 @@
 package com.socialTables.events.verifications;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -46,4 +47,18 @@ public class EventCreationPage extends AbstractPage
 		}
 	}
 
+	public boolean verifyEventNameHeader(String eventName)
+	{
+		common.pause(2);
+		String eventNameOnView = driver.findElement(By.xpath(".//*[@id='header-event-name']")).getText();
+		System.out.println(eventNameOnView+"===="+eventName);
+		if(eventName.equalsIgnoreCase(eventNameOnView))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }

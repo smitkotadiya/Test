@@ -48,10 +48,37 @@ public class DashboardPage extends AbstractPage
 				if(ele.getText().equalsIgnoreCase(eventName))
 				{
 					bool = true;
+					break;
 				}
 				else
 				{
 					bool = false;
+				}
+			}
+		}
+		else
+		{
+			bool = false;
+		}
+		return bool;
+	}
+	
+	public boolean verifyDeletedEvent(int numOfEvents,String eventName)
+	{
+		int numOfEventsAfterDelete = common.getNumOfElements(driver, By.xpath(".//*[@id='list-container']/a"));
+		boolean bool = false;
+		if(numOfEventsAfterDelete==numOfEvents-1)
+		{
+			List<WebElement> eles = driver.findElements(By.xpath(".//*[@id='list-container']/a/span[3]"));
+			for(WebElement ele:eles)
+			{
+				if(ele.getText().equalsIgnoreCase(eventName))
+				{
+					bool = false;
+				}
+				else
+				{
+					bool = true;
 				}
 			}
 		}
