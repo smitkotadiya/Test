@@ -31,6 +31,10 @@ import org.testng.internal.Utils;
 
 import com.socialTables.HomePage.Verifications.HomeVerificationPage;
 import com.socialTables.HomePage.indexPages.HomePageIdexPage;
+import com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex;
+import com.socialTables.TeamMemberVanue.IndexPage.TeamMemberAndVenueIndexPage;
+import com.socialTables.TeamMemberVanue.Verifications.TeamMemberAndVenueVerificationPage;
+import com.socialTables.TeamMemberVanue.Verifications.VenueCreationPage;
 import com.socialTables.events.IndexPages.EventIndexPage;
 import com.socialTables.events.verifications.DashboardPage;
 import com.socialTables.events.verifications.EventCreationPage;
@@ -77,6 +81,11 @@ public class SeleniumInit implements ILoggerStatus {
 	public DashboardPage dashboardPage;
 	public EventIndexPage eventIndexPage;
 	public EventCreationPage eventCreationPage;
+	
+	//Team Member and venue
+	public TeamMemberAndVenueIndex teamMemberAndVenueIndexPage;
+	public TeamMemberAndVenueVerificationPage teamMemberAndVenueVerificationPage;
+	public VenueCreationPage venueCreationPage;
 
 	
 	
@@ -268,6 +277,10 @@ public class SeleniumInit implements ILoggerStatus {
 		eventIndexPage = new EventIndexPage(driver);
 		eventCreationPage = new EventCreationPage(driver);
 		dashboardPage = new DashboardPage(driver);
+		venueCreationPage = new VenueCreationPage(driver);
+		teamMemberAndVenueIndexPage = new TeamMemberAndVenueIndex();
+		teamMemberAndVenueVerificationPage = new TeamMemberAndVenueVerificationPage(driver);
+
 	
 	} 
 	

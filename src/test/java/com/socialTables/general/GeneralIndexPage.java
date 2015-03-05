@@ -16,6 +16,16 @@ public class GeneralIndexPage extends AbstractPage
 
 	@FindBy(xpath="//a[contains(.,'Login')]")
 	private WebElement clickOnLoginTab;
+	@FindBy(xpath="//div[@class='contextual-links']/a[contains(.,'Team Members & Venues')]")
+	private WebElement teamMemberAndVenue;
+	@FindBy(xpath="//div[@class='contextual-links']/a[contains(.,'Team Settings')]")
+	private WebElement teamSettings;
+	@FindBy(xpath="//div[@class='contextual-links']/a[contains(.,'Statistics')]")
+	private WebElement Statastics;
+	@FindBy(xpath="//div[@class='contextual-links']/a[contains(.,'Corporate Dashboard')]")
+	private WebElement corpporateDashboard;
+	@FindBy(xpath="//div[@class='contextual-links']/a[contains(.,'Events')]")
+	private WebElement events;
 	
 	Common common = new Common(driver);
 	
@@ -59,4 +69,31 @@ public class GeneralIndexPage extends AbstractPage
 	{
 		Collections.sort(allRecords,Collections.reverseOrder());
 	}
+	
+	public GeneralVerificationPage navigateToTeamMemberAndVenue()
+	{
+		teamMemberAndVenue.click();
+		return new GeneralVerificationPage(driver);
+	}
+	public GeneralVerificationPage navigateToTeamSettings()
+	{
+		teamSettings.click();
+		return new GeneralVerificationPage(driver);
+	}
+	public GeneralVerificationPage navigateToStatistics()
+	{
+		Statastics.click();
+		return new GeneralVerificationPage(driver);
+	}
+	public GeneralVerificationPage navigateToCorporateDashboardPage()
+	{
+		corpporateDashboard.click();
+		return new GeneralVerificationPage(driver);
+	}
+	public GeneralVerificationPage navigateToEvent()
+	{
+		events.click();
+		return new GeneralVerificationPage(driver);
+	}
+	
 }
