@@ -46,7 +46,7 @@
 			</methods>
 		</class>
 	</classes>
-</test>
+</test> -->
 <test 	name="To verify event counter label functionality.">
 	<classes>
 		<class
@@ -67,7 +67,7 @@
 		</class>
 	</classes>
 </test>
-<test 	name="To verify Seach  Event functionality..">
+<!-- <test 	name="To verify Seach  Event functionality..">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -76,7 +76,7 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
+</test>
 <test 	name="To verify Clone  Event functionality..">
 	<classes>
 		<class
@@ -86,5 +86,15 @@
 			</methods>
 		</class>
 	</classes>
-</test>
+</test> -->
+<!-- <test 	name="To verify Sorting functionality in  Event ">
+	<classes>
+		<class
+			name="com.socialTables.events.Index.EventIndex">
+			<methods>
+				<include name="SortingFunctionalityInEvent" />
+			</methods>
+		</class>
+	</classes>
+</test> -->
 </suite>

@@ -66,7 +66,7 @@ public class EventIndexPage extends AbstractPage
 	{
 		if(criteria.equalsIgnoreCase("Add"))
 		{
-			txtEventName.sendKeys(eventName);
+			common.type(txtEventName, eventName);
 			WebElement eventTypeButton=driver.findElement(By.xpath("//div[@class='event-type-container']/div/input[@value='"+eventType+"']"));
 			eventTypeButton.click();
 			usesMatricUnitCheckBox.click();
@@ -75,7 +75,7 @@ public class EventIndexPage extends AbstractPage
 		}
 		else
 		{
-			txtEventName.sendKeys(eventName);
+			common.type(txtEventName, eventName);
 			btnDoneInEventInfo.click();
 			common.pause(2);
 		}

@@ -1,11 +1,14 @@
 package com.socialTables.events.Index;
 
+import java.util.ArrayList;
+
 import org.apache.bcel.generic.Select;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.socialTables.general.GeneralVerificationPage;
 import com.socialTables.init.Common;
 import com.socialTables.init.SeleniumInit;
 
@@ -259,6 +262,8 @@ public class EventIndex extends SeleniumInit
 			log("Fail");
 			numOfFailure++;
 		}
+		numOfEventInLable =driver.findElement(By.xpath("//div[@class='count_box']")).getText();
+		numOfEventsInLableCount = Integer.parseInt(numOfEventInLable);
 		log("Step 13:Now, Try to delete any existing event");
 		dashboardPage = eventIndexPage.clickOnDeleteEvent();
 		try
@@ -462,6 +467,85 @@ public class EventIndex extends SeleniumInit
 			numOfFailure++;
 		}
 		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
 	}
+	
+	@Test
+	public void SortingFunctionalityInEvent()
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		int numOfEventsInGrid = 0;
+		log("<b><ul>Testcase ID: TC_EV_006</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		 ArrayList<String> previousList=generalIndexPage.getAllRecordsOfColumn("name");
+		 generalIndexPage.getAllRecordsInAscending(previousList);
+		 log("Step 6:Perform Sorting in Name column in event grid ");
+		 generalIndexPage.performSorting(1);
+		 ArrayList<String> currentList=generalIndexPage.getAllRecordsOfColumn("name");
+		 if(generalVerificationPage.verifySorting(previousList, currentList))
+		  {
+			 log("<br><Strong><font color=#008000>Pass</font></strong>");
+		  }
+		  else
+		  {
+			  log("<br></br> Fail");
+			  numOfFailure++;
+		  }
+		 
+		 if(numOfFailure>0)
+		 {
+			 Assert.assertTrue(false);
+		 }
+	}
+	
+	@Test
+	public void dashBoardTutorialLinkVerification()
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		int numOfEventsInGrid = 0;
+		String eventName = "Auto-clone";
+		log("<b><ul>Testcase ID: TC_EV_006</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+	}
+	
 
 }

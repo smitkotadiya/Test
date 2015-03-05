@@ -35,6 +35,7 @@ import com.socialTables.events.IndexPages.EventIndexPage;
 import com.socialTables.events.verifications.DashboardPage;
 import com.socialTables.events.verifications.EventCreationPage;
 import com.socialTables.general.GeneralIndexPage;
+import com.socialTables.general.GeneralVerificationPage;
 
 
 
@@ -66,6 +67,7 @@ public class SeleniumInit implements ILoggerStatus {
 
 	/* Page's declaration */
 	public GeneralIndexPage generalIndexPage;
+	public GeneralVerificationPage generalVerificationPage;
 	
 	//Home Page Module
 	public HomePageIdexPage homePageIndexPage;
@@ -260,6 +262,7 @@ public class SeleniumInit implements ILoggerStatus {
 		
 		//Initialization of object.
 		generalIndexPage = new GeneralIndexPage(driver);
+		generalVerificationPage = new GeneralVerificationPage(driver);
 		homePageIndexPage = new HomePageIdexPage(driver);
 		homeVerificationPage = new HomeVerificationPage(driver);
 		eventIndexPage = new EventIndexPage(driver);
