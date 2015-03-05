@@ -62,22 +62,40 @@ public class EventIndexPage extends AbstractPage
 		return new EventCreationPage(driver);
 	}
 	
-	public EventCreationPage fillEventInfo(String eventName,String eventType)
+	public EventCreationPage fillEventInfo(String criteria,String eventName,String eventType)
 	{
-		txtEventName.sendKeys(eventName);
-		WebElement eventTypeButton=driver.findElement(By.xpath("//div[@class='event-type-container']/div/input[@value='"+eventType+"']"));
-		eventTypeButton.click();
-		usesMatricUnitCheckBox.click();
-		btnDoneInEventInfo.click();
-		common.pause(2);
+		if(criteria.equalsIgnoreCase("Add"))
+		{
+			txtEventName.sendKeys(eventName);
+			WebElement eventTypeButton=driver.findElement(By.xpath("//div[@class='event-type-container']/div/input[@value='"+eventType+"']"));
+			eventTypeButton.click();
+			usesMatricUnitCheckBox.click();
+			btnDoneInEventInfo.click();
+			common.pause(2);
+		}
+		else
+		{
+			txtEventName.sendKeys(eventName);
+			btnDoneInEventInfo.click();
+			common.pause(2);
+		}
 		
 		return new EventCreationPage(driver);
 	}
 	
-	public EventCreationPage fillRoomSettingsForm()
+	public EventCreationPage fillRoomSettingsForm(String criteria)
 	{
-		common.clickOn(driver, btnDoneInRoomSetting);
-		common.pause(3);
+		if(criteria.equalsIgnoreCase("clone"))
+		{
+			common.clickOn(driver, btnDoneInRoomSetting);
+			common.pause(3);
+		}
+		else
+		{
+			common.clickOn(driver, btnDoneInRoomSetting);
+			common.pause(3);
+		}
+		
 		return new EventCreationPage(driver);
 	}
 	
@@ -140,4 +158,15 @@ public class EventIndexPage extends AbstractPage
 		common.type(txtSearch, searchString);
 		return new DashboardPage(driver);
 	}
+	
+	public EventCreationPage clickOnCloneIcone()
+	{
+		driver.findElement(By.xpath(".//*[@id='list-container']/a[not(contains(@style,'display: none;'))][1]/span[@class='eventTools']/i[2]")).click();
+		common.pause(2);
+		driver.findElement(By.xpath("//button[contains(.,'OK')]")).click();
+		common.pause(2);
+		return new EventCreationPage(driver);
+	}
+	
+	
 }

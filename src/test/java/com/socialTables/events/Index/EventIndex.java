@@ -53,7 +53,7 @@ public class EventIndex extends SeleniumInit
 			numOfFailure++;
 		}
 		log("Step 8: Enter mandetory fields to create event and Click on 'Done'");
-		eventCreationPage = eventIndexPage.fillEventInfo(eventName, eventType);
+		eventCreationPage = eventIndexPage.fillEventInfo("Add",eventName, eventType);
 		log("Step 9: Verify Room Setting Page in Event Creation");
 		if(eventCreationPage.verifyRoomSettingPage())
 		{
@@ -65,7 +65,7 @@ public class EventIndex extends SeleniumInit
 			numOfFailure++;
 		}
 		log("Step 10: Select venue from library or customize room");
-		eventCreationPage = eventIndexPage.fillRoomSettingsForm();
+		eventCreationPage = eventIndexPage.fillRoomSettingsForm("add");
 		log("Step 11: Navigate to 'Event' Page");
 		dashboardPage = eventIndexPage.clickOnLogo();
 		log("Step 12: Verify Added Event");
@@ -91,7 +91,6 @@ public class EventIndex extends SeleniumInit
 	{
 		Common common = new Common(driver);
 		int numOfFailure=0;
-		int numOfEventsInGrid = 0;
 		String eventName = "";
 		log("<b><ul>Testcase ID: TC_EV_002</b></ul>");
 		log("Step 1: Click on 'login' tab");
@@ -235,7 +234,7 @@ public class EventIndex extends SeleniumInit
 			numOfFailure++;
 		}
 		log("Step 8: Enter mandetory fields to create event and Click on 'Done'");
-		eventCreationPage = eventIndexPage.fillEventInfo(eventName, eventType);
+		eventCreationPage = eventIndexPage.fillEventInfo("Add",eventName, eventType);
 		log("Step 9: Verify Room Setting Page in Event Creation");
 		if(eventCreationPage.verifyRoomSettingPage())
 		{
@@ -247,7 +246,7 @@ public class EventIndex extends SeleniumInit
 			numOfFailure++;
 		}
 		log("Step 10: Select venue from library or customize room");
-		eventCreationPage = eventIndexPage.fillRoomSettingsForm();
+		eventCreationPage = eventIndexPage.fillRoomSettingsForm("add");
 		log("Step 11: Navigate to 'Event' Page");
 		dashboardPage = eventIndexPage.clickOnLogo();
 		log("Step 12: Verify Added Event and event counter increase by one");
@@ -407,6 +406,62 @@ public class EventIndex extends SeleniumInit
 		{
 			Assert.assertTrue(false);
 		}
+	}
+	
+	@Test
+	public void cloneEventFunctionality()
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		int numOfEventsInGrid = 0;
+		String eventName = "Auto-clone";
+		log("<b><ul>Testcase ID: TC_EV_006</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		numOfEventsInGrid = common.getNumOfElements(driver, By.xpath(".//*[@id='list-container']/a"));
+		log("Step 6: Click on clone icone of any existing event");
+		eventCreationPage = eventIndexPage.clickOnCloneIcone();
+		log("Step 7: Verify event creation page");
+		if(eventCreationPage.verifyEventCreationPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 8: Now, Save the event");
+		eventCreationPage = eventIndexPage.fillEventInfo("Clone",eventName,null);
+		eventCreationPage = eventIndexPage.fillRoomSettingsForm("Clone");
+		log("Step 9: Navigate to dashboard page by clicking on logo");
+		dashboardPage = eventIndexPage.clickOnLogo();
+		log("Step 10: Verify Dashboard Page and added event");
+		if(dashboardPage.verifyAddedEvent(numOfEventsInGrid, eventName))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
 	}
 
 }

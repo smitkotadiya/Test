@@ -17,7 +17,7 @@
 	<parameter name="selenium.url" value="https://dev.socialtables.com/" />
  
  
-<test 	name="To verify New Event functionality.">
+<!-- <test 	name="To verify New Event functionality.">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -73,6 +73,16 @@
 			name="com.socialTables.events.Index.EventIndex">
 			<methods>
 				<include name="searchEventFunctionality" />
+			</methods>
+		</class>
+	</classes>
+</test> -->
+<test 	name="To verify Clone  Event functionality..">
+	<classes>
+		<class
+			name="com.socialTables.events.Index.EventIndex">
+			<methods>
+				<include name="cloneEventFunctionality" />
 			</methods>
 		</class>
 	</classes>
