@@ -20,6 +20,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TakesScreenshot;
@@ -835,6 +836,19 @@ public class Common {
 	public void refresh(WebDriver driver)
 	{
 		driver.navigate().refresh();
+	}
+	
+	public void openUrlInNewTab(WebDriver driver,String url)
+	{
+		if(System.getProperty("os.name").equalsIgnoreCase("windows"))
+		{
+			driver.findElement(By.tagName("body")).sendKeys(Keys.CONTROL+"t");
+		}
+		else
+		{
+			driver.findElement(By.tagName("body")).sendKeys(Keys.CONTROL+"t");
+		}
+		driver.get(url);
 	}
 	
 }

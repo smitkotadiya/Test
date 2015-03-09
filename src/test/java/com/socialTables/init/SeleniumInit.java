@@ -83,7 +83,7 @@ public class SeleniumInit implements ILoggerStatus {
 	public EventCreationPage eventCreationPage;
 	
 	//Team Member and venue
-	public TeamMemberAndVenueIndex teamMemberAndVenueIndexPage;
+	public TeamMemberAndVenueIndexPage teamMemberAndVenueIndexPage;
 	public TeamMemberAndVenueVerificationPage teamMemberAndVenueVerificationPage;
 	public VenueCreationPage venueCreationPage;
 
@@ -278,7 +278,7 @@ public class SeleniumInit implements ILoggerStatus {
 		eventCreationPage = new EventCreationPage(driver);
 		dashboardPage = new DashboardPage(driver);
 		venueCreationPage = new VenueCreationPage(driver);
-		teamMemberAndVenueIndexPage = new TeamMemberAndVenueIndex();
+		teamMemberAndVenueIndexPage = new TeamMemberAndVenueIndexPage(driver);
 		teamMemberAndVenueVerificationPage = new TeamMemberAndVenueVerificationPage(driver);
 
 	
