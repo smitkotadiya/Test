@@ -14,7 +14,7 @@ import com.socialTables.init.SeleniumInit;
 public abstract class AbstractPage extends SeleniumInit 
 {
 	
-	public int DRIVER_WAIT = 5;
+	public int DRIVER_WAIT = 15;
 	
 	/**
 	 * Initialize UserAbstractPage.

@@ -3,8 +3,8 @@ package com.socialTables.TeamMemberVanue.IndexPage;
 import java.util.List;
 import java.util.Random;
 
+import org.apache.bcel.generic.Select;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.bouncycastle.crypto.prng.RandomGenerator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -15,7 +15,6 @@ import com.socialTables.TeamMemberVanue.Verifications.TeamMemberAndVenueVerifica
 import com.socialTables.TeamMemberVanue.Verifications.VenueCreationPage;
 import com.socialTables.events.verifications.DashboardPage;
 import com.socialTables.general.AbstractPage;
-import com.socialTables.general.GeneralVerificationPage;
 import com.socialTables.init.Common;
 
 public class TeamMemberAndVenueIndexPage extends AbstractPage
@@ -127,7 +126,10 @@ public class TeamMemberAndVenueIndexPage extends AbstractPage
 	public TeamMemberAndVenueVerificationPage fillNewMemberDetail(String email, String role)
 	{
 		txtMemberEmail.sendKeys(email);
-		common.selectFromComboByVisibleElement(selectMemberRole, role);
+		common.pause(2);
+		org.openqa.selenium.support.ui.Select select = new org.openqa.selenium.support.ui.Select(driver.findElement(By.xpath("//select[@name='role']")));
+		select.selectByVisibleText(role);
+		common.pause(2);
 		btnDone.click();
 		
 		return new TeamMemberAndVenueVerificationPage(driver);
@@ -139,10 +141,32 @@ public class TeamMemberAndVenueIndexPage extends AbstractPage
 		driver.findElement(By.id("inboxfield")).sendKeys(email);
 		driver.findElement(By.xpath("//btn[contains(.,'Check it')]")).click();
 		common.pause(2);
+		try{
+			
 		driver.findElement(By.xpath(".//*[@id='mailcontainer']/li[1]/a/div[2]")).click();
 		common.pause(2);
-		driver.findElement(By.xpath("//a[contains(.,'Join Team')]")).click();
-		common.pause(2);
+		
+		}
+		catch(Exception e)
+		{
+			log("<b> Member may not get 'Confirmation Email' or 'xpath' changed</b>");
+		}
+		try{
+			common.pause(2);
+			driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@name='rendermail']")));
+			System.out.println("========Switch on iframe========");
+			//common.jsClick(driver.findElement(By.xpath("//a/font")));
+			driver.findElement(By.xpath(".//*[@id='content']/tbody/tr[2]/td[2]/a/font")).click();
+			System.out.println("========Switch on Mail Window========");
+			driver.switchTo().window(driver.getWindowHandle());
+			common.pause(2);
+			System.out.println("=============="+"Click Performed"+driver.findElement(By.xpath("//[@id='content']/tbody/tr[2]/td[2]/a/font")).getText());
+		}
+		catch(Exception e)
+		{
+			log("<b> Not able to click on 'Join Team'</b>");
+		}
+		
 		driver.findElement(By.tagName("body")).sendKeys(Keys.COMMAND+"3");
 		
 		return new TeamMemberAndVenueVerificationPage(driver);

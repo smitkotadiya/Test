@@ -458,7 +458,7 @@ public class Common {
 	public void selectFromComboByVisibleElement(WebElement element,String value)
 	{
 		Select select = new Select(element);
-		select.selectByVisibleText(value);;
+		select.selectByVisibleText(value);
 	}
 
 
@@ -846,7 +846,7 @@ public class Common {
 		}
 		else
 		{
-			driver.findElement(By.tagName("body")).sendKeys(Keys.CONTROL+"t");
+			driver.findElement(By.tagName("body")).sendKeys(Keys.COMMAND+"t");
 		}
 		driver.get(url);
 	}
