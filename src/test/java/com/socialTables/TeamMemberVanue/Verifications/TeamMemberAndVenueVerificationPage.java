@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import com.socialTables.general.AbstractPage;
+import com.socialTables.init.Common;
 
 public class TeamMemberAndVenueVerificationPage extends AbstractPage
 {
@@ -19,6 +20,8 @@ public class TeamMemberAndVenueVerificationPage extends AbstractPage
 	private WebElement selectMemberRole;
 	@FindBy(xpath=".//*[@id='join-team']/div/div/div/h2")
 	private WebElement verifyJoinNowForm;
+	
+	Common common = new Common(driver);
 	
 	public TeamMemberAndVenueVerificationPage(WebDriver driver) 
 	{
@@ -48,6 +51,40 @@ public class TeamMemberAndVenueVerificationPage extends AbstractPage
 		}
 		return bool;
 	}
+	
+	public boolean verifyDeletedVenue(int numOfVenueBefore)
+	{
+		By by = By.xpath("//div[contains(@class,'listings-container')]/div[contains(@class,'floorplan')]/div");
+		int numOfVenueAfter = common.getNumOfElements(driver, by);
+		if(numOfVenueAfter==numOfVenueBefore-1)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public boolean verifyEditedVenue(String venueName)
+	{
+		boolean bool= false;
+		List<WebElement> eles = driver.findElements(By.xpath("//div[contains(@class,'listings-container')]/div[contains(@class,'floorplan')]/div"));
+		for(WebElement ele:eles)
+		{
+			if(ele.getText().equalsIgnoreCase(venueName))
+			{
+				bool = true;
+				break;
+			}
+			else
+			{
+				bool = false;
+			}
+		}
+		return bool;
+	}
+	
 	
 	public boolean verifyAddMemberFields()
 	{

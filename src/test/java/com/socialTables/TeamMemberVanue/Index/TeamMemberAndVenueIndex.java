@@ -17,6 +17,7 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		Common common = new Common(driver);
 		int numOfFailure=0;
 		int numOfVenueInList = 0;
+		boolean isEditable = false;
 		String venueName = "auto-"+RandomStringUtils.randomAlphabetic(3);
 		log("<b><ul>Testcase ID: TC_HP_002</b></ul>");
 		log("Step 1: Click on 'login' tab");
@@ -51,7 +52,7 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		}
 		numOfVenueInList = common.getNumOfElements(driver, By.xpath("//div[contains(@class,'listings-container')]/div[contains(@class,'floorplan')]/div"));
 		log("Step 8: Click on 'New Venue' Button");
-		venueCreationPage = teamMemberAndVenueIndexPage.clickOnNewVenue();
+		venueCreationPage = teamMemberAndVenueIndexPage.newOrEditVenue(isEditable);
 		log("Step 9: Verify event creation page");
 		if(venueCreationPage.verifyVenuePage())
 		{
@@ -63,7 +64,7 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 			numOfFailure++;
 		}
 		log("Step 10: Fill required fields to crate venue and click on 'Next' button");
-		venueCreationPage = teamMemberAndVenueIndexPage.fillVenueDetail(venueName);
+		venueCreationPage = teamMemberAndVenueIndexPage.fillVenueDetail(venueName,isEditable);
 		log("Step 11: Verify 'Back Ground' Selection Page");
 		if(venueCreationPage.verifyBackgroundPage())
 		{
@@ -105,12 +106,169 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 	}
 	
 	@Test
+	public void editVenueFunctionality() throws InterruptedException
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		boolean isEditable = true;
+		//int numOfVenueInList = 0;
+		String venueName = "auto-edit"+RandomStringUtils.randomAlphabetic(3);
+		log("<b><ul>Testcase ID: TC_TV_006</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 6:Navigate to 'Team Member and Venue' Module");
+		generalVerificationPage = generalIndexPage.navigateToTeamMemberAndVenue();
+		log("Step 7:Verify 'Team Member and Venue' page");
+		if(generalVerificationPage.verifyTeamMemberAndVenuePage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		//numOfVenueInList = common.getNumOfElements(driver, By.xpath("//div[contains(@class,'listings-container')]/div[contains(@class,'floorplan')]/div"));
+		log("Step 8: Mouse Hover on any existing venue and click on edit icon ");
+		venueCreationPage = teamMemberAndVenueIndexPage.newOrEditVenue(isEditable);
+		log("Step 9: Verify event creation page");
+		if(venueCreationPage.verifyVenuePage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 10: Edit required fields and click on 'Next' button");
+		venueCreationPage = teamMemberAndVenueIndexPage.fillVenueDetail(venueName,isEditable);
+		log("Step 11: Verify 'Back Ground' Selection Page");
+		if(venueCreationPage.verifyBackgroundPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 12: Select any existing background and click on Next");
+		venueCreationPage = teamMemberAndVenueIndexPage.selectAnyBackgroud();
+		log("Step 13: Verify 'Floor Plan' selection page");
+		if(venueCreationPage.verifyFloorPlanPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 14: Select any existing 'Floor Plan' and click on 'Done' button");
+		log("Step 15: Click on 'Ok' button");
+		venueCreationPage = teamMemberAndVenueIndexPage.selectAnyWallTexture();
+		log("Step 16: Verify edited venue on 'Team settings and venue page'");
+		if(teamMemberAndVenueVerificationPage.verifyEditedVenue(venueName))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+	}
+	
+	@Test
+	public void deleteVenueFunctionality() throws InterruptedException
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		int numOfVenueInList = 0;		
+		log("<b><ul>Testcase ID: TC_TV_006</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 6:Navigate to 'Team Member and Venue' Module");
+		generalVerificationPage = generalIndexPage.navigateToTeamMemberAndVenue();
+		log("Step 7:Verify 'Team Member and Venue' page");
+		if(generalVerificationPage.verifyTeamMemberAndVenuePage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		numOfVenueInList = common.getNumOfElements(driver, By.xpath("//div[contains(@class,'listings-container')]/div[contains(@class,'floorplan')]/div"));
+		log("Step 8: Mouse Hover on any existing venue and click on Delete icon");
+		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.deleteVenue();
+		log("Step 9: Verify deleted venue");
+		if(teamMemberAndVenueVerificationPage.verifyDeletedVenue(numOfVenueInList))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+		
+		
+	}
+	
+	
+	
+	@Test
 	public void addMemmber_Admin() throws InterruptedException
 	{
 		Common common = new Common(driver);
 		int numOfFailure=0;
 		String email= "auto_"+RandomStringUtils.randomAlphabetic(4)+"@mailinator.com";
 		String role = "admin";
+		String currentWindow = driver.getWindowHandle();
+		System.out.println("Current Window Handle>>>>>>>>>"+currentWindow);
 		log("<b><ul>Testcase ID: TC_TV_016</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();

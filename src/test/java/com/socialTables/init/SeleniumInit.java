@@ -53,6 +53,7 @@ public class SeleniumInit implements ILoggerStatus {
 	protected String seleniumHubPort; // Selenium hub port
 	protected String targetBrowser; // Target browser
 	protected static String test_data_folder_path = null;
+	public String currentWindowHandle = "";
 
 	// Variables For Login 
 	public String userName_Owner="nishil.patel@kiwiqa.com";
@@ -268,6 +269,8 @@ public class SeleniumInit implements ILoggerStatus {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.get(testUrl);
 		driver.manage().window().maximize();
+		currentWindowHandle = driver.getWindowHandle();
+		System.out.println("Current Window Handle ID:--->"+currentWindowHandle);
 		
 		//Initialization of object.
 		generalIndexPage = new GeneralIndexPage(driver);
