@@ -16,7 +16,7 @@
 	<parameter name="selenium.browser" value="firefox" />
 	<parameter name="selenium.url" value="https://dev.socialtables.com/" />
  
- <test 	name="To verify Create New Venue functionality.">
+ <!-- <test 	name="To verify Create New Venue functionality.">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -25,7 +25,7 @@
 			</methods>
 		</class>
 	</classes>
-</test>
+</test> -->
 
  <!-- <test 	name="To verify Edit Venue functionality.">
 	<classes>
@@ -37,7 +37,7 @@
 		</class>
 	</classes>
 </test>  -->
-<test 	name="To verify Delete Venue functionality.">
+<!-- <test 	name="To verify Delete Venue functionality.">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -46,9 +46,9 @@
 			</methods>
 		</class>
 	</classes>
-</test>
+</test> -->
 
- <!-- <test 	name="To verify owner/admin should be able to add new member with role Admin.">
+ <test 	name="To verify owner/admin should be able to add new member with role Admin.">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -57,9 +57,9 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
+</test>
 
-<!-- <test 	name="To verify owner/admin should be able to add new member with role Planner">
+<test 	name="To verify owner/admin should be able to add new member with role Planner">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -79,6 +79,6 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
+</test>
 
 </suite>

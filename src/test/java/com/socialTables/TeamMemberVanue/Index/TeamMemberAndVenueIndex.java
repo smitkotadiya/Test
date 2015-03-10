@@ -112,7 +112,7 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		int numOfFailure=0;
 		boolean isEditable = true;
 		//int numOfVenueInList = 0;
-		String venueName = "auto-edit"+RandomStringUtils.randomAlphabetic(3);
+		String venueName = "auto-edit-"+RandomStringUtils.randomAlphabetic(3);
 		log("<b><ul>Testcase ID: TC_TV_006</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
@@ -259,7 +259,6 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 	}
 	
 	
-	
 	@Test
 	public void addMemmber_Admin() throws InterruptedException
 	{
@@ -313,6 +312,8 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 			numOfFailure++;
 		}
 		log("Step 10: Fill required member detail and click on done button");
+		log("<b> Member Email: </b>"+ email);
+		log("<b> Member Role: </b>"+ role);
 		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.fillNewMemberDetail(email, role);
 		log("Step 11: Verify 'Verification Email' on 'mailinator.com' and click on 'Join Now' Link in mail content.");
 		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.verifyEmail(email);
@@ -396,6 +397,8 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 			numOfFailure++;
 		}
 		log("Step 10: Fill required member detail and click on done button");
+		log("<b> Member Email: </b>"+ email);
+		log("<b> Member Role: </b>"+ role);
 		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.fillNewMemberDetail(email, role);
 		log("Step 11: Verify 'Verification Email' on 'mailinator.com' and click on 'Join Now' Link in mail content.");
 		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.verifyEmail(email);
@@ -479,6 +482,8 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 			numOfFailure++;
 		}
 		log("Step 10: Fill required member detail and click on done button");
+		log("<b> Member Email: </b>"+ email);
+		log("<b> Member Role: </b>"+ role);
 		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.fillNewMemberDetail(email, role);
 		log("Step 11: Verify 'Verification Email' on 'mailinator.com' and click on 'Join Now' Link in mail content.");
 		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.verifyEmail(email);

@@ -19,6 +19,7 @@ import ch.qos.logback.core.joran.action.Action;
 import com.socialTables.TeamMemberVanue.Verifications.TeamMemberAndVenueVerificationPage;
 import com.socialTables.TeamMemberVanue.Verifications.VenueCreationPage;
 import com.socialTables.events.verifications.DashboardPage;
+import com.socialTables.events.verifications.EventCreationPage;
 import com.socialTables.general.AbstractPage;
 import com.socialTables.init.Common;
 
@@ -154,6 +155,18 @@ public class TeamMemberAndVenueIndexPage extends AbstractPage
 		System.out.println("Click Done on 'Delete' button");
 		
 		return new TeamMemberAndVenueVerificationPage(driver);
+	}
+	
+	public EventCreationPage createEventForVenue()
+	{
+		Actions action = new Actions(driver);
+		WebElement firstRow = driver.findElement(By.xpath("//div[contains(@class,'listings-container')]/div[contains(@class,'floorplan')][1]/div"));
+		action.moveToElement(firstRow).build().perform();
+		common.pause(2);
+		WebElement eventButton = driver.findElement(By.xpath("//div[@class='new-event-button']/span"));
+		//action.moveToElement(firstRow).click(deleteIcon).perform();
+		common.jsClick(eventButton);
+		return new EventCreationPage(driver);
 	}
 	
 	public VenueCreationPage selectAnyBackgroud()
