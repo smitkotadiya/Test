@@ -1,5 +1,11 @@
 package com.socialTables.events.verifications;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -224,6 +230,7 @@ public class DashboardPage extends AbstractPage
 	{
 		boolean bool=false;
 		List<WebElement> eles = driver.findElements(By.xpath(".//*[@id='list-container']/a[not(contains(@style,'display: none;'))]/span[@class='name']"));
+		
 		for(WebElement ele:eles)
 		{
 			if(ele.getText().equalsIgnoreCase(seachString))
@@ -239,4 +246,35 @@ public class DashboardPage extends AbstractPage
 		return bool;
 	}
 
+	public boolean verifyUpcomingEvents() throws ParseException
+	{
+		boolean bool=false;
+		List<WebElement> eles = driver.findElements(By.xpath(".//*[@id='list-container']/a[not(contains(@style,'display: none;'))]/span[@class='date']"));
+		
+		Date currentDate = new Date();
+		DateFormat df = new SimpleDateFormat ("MM/dd/yyyy");
+		String currentDateString = df.format(currentDate);
+		Date currentDateFormetted = df.parse(currentDateString); 
+		Calendar cal = GregorianCalendar.getInstance();
+		cal.setTime(currentDateFormetted);
+		cal.add(GregorianCalendar.DATE, -1);
+		System.out.println("Result :"+cal.getTime());
+		for(WebElement ele:eles)
+		{
+			Date eventDates = df.parse(ele.getText());
+			Calendar cal1 = GregorianCalendar.getInstance();
+			cal1.setTime(eventDates);
+			System.out.println(cal.getTime()+" and "+cal1.getTime());
+			if(cal1.after(cal))
+			{
+				bool=true;
+			}
+			else
+			{
+				bool = false;
+			}
+		}
+		return bool;
+		
+	}
 }

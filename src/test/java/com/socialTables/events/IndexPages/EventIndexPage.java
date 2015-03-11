@@ -46,7 +46,12 @@ public class EventIndexPage extends AbstractPage
 	@FindBy(id="search")
 	private WebElement txtSearch;
 	
-	//div[@class='event-type-container']/div/input[@value='gala']
+	
+	@FindBy(id="showPreviousEvents")
+	private WebElement btnPreviousEvent;
+	@FindBy(id="showUpcomingEvents")
+	private WebElement btnUpcommingEvent;
+	
 	Common common = new Common(driver);
 
 	public EventIndexPage(WebDriver driver) 
@@ -168,5 +173,18 @@ public class EventIndexPage extends AbstractPage
 		return new EventCreationPage(driver);
 	}
 	
+	public DashboardPage clickOnUpcomingEvent()
+	{
+		btnUpcommingEvent.click();
+		common.pause(2);
+		return new DashboardPage(driver);
+	}
+	
+	public DashboardPage clickOnPreviousEvent()
+	{
+		btnPreviousEvent.click();
+		common.pause(2);
+		return new DashboardPage(driver);
+	}
 	
 }
