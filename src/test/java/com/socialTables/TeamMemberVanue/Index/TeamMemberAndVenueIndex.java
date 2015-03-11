@@ -19,7 +19,7 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		int numOfVenueInList = 0;
 		boolean isEditable = false;
 		String venueName = "auto-"+RandomStringUtils.randomAlphabetic(3);
-		log("<b><ul>Testcase ID: TC_HP_002</b></ul>");
+		log("<b><ul>Testcase ID: TC_TV_005</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
@@ -206,7 +206,7 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		Common common = new Common(driver);
 		int numOfFailure=0;
 		int numOfVenueInList = 0;		
-		log("<b><ul>Testcase ID: TC_TV_006</b></ul>");
+		log("<b><ul>Testcase ID: TC_TV_007</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
@@ -258,6 +258,63 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		
 	}
 	
+	@Test
+	public void searchVenue()
+	{
+	
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		log("<b><ul>Testcase ID: TC_TV_005</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 6:Navigate to 'Team Member and Venue' Module");
+		generalVerificationPage = generalIndexPage.navigateToTeamMemberAndVenue();
+		log("Step 7:Verify 'Team Member and Venue' page");
+		if(generalVerificationPage.verifyTeamMemberAndVenuePage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		String venueSeach = driver.findElement(By.xpath("//div[contains(@class,'listings-container')]/div[contains(@class,'floorplan')][1]/div")).getText();
+		log("Step 8: Serach any existing venue and click on 'Search' button");
+		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.searchVenue(venueSeach);
+		log("Step 9: verify search result");
+		if(teamMemberAndVenueVerificationPage.verifySearchVenue(venueSeach))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+		
+	}
 	
 	@Test
 	public void addMemmber_Admin() throws InterruptedException
@@ -516,5 +573,6 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		}
 	}
 
+	
 	
 }

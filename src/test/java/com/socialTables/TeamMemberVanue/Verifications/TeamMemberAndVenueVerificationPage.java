@@ -85,6 +85,18 @@ public class TeamMemberAndVenueVerificationPage extends AbstractPage
 		return bool;
 	}
 	
+	public boolean verifySearchVenue(String venueName)
+	{
+		String searchedVenue = driver.findElement(By.xpath("//div[contains(@class,'listings-container')]/div[contains(@class,'floorplan')][1]/div")).getText();
+		if(searchedVenue.equalsIgnoreCase(venueName))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 	
 	public boolean verifyAddMemberFields()
 	{

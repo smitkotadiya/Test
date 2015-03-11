@@ -73,6 +73,11 @@ public class TeamMemberAndVenueIndexPage extends AbstractPage
 	@FindBy(xpath="//input[contains(@value,'START PLANNING')]")
 	private WebElement btnStartPlanningButton;
 	
+	@FindBy(id="search")
+	private WebElement txtSearch;
+	@FindBy(xpath="//button[contains(.,'Search')]")
+	private WebElement btnSearch;
+	
 	Common common = new Common(driver);
 	public TeamMemberAndVenueIndexPage(WebDriver driver) 
 	{
@@ -256,8 +261,15 @@ public class TeamMemberAndVenueIndexPage extends AbstractPage
 				//break;
 			//}
 		}
-		
-		
+	
+		return new TeamMemberAndVenueVerificationPage(driver);
+	}
+	
+	public TeamMemberAndVenueVerificationPage searchVenue(String searchString)
+	{
+		common.type(txtSearch, searchString);
+		btnSearch.click();
+		common.pause(2);
 		return new TeamMemberAndVenueVerificationPage(driver);
 	}
 	
