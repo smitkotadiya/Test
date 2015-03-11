@@ -98,6 +98,20 @@ public class TeamMemberAndVenueVerificationPage extends AbstractPage
 		}
 	}
 	
+	public boolean verifyDeleteMember(int numOfMemberBefore)
+	{
+		By by = By.xpath(".//*[@id='members-table']/tbody/tr/td[1]");
+		int numOfMemberAfter = common.getNumOfElements(driver, by);
+		if(numOfMemberAfter == numOfMemberBefore-1)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
 	public boolean verifyAddMemberFields()
 	{
 		if(txtMemberEmail.isDisplayed() && selectMemberRole.isDisplayed())

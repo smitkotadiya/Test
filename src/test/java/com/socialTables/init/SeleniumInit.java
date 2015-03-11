@@ -140,16 +140,16 @@ public class SeleniumInit implements ILoggerStatus {
 		Thread.sleep(2000);*/
 		String path="";
 		if(System.getProperty("os.name").equalsIgnoreCase("Mac OS X"))
-	     {
+	    {
 			path="/Users/Nishil/developer/test-automation";
-	     }
+	    }
 		else
 		{
-		path="c:\\Downloads_new";
+			path="c:\\Downloads_new";
 		}
 		File theDir = new File(path);
 		  // if the directory does not exist, create it
-		  if (!theDir.exists()) {
+			if (!theDir.exists()) {
 		    System.out.println("creating directory: ");
 		    boolean result = false;
 
@@ -178,9 +178,8 @@ public class SeleniumInit implements ILoggerStatus {
 				.getAbsolutePath();
 
 		DesiredCapabilities capability = null;
-		if (targetBrowser == null || targetBrowser.contains("firefox")) {
-
-
+		if (targetBrowser == null || targetBrowser.contains("firefox")) 
+		{
 			FirefoxProfile profile = new FirefoxProfile();
 			if(System.getProperty("os.name").equalsIgnoreCase("Mac OS X"))
 		    {

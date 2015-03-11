@@ -25,9 +25,9 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
+</test>
 
- <!-- <test 	name="To verify Edit Venue functionality.">
+ <test 	name="To verify Edit Venue functionality.">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -36,8 +36,8 @@
 			</methods>
 		</class>
 	</classes>
-</test>  -->
-<!-- <test 	name="To verify Delete Venue functionality.">
+</test> 
+<test 	name="To verify Delete Venue functionality.">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -46,7 +46,7 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
+</test>
 
  <test 	name="To verify owner/admin should be able to add new member with role Admin.">
 	<classes>
@@ -76,6 +76,26 @@
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
 			<methods>
 				<include name="addMemmber_LimitedPlanner" />
+			</methods>
+		</class>
+	</classes>
+</test> -->
+<!-- <test 	name="To verify owner/admin should be able to remove existing member">
+	<classes>
+		<class
+			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
+			<methods>
+				<include name="removeExistingMember" />
+			</methods>
+		</class>
+	</classes>
+</test> -->
+<test 	name="To verify create 'New Event' functionality for venue">
+	<classes>
+		<class
+			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
+			<methods>
+				<include name="createEventFromVenue" />
 			</methods>
 		</class>
 	</classes>

@@ -259,7 +259,82 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 	}
 	
 	@Test
-	public void searchVenue()
+	public void createEventFromVenue()
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;	
+		String eventName = "Auto-"+RandomStringUtils.randomAlphanumeric(3);
+		String eventType = "gala"; 
+		int numOfEventsInGrid = 0;
+		log("<b><ul>Testcase ID: TC_TV_007</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		numOfEventsInGrid = common.getNumOfElements(driver, By.xpath(".//*[@id='list-container']/a"));
+		log("Step 6:Navigate to 'Team Member and Venue' Module");
+		generalVerificationPage = generalIndexPage.navigateToTeamMemberAndVenue();
+		log("Step 7:Verify 'Team Member and Venue' page");
+		if(generalVerificationPage.verifyTeamMemberAndVenuePage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		String venueName = driver.findElement(By.xpath("//div[contains(@class,'listings-container')]/div[contains(@class,'floorplan')][1]/div")).getText();
+		log("Step 8: Mouse Hover on any existing venue and click on 'New Event' ");
+		eventCreationPage = teamMemberAndVenueIndexPage.createEventForVenue();
+		log("Step 9: Verify event creation page ");
+		if(eventCreationPage.verifyEventCreationPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 8: Enter mandetory fields to create event and Click on 'Done'");
+		eventCreationPage = eventIndexPage.fillEventInfo("Add",eventName, eventType);
+		log("Step 9: Navigate to 'Event' Page by clicking on logo");
+		dashboardPage = eventIndexPage.clickOnLogo();
+		log("Step 10: Verify Added Event with selected venue");
+		if(dashboardPage.verifyAddedEventWithSpecificVenue(numOfEventsInGrid, eventName,venueName))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+	}
+	
+	@Test
+	public void searchVenuefunctionality()
 	{
 	
 		Common common = new Common(driver);
@@ -573,6 +648,63 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		}
 	}
 
-	
+	@Test
+	public void removeExistingMember()
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		int numOfMemberBefore = 0;
+		log("<b><ul>Testcase ID: TC_TV_018</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 6:Navigate to 'Team Member and Venue' Module");
+		generalVerificationPage = generalIndexPage.navigateToTeamMemberAndVenue();
+		log("Step 7:Verify 'Team Member and Venue' page");
+		if(generalVerificationPage.verifyTeamMemberAndVenuePage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		By by = By.xpath(".//*[@id='members-table']/tbody/tr/td[1]");
+		numOfMemberBefore = common.getNumOfElements(driver, by);
+		log("Step 8: Now click on remove button of any existing member");
+		log("Step 9: Click on 'Ok' button in aleart");
+		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.removeMember();
+		log("Step 10: Verify deleted record on member list");
+		if(teamMemberAndVenueVerificationPage.verifyDeleteMember(numOfMemberBefore))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+	}
 	
 }

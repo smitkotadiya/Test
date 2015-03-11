@@ -63,6 +63,28 @@ public class DashboardPage extends AbstractPage
 		return bool;
 	}
 	
+	public boolean verifyAddedEventWithSpecificVenue(int numOfEvents,String eventName,String venueName)
+	{
+		int numOfEventsAfterAdditon = common.getNumOfElements(driver, By.xpath(".//*[@id='list-container']/a"));
+		boolean bool = false;
+		if(numOfEventsAfterAdditon==numOfEvents+1)
+		{
+			if(driver.findElement(By.xpath(".//*[@id='list-container']/a[contains(.,'"+eventName+"') and contains(.,'"+venueName+"')]")).isDisplayed())
+			{
+				bool = true;
+			}
+			else
+			{
+				bool = false;
+			}
+		}
+		else
+		{
+			bool = false;
+		}
+		return bool;
+	}
+	
 	public boolean verifyDeletedEvent(int numOfEvents,String eventName)
 	{
 		int numOfEventsAfterDelete = common.getNumOfElements(driver, By.xpath(".//*[@id='list-container']/a"));
