@@ -277,4 +277,36 @@ public class DashboardPage extends AbstractPage
 		return bool;
 		
 	}
+	
+	public boolean verifyPreviousEvents() throws ParseException
+	{
+		boolean bool=false;
+		List<WebElement> eles = driver.findElements(By.xpath(".//*[@id='list-container']/a[not(contains(@style,'display: none;'))]/span[@class='date']"));
+		
+		Date currentDate = new Date();
+		DateFormat df = new SimpleDateFormat ("MM/dd/yyyy");
+		String currentDateString = df.format(currentDate);
+		Date currentDateFormetted = df.parse(currentDateString); 
+		Calendar cal = GregorianCalendar.getInstance();
+		cal.setTime(currentDateFormetted);
+		cal.add(GregorianCalendar.DATE, -1);
+		System.out.println("Result :"+cal.getTime());
+		for(WebElement ele:eles)
+		{
+			Date eventDates = df.parse(ele.getText());
+			Calendar cal1 = GregorianCalendar.getInstance();
+			cal1.setTime(eventDates);
+			System.out.println(cal.getTime()+" and "+cal1.getTime());
+			if(cal1.before(cal))
+			{
+				bool=true;
+			}
+			else
+			{
+				bool = false;
+			}
+		}
+		return bool;
+		
+	}
 }

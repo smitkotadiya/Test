@@ -88,7 +88,7 @@
 	</classes>
 </test> -->
 
-<test 	name="To verify Upcomming functionality in  Event ">
+<!-- <test 	name="To verify Upcomming functionality in  Event ">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -97,6 +97,18 @@
 			</methods>
 		</class>
 	</classes>
+</test> -->
+
+<test 	name="To verify previous functionality in  Event ">
+	<classes>
+		<class
+			name="com.socialTables.events.Index.EventIndex">
+			<methods>
+				<include name="previousEventFunctionality" />
+			</methods>
+		</class>
+	</classes>
 </test>
+
 
 </suite>
