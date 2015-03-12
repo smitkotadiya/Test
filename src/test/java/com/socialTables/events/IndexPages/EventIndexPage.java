@@ -71,9 +71,9 @@ public class EventIndexPage extends AbstractPage
 		return new EventCreationPage(driver);
 	}
 	
-	public EventCreationPage fillEventInfo(String criteria,String eventName,String eventType)
+	public EventCreationPage fillEventInfo(String criteria,String eventName,String eventType,boolean isAttendeeEnable)
 	{
-		if(criteria.equalsIgnoreCase("Add"))
+		if(criteria.equalsIgnoreCase("Add") && isAttendeeEnable)
 		{
 			common.type(txtEventName, eventName);
 			WebElement eventTypeButton=driver.findElement(By.xpath("//div[@class='event-type-container']/div/input[@value='"+eventType+"']"));

@@ -46,8 +46,8 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
-<!-- <test 	name="To verify event counter label functionality.">
+</test>
+<test 	name="To verify event counter label functionality.">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -66,8 +66,8 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
-<!-- <test 	name="To verify Seach  Event functionality..">
+</test>
+<test 	name="To verify Seach  Event functionality..">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -86,9 +86,9 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
+</test>
 
-<!-- <test 	name="To verify Upcomming functionality in  Event ">
+<test 	name="To verify Upcomming functionality in  Event ">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -108,10 +108,9 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
+</test>
 
-
-<!-- <test 	name="To verify Dashboard tutorial link ">
+<test 	name="To verify Dashboard tutorial link ">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -120,8 +119,8 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
-<!-- <test 	name="To verify previous functionality in  Event ">
+</test>
+<test 	name="To verify All Header Links in  Event ">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -130,7 +129,7 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
+</test>
 <test 	name="To verify 'View 3D' functionality. ">
 	<classes>
 		<class
@@ -140,7 +139,17 @@
 			</methods>
 		</class>
 	</classes>
-</test>
+</test> -->
 
+<test 	name="To verify 'Guest List Enable' functionality in 'Event Information'. ">
+	<classes>
+		<class
+			name="com.socialTables.events.Index.EventIndex">
+			<methods>
+				<include name="createEventWithAttendeeListEnable" />
+			</methods>
+		</class>
+	</classes>
+</test>
 
 </suite>

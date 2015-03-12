@@ -24,7 +24,9 @@ public class EventIndex extends SeleniumInit
 		String eventName = "Auto-"+RandomStringUtils.randomAlphanumeric(3);
 		String eventType = "gala"; 
 		int numOfEventsInGrid = 0;
+		boolean isAttendeeEnable = true;
 		log("<b><ul>Testcase ID: TC_EV_001</b></ul>");
+		log("<b><ul>TestScenario: To verify create 'New Event' functionality.</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
@@ -57,7 +59,7 @@ public class EventIndex extends SeleniumInit
 			numOfFailure++;
 		}
 		log("Step 8: Enter mandetory fields to create event and Click on 'Done'");
-		eventCreationPage = eventIndexPage.fillEventInfo("Add",eventName, eventType);
+		eventCreationPage = eventIndexPage.fillEventInfo("Add",eventName, eventType,isAttendeeEnable);
 		log("Step 9: Verify Room Setting Page in Event Creation");
 		if(eventCreationPage.verifyRoomSettingPage())
 		{
@@ -98,6 +100,7 @@ public class EventIndex extends SeleniumInit
 		String eventName = "";
 		log("<b><ul>Testcase ID: TC_EV_002</b></ul>");
 		log("Step 1: Click on 'login' tab");
+		log("<b><ul>TestScenario: To verify 'View Event' functionality.</b></ul>");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
 		log("Step 3: Enter Password");
@@ -142,7 +145,7 @@ public class EventIndex extends SeleniumInit
 		}
 	}
 	
-	@Test(groups={"Events"})
+	@Test
 	public void deleteEventFunctionality()
 	{
 		Common common = new Common(driver);
@@ -150,6 +153,7 @@ public class EventIndex extends SeleniumInit
 		int numOfEventsInGrid = 0;
 		String eventName = "";
 		log("<b><ul>Testcase ID: TC_EV_009</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Delete Event' functionality.</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
@@ -201,7 +205,8 @@ public class EventIndex extends SeleniumInit
 	{
 		Common common = new Common(driver);
 		int numOfFailure=0;
-		log("<b><ul>Testcase ID: TC_EV_002</b></ul>");
+		log("<b><ul>Testcase ID: TC_EV_003</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Upcoming Event' functionality.</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
@@ -244,7 +249,8 @@ public class EventIndex extends SeleniumInit
 	{
 		Common common = new Common(driver);
 		int numOfFailure=0;
-		log("<b><ul>Testcase ID: TC_EV_002</b></ul>");
+		log("<b><ul>Testcase ID: TC_EV_004</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Previous Event' functionality.</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
@@ -282,7 +288,7 @@ public class EventIndex extends SeleniumInit
 		}
 	}
 	
-	@Test(groups={"Events"})
+	@Test
 	public void eventCounterFunctionality()
 	{
 		Common common = new Common(driver);
@@ -290,7 +296,9 @@ public class EventIndex extends SeleniumInit
 		String eventName = "Auto-"+RandomStringUtils.randomAlphanumeric(3);
 		String eventType = "gala"; 
 		int numOfEventsInLableCount = 0;
+		boolean isAttendeeEnable = true;
 		log("<b><ul>Testcase ID: TC_EV_005</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Event Counter' label functionality.</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
@@ -324,7 +332,7 @@ public class EventIndex extends SeleniumInit
 			numOfFailure++;
 		}
 		log("Step 8: Enter mandetory fields to create event and Click on 'Done'");
-		eventCreationPage = eventIndexPage.fillEventInfo("Add",eventName, eventType);
+		eventCreationPage = eventIndexPage.fillEventInfo("Add",eventName, eventType,isAttendeeEnable);
 		log("Step 9: Verify Room Setting Page in Event Creation");
 		if(eventCreationPage.verifyRoomSettingPage())
 		{
@@ -376,7 +384,7 @@ public class EventIndex extends SeleniumInit
 		}
 	}
 	
-	@Test(groups={"Events"})
+	@Test
 	public void eventFiltrationFunctionality() throws InterruptedException
 	{
 		Common common = new Common(driver);
@@ -385,7 +393,8 @@ public class EventIndex extends SeleniumInit
 		String categoryName = "";
 		String locationName="";
 		 
-		log("<b><ul>Testcase ID: TC_EV_005</b></ul>");
+		log("<b><ul>Testcase ID: TC_EV_007</b></ul>");
+		log("<b><ul>TestScenario: To verify all event 'Filtration' functionality.</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
@@ -462,6 +471,7 @@ public class EventIndex extends SeleniumInit
 		Common common = new Common(driver);
 		int numOfFailure=0;
 		log("<b><ul>Testcase ID: TC_EV_006</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Search Event' functionality.</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
@@ -507,7 +517,9 @@ public class EventIndex extends SeleniumInit
 		int numOfFailure=0;
 		int numOfEventsInGrid = 0;
 		String eventName = "Auto-clone";
-		log("<b><ul>Testcase ID: TC_EV_006</b></ul>");
+		boolean isAttendeeEnable = true;
+		log("<b><ul>Testcase ID: TC_EV_009</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Clone Event' functionality.</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
@@ -540,7 +552,7 @@ public class EventIndex extends SeleniumInit
 			numOfFailure++;
 		}
 		log("Step 8: Now, Save the event");
-		eventCreationPage = eventIndexPage.fillEventInfo("Clone",eventName,null);
+		eventCreationPage = eventIndexPage.fillEventInfo("Clone",eventName,null,isAttendeeEnable);
 		eventCreationPage = eventIndexPage.fillRoomSettingsForm("Clone");
 		log("Step 9: Navigate to dashboard page by clicking on logo");
 		dashboardPage = eventIndexPage.clickOnLogo();
@@ -565,7 +577,8 @@ public class EventIndex extends SeleniumInit
 	{
 		Common common = new Common(driver);
 		int numOfFailure=0;
-		log("<b><ul>Testcase ID: TC_EV_006</b></ul>");
+		log("<b><ul>Testcase ID: TC_EV_010</b></ul>");
+		log("<b><ul>TestScenario: To verify 'View 3D' functionality.</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
@@ -608,8 +621,8 @@ public class EventIndex extends SeleniumInit
 	{
 		Common common = new Common(driver);
 		int numOfFailure=0;
-		int numOfEventsInGrid = 0;
-		log("<b><ul>Testcase ID: TC_EV_006</b></ul>");
+		log("<b><ul>Testcase ID: TC_EV_011</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Sorting' Functionality of event in all available column of grid.</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
@@ -654,7 +667,8 @@ public class EventIndex extends SeleniumInit
 	{
 		Common common = new Common(driver);
 		int numOfFailure=0;
-		log("<b><ul>Testcase ID: TC_EV_006</b></ul>");
+		log("<b><ul>Testcase ID: TC_EV_012</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Dashboard tutorial' link</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
@@ -697,6 +711,7 @@ public class EventIndex extends SeleniumInit
 		Common common = new Common(driver);
 		int numOfFailure=0;
 		log("<b><ul>Testcase ID: TC_EV_006</b></ul>");
+		log("<b><ul>TestScenario: To verify all header links on dashboard page.</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
@@ -770,5 +785,90 @@ public class EventIndex extends SeleniumInit
 		} 
 	}
 	
+	@Test
+	public void createEventWithAttendeeListEnable()
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		String eventName = "Auto-AttendeeEnable-"+RandomStringUtils.randomAlphanumeric(3);
+		String eventType = "gala"; 
+		int numOfEventsInGrid = 0;
+		boolean isAttendeeEnable = true;
+		log("<b><ul>Testcase ID: TC_EV_015</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Guest List Enable' functionality in 'Event Information'.</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		numOfEventsInGrid = common.getNumOfElements(driver, By.xpath(".//*[@id='list-container']/a"));
+		log("Step 6: Click On 'New Event' Button");
+		eventCreationPage = eventIndexPage.clickOnNewEvent();
+		log("Step 7: Verify 'Event Creation Page'");
+		if(eventCreationPage.verifyEventCreationPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 8: Enter mandetory fields to create event and Click on 'Done'");
+		eventCreationPage = eventIndexPage.fillEventInfo("Add",eventName, eventType,isAttendeeEnable);
+		log("Step 9: Verify Room Setting Page in Event Creation");
+		if(eventCreationPage.verifyRoomSettingPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 10: Select venue from library or customize room");
+		eventCreationPage = eventIndexPage.fillRoomSettingsForm("add");
+		log("Step 11: Now verify 'Attendee List' tab display on event creation page ");
+		if(eventCreationPage.verifyAttendeeListEnable())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 12: Navigate to 'Event' Page");
+		dashboardPage = eventIndexPage.clickOnLogo();
+		log("Step 13: Verify Added Event with attendee list enable");
+		if(dashboardPage.verifyAddedEvent(numOfEventsInGrid, eventName))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+	}
 
 }

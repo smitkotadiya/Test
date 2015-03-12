@@ -15,6 +15,8 @@ public class EventCreationPage extends AbstractPage
 	private WebElement verifyEventCreationForm;
 	@FindBy(xpath=".//*[@id='dialog-header']/h3[contains(.,'Room Settings')]")
 	private WebElement verifyRoomSetingForm;
+	@FindBy(id="tabGuest")
+	private WebElement verifyAttedeeTab;
 	
 	Common common = new Common(driver);
 	public EventCreationPage(WebDriver driver) 
@@ -37,6 +39,7 @@ public class EventCreationPage extends AbstractPage
 	
 	public boolean verifyRoomSettingPage()
 	{
+		common.pause(2);
 		if(verifyRoomSetingForm.isDisplayed())
 		{
 			return true;
@@ -62,5 +65,16 @@ public class EventCreationPage extends AbstractPage
 		}
 	}
 	
+	public boolean verifyAttendeeListEnable()
+	{
+		if(verifyAttedeeTab.isEnabled())
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 	
 }

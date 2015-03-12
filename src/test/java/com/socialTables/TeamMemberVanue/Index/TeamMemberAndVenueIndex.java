@@ -312,7 +312,7 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 			numOfFailure++;
 		}
 		log("Step 8: Enter mandetory fields to create event and Click on 'Done'");
-		eventCreationPage = eventIndexPage.fillEventInfo("Add",eventName, eventType);
+		eventCreationPage = eventIndexPage.fillEventInfo("Add",eventName, eventType,true);
 		log("Step 9: Navigate to 'Event' Page by clicking on logo");
 		dashboardPage = eventIndexPage.clickOnLogo();
 		log("Step 10: Verify Added Event with selected venue");
