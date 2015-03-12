@@ -38,6 +38,7 @@ import com.socialTables.TeamMemberVanue.Verifications.VenueCreationPage;
 import com.socialTables.events.IndexPages.EventIndexPage;
 import com.socialTables.events.verifications.DashboardPage;
 import com.socialTables.events.verifications.EventCreationPage;
+import com.socialTables.events.verifications.EventThreeDPage;
 import com.socialTables.general.GeneralIndexPage;
 import com.socialTables.general.GeneralVerificationPage;
 
@@ -82,6 +83,7 @@ public class SeleniumInit implements ILoggerStatus {
 	public DashboardPage dashboardPage;
 	public EventIndexPage eventIndexPage;
 	public EventCreationPage eventCreationPage;
+	public EventThreeDPage eventThreeDPage;
 	
 	//Team Member and venue
 	public TeamMemberAndVenueIndexPage teamMemberAndVenueIndexPage;
@@ -282,6 +284,7 @@ public class SeleniumInit implements ILoggerStatus {
 		venueCreationPage = new VenueCreationPage(driver);
 		teamMemberAndVenueIndexPage = new TeamMemberAndVenueIndexPage(driver);
 		teamMemberAndVenueVerificationPage = new TeamMemberAndVenueVerificationPage(driver);
+		eventThreeDPage = new  EventThreeDPage(driver);
 
 	
 	} 

@@ -121,12 +121,22 @@
 		</class>
 	</classes>
 </test> -->
-<test 	name="To verify previous functionality in  Event ">
+<!-- <test 	name="To verify previous functionality in  Event ">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
 			<methods>
 				<include name="verifyAllHeaderLinks" />
+			</methods>
+		</class>
+	</classes>
+</test> -->
+<test 	name="To verify 'View 3D' functionality. ">
+	<classes>
+		<class
+			name="com.socialTables.events.Index.EventIndex">
+			<methods>
+				<include name="viewThreeDEventFunctionality" />
 			</methods>
 		</class>
 	</classes>

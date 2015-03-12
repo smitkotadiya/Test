@@ -561,6 +561,49 @@ public class EventIndex extends SeleniumInit
 	}
 	
 	@Test
+	public void viewThreeDEventFunctionality()
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		log("<b><ul>Testcase ID: TC_EV_006</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 6: Click on 'View 3D Icone' of any existing event");
+		eventThreeDPage = eventIndexPage.clickOnViewThreeDIcone();
+		log("Step 7: Verify event '3D View' Page");
+		if(eventThreeDPage.verifyThreeDView())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+	}
+	
+	@Test
 	public void SortingFunctionalityInEvent()
 	{
 		Common common = new Common(driver);
@@ -703,7 +746,7 @@ public class EventIndex extends SeleniumInit
 		{
 			log("<Strong><font color=#008000>Pass</font></strong>");
 		}
-		else
+		else 
 		{
 			log("Fail");
 			numOfFailure++;
@@ -724,7 +767,7 @@ public class EventIndex extends SeleniumInit
 		if(numOfFailure>0)
 		{
 			 Assert.assertTrue(false);
-		}
+		} 
 	}
 	
 

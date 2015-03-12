@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 
 import com.socialTables.events.verifications.DashboardPage;
 import com.socialTables.events.verifications.EventCreationPage;
+import com.socialTables.events.verifications.EventThreeDPage;
 import com.socialTables.general.AbstractPage;
 import com.socialTables.init.Common;
 
@@ -174,6 +175,13 @@ public class EventIndexPage extends AbstractPage
 		driver.findElement(By.xpath("//button[contains(.,'OK')]")).click();
 		common.pause(2);
 		return new EventCreationPage(driver);
+	}
+	
+	public EventThreeDPage clickOnViewThreeDIcone()
+	{
+		driver.findElement(By.xpath(".//*[@id='list-container']/a[not(contains(@style,'display: none;'))][1]/span[@class='eventTools']/i[3]")).click();
+		common.pause(2);
+		return new EventThreeDPage(driver);
 	}
 	
 	public DashboardPage clickOnUpcomingEvent()
