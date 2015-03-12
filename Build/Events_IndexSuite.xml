@@ -97,7 +97,7 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
+</test>
 
 <test 	name="To verify previous functionality in  Event ">
 	<classes>
@@ -105,6 +105,28 @@
 			name="com.socialTables.events.Index.EventIndex">
 			<methods>
 				<include name="previousEventFunctionality" />
+			</methods>
+		</class>
+	</classes>
+</test> -->
+
+
+<!-- <test 	name="To verify Dashboard tutorial link ">
+	<classes>
+		<class
+			name="com.socialTables.events.Index.EventIndex">
+			<methods>
+				<include name="dashBoardTutorialLinkVerification" />
+			</methods>
+		</class>
+	</classes>
+</test> -->
+<test 	name="To verify previous functionality in  Event ">
+	<classes>
+		<class
+			name="com.socialTables.events.Index.EventIndex">
+			<methods>
+				<include name="verifyAllHeaderLinks" />
 			</methods>
 		</class>
 	</classes>

@@ -16,6 +16,7 @@ public class GeneralVerificationPage extends AbstractPage
 	@FindBy(xpath="//h2[contains(.,'Account Statistics')]")
 	private WebElement verifyStatistics;
 	
+	
 	public GeneralVerificationPage(WebDriver driver) 
 	{
 		super(driver);
@@ -62,6 +63,18 @@ public class GeneralVerificationPage extends AbstractPage
 	public boolean verifyTeamSettings()
 	{
 		if(verifyTeamSettings.isDisplayed())
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public boolean verifyStatistics()
+	{
+		if(verifyStatistics.isDisplayed())
 		{
 			return true;
 		}

@@ -52,6 +52,9 @@ public class EventIndexPage extends AbstractPage
 	@FindBy(id="showUpcomingEvents")
 	private WebElement btnUpcommingEvent;
 	
+	@FindBy(xpath="//a[contains(.,'Dashboard tutorial')]")
+	private WebElement linkDashboardTutorial;
+	
 	Common common = new Common(driver);
 
 	public EventIndexPage(WebDriver driver) 
@@ -184,6 +187,13 @@ public class EventIndexPage extends AbstractPage
 	{
 		btnPreviousEvent.click();
 		common.pause(2);
+		return new DashboardPage(driver);
+	}
+	
+	public DashboardPage clickOnDashboardTutorial()
+	{
+		linkDashboardTutorial.click();
+		common.pause(1);
 		return new DashboardPage(driver);
 	}
 	

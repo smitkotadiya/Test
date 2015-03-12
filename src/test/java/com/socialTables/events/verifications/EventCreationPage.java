@@ -62,17 +62,5 @@ public class EventCreationPage extends AbstractPage
 		}
 	}
 	
-	public boolean verifyUpcomingEvent()
-	{
-		boolean bool = false;
-		return bool;
-	}
-	
-	public boolean verifyPreviousEvent()
-	{
-		boolean bool = false;
-		return bool;
-	}
-	
 	
 }

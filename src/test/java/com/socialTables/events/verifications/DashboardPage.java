@@ -21,6 +21,8 @@ public class DashboardPage extends AbstractPage
 
 	@FindBy(xpath=".//*[@id='main-header']/div/div/div[2]/div[1]/a")
 	private WebElement verifyDashboardPage;
+	@FindBy(xpath="//iframe[@class='fancybox-iframe wistia_embed']")
+	private WebElement verifyDashboardTutorialLink;
 	
 	Common common = new Common(driver);
 	
@@ -251,28 +253,37 @@ public class DashboardPage extends AbstractPage
 		boolean bool=false;
 		List<WebElement> eles = driver.findElements(By.xpath(".//*[@id='list-container']/a[not(contains(@style,'display: none;'))]/span[@class='date']"));
 		
-		Date currentDate = new Date();
-		DateFormat df = new SimpleDateFormat ("MM/dd/yyyy");
-		String currentDateString = df.format(currentDate);
-		Date currentDateFormetted = df.parse(currentDateString); 
-		Calendar cal = GregorianCalendar.getInstance();
-		cal.setTime(currentDateFormetted);
-		cal.add(GregorianCalendar.DATE, -1);
-		System.out.println("Result :"+cal.getTime());
-		for(WebElement ele:eles)
+		if(eles.size()>0)
 		{
-			Date eventDates = df.parse(ele.getText());
-			Calendar cal1 = GregorianCalendar.getInstance();
-			cal1.setTime(eventDates);
-			System.out.println(cal.getTime()+" and "+cal1.getTime());
-			if(cal1.after(cal))
+			Date currentDate = new Date();
+			DateFormat df = new SimpleDateFormat ("MM/dd/yyyy");
+			String currentDateString = df.format(currentDate);
+			Date currentDateFormetted = df.parse(currentDateString); 
+			Calendar cal = GregorianCalendar.getInstance();
+			cal.setTime(currentDateFormetted);
+			cal.add(GregorianCalendar.DATE, -1);
+			System.out.println("Result :"+cal.getTime());
+			for(WebElement ele:eles)
 			{
-				bool=true;
+				Date eventDates = df.parse(ele.getText());
+				Calendar cal1 = GregorianCalendar.getInstance();
+				cal1.setTime(eventDates);
+				System.out.println(cal.getTime()+" and "+cal1.getTime());
+				if(cal1.after(cal))
+				{
+					bool=true;
+				}
+				else
+				{
+					bool = false;
+				}
 			}
-			else
-			{
-				bool = false;
-			}
+			
+		}
+		else
+		{
+			log("<b> There is no event available to test this functionality</b>");
+			bool = true;
 		}
 		return bool;
 		
@@ -283,30 +294,50 @@ public class DashboardPage extends AbstractPage
 		boolean bool=false;
 		List<WebElement> eles = driver.findElements(By.xpath(".//*[@id='list-container']/a[not(contains(@style,'display: none;'))]/span[@class='date']"));
 		
-		Date currentDate = new Date();
-		DateFormat df = new SimpleDateFormat ("MM/dd/yyyy");
-		String currentDateString = df.format(currentDate);
-		Date currentDateFormetted = df.parse(currentDateString); 
-		Calendar cal = GregorianCalendar.getInstance();
-		cal.setTime(currentDateFormetted);
-		cal.add(GregorianCalendar.DATE, -1);
-		System.out.println("Result :"+cal.getTime());
-		for(WebElement ele:eles)
+		if(eles.size()>0)
 		{
-			Date eventDates = df.parse(ele.getText());
-			Calendar cal1 = GregorianCalendar.getInstance();
-			cal1.setTime(eventDates);
-			System.out.println(cal.getTime()+" and "+cal1.getTime());
-			if(cal1.before(cal))
+			
+			Date currentDate = new Date();
+			DateFormat df = new SimpleDateFormat ("MM/dd/yyyy");
+			String currentDateString = df.format(currentDate);
+			Date currentDateFormetted = df.parse(currentDateString); 
+			Calendar cal = GregorianCalendar.getInstance();
+			cal.setTime(currentDateFormetted);
+			cal.add(GregorianCalendar.DATE, -1);
+			System.out.println("Result :"+cal.getTime());
+			for(WebElement ele:eles)
 			{
-				bool=true;
-			}
-			else
-			{
-				bool = false;
+				Date eventDates = df.parse(ele.getText());
+				Calendar cal1 = GregorianCalendar.getInstance();
+				cal1.setTime(eventDates);
+				System.out.println(cal.getTime()+" and "+cal1.getTime());
+				if(cal1.before(cal))
+				{
+					bool=true;
+				}
+				else
+				{
+					bool = false;
+				}
 			}
 		}
+		else
+		{
+			log("<b> There is no event available to test this functionality</b>");
+			bool = true;
+		}
 		return bool;
-		
+	}
+	
+	public boolean verifyDashboardTutorial()
+	{
+		if(verifyDashboardTutorialLink.isDisplayed())
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 }

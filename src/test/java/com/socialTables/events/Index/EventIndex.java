@@ -611,8 +611,6 @@ public class EventIndex extends SeleniumInit
 	{
 		Common common = new Common(driver);
 		int numOfFailure=0;
-		int numOfEventsInGrid = 0;
-		String eventName = "Auto-clone";
 		log("<b><ul>Testcase ID: TC_EV_006</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
@@ -631,6 +629,101 @@ public class EventIndex extends SeleniumInit
 		{
 			log("Fail");
 			numOfFailure++;
+		}
+		log("Step 6: Click on 'Dashboard Tutorial' link");
+		dashboardPage = eventIndexPage.clickOnDashboardTutorial();
+		log("Step 7: Verift tutorial video appear on screen");
+		if(dashboardPage.verifyDashboardTutorial())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		if(numOfFailure>0)
+		{
+			 Assert.assertTrue(false);
+		}
+	}
+	
+	@Test
+	public void verifyAllHeaderLinks()
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		log("<b><ul>Testcase ID: TC_EV_006</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 6: Click on 'Team Member and Venue' tab");
+		generalVerificationPage = generalIndexPage.navigateToTeamMemberAndVenue();
+		log("Step 7: Verify 'Team Member and venue' page");
+		if(generalVerificationPage.verifyTeamMemberAndVenuePage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 8: Click on 'Team Setting' tab");
+		generalVerificationPage = generalIndexPage.navigateToTeamSettings();
+		log("Step 9: Verify 'Team Settings' page");
+		if(generalVerificationPage.verifyTeamSettings())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 10: Click on 'Statistic' tab");
+		generalVerificationPage = generalIndexPage.navigateToStatistics();
+		log("Step 11: Verify 'Statistic' page");
+		if(generalVerificationPage.verifyStatistics())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 12: Click on 'Corporate Dashboard' tab");
+		generalVerificationPage = generalIndexPage.navigateToStatistics();
+		log("Step 13: Verify 'Corporate Dashboard' page");
+		if(generalVerificationPage.verifyStatistics())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		if(numOfFailure>0)
+		{
+			 Assert.assertTrue(false);
 		}
 	}
 	
