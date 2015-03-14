@@ -1,5 +1,8 @@
 package com.socialTables.events.IndexPages;
 
+import java.util.List;
+import java.util.Random;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -43,10 +46,8 @@ public class EventIndexPage extends AbstractPage
 	@FindBy(id="filterLocation")
 	private WebElement filterLocation;
 	
-	
 	@FindBy(id="search")
 	private WebElement txtSearch;
-	
 	
 	@FindBy(id="showPreviousEvents")
 	private WebElement btnPreviousEvent;
@@ -55,6 +56,17 @@ public class EventIndexPage extends AbstractPage
 	
 	@FindBy(xpath="//a[contains(.,'Dashboard tutorial')]")
 	private WebElement linkDashboardTutorial;
+	
+	@FindBy(id="fpEditName")
+	private WebElement txtRoomName;
+	@FindBy(id="room-tab")
+	private WebElement CustomizeRoomTab;
+	@FindBy(id="search")
+	private WebElement txtSerachRoom;
+	@FindBy(xpath="//button[contains(.,'Search')]")
+	private WebElement btnSearch;
+	
+	
 	
 	Common common = new Common(driver);
 
@@ -106,6 +118,43 @@ public class EventIndexPage extends AbstractPage
 		}
 		
 		return new EventCreationPage(driver);
+	}
+	
+	public EventCreationPage searchRoomInEvent(String searchString)
+	{
+		common.type(txtSerachRoom, searchString);
+		btnSearch.click();
+		common.pause(2);
+		return new EventCreationPage(driver);
+	}
+	
+	public void clickOnCutomizeRoomTab()
+	{
+		CustomizeRoomTab.click();
+		common.pause(2);
+	}
+	
+	public DashboardPage customizeRoomSetting(String roomName)
+	{
+		common.type(txtRoomName, roomName);
+		List<WebElement> allFloorPlan = driver.findElements(By.xpath("//button[contains(@class,'bg-button')]"));
+		Random r = new Random();
+		allFloorPlan.get(r.nextInt(13)).click();
+		common.pause(2);
+		btnDoneInRoomSetting.click();
+		common.pause(2);
+		
+		return new DashboardPage(driver);
+	}
+	
+	public DashboardPage clickOnSearchedRoom()
+	{
+		List<WebElement> eles = driver.findElements(By.xpath("//div[@class='listing-name']"));
+		eles.get(0).click();
+		common.pause(2);
+		btnDoneInRoomSetting.click();
+		common.pause(2);
+		return new DashboardPage(driver);
 	}
 	
 	public DashboardPage clickOnLogo()
@@ -204,5 +253,6 @@ public class EventIndexPage extends AbstractPage
 		common.pause(1);
 		return new DashboardPage(driver);
 	}
+	
 	
 }

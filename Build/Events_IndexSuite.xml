@@ -14,7 +14,7 @@
 	<!-- @NOTE: 1) Un-comment <test> tag to run respective test. 2) Comment 
 		<test> tag to unrun respective test. -->
 	<parameter name="selenium.browser" value="firefox" />
-	<parameter name="selenium.url" value="https://dev.socialtables.com/" />
+	<parameter name="selenium.url" value="https://www.socialtables.com/" />
  
  
 <!-- <test 	name="To verify New Event functionality.">
@@ -141,12 +141,35 @@
 	</classes>
 </test> -->
 
-<test 	name="To verify 'Guest List Enable' functionality in 'Event Information'. ">
+<!-- <test 	name="To verify 'Guest List Enable' functionality in 'Event Information'. ">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
 			<methods>
 				<include name="createEventWithAttendeeListEnable" />
+			</methods>
+		</class>
+	</classes>
+</test> -->
+
+<!-- <test 	name="To verify 'Search Venue' functionality in 'Room Settings' while create event. ">
+	<classes>
+		<class
+			name="com.socialTables.events.Index.EventIndex">
+			<methods>
+				<include name="verifySearchRoomFunctionalityWhileCreateEvent" />
+			</methods>
+		</class>
+	</classes>
+</test> -->
+
+
+<test 	name="To verify 'Customize Room' functionality in 'Room Settings'. ">
+	<classes>
+		<class
+			name="com.socialTables.events.Index.EventIndex">
+			<methods>
+				<include name="customizeRoomFunctionalityWhileCreateEvent" />
 			</methods>
 		</class>
 	</classes>

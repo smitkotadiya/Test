@@ -1,5 +1,7 @@
 package com.socialTables.events.verifications;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -75,6 +77,26 @@ public class EventCreationPage extends AbstractPage
 		{
 			return false;
 		}
+	}
+	
+	public boolean verifySearchedRoom(String searchString)
+	{
+		boolean bool = false;
+		List<WebElement> eles = driver.findElements(By.xpath("//div[@class='listing-name']"));
+		for(WebElement ele:eles)
+		{
+			if(ele.getText().equalsIgnoreCase(searchString))
+			{
+				bool= true;
+			}
+			else
+			{
+				bool= false;
+				break;
+			}
+		}
+		return bool;
+		
 	}
 	
 }

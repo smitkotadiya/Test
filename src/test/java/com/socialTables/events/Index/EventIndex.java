@@ -16,7 +16,7 @@ import com.socialTables.init.SeleniumInit;
 public class EventIndex extends SeleniumInit
 {
 
-	@Test(groups={"Events"})
+	@Test
 	public void createEventFunctionality()
 	{
 		Common common = new Common(driver);
@@ -871,4 +871,168 @@ public class EventIndex extends SeleniumInit
 		}
 	}
 
+	@Test
+	public void verifySearchRoomFunctionalityWhileCreateEvent()
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		String eventName = "Auto-"+RandomStringUtils.randomAlphanumeric(3);
+		String eventType = "gala"; 
+		int numOfEventsInGrid = 0;
+		boolean isAttendeeEnable = true;
+		log("<b><ul>Testcase ID: TC_EV_001</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Search Venue' functionality in 'Room Settings' while create event.</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		numOfEventsInGrid = common.getNumOfElements(driver, By.xpath(".//*[@id='list-container']/a"));
+		log("Step 6: Click On 'New Event' Button");
+		eventCreationPage = eventIndexPage.clickOnNewEvent();
+		log("Step 7: Verify 'Event Creation Page'");
+		if(eventCreationPage.verifyEventCreationPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 8: Enter mandetory fields to create event and Click on 'Done'");
+		eventCreationPage = eventIndexPage.fillEventInfo("Add",eventName, eventType,isAttendeeEnable);
+		log("Step 9: Verify Room Setting Page in Event Creation");
+		if(eventCreationPage.verifyRoomSettingPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		String serachVenue = driver.findElement(By.xpath("//div[@class='team-venues-column']/div[@class='listings-container']/div[contains(@class,'floorplan')][1]")).getText();
+		log("Step 10: Serach any existing room available in room setting page");
+		eventCreationPage = eventIndexPage.searchRoomInEvent(serachVenue);
+		log("Step 11: Verify serch result in list");
+		if(eventCreationPage.verifySearchedRoom(serachVenue))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 12: Now select searched room and click on done button");
+		dashboardPage = eventIndexPage.clickOnSearchedRoom();
+		log("Step 13: Navigate to event page by clicking on logo");
+		dashboardPage = eventIndexPage.clickOnLogo();
+		log("Step 14: Verify created event with selected venue");
+		if(dashboardPage.verifyAddedEventWithSpecificVenue(numOfEventsInGrid, eventName, serachVenue))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+	}
+	
+	@Test
+	public void customizeRoomFunctionalityWhileCreateEvent()
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		String eventName = "Auto-"+RandomStringUtils.randomAlphanumeric(3);
+		String roomName = "Auto-Cust-"+RandomStringUtils.randomAlphanumeric(3);
+		String eventType = "gala"; 
+		int numOfEventsInGrid = 0;
+		boolean isAttendeeEnable = true;
+		log("<b><ul>Testcase ID: TC_EV_001</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Customize Room' functionality in 'Room Settings'.</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		numOfEventsInGrid = common.getNumOfElements(driver, By.xpath(".//*[@id='list-container']/a"));
+		log("Step 6: Click On 'New Event' Button");
+		eventCreationPage = eventIndexPage.clickOnNewEvent();
+		log("Step 7: Verify 'Event Creation Page'");
+		if(eventCreationPage.verifyEventCreationPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 8: Enter mandetory fields to create event and Click on 'Done'");
+		eventCreationPage = eventIndexPage.fillEventInfo("Add",eventName, eventType,isAttendeeEnable);
+		log("Step 9: Verify Room Setting Page in Event Creation");
+		if(eventCreationPage.verifyRoomSettingPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 10: Click on 'Customize room' tab");
+		eventIndexPage.clickOnCutomizeRoomTab();
+		log("Step 11: Fill the room detail and click on done button");
+		dashboardPage = eventIndexPage.customizeRoomSetting(roomName);
+		log("Step 12: Now navigate event page by clicking on logo");
+		dashboardPage = eventIndexPage.clickOnLogo();
+		log("Step 13: Verify created event with customize room");
+		if(dashboardPage.verifyAddedEventWithSpecificVenue(numOfEventsInGrid, eventName, roomName))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+	}
 }
