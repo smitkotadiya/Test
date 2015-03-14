@@ -141,7 +141,7 @@
 	</classes>
 </test> -->
 
-<!-- <test 	name="To verify 'Guest List Enable' functionality in 'Event Information'. ">
+<test 	name="To verify 'Guest List Enable' functionality in 'Event Information'. ">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -150,9 +150,9 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
+</test>
 
-<!-- <test 	name="To verify 'Search Venue' functionality in 'Room Settings' while create event. ">
+<test 	name="To verify 'Search Venue' functionality in 'Room Settings' while create event. ">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -161,8 +161,7 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
-
+</test>
 
 <test 	name="To verify 'Customize Room' functionality in 'Room Settings'. ">
 	<classes>

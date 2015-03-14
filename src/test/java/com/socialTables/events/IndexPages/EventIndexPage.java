@@ -65,6 +65,8 @@ public class EventIndexPage extends AbstractPage
 	private WebElement txtSerachRoom;
 	@FindBy(xpath="//button[contains(.,'Search')]")
 	private WebElement btnSearch;
+	@FindBy(id="clone-space")
+	private WebElement btnDuplicateRoom;
 	
 	
 	
@@ -254,5 +256,11 @@ public class EventIndexPage extends AbstractPage
 		return new DashboardPage(driver);
 	}
 	
+	public EventCreationPage clickOnDuplicateButton()
+	{
+		btnDuplicateRoom.click();
+		common.pause(2);
+		return new EventCreationPage(driver);
+	}
 	
 }
