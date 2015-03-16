@@ -96,7 +96,20 @@ public class EventCreationPage extends AbstractPage
 			}
 		}
 		return bool;
-		
+	}
+	
+	public boolean verifyAddedRoomInFooter(String roomName)
+	{
+		WebElement roomTab = driver.findElement(By.xpath("//ul[@id='sortable-rooms']/li/a[contains(.,'"+roomName+"')]"));
+		System.out.println(roomTab.getText());
+		if(roomTab.isDisplayed())
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 	
 }

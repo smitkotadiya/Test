@@ -141,7 +141,7 @@
 	</classes>
 </test> -->
 
-<test 	name="To verify 'Guest List Enable' functionality in 'Event Information'. ">
+<!-- <test 	name="To verify 'Guest List Enable' functionality in 'Event Information'. ">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -169,6 +169,28 @@
 			name="com.socialTables.events.Index.EventIndex">
 			<methods>
 				<include name="customizeRoomFunctionalityWhileCreateEvent" />
+			</methods>
+		</class>
+	</classes>
+</test> -->
+
+<!-- <test 	name="To verify 'Duplicate Room' functionality in 'Room Settings'. ">
+	<classes>
+		<class
+			name="com.socialTables.events.Index.EventIndex">
+			<methods>
+				<include name="duplicateRoomFunctionalityWhileCreateEvent" />
+			</methods>
+		</class>
+	</classes>
+</test>
+ -->
+<test 	name="To verify 'Add Room' functionality. ">
+	<classes>
+		<class
+			name="com.socialTables.events.Index.EventIndex">
+			<methods>
+				<include name="AddRoomFunctionalityInCreateEvent" />
 			</methods>
 		</class>
 	</classes>

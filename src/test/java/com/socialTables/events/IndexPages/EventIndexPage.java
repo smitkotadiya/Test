@@ -67,6 +67,8 @@ public class EventIndexPage extends AbstractPage
 	private WebElement btnSearch;
 	@FindBy(id="clone-space")
 	private WebElement btnDuplicateRoom;
+	@FindBy(xpath=".//*[@id='footer-event']/button[contains(.,'+')]")
+	private WebElement btnAddRoom;
 	
 	
 	
@@ -256,10 +258,24 @@ public class EventIndexPage extends AbstractPage
 		return new DashboardPage(driver);
 	}
 	
-	public EventCreationPage clickOnDuplicateButton()
+	public EventCreationPage clickOnDuplicateButton(String roomName)
 	{
 		btnDuplicateRoom.click();
 		common.pause(2);
+		driver.findElement(By.xpath("//div[@class='dialog-buttons']/button[contains(.,'OK')]")).click();
+		common.pause(2);
+		common.type(txtRoomName, roomName);
+		btnDoneInRoomSetting.click();
+		return new EventCreationPage(driver);
+	}
+	
+	public EventCreationPage addRoomInEvent(String roomName)
+	{
+		btnAddRoom.click();
+		common.pause(2);
+		common.type(txtRoomName, roomName);
+		btnDoneInRoomSetting.click();
+		
 		return new EventCreationPage(driver);
 	}
 	
