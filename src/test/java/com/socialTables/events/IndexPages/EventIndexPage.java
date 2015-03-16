@@ -77,6 +77,8 @@ public class EventIndexPage extends AbstractPage
 	private WebElement txtMessage;
 	@FindBy(xpath="//button[contains(@class,'flat-ui-btn') and contains(@class,'share-btn')]")
 	private WebElement btnShare;
+	@FindBy(xpath="")
+	private WebElement userNameDropDown;
 	
 	
 	
@@ -317,6 +319,11 @@ public class EventIndexPage extends AbstractPage
 			log("Confirmation aleart is not available");
 		}
 		
+		return new EventCreationPage(driver);
+	}
+	
+	public EventCreationPage clickOnUserDropdown()
+	{
 		return new EventCreationPage(driver);
 	}
 }

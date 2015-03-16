@@ -18,7 +18,10 @@ public class GeneralVerificationPage extends AbstractPage
 	private WebElement verifyStatistics;
 	@FindBy(xpath=".//*[@id='filters-container']/button")
 	private WebElement verifyTableDesigner;
-	
+	@FindBy(xpath="//label[text()='New Password']")
+	private WebElement verifyChangePassword;
+	@FindBy(xpath="//a[text()='Login']")
+	private WebElement verifyLogout;
 	
 	public GeneralVerificationPage(WebDriver driver) 
 	{
@@ -103,6 +106,30 @@ public class GeneralVerificationPage extends AbstractPage
 	{
 		String mailFrom = driver.findElement(By.xpath(".//*[@id='mailcontainer']/li/a/div[contains(@class,'from')]")).getText();
 		if(from.equalsIgnoreCase(mailFrom))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public boolean verifyChangePasswordPage()
+	{
+		if(verifyChangePassword.isDisplayed())
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public boolean verifyLogout()
+	{
+		if(verifyLogout.isDisplayed())
 		{
 			return true;
 		}

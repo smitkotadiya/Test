@@ -2,10 +2,12 @@ package com.socialTables.events.Index;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.bcel.generic.Select;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -1107,7 +1109,6 @@ public class EventIndex extends SeleniumInit
 		{
 			Assert.assertTrue(false);
 		}
-		
 	}
 	
 	@Test
@@ -1281,11 +1282,7 @@ public class EventIndex extends SeleniumInit
 	{
 		Common common = new Common(driver);
 		int numOfFailure=0;
-		String eventName = "Auto-"+RandomStringUtils.randomAlphanumeric(3);
-		String eventType = "gala"; 
-		String email = "Auto_"+RandomStringUtils.randomAlphanumeric(4)+"@mailinator.com";
-		String from = "mailer@socialtables.com";
-		boolean isAttendeeEnable = true;
+		String url = "";
 		log("<b><ul>Testcase ID: TC_EV_032</b></ul>");
 		log("<b><ul>TestScenario: To verify 'Share' button functionality in 'Event Creation'.</b></ul>");
 		log("Step 1: Click on 'login' tab");
@@ -1318,20 +1315,11 @@ public class EventIndex extends SeleniumInit
 			log("Fail");
 			numOfFailure++;
 		}
-		log("Step 8: Enter mandetory fields to create event and Click on 'Done'");
-		eventCreationPage = eventIndexPage.fillEventInfo("Add",eventName, eventType,isAttendeeEnable);
-		log("Step 9: Verify Room Setting Page in Event Creation");
-		if(eventCreationPage.verifyRoomSettingPage())
-		{
-			log("<Strong><font color=#008000>Pass</font></strong>");
-		}
-		else
-		{
-			log("Fail");
-			numOfFailure++;
-		}
-		log("Step 10: Select venue from library or customize room and click on 'Done' button");
-		eventCreationPage = eventIndexPage.fillRoomSettingsForm("add");
+		log("Step 8: Click on userdrop down button");
+		eventCreationPage = eventIndexPage.clickOnUserDropdown();
+		List<WebElement> allEles = driver.findElements(By.xpath(".//*[@id='header-right']/div[5]/ul/li/a"));
+		
+		
 		
 		if(numOfFailure>0)
 		{
