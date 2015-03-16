@@ -1119,8 +1119,8 @@ public class EventIndex extends SeleniumInit
 		String roomName = "Auto-room-"+RandomStringUtils.randomAlphanumeric(3);
 		String eventType = "gala"; 
 		boolean isAttendeeEnable = true;
-		log("<b><ul>Testcase ID: TC_EV_001</b></ul>");
-		log("<b><ul>TestScenario: To verify create 'New Event' functionality.</b></ul>");
+		log("<b><ul>Testcase ID: TC_EC_027</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Add Room' functionality.</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
@@ -1184,5 +1184,161 @@ public class EventIndex extends SeleniumInit
 			Assert.assertTrue(false);
 		}
 	}
+	
+	@Test
+	public void shareEventFunctionality()
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		String eventName = "Auto-"+RandomStringUtils.randomAlphanumeric(3);
+		String eventType = "gala"; 
+		String email = "Auto_"+RandomStringUtils.randomAlphanumeric(4)+"@mailinator.com";
+		String from = "mailer@socialtables.com";
+		boolean isAttendeeEnable = true;
+		log("<b><ul>Testcase ID: TC_EV_032</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Share' button functionality in 'Event Creation'.</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 6: Click On 'New Event' Button");
+		eventCreationPage = eventIndexPage.clickOnNewEvent();
+		log("Step 7: Verify 'Event Creation Page'");
+		if(eventCreationPage.verifyEventCreationPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 8: Enter mandetory fields to create event and Click on 'Done'");
+		eventCreationPage = eventIndexPage.fillEventInfo("Add",eventName, eventType,isAttendeeEnable);
+		log("Step 9: Verify Room Setting Page in Event Creation");
+		if(eventCreationPage.verifyRoomSettingPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 10: Select venue from library or customize room and click on 'Done' button");
+		eventCreationPage = eventIndexPage.fillRoomSettingsForm("add");
+		log("Step 11: Now click on share button");
+		eventCreationPage = eventIndexPage.clickOnShareEvent();
+		log("Step 12: Verify share event dialog box");
+		if(eventCreationPage.verifyShareEventDialogBox())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 13: Enter invitee email id, select sharing option and click on share button");
+		eventCreationPage = eventIndexPage.shareEvent(email);
+		log("Step 14: Open Mailinator in new tab.");
+		common.openUrlInNewTab(driver, "http://mailinator.com/");
+		log("Step 15: Enter Email Id and click on check it");
+		generalVerificationPage = generalIndexPage.checkMailInMailinator(email);
+		log("Step 16: Verify new email in inbox and its sender");
+		if(generalVerificationPage.verifyMailInMailinatorInbox(from))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+	}
+	
+	@Test
+	public void verifyAllUserDropDownLinks()
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		String eventName = "Auto-"+RandomStringUtils.randomAlphanumeric(3);
+		String eventType = "gala"; 
+		String email = "Auto_"+RandomStringUtils.randomAlphanumeric(4)+"@mailinator.com";
+		String from = "mailer@socialtables.com";
+		boolean isAttendeeEnable = true;
+		log("<b><ul>Testcase ID: TC_EV_032</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Share' button functionality in 'Event Creation'.</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 6: Click On 'New Event' Button");
+		eventCreationPage = eventIndexPage.clickOnNewEvent();
+		log("Step 7: Verify 'Event Creation Page'");
+		if(eventCreationPage.verifyEventCreationPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 8: Enter mandetory fields to create event and Click on 'Done'");
+		eventCreationPage = eventIndexPage.fillEventInfo("Add",eventName, eventType,isAttendeeEnable);
+		log("Step 9: Verify Room Setting Page in Event Creation");
+		if(eventCreationPage.verifyRoomSettingPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 10: Select venue from library or customize room and click on 'Done' button");
+		eventCreationPage = eventIndexPage.fillRoomSettingsForm("add");
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+	}
+	
+	
 }
 

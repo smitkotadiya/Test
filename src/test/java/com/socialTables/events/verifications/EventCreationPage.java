@@ -19,6 +19,8 @@ public class EventCreationPage extends AbstractPage
 	private WebElement verifyRoomSetingForm;
 	@FindBy(id="tabGuest")
 	private WebElement verifyAttedeeTab;
+	@FindBy(xpath="//h3[contains(.,'Share')]")
+	private WebElement verifyShareDialog;
 	
 	Common common = new Common(driver);
 	public EventCreationPage(WebDriver driver) 
@@ -111,5 +113,20 @@ public class EventCreationPage extends AbstractPage
 			return false;
 		}
 	}
+	
+	public boolean verifyShareEventDialogBox()
+	{
+		
+		if(verifyShareDialog.isDisplayed())
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	
 	
 }

@@ -2,6 +2,7 @@ package com.socialTables.general;
 
 import java.util.ArrayList;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,6 +16,8 @@ public class GeneralVerificationPage extends AbstractPage
 	private WebElement verifyTeamSettings;
 	@FindBy(xpath="//h2[contains(.,'Account Statistics')]")
 	private WebElement verifyStatistics;
+	@FindBy(xpath=".//*[@id='filters-container']/button")
+	private WebElement verifyTableDesigner;
 	
 	
 	public GeneralVerificationPage(WebDriver driver) 
@@ -75,6 +78,31 @@ public class GeneralVerificationPage extends AbstractPage
 	public boolean verifyStatistics()
 	{
 		if(verifyStatistics.isDisplayed())
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public boolean verifyTableDesigner()
+	{
+		if(verifyTableDesigner.isDisplayed())
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public boolean verifyMailInMailinatorInbox(String from)
+	{
+		String mailFrom = driver.findElement(By.xpath(".//*[@id='mailcontainer']/li/a/div[contains(@class,'from')]")).getText();
+		if(from.equalsIgnoreCase(mailFrom))
 		{
 			return true;
 		}

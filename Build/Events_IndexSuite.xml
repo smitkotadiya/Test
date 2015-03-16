@@ -196,4 +196,14 @@
 	</classes>
 </test>
 
+<test 	name="To verify 'Share' button functionality in 'Event Creation'. ">
+	<classes>
+		<class
+			name="com.socialTables.events.Index.EventIndex">
+			<methods>
+				<include name="shareEventFunctionality" />
+			</methods>
+		</class>
+	</classes>
+</test>
 </suite>

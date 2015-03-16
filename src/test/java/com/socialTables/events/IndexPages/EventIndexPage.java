@@ -69,6 +69,15 @@ public class EventIndexPage extends AbstractPage
 	private WebElement btnDuplicateRoom;
 	@FindBy(xpath=".//*[@id='footer-event']/button[contains(.,'+')]")
 	private WebElement btnAddRoom;
+	@FindBy(id="btn-share")
+	private WebElement btnShareEvent;
+	@FindBy(xpath="//textarea[@class='text-box-expand']")
+	private WebElement txtSendto;
+	@FindBy(id="modal-message")
+	private WebElement txtMessage;
+	@FindBy(xpath="//button[contains(@class,'flat-ui-btn') and contains(@class,'share-btn')]")
+	private WebElement btnShare;
+	
 	
 	
 	
@@ -279,4 +288,35 @@ public class EventIndexPage extends AbstractPage
 		return new EventCreationPage(driver);
 	}
 	
+	public EventCreationPage clickOnShareEvent()
+	{
+		btnShareEvent.click();
+		common.pause(2);
+		
+		
+		return new EventCreationPage(driver);
+	}
+	
+	public EventCreationPage shareEvent(String email)
+	
+	{
+		common.type(txtSendto, email);
+		driver.findElement(By.xpath(".//*[@id='opt1']")).click();
+		common.pause(2);
+		common.type(txtMessage, "Test Automation");
+		btnShare.click();
+		common.pause(2);
+		common.pause(5);
+		try{
+		WebElement aleatMessgae = driver.findElement(By.xpath("//div[@class='dialog-inner']"));
+		log("<b> Confirmation Aleart: </b>"+aleatMessgae.getText());
+		driver.findElement(By.xpath("//div[@class='dialog-buttons']/button")).click();
+		}
+		catch(Exception e)
+		{
+			log("Confirmation aleart is not available");
+		}
+		
+		return new EventCreationPage(driver);
+	}
 }

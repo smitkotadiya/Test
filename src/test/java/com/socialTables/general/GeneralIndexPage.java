@@ -26,6 +26,8 @@ public class GeneralIndexPage extends AbstractPage
 	private WebElement corpporateDashboard;
 	@FindBy(xpath="//div[@class='contextual-links']/a[contains(.,'Events')]")
 	private WebElement events;
+	@FindBy(xpath="//div[@class='contextual-links']/a[contains(.,'Table Designer')]")
+	private WebElement tableDesigner;
 	
 	Common common = new Common(driver);
 	
@@ -80,6 +82,12 @@ public class GeneralIndexPage extends AbstractPage
 		teamSettings.click();
 		return new GeneralVerificationPage(driver);
 	}
+	public GeneralVerificationPage navigateToTableDesigner()
+	{
+		tableDesigner.click();
+		return new GeneralVerificationPage(driver);
+	}
+	
 	public GeneralVerificationPage navigateToStatistics()
 	{
 		Statastics.click();
@@ -95,5 +103,16 @@ public class GeneralIndexPage extends AbstractPage
 		events.click();
 		return new GeneralVerificationPage(driver);
 	}
+	
+	public GeneralVerificationPage checkMailInMailinator(String email)
+	{
+		common.type(driver.findElement(By.id("inboxfield")), email);
+		driver.findElement(By.xpath("//btn[contains(.,'Check it')]")).click();
+		common.pause(2);
+		
+		return new GeneralVerificationPage(driver);
+	}
+	
+	
 	
 }
