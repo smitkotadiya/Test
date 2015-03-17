@@ -22,6 +22,8 @@ public class GeneralVerificationPage extends AbstractPage
 	private WebElement verifyChangePassword;
 	@FindBy(xpath="//a[text()='Login']")
 	private WebElement verifyLogout;
+	@FindBy(xpath="//h1[contains(.,'Event Dashboard')]")
+	private WebElement verifyEventpage;
 	
 	public GeneralVerificationPage(WebDriver driver) 
 	{
@@ -118,6 +120,18 @@ public class GeneralVerificationPage extends AbstractPage
 	public boolean verifyChangePasswordPage()
 	{
 		if(verifyChangePassword.isDisplayed())
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public boolean verifyEventPage()
+	{
+		if(verifyEventpage.isDisplayed())
 		{
 			return true;
 		}

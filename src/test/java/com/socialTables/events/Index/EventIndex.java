@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.bcel.generic.Select;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -1317,15 +1318,138 @@ public class EventIndex extends SeleniumInit
 		}
 		log("Step 8: Click on userdrop down button");
 		eventCreationPage = eventIndexPage.clickOnUserDropdown();
-		List<WebElement> allEles = driver.findElements(By.xpath(".//*[@id='header-right']/div[5]/ul/li/a"));
-		
-		
-		
+		List<WebElement> allEles = driver.findElements(By.xpath(".//*[@id='header-right']/div[4]/ul/li/a"));
+		System.out.println("total links---->"+allEles.size());
+		for(WebElement ele:allEles)
+		{
+			int counter=9;
+			String eleName = "";
+			if(ele.getText().equalsIgnoreCase("my events"))
+			{
+				eleName = ele.getText();
+				System.out.println("Executing>>>>>> "+eleName);
+				log("Step "+counter+":Open "+eleName+" in new tab");
+				url = ele.getAttribute("href");
+				common.openUrlInNewTab(driver, url);
+				counter = counter+1;
+				log("Step "+counter+":Verify "+eleName+" Page");
+				if(generalVerificationPage.verifyEventPage())
+				{
+					log("<Strong><font color=#008000>Pass</font></strong>");
+				}
+				else
+				{
+					log("Fail");
+					numOfFailure++;
+				}
+				driver.findElement(By.xpath("//body")).sendKeys(Keys.COMMAND+"w");
+				common.pause(2);
+			}
+			else if(ele.getText().equalsIgnoreCase("Team Members & Venues"))
+			{
+				eleName = ele.getText();
+				log("Step "+counter+":Open "+eleName+" in new tab");
+				url = ele.getAttribute("href");
+				common.openUrlInNewTab(driver, url);
+				counter = counter+1;
+				log("Step "+counter+":Verify "+eleName+" Page");
+				if(generalVerificationPage.verifyTeamMemberAndVenuePage())
+				{
+					log("<Strong><font color=#008000>Pass</font></strong>");
+				}
+				else
+				{
+					log("Fail");
+					numOfFailure++;
+				}
+				driver.findElement(By.xpath("//body")).sendKeys(Keys.COMMAND+"w");
+				common.pause(2);
+			}
+			else if(ele.getText().equalsIgnoreCase("Team Settings"))
+			{
+				eleName = ele.getText();
+				log("Step "+counter+":Open "+eleName+" in new tab");
+				url = ele.getAttribute("href");
+				common.openUrlInNewTab(driver, url);
+				counter = counter+1;
+				log("Step "+counter+":Verify "+eleName+" Page");
+				if(generalVerificationPage.verifyTeamSettings())
+				{
+					log("<Strong><font color=#008000>Pass</font></strong>");
+				}
+				else
+				{
+					log("Fail");
+					numOfFailure++;
+				}
+				driver.findElement(By.xpath("//body")).sendKeys(Keys.COMMAND+"w");
+				common.pause(2);
+			}
+			else if(ele.getText().equalsIgnoreCase("Statistics"))
+			{
+				eleName = ele.getText();
+				log("Step "+counter+":Open "+eleName+" in new tab");
+				url = ele.getAttribute("href");
+				common.openUrlInNewTab(driver, url);
+				counter = counter+1;
+				log("Step "+counter+":Verify "+eleName+" Page");
+				if(generalVerificationPage.verifyStatistics())
+				{
+					log("<Strong><font color=#008000>Pass</font></strong>");
+				}
+				else
+				{
+					log("Fail");
+					numOfFailure++;
+				}
+				driver.findElement(By.xpath("//body")).sendKeys(Keys.COMMAND+"w");
+				common.pause(2);
+			}
+			else if(ele.getText().equalsIgnoreCase("Change Password"))
+			{
+				eleName = ele.getText();
+				log("Step "+counter+":Open "+eleName+" in new tab");
+				url = ele.getAttribute("href");
+				common.openUrlInNewTab(driver, url);
+				counter = counter+1;
+				log("Step "+counter+":Verify "+eleName+" Page");
+				if(generalVerificationPage.verifyChangePasswordPage())
+				{
+					log("<Strong><font color=#008000>Pass</font></strong>");
+				}
+				else
+				{
+					log("Fail");
+					numOfFailure++;
+				}
+				driver.findElement(By.xpath("//body")).sendKeys(Keys.COMMAND+"w");
+				common.pause(2);
+			}
+			else if(ele.getText().equalsIgnoreCase("Logout"))
+			{
+				eleName = ele.getText();
+				log("Step "+counter+":Click On "+eleName);
+				ele.click();
+				counter = counter+1;
+				log("Step "+counter+":Verify "+eleName+" Page");
+				if(generalVerificationPage.verifyLogout())
+				{
+					log("<Strong><font color=#008000>Pass</font></strong>");
+				}
+				else
+				{
+					log("Fail");
+					numOfFailure++;
+				}
+			}
+			counter++;
+		}
 		if(numOfFailure>0)
 		{
 			Assert.assertTrue(false);
 		}
 	}
+
 	
 	
 }

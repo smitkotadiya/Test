@@ -77,8 +77,29 @@ public class EventIndexPage extends AbstractPage
 	private WebElement txtMessage;
 	@FindBy(xpath="//button[contains(@class,'flat-ui-btn') and contains(@class,'share-btn')]")
 	private WebElement btnShare;
-	@FindBy(xpath="")
+	@FindBy(xpath="//button[contains(@class,'user-dropdown')]")
 	private WebElement userNameDropDown;
+	
+	//Attendee Manager path
+	@FindBy(id="tabGuest")
+	private WebElement guestTab;
+	@FindBy(xpath=".//*[@id='left-guest']/div[1]")
+	private WebElement cliclOnAttendees;
+	@FindBy(id="addFirstName")
+	private WebElement txtFirstName;
+	@FindBy(id="addLastName")
+	private WebElement txtLastName;
+	@FindBy(id="addTitle")
+	private WebElement txtTitle;
+	@FindBy(id="addOrganization")
+	private WebElement txtOrganization;
+	@FindBy(id="n-plus-input")
+	private WebElement selectNumOfGuest;
+	@FindBy(id="glm-check-in-input")
+	private WebElement checkCheckIn;
+	
+	
+	
 	
 	
 	
@@ -324,6 +345,12 @@ public class EventIndexPage extends AbstractPage
 	
 	public EventCreationPage clickOnUserDropdown()
 	{
+		
+		common.highlightElement(driver, userNameDropDown);
+		userNameDropDown.click();
+		common.pause(3);
 		return new EventCreationPage(driver);
 	}
+	
+	
 }

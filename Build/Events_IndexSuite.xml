@@ -14,7 +14,7 @@
 	<!-- @NOTE: 1) Un-comment <test> tag to run respective test. 2) Comment 
 		<test> tag to unrun respective test. -->
 	<parameter name="selenium.browser" value="firefox" />
-	<parameter name="selenium.url" value="https://www.socialtables.com/" />
+	<parameter name="selenium.url" value="https://dev.socialtables.com/" />
  
  
 <!-- <test 	name="To verify New Event functionality.">
@@ -185,7 +185,7 @@
 	</classes>
 </test>
  -->
-<test 	name="To verify 'Add Room' functionality. ">
+<!-- <test 	name="To verify 'Add Room' functionality. ">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -202,6 +202,16 @@
 			name="com.socialTables.events.Index.EventIndex">
 			<methods>
 				<include name="shareEventFunctionality" />
+			</methods>
+		</class>
+	</classes>
+</test> -->
+<test 	name="To verify 'User Name' dropdown button functionality. ">
+	<classes>
+		<class
+			name="com.socialTables.events.Index.EventIndex">
+			<methods>
+				<include name="verifyAllUserDropDownLinks" />
 			</methods>
 		</class>
 	</classes>
