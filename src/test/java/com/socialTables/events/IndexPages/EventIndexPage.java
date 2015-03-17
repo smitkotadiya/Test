@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import com.socialTables.events.verifications.AttendeeManagerPage;
 import com.socialTables.events.verifications.DashboardPage;
 import com.socialTables.events.verifications.EventCreationPage;
 import com.socialTables.events.verifications.EventThreeDPage;
@@ -97,10 +98,9 @@ public class EventIndexPage extends AbstractPage
 	private WebElement selectNumOfGuest;
 	@FindBy(id="glm-check-in-input")
 	private WebElement checkCheckIn;
-	
-	
-	
-	
+	@FindBy(id="btn-glm-add")
+	private WebElement btnAddAttendee;
+	//div[@id='glmContainer']/div[contains(@class,'glm-grid')]/div[@class='kgNoSelect']/div[@class='kgViewport']/div[@class='kgCanvas']/div/div[contains(@class,'odd')]/div/div[contains(@class,'col4')]
 	
 	
 	
@@ -328,7 +328,6 @@ public class EventIndexPage extends AbstractPage
 		common.pause(2);
 		common.type(txtMessage, "Test Automation");
 		btnShare.click();
-		common.pause(2);
 		common.pause(5);
 		try{
 		WebElement aleatMessgae = driver.findElement(By.xpath("//div[@class='dialog-inner']"));
@@ -345,11 +344,36 @@ public class EventIndexPage extends AbstractPage
 	
 	public EventCreationPage clickOnUserDropdown()
 	{
-		
 		common.highlightElement(driver, userNameDropDown);
 		userNameDropDown.click();
 		common.pause(3);
 		return new EventCreationPage(driver);
+	}
+	
+	public AttendeeManagerPage clickOnGuestTab()
+	{
+		guestTab.click();
+		common.pause(2);
+		cliclOnAttendees.click();
+		common.pause(2);
+		return new AttendeeManagerPage(driver);
+	}
+	
+	public AttendeeManagerPage addGuest(String fName,String lName,String title,String numOfGuest)
+	{
+		common.type(txtFirstName, fName);
+		common.type(txtLastName, lName);
+		common.type(txtTitle, title);
+		common.type(txtOrganization, "Auto-QA");
+		if(!numOfGuest.equalsIgnoreCase("0"))
+		{
+			common.selectFromCombo(selectNumOfGuest, numOfGuest);
+			common.pause(2);
+		}
+		btnAddAttendee.click();
+		common.pause(2);
+		
+		return new  AttendeeManagerPage(driver);
 	}
 	
 	
