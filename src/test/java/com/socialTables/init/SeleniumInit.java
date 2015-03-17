@@ -45,7 +45,7 @@ import com.socialTables.general.GeneralVerificationPage;
 
 
 
-public class SeleniumInit implements ILoggerStatus {
+public class SeleniumInit  {
 
 
 	public String testName="";
@@ -387,17 +387,7 @@ public class SeleniumInit implements ILoggerStatus {
 		}
 	}
 
-	/**
-	 * Log given message to Reporter output.
-	 * 
-	 * @param msg
-	 *            Message/Log to be reported.
-	 */
-	public static void logMessage(String msg) {
-		Reporter.log(msg + "<br/>");
-	}
-
-	public static void log(String msg, final int logger_status) {
+	/*public static void log(String msg, final int logger_status) {
 
 		switch (logger_status) {
 
@@ -435,7 +425,7 @@ public class SeleniumInit implements ILoggerStatus {
 			break;
 		}
 
-	}
+	}*/
 
 	/**
 	 * Log given message to Reporter output.

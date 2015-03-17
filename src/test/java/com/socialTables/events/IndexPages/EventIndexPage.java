@@ -321,7 +321,6 @@ public class EventIndexPage extends AbstractPage
 	}
 	
 	public EventCreationPage shareEvent(String email)
-	
 	{
 		common.type(txtSendto, email);
 		driver.findElement(By.xpath(".//*[@id='opt1']")).click();
@@ -362,12 +361,15 @@ public class EventIndexPage extends AbstractPage
 	public AttendeeManagerPage addGuest(String fName,String lName,String title,String numOfGuest)
 	{
 		common.type(txtFirstName, fName);
+		common.pause(1);
 		common.type(txtLastName, lName);
+		common.pause(1);
 		common.type(txtTitle, title);
+		common.pause(1);
 		common.type(txtOrganization, "Auto-QA");
 		if(!numOfGuest.equalsIgnoreCase("0"))
 		{
-			common.selectFromCombo(selectNumOfGuest, numOfGuest);
+			common.selectFromComboByVisibleElement(selectNumOfGuest, numOfGuest);
 			common.pause(2);
 		}
 		btnAddAttendee.click();

@@ -217,12 +217,23 @@
 	</classes>
 </test> -->
 
-<test 	name="To verify 'Add Attendee' functionality in 'Attendee Manager' page. ">
+<!-- <test 	name="To verify 'Add Attendee' functionality in 'Attendee Manager' page. ">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
 			<methods>
 				<include name="addAttendeeInAttendeeManager" />
+			</methods>
+		</class>
+	</classes>
+</test> -->
+
+<test 	name="To verify 'Add Attendee' functionality with Guest. ">
+	<classes>
+		<class
+			name="com.socialTables.events.Index.EventIndex">
+			<methods>
+				<include name="addAttendeeWithGuestInAttendeeManager" />
 			</methods>
 		</class>
 	</classes>
