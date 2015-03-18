@@ -142,6 +142,7 @@ public class EventIndexPage extends AbstractPage
 	
 	public EventCreationPage fillRoomSettingsForm(String criteria)
 	{
+		common.pause(2);
 		if(criteria.equalsIgnoreCase("clone"))
 		{
 			common.clickOn(driver, btnDoneInRoomSetting);
@@ -376,6 +377,24 @@ public class EventIndexPage extends AbstractPage
 		common.pause(2);
 		
 		return new  AttendeeManagerPage(driver);
+	}
+	
+	public AttendeeManagerPage deleteGuest()
+	{
+		try{
+			WebElement deleteButton =driver.findElement(By.xpath("//div[@id='glmContainer']/div[contains(@class,'glm-grid')]/div[@class='kgNoSelect']/div[@class='kgViewport']/div[@class='kgCanvas']/div/div[1]/div/div[contains(@class,'cell-delete')]"));
+			common.scrollTo(deleteButton);
+			common.pause(2);
+			deleteButton.click();
+			common.pause(2);
+			driver.findElement(By.xpath("//div[@class='dialog-buttons']/button[contains(.,'OK')]")).click();
+			common.pause(2);
+		}
+		catch(Exception e)
+		{
+			log("<b>No guest available in grid or delete button not found</b>");
+		}
+		return new AttendeeManagerPage(driver);
 	}
 	
 	

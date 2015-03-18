@@ -217,7 +217,7 @@
 	</classes>
 </test> -->
 
-<!-- <test 	name="To verify 'Add Attendee' functionality in 'Attendee Manager' page. ">
+<test 	name="To verify 'Add Attendee' functionality in 'Attendee Manager' page. ">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -226,7 +226,7 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
+</test>
 
 <test 	name="To verify 'Add Attendee' functionality with Guest. ">
 	<classes>
@@ -238,4 +238,15 @@
 		</class>
 	</classes>
 </test>
+
+<!-- <test 	name="To verify 'Delete' functionality in 'Attendee Manager' ">
+	<classes>
+		<class
+			name="com.socialTables.events.Index.EventIndex">
+			<methods>
+				<include name="deleteAttendeeInAttendeeManager" />
+			</methods>
+		</class>
+	</classes>
+</test> -->
 </suite>

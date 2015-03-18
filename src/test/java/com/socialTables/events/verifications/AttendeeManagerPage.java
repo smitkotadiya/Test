@@ -40,6 +40,7 @@ public class AttendeeManagerPage extends AbstractPage
 		boolean bool = false;
 		common.pause(2);
 		int numOfGuestAfterAddition = common.getNumOfElements(driver, By.xpath("//div[@id='glmContainer']/div[contains(@class,'glm-grid')]/div[@class='kgNoSelect']/div[@class='kgViewport']/div[@class='kgCanvas']/div/div"));
+		System.out.println("guest for index:--->"+addedGuest);
 		if(numOfGuest==numOfGuestAfterAddition-addedGuest)
 		{
 			 bool = true;
@@ -47,6 +48,28 @@ public class AttendeeManagerPage extends AbstractPage
 		else
 		{
 			bool = false;
+		}
+		return bool;
+	}
+	
+	public boolean verifyDeletedGuest(int numOfGuest)
+	{
+		boolean bool = false;
+		int numOfGuestAfterDeletion = common.getNumOfElements(driver, By.xpath("//div[@id='glmContainer']/div[contains(@class,'glm-grid')]/div[@class='kgNoSelect']/div[@class='kgViewport']/div[@class='kgCanvas']/div/div"));
+		if(!(numOfGuestAfterDeletion==0))
+		{
+			if(numOfGuest==numOfGuestAfterDeletion-1)
+			{
+				 bool = true;
+			}
+			else
+			{
+				bool = false;
+			}
+		}
+		else
+		{
+			bool = true;
 		}
 		return bool;
 	}

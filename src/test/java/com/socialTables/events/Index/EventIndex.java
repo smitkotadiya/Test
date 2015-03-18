@@ -1521,11 +1521,12 @@ public class EventIndex extends SeleniumInit
 			log("Fail");
 			numOfFailure++;
 		}
+	
 		numOfGuestInGrid = common.getNumOfElements(driver, By.xpath("//div[@id='glmContainer']/div[contains(@class,'glm-grid')]/div[@class='kgNoSelect']/div[@class='kgViewport']/div[@class='kgCanvas']/div/div"));
 		log("Step 13: Add guest in attendee list");
 		attendeeManagerPage = eventIndexPage.addGuest(fName, lName, title, Guest);
 		log("Step 14: Verify added guest in grid");
-		if(attendeeManagerPage.verifyAddedGuestInGrid(numOfGuestInGrid,Integer.parseInt(Guest)))
+		if(attendeeManagerPage.verifyAddedGuestInGrid(numOfGuestInGrid,Integer.parseInt(Guest)+1))
 		{
 			log("<Strong><font color=#008000>Pass</font></strong>");
 		}
@@ -1616,7 +1617,7 @@ public class EventIndex extends SeleniumInit
 		log("Step 13: Add attendee with more then one guest in attendee list");
 		attendeeManagerPage = eventIndexPage.addGuest(fName, lName, title, Guest);
 		log("Step 14: Verify added guests in grid");
-		if(attendeeManagerPage.verifyAddedGuestInGrid(numOfGuestInGrid,Integer.parseInt(Guest)))
+		if(attendeeManagerPage.verifyAddedGuestInGrid(numOfGuestInGrid,Integer.parseInt(Guest)+1))
 		{
 			log("<Strong><font color=#008000>Pass</font></strong>");
 		}
@@ -1632,5 +1633,95 @@ public class EventIndex extends SeleniumInit
 		}
 	}
 	
+	@Test
+	public void deleteAttendeeInAttendeeManager()
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		String eventName = "Auto-"+RandomStringUtils.randomAlphanumeric(2);
+		String eventType = "gala";
+		int numOfGuestInGrid = 0;
+		boolean isAttendeeEnable = true;
+		log("<b><ul>Testcase ID: TC_EV_052</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Delete' functionality in 'Attendee Manager'.</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 6: Click On 'New Event' Button");
+		eventCreationPage = eventIndexPage.clickOnNewEvent();
+		log("Step 7: Verify 'Event Creation Page'");
+		if(eventCreationPage.verifyEventCreationPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 8: Enter mandetory fields to create event and Click on 'Done'");
+		eventCreationPage = eventIndexPage.fillEventInfo("Add",eventName, eventType,isAttendeeEnable);
+		log("Step 9: Verify Room Setting Page in Event Creation");
+		if(eventCreationPage.verifyRoomSettingPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 10: Select venue from library or customize room");
+		eventCreationPage = eventIndexPage.fillRoomSettingsForm("add");
+		log("Step 11: Now click on 'Guest' tab");
+		attendeeManagerPage = eventIndexPage.clickOnGuestTab();
+		log("Step 12: Verify attedee manager page");
+		if(attendeeManagerPage.verifyAttendeeManagerPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 13: Add guest in to attendee manager");
+		attendeeManagerPage = eventIndexPage.addGuest("Auto", "QA", "Automation", "0");
+		common.pause(2);
+		numOfGuestInGrid = common.getNumOfElements(driver, By.xpath("//div[@id='glmContainer']/div[contains(@class,'glm-grid')]/div[@class='kgNoSelect']/div[@class='kgViewport']/div[@class='kgCanvas']/div/div"));
+		log("Step 14: Delete any guest in attendee list");
+		attendeeManagerPage = eventIndexPage.deleteGuest();
+		log("Step 15: Verify deleted record should not display on grid ");
+		if(attendeeManagerPage.verifyDeletedGuest(numOfGuestInGrid))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+		
+	}
 }
 

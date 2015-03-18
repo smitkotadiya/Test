@@ -151,7 +151,7 @@ public class Common {
 	          try
 	          {  
 	         // this causes a gradual drag of the scroll bar, 10 units at a time
-	         dragger.moveToElement(draggablePartOfScrollbar).clickAndHold().moveByOffset(0,numberOfPixelsToDragTheScrollbarDown).release().perform();
+	         dragger.moveToElement(draggablePartOfScrollbar).clickAndHold().moveByOffset(numberOfPixelsToDragTheScrollbarDown,0).release().perform();
 	         Thread.sleep(1000L);
 	          } catch(Exception e1){
 	        	  
