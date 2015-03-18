@@ -211,7 +211,8 @@ public class SeleniumInit  {
 			profile.setPreference("browser.download.manager.showWhenStarting",false);
 			profile.setPreference("services.sync.prefs.sync.browser.download.manager.showWhenStarting",false);
 			profile.setPreference("pdfjs.disabled", true);
-			
+			profile.setAcceptUntrustedCertificates(true);
+			profile.setPreference("security.OCSP.enabled", 0);
 			profile.setEnableNativeEvents(false);
 			profile.setPreference("network.http.use-cache", false);
 

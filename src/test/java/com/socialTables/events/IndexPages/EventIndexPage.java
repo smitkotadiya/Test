@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -100,8 +101,18 @@ public class EventIndexPage extends AbstractPage
 	private WebElement checkCheckIn;
 	@FindBy(id="btn-glm-add")
 	private WebElement btnAddAttendee;
-	//div[@id='glmContainer']/div[contains(@class,'glm-grid')]/div[@class='kgNoSelect']/div[@class='kgViewport']/div[@class='kgCanvas']/div/div[contains(@class,'odd')]/div/div[contains(@class,'col4')]
+	@FindBy(id="tagsBulk")
+	private WebElement tabAddTag;
+	@FindBy(id="addTagName")
+	private WebElement txtTagName;
+	@FindBy(id="mealsBulk")
+	private WebElement tabAddMeal;
+	@FindBy(id="addMealName")
+	private WebElement txtMealName;
+	@FindBy(id="guestGroupsBulk")
+	private WebElement tabGroup;
 	
+	//div[@id='glmContainer']/div[contains(@class,'glm-grid')]/div[@class='kgNoSelect']/div[@class='kgViewport']/div[@class='kgCanvas']/div/div[contains(@class,'odd')]/div/div[contains(@class,'col4')]
 	
 	
 	Common common = new Common(driver);
@@ -394,6 +405,16 @@ public class EventIndexPage extends AbstractPage
 		{
 			log("<b>No guest available in grid or delete button not found</b>");
 		}
+		return new AttendeeManagerPage(driver);
+	}
+	
+	public AttendeeManagerPage enterTag(String tagName)
+	{
+		tabAddTag.click();
+		common.pause(2);
+		common.type(txtTagName, tagName);
+		driver.findElement(By.xpath("//body")).sendKeys(Keys.ENTER);
+		common.pause(2);
 		return new AttendeeManagerPage(driver);
 	}
 	

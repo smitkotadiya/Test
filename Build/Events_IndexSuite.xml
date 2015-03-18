@@ -14,7 +14,7 @@
 	<!-- @NOTE: 1) Un-comment <test> tag to run respective test. 2) Comment 
 		<test> tag to unrun respective test. -->
 	<parameter name="selenium.browser" value="firefox" />
-	<parameter name="selenium.url" value="https://www.socialtables.com/" />
+	<parameter name="selenium.url" value="https://dev.socialtables.com/" />
  
  
 <!-- <test 	name="To verify New Event functionality.">
@@ -217,7 +217,7 @@
 	</classes>
 </test> -->
 
-<test 	name="To verify 'Add Attendee' functionality in 'Attendee Manager' page. ">
+<!-- <test 	name="To verify 'Add Attendee' functionality in 'Attendee Manager' page. ">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -237,7 +237,7 @@
 			</methods>
 		</class>
 	</classes>
-</test>
+</test> -->
 
 <!-- <test 	name="To verify 'Delete' functionality in 'Attendee Manager' ">
 	<classes>
@@ -249,4 +249,15 @@
 		</class>
 	</classes>
 </test> -->
+
+<test 	name="To verify 'Delete' functionality in 'Attendee Manager' ">
+	<classes>
+		<class
+			name="com.socialTables.events.Index.EventIndex">
+			<methods>
+				<include name="addTagMealGroupToAttendee" />
+			</methods>
+		</class>
+	</classes>
+</test> 
 </suite>
