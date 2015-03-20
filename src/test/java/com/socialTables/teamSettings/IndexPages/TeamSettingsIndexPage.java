@@ -1,5 +1,9 @@
 package com.socialTables.teamSettings.IndexPages;
 
+import java.util.List;
+
+import org.apache.commons.lang.RandomStringUtils;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -32,6 +36,16 @@ public class TeamSettingsIndexPage extends AbstractPage
 	private WebElement txtNewCategory;
 	@FindBy(id="toolbar-rectangle-table-size")
 	private WebElement selectCategoryIcon;
+	@FindBy(xpath="//button[contains(.,'Create a Custom Chair')]")
+	private WebElement btnCreateCustomChair;
+	@FindBy(id="chair-name")
+	private WebElement txtChairName;
+	@FindBy(xpath="//div[@class='chair-content']/div/select")
+	private WebElement selectChairType;
+	@FindBy(xpath="//div[@class='save-cancel-elem']/button[contains(.,'Save')]")
+	private WebElement btnSave;
+	@FindBy()
+	
 	
 	
 	Common common = new Common(driver);
@@ -57,9 +71,67 @@ public class TeamSettingsIndexPage extends AbstractPage
 		String categoryIcon = common.selectRandomOptionFromCombo(By.id("toolbar-rectangle-table-size"), driver);
 		common.selectFromComboByVisibleElement(selectCategoryIcon, categoryIcon);
 		common.pause(2);
-		driver.findElement(By.xpath("//*[@id='custom_event_categories_table']/tbody/tr["+(rowNum+1)+"]/td[4]/button[1]")).click();
+		driver.findElement(By.xpath("//*[@id='custom_event_categories_table']/tbody/tr["+(rowNum)+"]/td[4]/button[1]")).click();
 		
 		
+		return new TeamSettingsPage(driver);
+	}
+	
+	public TeamSettingsPage deleteEventCategory()
+	{
+		try{
+		List<WebElement> allEles = driver.findElements(By.xpath("//button[contains(.,'Delete')]"));
+		allEles.get(0).click();
+		common.pause(2);
+		Alert alerat = driver.switchTo().alert();
+		alerat.accept();
+		common.pause(2);
+		}
+		catch(Exception e)
+		{
+			log("<b> There is no custom category available to delete </b>");
+		}
+		
+		return new TeamSettingsPage(driver);
+	}
+	
+	public TeamSettingsPage clickOnCustomObjects()
+	{
+		tabCustomObjects.click();
+		common.pause(2);
+		return new TeamSettingsPage(driver);
+	}
+	
+	public TeamSettingsPage clickOnCreateCustomChair()
+	{
+		btnCreateCustomChair.click();
+		common.pause(2);
+		return new TeamSettingsPage(driver);
+	}
+	
+	public TeamSettingsPage createCustomObject(String chairName)
+	{
+		String size = RandomStringUtils.randomNumeric(2);
+		List<WebElement> allEles = driver.findElements(By.xpath("//input[@class='chair-input']"));
+		common.type(allEles.get(0),size);
+		common.type(allEles.get(1), size);
+		common.type(txtChairName, chairName);
+		btnSave.click();
+		common.pause(2);
+		return new TeamSettingsPage(driver);
+	}
+	
+	public TeamSettingsPage deleteCustomObject()
+	{
+		try{
+		List<WebElement> allEles = driver.findElements(By.xpath("//button[contains(.,'Delete')]"));
+		allEles.get(0).click();
+		common.pause(2);
+		}
+		catch(Exception e)
+		{
+			log("<b> There is no custom object available to delete </b>");
+		}
 		return new TeamSettingsPage(driver);
 	}
 	

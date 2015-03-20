@@ -16,7 +16,7 @@
 	<parameter name="selenium.browser" value="firefox" />
 	<parameter name="selenium.url" value="https://dev.socialtables.com/" />
  
-  <test 	name="To verify 'Add Custom Category' functionality..">
+  <!-- <test 	name="To verify 'Add Custom Category' functionality..">
 	<classes>
 		<class
 			name="com.socialTables.teamSettings.Index.TeamSettingIndex">
@@ -33,6 +33,28 @@
 			name="com.socialTables.teamSettings.Index.TeamSettingIndex">
 			<methods>
 				<include name="deleteEventCategoryFunctionality" />
+			</methods>
+		</class>
+	</classes>
+</test> -->
+
+<test 	name="To verify 'Create Custom Chair' Functionality in 'Custom Objects'.">
+	<classes>
+		<class
+			name="com.socialTables.teamSettings.Index.TeamSettingIndex">
+			<methods>
+				<include name="addCustomChairsFunctionality" />
+			</methods>
+		</class>
+	</classes>
+</test>
+
+<test 	name="To verify 'Delete Custom Chair' Functionality in 'Custom Objects'.">
+	<classes>
+		<class
+			name="com.socialTables.teamSettings.Index.TeamSettingIndex">
+			<methods>
+				<include name="deleteCustomChairsFunctionality" />
 			</methods>
 		</class>
 	</classes>

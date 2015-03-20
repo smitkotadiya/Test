@@ -59,13 +59,15 @@ public class TeamSettingsPage extends AbstractPage
 	
 	public boolean verifyAddedObject(String name,int numOfObjects)
 	{
+		common.pause(2);
 		boolean bool =false;
 		List<WebElement> allChairs = driver.findElements(By.xpath("//div[@class='chair-content']/span[@class='chair-name']/span[2]"));
 		int numOfObjectsAfterAddition = common.getNumOfElements(driver, By.xpath("//div[@class='chair-content']/span[@class='chair-name']/span[2]"));
-		if(numOfObjectsAfterAddition==numOfObjects-1)
+		if(numOfObjectsAfterAddition==numOfObjects+1)
 		{
 			for(WebElement ele:allChairs)
 			{
+				System.out.println(name+"<-------->"+ele.getText());
 				if(name.equalsIgnoreCase(ele.getText()))
 				{
 					bool = true;
@@ -78,6 +80,12 @@ public class TeamSettingsPage extends AbstractPage
 			}
 		}
 		return bool;
+	}
+	
+	public boolean verifyDeletedObject(int numOfRow)
+	{
+		int numOfObjectsAfterDeletion = common.getNumOfElements(driver, By.xpath("//div[@class='chair-content']/span[@class='chair-name']/span[2]"));
+		return (numOfObjectsAfterDeletion==numOfRow-1);
 	}
 
 }
