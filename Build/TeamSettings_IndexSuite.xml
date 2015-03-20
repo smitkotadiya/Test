@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="Social Tables Automation - HomePage Module" verbose="10" parallel="false" thread-count="1">
+<suite name="Social Tables Automation - Team Settings Module" verbose="10" parallel="false" thread-count="1">
 
 	<!-- Put IP of localhost/Grid Hub machine -->
 	<parameter name="selenium.host" value="localhost" />
@@ -26,5 +26,16 @@
 		</class>
 	</classes>
 </test> 
+
+<test 	name="To verify 'Delete' functionality in Event Categories.">
+	<classes>
+		<class
+			name="com.socialTables.teamSettings.Index.TeamSettingIndex">
+			<methods>
+				<include name="deleteEventCategoryFunctionality" />
+			</methods>
+		</class>
+	</classes>
+</test>
 
 </suite>

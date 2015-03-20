@@ -16,7 +16,7 @@
 	<parameter name="selenium.browser" value="firefox" />
 	<parameter name="selenium.url" value="https://dev.socialtables.com/" />
  
- <!-- <test 	name="To verify Create New Venue functionality.">
+ <test 	name="To verify Create New Venue functionality.">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -79,8 +79,8 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
-<!-- <test 	name="To verify owner/admin should be able to remove existing member">
+</test>
+<test 	name="To verify owner/admin should be able to remove existing member">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -89,8 +89,8 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
-<!-- <test 	name="To verify create 'New Event' functionality for venue">
+</test>
+<test 	name="To verify create 'New Event' functionality for venue">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -99,7 +99,7 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
+</test>
 
 
 </suite>

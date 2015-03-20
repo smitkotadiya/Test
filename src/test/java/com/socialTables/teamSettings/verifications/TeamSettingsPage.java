@@ -1,5 +1,7 @@
 package com.socialTables.teamSettings.verifications;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,6 +23,8 @@ public class TeamSettingsPage extends AbstractPage
 	Common common = new Common(driver);
 	@FindBy(xpath="//h2[contains(.,'Event Categories')]")
 	private WebElement verifyEventCategoryPage;
+	@FindBy(xpath="//button[contains(.,'Create a Custom Chair')]")
+	private WebElement verifyCustomObjectPage;
 	
 	public boolean verifyEventCategoryPage()
 	{
@@ -39,6 +43,41 @@ public class TeamSettingsPage extends AbstractPage
 		{
 			return false;
 		}
+	}
+	
+	public boolean verifyDeletedCategory(int numOfRow)
+	{
+		common.pause(2);
+		int numOfRowAfterDeletion = common.getNumOfElements(driver, By.xpath(".//*[@id='custom_event_categories_table']/tbody/tr"));
+		return (numOfRow==numOfRowAfterDeletion+1);
+	}
+	
+	public boolean verifyCustomObjectPage()
+	{
+		return verifyCustomObjectPage.isDisplayed();
+	}
+	
+	public boolean verifyAddedObject(String name,int numOfObjects)
+	{
+		boolean bool =false;
+		List<WebElement> allChairs = driver.findElements(By.xpath("//div[@class='chair-content']/span[@class='chair-name']/span[2]"));
+		int numOfObjectsAfterAddition = common.getNumOfElements(driver, By.xpath("//div[@class='chair-content']/span[@class='chair-name']/span[2]"));
+		if(numOfObjectsAfterAddition==numOfObjects-1)
+		{
+			for(WebElement ele:allChairs)
+			{
+				if(name.equalsIgnoreCase(ele.getText()))
+				{
+					bool = true;
+					break;
+				}
+				else
+				{
+					bool = false;
+				}
+			}
+		}
+		return bool;
 	}
 
 }

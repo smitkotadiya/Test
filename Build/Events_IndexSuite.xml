@@ -17,7 +17,7 @@
 	<parameter name="selenium.url" value="https://dev.socialtables.com/" />
  
  
-<!-- <test 	name="To verify New Event functionality.">
+<test 	name="To verify New Event functionality.">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -139,9 +139,9 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
+</test>
 
-<!-- <test 	name="To verify 'Guest List Enable' functionality in 'Event Information'. ">
+<test 	name="To verify 'Guest List Enable' functionality in 'Event Information'. ">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -172,9 +172,9 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
+</test>
 
-<!-- <test 	name="To verify 'Duplicate Room' functionality in 'Room Settings'. ">
+<test 	name="To verify 'Duplicate Room' functionality in 'Room Settings'. ">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -184,8 +184,8 @@
 		</class>
 	</classes>
 </test>
- -->
-<!-- <test 	name="To verify 'Add Room' functionality. ">
+
+<test 	name="To verify 'Add Room' functionality. ">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -205,8 +205,8 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
-<!-- <test 	name="To verify 'User Name' dropdown button functionality. ">
+</test>
+<test 	name="To verify 'User Name' dropdown button functionality. ">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -215,9 +215,9 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
+</test>
 
-<!-- <test 	name="To verify 'Add Attendee' functionality in 'Attendee Manager' page. ">
+<test 	name="To verify 'Add Attendee' functionality in 'Attendee Manager' page. ">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -237,9 +237,9 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
+</test>
 
-<!-- <test 	name="To verify 'Delete' functionality in 'Attendee Manager' ">
+<test 	name="To verify 'Delete' functionality in 'Attendee Manager' ">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -248,9 +248,9 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
+</test>
 
-<test 	name="To verify 'Delete' functionality in 'Attendee Manager' ">
+<test 	name="To verify 'Add Tag' functionality in 'Attendee Manager' ">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
