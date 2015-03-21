@@ -25,11 +25,46 @@ public class TeamSettingsPage extends AbstractPage
 	private WebElement verifyEventCategoryPage;
 	@FindBy(xpath="//button[contains(.,'Create a Custom Chair')]")
 	private WebElement verifyCustomObjectPage;
+	@FindBy(xpath="//h2[contains(.,'Floor Plan Export Settings')]")
+	private WebElement verifyPrintAndExport;
+	@FindBy(xpath="//h2[contains(.,'Availability')]")
+	private WebElement verifyTableAndObjectPage;
+	@FindBy(xpath="//h2[contains(.,'Measurement Settings')]")
+	private WebElement verifyMeasurmentSetting;
+	@FindBy(xpath="//h2[contains(.,'Language Settings')]")
+	private WebElement verifyLanguageSettings;
+
+	
 	
 	public boolean verifyEventCategoryPage()
 	{
 		return verifyEventCategoryPage.isDisplayed();
 	}
+	
+	public boolean verifyPrintExportPage()
+	{
+		return verifyPrintAndExport.isDisplayed();
+	}
+	public boolean verifyLanguageSettings()
+	{
+		return verifyLanguageSettings.isDisplayed();
+	}
+	
+	public boolean verifyTableAndObjectPage()
+	{
+		return verifyTableAndObjectPage.isDisplayed();
+	}
+	
+	public boolean verifyMeausrmentSettings()
+	{
+		return verifyMeasurmentSetting.isDisplayed();
+	}
+	
+	public boolean verifyCustomObjectPage()
+	{
+		return verifyCustomObjectPage.isDisplayed();
+	}
+	
 	
 	public boolean verifyAddedCategory(int numOfRow,String categoryName)
 	{
@@ -52,10 +87,6 @@ public class TeamSettingsPage extends AbstractPage
 		return (numOfRow==numOfRowAfterDeletion+1);
 	}
 	
-	public boolean verifyCustomObjectPage()
-	{
-		return verifyCustomObjectPage.isDisplayed();
-	}
 	
 	public boolean verifyAddedObject(String name,int numOfObjects)
 	{

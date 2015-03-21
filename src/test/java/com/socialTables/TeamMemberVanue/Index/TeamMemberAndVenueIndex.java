@@ -20,6 +20,7 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		boolean isEditable = false;
 		String venueName = "auto-"+RandomStringUtils.randomAlphabetic(3);
 		log("<b><ul>Testcase ID: TC_TV_005</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Create New Venue' functionality.</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
@@ -114,6 +115,7 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		//int numOfVenueInList = 0;
 		String venueName = "auto-edit-"+RandomStringUtils.randomAlphabetic(3);
 		log("<b><ul>Testcase ID: TC_TV_006</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Edit Venue' functionality.</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
@@ -208,6 +210,7 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		int numOfVenueInList = 0;		
 		log("<b><ul>Testcase ID: TC_TV_007</b></ul>");
 		log("Step 1: Click on 'login' tab");
+		log("<b><ul>TestScenario: To verify 'Delete Venue' functionality.</b></ul>");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
 		log("Step 3: Enter Password");
@@ -267,6 +270,7 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		String eventType = "gala"; 
 		int numOfEventsInGrid = 0;
 		log("<b><ul>Testcase ID: TC_TV_007</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Create event with selected venue' functionality.</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
@@ -340,6 +344,7 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		Common common = new Common(driver);
 		int numOfFailure=0;
 		log("<b><ul>Testcase ID: TC_TV_005</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Search Venue' functionality.</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
@@ -401,6 +406,7 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		String currentWindow = driver.getWindowHandle();
 		System.out.println("Current Window Handle>>>>>>>>>"+currentWindow);
 		log("<b><ul>Testcase ID: TC_TV_016</b></ul>");
+		log("<b><ul>TestScenario: To verify owner/admin should be able to add new member with role 'Admin'</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
@@ -486,6 +492,7 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		String email= "auto_"+RandomStringUtils.randomAlphabetic(4)+"@mailinator.com";
 		String role = "planner";
 		log("<b><ul>Testcase ID: TC_TV_017</b></ul>");
+		log("<b><ul>TestScenario: To verify owner/admin should be able to add new member with role 'Planner'</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
@@ -571,6 +578,7 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		String email= "auto_"+RandomStringUtils.randomAlphabetic(4)+"@mailinator.com";
 		String role = "limited planner";
 		log("<b><ul>Testcase ID: TC_TV_018</b></ul>");
+		log("<b><ul>TestScenario: To verify owner/admin should be able to add new member with role 'Limited Planner'</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
@@ -619,7 +627,7 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.fillNewMemberDetail(email, role);
 		log("Step 11: Verify 'Verification Email' on 'mailinator.com' and click on 'Join Now' Link in mail content.");
 		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.verifyEmail(email);
-		log("Step 12: Verify 'Join Team' form page");
+		log("Step 12: V`erify 'Join Team' form page");
 		if(teamMemberAndVenueVerificationPage.verifyJoinTeamForm())
 		{
 			log("<Strong><font color=#008000>Pass</font></strong>");
@@ -655,6 +663,7 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		int numOfFailure=0;
 		int numOfMemberBefore = 0;
 		log("<b><ul>Testcase ID: TC_TV_018</b></ul>");
+		log("<b><ul>TestScenario: To verify owner/admin should be able to 'Remove' exiting member</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");

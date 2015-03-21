@@ -16,6 +16,17 @@
 	<parameter name="selenium.browser" value="firefox" />
 	<parameter name="selenium.url" value="https://dev.socialtables.com/" />
  
+ <test 	name="To verify All links in Team setting.">
+	<classes>
+		<class
+			name="com.socialTables.teamSettings.Index.TeamSettingIndex">
+			<methods>
+				<include name="verifyAllLinksOnTeamSettings" />
+			</methods>
+		</class>
+	</classes>
+</test>
+ 
   <!-- <test 	name="To verify 'Add Custom Category' functionality..">
 	<classes>
 		<class
@@ -38,7 +49,7 @@
 	</classes>
 </test> -->
 
-<test 	name="To verify 'Create Custom Chair' Functionality in 'Custom Objects'.">
+<!-- <test 	name="To verify 'Create Custom Chair' Functionality in 'Custom Objects'.">
 	<classes>
 		<class
 			name="com.socialTables.teamSettings.Index.TeamSettingIndex">
@@ -58,6 +69,6 @@
 			</methods>
 		</class>
 	</classes>
-</test>
+</test> -->
 
 </suite>

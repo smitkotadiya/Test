@@ -44,7 +44,7 @@ public class TeamSettingsIndexPage extends AbstractPage
 	private WebElement selectChairType;
 	@FindBy(xpath="//div[@class='save-cancel-elem']/button[contains(.,'Save')]")
 	private WebElement btnSave;
-	@FindBy()
+	
 	
 	
 	
@@ -63,6 +63,34 @@ public class TeamSettingsIndexPage extends AbstractPage
 		return new TeamSettingsPage(driver);
 	}
 	
+	public TeamSettingsPage clickOnMeasurmentSettings()
+	{
+		tabMeasurementSettings.click();
+		common.pause(2);
+		return new TeamSettingsPage(driver);
+	}
+	
+	public TeamSettingsPage clickOnPrintAndExport()
+	{
+		tabPrintAndExportSettings.click();
+		common.pause(2);
+		return new TeamSettingsPage(driver);
+	}
+	
+	public TeamSettingsPage clickOnTableAndObject()
+	{
+		tabTableAndObjects.click();
+		common.pause(2);
+		return new TeamSettingsPage(driver);
+	}
+	
+	public TeamSettingsPage clickOnLanguageSettings()
+	{
+		tabLanguageSettings.click();
+		common.pause(2);
+		return new TeamSettingsPage(driver);
+	}
+	
 	public TeamSettingsPage addNewCategory(String category,int rowNum) throws InterruptedException
 	{
 		btnAddCategory.click();
@@ -72,7 +100,6 @@ public class TeamSettingsIndexPage extends AbstractPage
 		common.selectFromComboByVisibleElement(selectCategoryIcon, categoryIcon);
 		common.pause(2);
 		driver.findElement(By.xpath("//*[@id='custom_event_categories_table']/tbody/tr["+(rowNum)+"]/td[4]/button[1]")).click();
-		
 		
 		return new TeamSettingsPage(driver);
 	}
