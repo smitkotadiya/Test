@@ -16,7 +16,7 @@
 	<parameter name="selenium.browser" value="firefox" />
 	<parameter name="selenium.url" value="https://dev.socialtables.com/" />
  
- <test 	name="To verify Create New Venue functionality.">
+<!--  <test 	name="To verify Create New Venue functionality.">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -96,6 +96,28 @@
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
 			<methods>
 				<include name="createEventFromVenue" />
+			</methods>
+		</class>
+	</classes>
+</test> -->
+
+<test 	name="To verify 'Cancel' button functionality in create venue form.">
+	<classes>
+		<class
+			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
+			<methods>
+				<include name="verifyCancelButtonWhileCreateVenue" />
+			</methods>
+		</class>
+	</classes>
+</test>
+
+<test 	name="To verify 'My Account' button functionality in create venue form.">
+	<classes>
+		<class
+			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
+			<methods>
+				<include name="verifyMyAccountButtonWhileCreateVenue" />
 			</methods>
 		</class>
 	</classes>

@@ -77,6 +77,11 @@ public class TeamMemberAndVenueIndexPage extends AbstractPage
 	private WebElement txtSearch;
 	@FindBy(xpath="//button[contains(.,'Search')]")
 	private WebElement btnSearch;
+	@FindBy(xpath="//button[contains(.,'Cancel')]")
+	private WebElement btnCancel;
+	@FindBy(xpath="//button[contains(.,'My Account')]")
+	private WebElement btnMyAccount;
+	
 	
 	Common common = new Common(driver);
 	public TeamMemberAndVenueIndexPage(WebDriver driver) 
@@ -302,5 +307,19 @@ public class TeamMemberAndVenueIndexPage extends AbstractPage
 		return new TeamMemberAndVenueVerificationPage(driver);
 	}
 	
+	public TeamMemberAndVenueVerificationPage clickOnCancel()
+	{
+		btnCancel.click();
+		common.pause(2);
+		return new TeamMemberAndVenueVerificationPage(driver);
+	}
+	
+	public TeamMemberAndVenueVerificationPage clickOnMyAccount()
+	{
+		btnMyAccount.click();
+		common.pause(2);
+		return new TeamMemberAndVenueVerificationPage(driver);
+	}
+
 	
 }
