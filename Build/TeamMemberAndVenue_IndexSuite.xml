@@ -123,5 +123,27 @@
 	</classes>
 </test>
 
+<test 	name="To verify 'Back to venue detail' link on Choose background page while create new venue">
+	<classes>
+		<class
+			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
+			<methods>
+				<include name="verifyBackToVenueDdetailWhileCreateVenue" />
+			</methods>
+		</class>
+	</classes>
+</test>
+
+<test 	name="To verify 'Back to background detail' link on 3D setting page while create new venue">
+	<classes>
+		<class
+			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
+			<methods>
+				<include name="verifyBackToBackgroundDetailFunctionality" />
+			</methods>
+		</class>
+	</classes>
+</test>
+
 
 </suite>

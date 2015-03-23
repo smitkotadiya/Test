@@ -54,7 +54,7 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		numOfVenueInList = common.getNumOfElements(driver, By.xpath("//div[contains(@class,'listings-container')]/div[contains(@class,'floorplan')]/div"));
 		log("Step 8: Click on 'New Venue' Button");
 		venueCreationPage = teamMemberAndVenueIndexPage.newOrEditVenue(isEditable);
-		log("Step 9: Verify event creation page");
+		log("Step 9: Verify venue creation page");
 		if(venueCreationPage.verifyVenuePage())
 		{
 			log("<Strong><font color=#008000>Pass</font></strong>");
@@ -839,6 +839,183 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		log("Step 11: Verify 'Team Member and  Venue' page");
 		
 		if(generalVerificationPage.verifyTeamMemberAndVenuePage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+	}
+	
+	@Test
+	public void verifyBackToVenueDdetailWhileCreateVenue() throws InterruptedException
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		boolean isEditable = false;
+		String venueName = "auto-"+RandomStringUtils.randomAlphabetic(3);
+		log("<b><ul>Testcase ID: TC_TV_014</b></ul>");
+		log("<b><ul>TestScenario: To verify 'My Account' button functionality in create venue form.</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 6:Navigate to 'Team Member and Venue' Module");
+		generalVerificationPage = generalIndexPage.navigateToTeamMemberAndVenue();
+		log("Step 7:Verify 'Team Member and Venue' page");
+		if(generalVerificationPage.verifyTeamMemberAndVenuePage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 8: Click on 'New Venue' Button");
+		venueCreationPage = teamMemberAndVenueIndexPage.newOrEditVenue(false);
+		log("Step 9: Verify event creation page");
+		if(venueCreationPage.verifyVenuePage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		log("Step 10: Fill required fields to crate venue and click on 'Next' button");
+		venueCreationPage = teamMemberAndVenueIndexPage.fillVenueDetail(venueName,isEditable);
+		log("Step 11: Verify 'Back Ground' Selection Page");
+		if(venueCreationPage.verifyBackgroundPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 12: Now click on 'Back to Venue Details' link");
+		venueCreationPage = teamMemberAndVenueIndexPage.clickOnBackToVenueDetail();
+		log("Step 13: Verify 'Venue Detail Page'");
+		if(venueCreationPage.verifyVenuePage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+	}
+	
+	@Test
+	public void verifyBackToBackgroundDetailFunctionality() throws InterruptedException
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		boolean isEditable = false;
+		String venueName = "auto-"+RandomStringUtils.randomAlphabetic(3);
+		log("<b><ul>Testcase ID: TC_TV_005</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Create New Venue' functionality.</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 6:Navigate to 'Team Member and Venue' Module");
+		generalVerificationPage = generalIndexPage.navigateToTeamMemberAndVenue();
+		log("Step 7:Verify 'Team Member and Venue' page");
+		if(generalVerificationPage.verifyTeamMemberAndVenuePage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 8: Click on 'New Venue' Button");
+		venueCreationPage = teamMemberAndVenueIndexPage.newOrEditVenue(isEditable);
+		log("Step 9: Verify venue creation page");
+		if(venueCreationPage.verifyVenuePage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 10: Fill required fields to crate venue and click on 'Next' button");
+		venueCreationPage = teamMemberAndVenueIndexPage.fillVenueDetail(venueName,isEditable);
+		log("Step 11: Verify 'Back Ground' Selection Page");
+		if(venueCreationPage.verifyBackgroundPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 12: Select any existing background and click on Next");
+		venueCreationPage = teamMemberAndVenueIndexPage.selectAnyBackgroud();
+		log("Step 13: Verify 'Floor Plan' selection page");
+		if(venueCreationPage.verifyFloorPlanPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 14: Now Click on 'Back to Background Details' Link");
+		venueCreationPage = teamMemberAndVenueIndexPage.clickOnBackToBackground();
+		log("Step 15: Verify 'Back Ground Detail' Page");
+		if(venueCreationPage.verifyBackgroundPage())
 		{
 			log("<Strong><font color=#008000>Pass</font></strong>");
 		}

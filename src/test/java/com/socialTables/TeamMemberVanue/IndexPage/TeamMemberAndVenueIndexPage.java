@@ -81,6 +81,10 @@ public class TeamMemberAndVenueIndexPage extends AbstractPage
 	private WebElement btnCancel;
 	@FindBy(xpath="//button[contains(.,'My Account')]")
 	private WebElement btnMyAccount;
+	@FindBy(xpath="//a[contains(.,'Back to Venue Details')]")
+	private WebElement backToVenueDetailLink;
+	@FindBy(xpath="//a[contains(.,'Back to Background Details')]")
+	private WebElement backToBackgroundLink;
 	
 	
 	Common common = new Common(driver);
@@ -320,6 +324,19 @@ public class TeamMemberAndVenueIndexPage extends AbstractPage
 		common.pause(2);
 		return new TeamMemberAndVenueVerificationPage(driver);
 	}
+	
+	public VenueCreationPage clickOnBackToVenueDetail()
+	{
+		backToVenueDetailLink.click();
+		common.pause(2);
+		return new VenueCreationPage(driver);
+	}
 
+	public VenueCreationPage clickOnBackToBackground()
+	{
+		backToBackgroundLink.click();
+		common.pause(2);
+		return new VenueCreationPage(driver);
+	}
 	
 }
