@@ -24,6 +24,10 @@ public class TeamMemberAndVenueVerificationPage extends AbstractPage
 	private WebElement verifyCancelButtton;
 	@FindBy(xpath="//a[contains(.,'Draw Venue')]")
 	private WebElement verifyDrawVenue;
+	@FindBy(xpath="//div[@class='contextual-links']/a[contains(.,'Team Settings')]")
+	private WebElement verifyTeamSettingsNotDisplay;
+	@FindBy(xpath="//div[@class='contextual-links']/a[contains(.,'Corporate Dashboard')]")
+	private WebElement verifyDashboardNotDisplay;
 	
 	Common common = new Common(driver);
 	
@@ -162,6 +166,19 @@ public class TeamMemberAndVenueVerificationPage extends AbstractPage
 		else
 		{
 			return false;
+		}
+	}
+	
+	public boolean verifyPlannerAccess()
+	{
+		try{
+			verifyTeamSettingsNotDisplay.isDisplayed();
+			verifyDashboardNotDisplay.isDisplayed();
+			return false;
+		}
+		catch(Exception e)
+		{
+			return true;
 		}
 	}
 }

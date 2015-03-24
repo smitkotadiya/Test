@@ -101,7 +101,7 @@
 	</classes>
 </test>  -->
 
-<!-- <test 	name="To verify 'Cancel' button functionality in create venue form.">
+ <!-- <test 	name="To verify 'Cancel' button functionality in create venue form.">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -143,7 +143,7 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
+</test>  -->
 
 <!-- <test 	name="To verify 'cancel' functionality in Add member">
 	<classes>
@@ -155,13 +155,24 @@
 		</class>
 	</classes>
 </test> -->
-
+<!-- 
 <test 	name="To verify 'Admin' not able to 'Draw venue'">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
 			<methods>
 				<include name="verifyAdminNotAbleToDrawVenue" />
+			</methods>
+		</class>
+	</classes>
+</test> -->
+
+<test 	name="To verify 'Planner' should not able to view 'Team Member' tab">
+	<classes>
+		<class
+			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
+			<methods>
+				<include name="verifyPlannerAccessTabs" />
 			</methods>
 		</class>
 	</classes>

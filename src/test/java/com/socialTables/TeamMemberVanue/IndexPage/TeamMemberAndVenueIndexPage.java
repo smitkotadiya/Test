@@ -263,7 +263,7 @@ public class TeamMemberAndVenueIndexPage extends AbstractPage
 		for(String winHandle: windowHandles)
 		{
 //			if(!winHandle.equalsIgnoreCase(currentWindowHandle))
-//			{
+//			{gfgg
 				System.out.println("Driver switch on new window:---->"+winHandle);
 				driver.switchTo().window(winHandle);
 				common.pause(2);

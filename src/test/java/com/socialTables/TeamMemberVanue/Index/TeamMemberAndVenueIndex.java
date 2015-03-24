@@ -1160,6 +1160,91 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		{
 			Assert.assertTrue(false);
 		}
+	}
+	
+	@Test
+	public void verifyPlannerAccessTabs() throws InterruptedException
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		log("<b><ul>Testcase ID: TC_TV_029</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Planner' should not able to view 'Team Member' tab</b></ul>");
+		log("Step 1: Click on 'login' tab [Login As Planner].");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Planner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Planner, password_Owner);
+		log("Step 5: Verify Planner logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 6: Verify 'Team Member' tab should not appear");
+		if(teamMemberAndVenueVerificationPage.verifyPlannerAccess())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
 		
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+	}
+	
+	@Test
+	public void verifyLimitedPlannerAccessTabs() throws InterruptedException
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		log("<b><ul>Testcase ID: TC_TV_028</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Limited Planner' should not able to view 'Team Member' tab</b></ul>");
+		log("Step 1: Click on 'login' tab [Login As Planner].");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_LPlanner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_LPlanner, password_Owner);
+		log("Step 5: Verify Limited Planner logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 6: Verify 'Team Member' tab should not appear");
+		if(teamMemberAndVenueVerificationPage.verifyPlannerAccess())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
 	}
 }

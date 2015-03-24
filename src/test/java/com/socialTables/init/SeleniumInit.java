@@ -63,7 +63,7 @@ public class SeleniumInit  {
 	// Variables For Login 
 	public String userName_Owner="nishil.patel@kiwiqa.com";
 	public String userName_Admin="nishilpatel81@gmail.com";
-	public String userName_Planner="piyush.patel@kiwiqa.com";
+	public String userName_Planner="viral.patel@kiwiqa.com";
 	public String userName_LPlanner="smit.kotadiya@kiwiqa.com";
 	public String password_Owner="patel22781";
 	
