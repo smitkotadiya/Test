@@ -16,7 +16,7 @@
 	<parameter name="selenium.browser" value="firefox" />
 	<parameter name="selenium.url" value="https://dev.socialtables.com/" />
  
-<!--  <test 	name="To verify Create New Venue functionality.">
+  <!-- <test 	name="To verify Create New Venue functionality.">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -46,9 +46,9 @@
 			</methods>
 		</class>
 	</classes>
-</test>
+</test> -->
 
- <test 	name="To verify owner/admin should be able to add new member with role Admin.">
+ <!-- <test 	name="To verify owner/admin should be able to add new member with role Admin.">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -79,8 +79,8 @@
 			</methods>
 		</class>
 	</classes>
-</test>
-<test 	name="To verify owner/admin should be able to remove existing member">
+</test> -->
+<!-- <test 	name="To verify owner/admin should be able to remove existing member">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -99,9 +99,9 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
+</test>  -->
 
-<test 	name="To verify 'Cancel' button functionality in create venue form.">
+<!-- <test 	name="To verify 'Cancel' button functionality in create venue form.">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -140,6 +140,28 @@
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
 			<methods>
 				<include name="verifyBackToBackgroundDetailFunctionality" />
+			</methods>
+		</class>
+	</classes>
+</test> -->
+
+<!-- <test 	name="To verify 'cancel' functionality in Add member">
+	<classes>
+		<class
+			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
+			<methods>
+				<include name="verifyCancelButtonFunctionality" />
+			</methods>
+		</class>
+	</classes>
+</test> -->
+
+<test 	name="To verify 'Admin' not able to 'Draw venue'">
+	<classes>
+		<class
+			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
+			<methods>
+				<include name="verifyAdminNotAbleToDrawVenue" />
 			</methods>
 		</class>
 	</classes>

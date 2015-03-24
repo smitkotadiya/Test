@@ -20,6 +20,10 @@ public class TeamMemberAndVenueVerificationPage extends AbstractPage
 	private WebElement selectMemberRole;
 	@FindBy(xpath=".//*[@id='join-team']/div/div/div/h2")
 	private WebElement verifyJoinNowForm;
+	@FindBy(xpath="//input[@name='email']")
+	private WebElement verifyCancelButtton;
+	@FindBy(xpath="//a[contains(.,'Draw Venue')]")
+	private WebElement verifyDrawVenue;
 	
 	Common common = new Common(driver);
 	
@@ -112,6 +116,19 @@ public class TeamMemberAndVenueVerificationPage extends AbstractPage
 		}
 	}
 	
+	public boolean verifyCancelButtonInMember()
+	{
+		common.pause(2);
+		try{
+			verifyCancelButtton.isDisplayed();
+			return false;
+		}
+		catch(Exception e)
+		{
+			return true;
+		}
+	}
+	
 	public boolean verifyAddMemberFields()
 	{
 		if(txtMemberEmail.isDisplayed() && selectMemberRole.isDisplayed())
@@ -121,6 +138,18 @@ public class TeamMemberAndVenueVerificationPage extends AbstractPage
 		else
 		{
 			return false;
+		}
+	}
+	
+	public boolean verifyDrawVenueNotDisplay()
+	{
+		try{
+			verifyDrawVenue.isDisplayed();
+			return false;
+		}
+		catch(Exception e)
+		{
+			return true;
 		}
 	}
 	

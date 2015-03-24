@@ -11,6 +11,11 @@ import com.socialTables.init.SeleniumInit;
 
 public class TeamMemberAndVenueIndex extends SeleniumInit
 {
+	public String emailID_Admin = "auto_"+RandomStringUtils.randomAlphabetic(4)+"@mailinator.com";
+	public String emailID_LimitedPlanner = "auto_"+RandomStringUtils.randomAlphabetic(4)+"@mailinator.com";
+	public String emailID_Planner = "auto_"+RandomStringUtils.randomAlphabetic(4)+"@mailinator.com";
+	
+	
 	@Test
 	public void createVenueFunctionality() throws InterruptedException
 	{
@@ -397,326 +402,6 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 	}
 	
 	@Test
-	public void addMemmber_Admin() throws InterruptedException
-	{
-		Common common = new Common(driver);
-		int numOfFailure=0;
-		String email= "auto_"+RandomStringUtils.randomAlphabetic(4)+"@mailinator.com";
-		String role = "admin";
-		String currentWindow = driver.getWindowHandle();
-		System.out.println("Current Window Handle>>>>>>>>>"+currentWindow);
-		log("<b><ul>Testcase ID: TC_TV_016</b></ul>");
-		log("<b><ul>TestScenario: To verify owner/admin should be able to add new member with role 'Admin'</b></ul>");
-		log("Step 1: Click on 'login' tab");
-		generalIndexPage.clickOnLoginTab();
-		log("Step 2: Enter User Name");
-		log("Step 3: Enter Password");
-		log("<strong>User Name: </strong>"+userName_Owner);
-		log("<strong>Password: </strong>"+password_Owner);
-		log("Step 4: Click On 'Login' Button");
-		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
-		log("Step 5: Verify user logged in successfully");
-		if(dashboardPage.verifyDashboardPage())
-		{
-			log("<Strong><font color=#008000>Pass</font></strong>");
-		}
-		else
-		{
-			log("Fail");
-			numOfFailure++;
-		}
-		log("Step 6:Navigate to 'Team Member and Venue' Module");
-		generalVerificationPage = generalIndexPage.navigateToTeamMemberAndVenue();
-		log("Step 7:Verify 'Team Member and Venue' page");
-		if(generalVerificationPage.verifyTeamMemberAndVenuePage())
-		{
-			log("<Strong><font color=#008000>Pass</font></strong>");
-		}
-		else
-		{
-			log("Fail");
-			numOfFailure++;
-		}
-		log("Step 8: Click on 'New Member' Button");
-		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.clickOnNewMember();
-		log("Step 9: Verify 'Add Member' fields : Email and Role ");
-		if(teamMemberAndVenueVerificationPage.verifyAddMemberFields())
-		{
-			log("<Strong><font color=#008000>Pass</font></strong>");
-		}
-		else
-		{
-			log("Fail");
-			numOfFailure++;
-		}
-		log("Step 10: Fill required member detail and click on done button");
-		log("<b> Member Email: </b>"+ email);
-		log("<b> Member Role: </b>"+ role);
-		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.fillNewMemberDetail(email, role);
-		log("Step 11: Verify 'Verification Email' on 'mailinator.com' and click on 'Join Now' Link in mail content.");
-		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.verifyEmail(email);
-		log("Step 12: Verify 'Join Team' form page");
-		if(teamMemberAndVenueVerificationPage.verifyJoinTeamForm())
-		{
-			log("<Strong><font color=#008000>Pass</font></strong>");
-		}
-		else
-		{
-			log("Fail");
-			numOfFailure++;
-		}
-		log("Step 13: Fill the required form detail");
-		dashboardPage = teamMemberAndVenueIndexPage.fillJoinForm();
-		log("Step 14: Verify 'Dashboard Page'");
-		if(dashboardPage.verifyDashboardPage())
-		{
-			log("<Strong><font color=#008000>Pass</font></strong>");
-		}
-		else
-		{
-			log("Fail");
-			numOfFailure++;
-		}
-		
-		if(numOfFailure>0)
-		{
-			Assert.assertTrue(false);
-		}
-	}
-
-	@Test
-	public void addMemmber_Planner() throws InterruptedException
-	{
-		Common common = new Common(driver);
-		int numOfFailure=0;
-		String email= "auto_"+RandomStringUtils.randomAlphabetic(4)+"@mailinator.com";
-		String role = "planner";
-		log("<b><ul>Testcase ID: TC_TV_017</b></ul>");
-		log("<b><ul>TestScenario: To verify owner/admin should be able to add new member with role 'Planner'</b></ul>");
-		log("Step 1: Click on 'login' tab");
-		generalIndexPage.clickOnLoginTab();
-		log("Step 2: Enter User Name");
-		log("Step 3: Enter Password");
-		log("<strong>User Name: </strong>"+userName_Owner);
-		log("<strong>Password: </strong>"+password_Owner);
-		log("Step 4: Click On 'Login' Button");
-		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
-		log("Step 5: Verify user logged in successfully");
-		if(dashboardPage.verifyDashboardPage())
-		{
-			log("<Strong><font color=#008000>Pass</font></strong>");
-		}
-		else
-		{
-			log("Fail");
-			numOfFailure++;
-		}
-		log("Step 6:Navigate to 'Team Member and Venue' Module");
-		generalVerificationPage = generalIndexPage.navigateToTeamMemberAndVenue();
-		log("Step 7:Verify 'Team Member and Venue' page");
-		if(generalVerificationPage.verifyTeamMemberAndVenuePage())
-		{
-			log("<Strong><font color=#008000>Pass</font></strong>");
-		}
-		else
-		{
-			log("Fail");
-			numOfFailure++;
-		}
-		log("Step 8: Click on 'New Member' Button");
-		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.clickOnNewMember();
-		log("Step 9: Verify 'Add Member' fields : Email and Role ");
-		if(teamMemberAndVenueVerificationPage.verifyAddMemberFields())
-		{
-			log("<Strong><font color=#008000>Pass</font></strong>");
-		}
-		else
-		{
-			log("Fail");
-			numOfFailure++;
-		}
-		log("Step 10: Fill required member detail and click on done button");
-		log("<b> Member Email: </b>"+ email);
-		log("<b> Member Role: </b>"+ role);
-		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.fillNewMemberDetail(email, role);
-		log("Step 11: Verify 'Verification Email' on 'mailinator.com' and click on 'Join Now' Link in mail content.");
-		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.verifyEmail(email);
-		log("Step 12: Verify 'Join Team' form page");
-		if(teamMemberAndVenueVerificationPage.verifyJoinTeamForm())
-		{
-			log("<Strong><font color=#008000>Pass</font></strong>");
-		}
-		else
-		{
-			log("Fail");
-			numOfFailure++;
-		}
-		log("Step 13: Fill the required form detail");
-		dashboardPage = teamMemberAndVenueIndexPage.fillJoinForm();
-		log("Step 14: Verify 'Dashboard Page'");
-		if(dashboardPage.verifyDashboardPage())
-		{
-			log("<Strong><font color=#008000>Pass</font></strong>");
-		}
-		else
-		{
-			log("Fail");
-			numOfFailure++;
-		}
-		
-		if(numOfFailure>0)
-		{
-			Assert.assertTrue(false);
-		}
-	}
-
-	@Test
-	public void addMemmber_LimitedPlanner() throws InterruptedException
-	{
-		Common common = new Common(driver);
-		int numOfFailure=0;
-		String email= "auto_"+RandomStringUtils.randomAlphabetic(4)+"@mailinator.com";
-		String role = "limited planner";
-		log("<b><ul>Testcase ID: TC_TV_018</b></ul>");
-		log("<b><ul>TestScenario: To verify owner/admin should be able to add new member with role 'Limited Planner'</b></ul>");
-		log("Step 1: Click on 'login' tab");
-		generalIndexPage.clickOnLoginTab();
-		log("Step 2: Enter User Name");
-		log("Step 3: Enter Password");
-		log("<strong>User Name: </strong>"+userName_Owner);
-		log("<strong>Password: </strong>"+password_Owner);
-		log("Step 4: Click On 'Login' Button");
-		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
-		log("Step 5: Verify user logged in successfully");
-		if(dashboardPage.verifyDashboardPage())
-		{
-			log("<Strong><font color=#008000>Pass</font></strong>");
-		}
-		else
-		{
-			log("Fail");
-			numOfFailure++;
-		}
-		log("Step 6:Navigate to 'Team Member and Venue' Module");
-		generalVerificationPage = generalIndexPage.navigateToTeamMemberAndVenue();
-		log("Step 7:Verify 'Team Member and Venue' page");
-		if(generalVerificationPage.verifyTeamMemberAndVenuePage())
-		{
-			log("<Strong><font color=#008000>Pass</font></strong>");
-		}
-		else
-		{
-			log("Fail");
-			numOfFailure++;
-		}
-		log("Step 8: Click on 'New Member' Button");
-		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.clickOnNewMember();
-		log("Step 9: Verify 'Add Member' fields : Email and Role ");
-		if(teamMemberAndVenueVerificationPage.verifyAddMemberFields())
-		{
-			log("<Strong><font color=#008000>Pass</font></strong>");
-		}
-		else
-		{
-			log("Fail");
-			numOfFailure++;
-		}
-		log("Step 10: Fill required member detail and click on done button");
-		log("<b> Member Email: </b>"+ email);
-		log("<b> Member Role: </b>"+ role);
-		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.fillNewMemberDetail(email, role);
-		log("Step 11: Verify 'Verification Email' on 'mailinator.com' and click on 'Join Now' Link in mail content.");
-		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.verifyEmail(email);
-		log("Step 12: V`erify 'Join Team' form page");
-		if(teamMemberAndVenueVerificationPage.verifyJoinTeamForm())
-		{
-			log("<Strong><font color=#008000>Pass</font></strong>");
-		}
-		else
-		{
-			log("Fail");
-			numOfFailure++;
-		}
-		log("Step 13: Fill the required form detail");
-		dashboardPage = teamMemberAndVenueIndexPage.fillJoinForm();
-		log("Step 14: Verify 'Dashboard Page'");
-		if(dashboardPage.verifyDashboardPage())
-		{
-			log("<Strong><font color=#008000>Pass</font></strong>");
-		}
-		else
-		{
-			log("Fail");
-			numOfFailure++;
-		}
-		
-		if(numOfFailure>0)
-		{
-			Assert.assertTrue(false);
-		}
-	}
-
-	@Test
-	public void removeExistingMember()
-	{
-		Common common = new Common(driver);
-		int numOfFailure=0;
-		int numOfMemberBefore = 0;
-		log("<b><ul>Testcase ID: TC_TV_018</b></ul>");
-		log("<b><ul>TestScenario: To verify owner/admin should be able to 'Remove' exiting member</b></ul>");
-		log("Step 1: Click on 'login' tab");
-		generalIndexPage.clickOnLoginTab();
-		log("Step 2: Enter User Name");
-		log("Step 3: Enter Password");
-		log("<strong>User Name: </strong>"+userName_Owner);
-		log("<strong>Password: </strong>"+password_Owner);
-		log("Step 4: Click On 'Login' Button");
-		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
-		log("Step 5: Verify user logged in successfully");
-		if(dashboardPage.verifyDashboardPage())
-		{
-			log("<Strong><font color=#008000>Pass</font></strong>");
-		}
-		else
-		{
-			log("Fail");
-			numOfFailure++;
-		}
-		log("Step 6:Navigate to 'Team Member and Venue' Module");
-		generalVerificationPage = generalIndexPage.navigateToTeamMemberAndVenue();
-		log("Step 7:Verify 'Team Member and Venue' page");
-		if(generalVerificationPage.verifyTeamMemberAndVenuePage())
-		{
-			log("<Strong><font color=#008000>Pass</font></strong>");
-		}
-		else
-		{
-			log("Fail");
-			numOfFailure++;
-		}
-		By by = By.xpath(".//*[@id='members-table']/tbody/tr/td[1]");
-		numOfMemberBefore = common.getNumOfElements(driver, by);
-		log("Step 8: Now click on remove button of any existing member");
-		log("Step 9: Click on 'Ok' button in aleart");
-		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.removeMember();
-		log("Step 10: Verify deleted record on member list");
-		if(teamMemberAndVenueVerificationPage.verifyDeleteMember(numOfMemberBefore))
-		{
-			log("<Strong><font color=#008000>Pass</font></strong>");
-		}
-		else
-		{
-			log("Fail");
-			numOfFailure++;
-		}
-		
-		if(numOfFailure>0)
-		{
-			Assert.assertTrue(false);
-		}
-	}
-	
-	@Test
 	public void verifyCancelButtonWhileCreateVenue() throws InterruptedException
 	{
 		Common common = new Common(driver);
@@ -1029,5 +714,452 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		{
 			Assert.assertTrue(false);
 		}
+	}
+	
+	@Test
+	public void addMemmber_Admin() throws InterruptedException
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		//String email= "auto_"+RandomStringUtils.randomAlphabetic(4)+"@mailinator.com";
+		String role = "admin";
+		String currentWindow = driver.getWindowHandle();
+		System.out.println("Current Window Handle>>>>>>>>>"+currentWindow);
+		log("<b><ul>Testcase ID: TC_TV_016</b></ul>");
+		log("<b><ul>TestScenario: To verify owner/admin should be able to add new member with role 'Admin'</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 6:Navigate to 'Team Member and Venue' Module");
+		generalVerificationPage = generalIndexPage.navigateToTeamMemberAndVenue();
+		log("Step 7:Verify 'Team Member and Venue' page");
+		if(generalVerificationPage.verifyTeamMemberAndVenuePage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 8: Click on 'New Member' Button");
+		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.clickOnNewMember();
+		log("Step 9: Verify 'Add Member' fields : Email and Role ");
+		if(teamMemberAndVenueVerificationPage.verifyAddMemberFields())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 10: Fill required member detail and click on done button");
+		log("<b> Member Email: </b>"+ emailID_Admin);
+		log("<b> Member Role: </b>"+ role);
+		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.fillNewMemberDetail(emailID_Admin, role);
+		log("Step 11: Verify 'Verification Email' on 'mailinator.com' and click on 'Join Now' Link in mail content.");
+		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.verifyEmail(emailID_Admin);
+		log("Step 12: Verify 'Join Team' form page");
+		if(teamMemberAndVenueVerificationPage.verifyJoinTeamForm())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 13: Fill the required form detail");
+		dashboardPage = teamMemberAndVenueIndexPage.fillJoinForm();
+		log("Step 14: Verify 'Dashboard Page'");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+	}
+
+	@Test
+	public void addMemmber_Planner() throws InterruptedException
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		//String email= "auto_"+RandomStringUtils.randomAlphabetic(4)+"@mailinator.com";
+		String role = "planner";
+		log("<b><ul>Testcase ID: TC_TV_017</b></ul>");
+		log("<b><ul>TestScenario: To verify owner/admin should be able to add new member with role 'Planner'</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 6:Navigate to 'Team Member and Venue' Module");
+		generalVerificationPage = generalIndexPage.navigateToTeamMemberAndVenue();
+		log("Step 7:Verify 'Team Member and Venue' page");
+		if(generalVerificationPage.verifyTeamMemberAndVenuePage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 8: Click on 'New Member' Button");
+		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.clickOnNewMember();
+		log("Step 9: Verify 'Add Member' fields : Email and Role ");
+		if(teamMemberAndVenueVerificationPage.verifyAddMemberFields())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 10: Fill required member detail and click on done button");
+		log("<b> Member Email: </b>"+ emailID_Planner);
+		log("<b> Member Role: </b>"+ role);
+		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.fillNewMemberDetail(emailID_Planner, role);
+		log("Step 11: Verify 'Verification Email' on 'mailinator.com' and click on 'Join Now' Link in mail content.");
+		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.verifyEmail(emailID_Planner);
+		log("Step 12: Verify 'Join Team' form page");
+		if(teamMemberAndVenueVerificationPage.verifyJoinTeamForm())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 13: Fill the required form detail");
+		dashboardPage = teamMemberAndVenueIndexPage.fillJoinForm();
+		log("Step 14: Verify 'Dashboard Page'");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+	}
+
+	@Test
+	public void addMemmber_LimitedPlanner() throws InterruptedException
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		//String email= "auto_"+RandomStringUtils.randomAlphabetic(4)+"@mailinator.com";
+		String role = "limited planner";
+		log("<b><ul>Testcase ID: TC_TV_018</b></ul>");
+		log("<b><ul>TestScenario: To verify owner/admin should be able to add new member with role 'Limited Planner'</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 6:Navigate to 'Team Member and Venue' Module");
+		generalVerificationPage = generalIndexPage.navigateToTeamMemberAndVenue();
+		log("Step 7:Verify 'Team Member and Venue' page");
+		if(generalVerificationPage.verifyTeamMemberAndVenuePage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 8: Click on 'New Member' Button");
+		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.clickOnNewMember();
+		log("Step 9: Verify 'Add Member' fields : Email and Role ");
+		if(teamMemberAndVenueVerificationPage.verifyAddMemberFields())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 10: Fill required member detail and click on done button");
+		log("<b> Member Email: </b>"+ emailID_LimitedPlanner);
+		log("<b> Member Role: </b>"+ role);
+		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.fillNewMemberDetail(emailID_LimitedPlanner, role);
+		log("Step 11: Verify 'Verification Email' on 'mailinator.com' and click on 'Join Now' Link in mail content.");
+		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.verifyEmail(emailID_LimitedPlanner);
+		log("Step 12: V`erify 'Join Team' form page");
+		if(teamMemberAndVenueVerificationPage.verifyJoinTeamForm())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 13: Fill the required form detail");
+		dashboardPage = teamMemberAndVenueIndexPage.fillJoinForm();
+		log("Step 14: Verify 'Dashboard Page'");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+	}
+
+	@Test
+	public void removeExistingMember()
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		int numOfMemberBefore = 0;
+		log("<b><ul>Testcase ID: TC_TV_018</b></ul>");
+		log("<b><ul>TestScenario: To verify owner/admin should be able to 'Remove' exiting member</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 6:Navigate to 'Team Member and Venue' Module");
+		generalVerificationPage = generalIndexPage.navigateToTeamMemberAndVenue();
+		log("Step 7:Verify 'Team Member and Venue' page");
+		if(generalVerificationPage.verifyTeamMemberAndVenuePage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		By by = By.xpath(".//*[@id='members-table']/tbody/tr/td[1]");
+		numOfMemberBefore = common.getNumOfElements(driver, by);
+		log("Step 8: Now click on remove button of any existing member");
+		log("Step 9: Click on 'Ok' button in aleart");
+		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.removeMember();
+		log("Step 10: Verify deleted record on member list");
+		if(teamMemberAndVenueVerificationPage.verifyDeleteMember(numOfMemberBefore))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+	}	
+
+	@Test
+	public void verifyCancelButtonFunctionality() throws InterruptedException
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		String currentWindow = driver.getWindowHandle();
+		System.out.println("Current Window Handle>>>>>>>>>"+currentWindow);
+		log("<b><ul>Testcase ID: TC_TV_021</b></ul>");
+		log("<b><ul>TestScenario: To verify 'cancel' functionality in Add member</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 6:Navigate to 'Team Member and Venue' Module");
+		generalVerificationPage = generalIndexPage.navigateToTeamMemberAndVenue();
+		log("Step 7:Verify 'Team Member and Venue' page");
+		if(generalVerificationPage.verifyTeamMemberAndVenuePage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 8: Click on 'New Member' Button");
+		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.clickOnNewMember();
+		log("Step 9: Verify 'Add Member' fields : Email and Role ");
+		if(teamMemberAndVenueVerificationPage.verifyAddMemberFields())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 10: Click on 'Cancel' button");
+		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.clickOnCancel();
+		log("Step 11: Verify added new member fields are disappear from grid");
+		if(teamMemberAndVenueVerificationPage.verifyCancelButtonInMember())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+	}
+	
+	@Test
+	public void verifyAdminNotAbleToDrawVenue() throws InterruptedException
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		String currentWindow = driver.getWindowHandle();
+		System.out.println("Current Window Handle>>>>>>>>>"+currentWindow);
+		log("<b><ul>Testcase ID: TC_TV_026</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Admin' not able to 'Draw venue'</b></ul>");
+		log("Step 1: Click on 'login' tab [Login As Admin].");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Admin);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Admin, password_Owner);
+		log("Step 5: Verify Admin logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 6:Navigate to 'Team Member and Venue' Module");
+		generalVerificationPage = generalIndexPage.navigateToTeamMemberAndVenue();
+		log("Step 7:Verify 'Team Member and Venue' page");
+		if(generalVerificationPage.verifyTeamMemberAndVenuePage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 8: Now verify 'Draw Venue' button should not appeare.");
+		if(teamMemberAndVenueVerificationPage.verifyDrawVenueNotDisplay())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+		
 	}
 }

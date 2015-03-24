@@ -287,8 +287,8 @@ public class TeamMemberAndVenueIndexPage extends AbstractPage
 		common.pause(2);
 		txtJobtitle.sendKeys("Auto-"+org.apache.commons.lang.RandomStringUtils.randomAlphabetic(3));
 		txtName.sendKeys("Auto "+RandomStringUtils.randomAlphabetic(4));
-		txtPassword.sendKeys("patel22781");
-		txtConfirmPassword.sendKeys("patel22781");
+		txtPassword.sendKeys(password_Owner);
+		txtConfirmPassword.sendKeys(password_Owner);
 		btnStartPlanningButton.click();
 		common.pause(2);
 		
