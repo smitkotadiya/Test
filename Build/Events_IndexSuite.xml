@@ -17,7 +17,7 @@
 	<parameter name="selenium.url" value="https://lab.socialtables.com/" />
  
  
-<test 	name="To verify New Event functionality.">
+<!-- <test 	name="To verify New Event functionality.">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -215,9 +215,9 @@
 			</methods>
 		</class>
 	</classes>
-</test>
+</test> -->
 
-<test 	name="To verify 'Add Attendee' functionality in 'Attendee Manager' page. ">
+<!-- <test 	name="To verify 'Add Attendee' functionality in 'Attendee Manager' page. ">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -248,7 +248,7 @@
 			</methods>
 		</class>
 	</classes>
-</test>
+</test> -->
 
 <test 	name="To verify 'Add Tag' functionality in 'Attendee Manager' ">
 	<classes>

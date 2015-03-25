@@ -72,5 +72,11 @@ public class AttendeeManagerPage extends AbstractPage
 		WebElement ele = driver.findElement(By.xpath("//li[contains(@class,'tags')]/ul/li/a[contains(.,'"+tagName+"')]"));
 		return ele.isDisplayed();
 	}
+	
+	public boolean verifyAssignedTag(String tagName)
+	{
+		WebElement ele = driver.findElement(By.xpath("//div[@id='glmContainer']/div[contains(@class,'glm-grid')]/div[@class='kgNoSelect']/div[@class='kgViewport']/div[@class='kgCanvas']/div/div[1]/div/div[contains(.,'"+tagName+"')]"));
+		return ele.isDisplayed();
+	}
 
 }

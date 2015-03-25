@@ -135,8 +135,10 @@ public class EventIndexPage extends AbstractPage
 		if(criteria.equalsIgnoreCase("Add") && isAttendeeEnable)
 		{
 			common.type(txtEventName, eventName);
+			common.pause(2);
 			WebElement eventTypeButton=driver.findElement(By.xpath("//div[@class='event-type-container']/div/input[@value='"+eventType+"']"));
 			eventTypeButton.click();
+			common.pause(2);
 			usesMatricUnitCheckBox.click();
 			btnDoneInEventInfo.click();
 			common.pause(2);
@@ -144,6 +146,7 @@ public class EventIndexPage extends AbstractPage
 		else
 		{
 			common.type(txtEventName, eventName);
+			common.pause(2);
 			btnDoneInEventInfo.click();
 			common.pause(2);
 		}
@@ -413,8 +416,20 @@ public class EventIndexPage extends AbstractPage
 		tabAddTag.click();
 		common.pause(2);
 		common.type(txtTagName, tagName);
-		driver.findElement(By.xpath("//body")).sendKeys(Keys.ENTER);
 		common.pause(2);
+		txtTagName.sendKeys(Keys.RETURN);
+		common.pause(2);
+		return new AttendeeManagerPage(driver);
+	}
+	
+	public AttendeeManagerPage assignAttributeToAttendee(String name)
+	{
+		WebElement checkBox = driver.findElement(By.xpath("//div[@id='glmContainer']/div[contains(@class,'glm-grid')]/div[@class='kgNoSelect']/div[@class='kgViewport']/div[@class='kgCanvas']/div/div[1]/div/div[contains(@class,'koCellCheckBox')]/div"));
+		checkBox.click();
+		common.pause(2);
+		driver.findElement(By.xpath("//li[contains(@class,'tags')]/ul/li/a[contains(.,'"+name+"')]")).click();
+		common.pause(2);
+		//div[@id='glmContainer']/div[contains(@class,'glm-grid')]/div[@class='kgNoSelect']/div[@class='kgViewport']/div[@class='kgCanvas']/div/div[1]/div/div[contains(.,'sas')]
 		return new AttendeeManagerPage(driver);
 	}
 	

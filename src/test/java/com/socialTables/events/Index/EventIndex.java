@@ -1822,6 +1822,18 @@ public class EventIndex extends SeleniumInit
 			log("Fail");
 			numOfFailure++;
 		}
+		log("Step 17: Assign Tag to any available attendee");
+		attendeeManagerPage = eventIndexPage.assignAttributeToAttendee(tagName);
+		log("Step 18: Verify assigned tag");
+		if(attendeeManagerPage.verifyAssignedTag(tagName))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
 		
 		if(numOfFailure>0)
 		{
