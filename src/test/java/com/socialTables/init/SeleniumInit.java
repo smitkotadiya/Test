@@ -61,8 +61,8 @@ public class SeleniumInit  {
 	public String currentWindowHandle = "";
 
 	// Variables For Login 
-	public String userName_Owner="nishil.patel@kiwiqa.com";
-	public String userName_Admin="nishilpatel81@gmail.com";
+	public String userName_Owner="piyush.patel@kiwiqa.com";
+	public String userName_Admin="nishil.patel@kiwiqa.com";
 	public String userName_Planner="viral.patel@kiwiqa.com";
 	public String userName_LPlanner="smit.kotadiya@kiwiqa.com";
 	public String password_Owner="patel22781";
@@ -125,7 +125,6 @@ public class SeleniumInit  {
 				"selenium.browser");
 
 	}
-	//new code====
 	
 
 	/**
@@ -296,7 +295,6 @@ public class SeleniumInit  {
 		teamMemberAndVenueVerificationPage = new TeamMemberAndVenueVerificationPage(driver);
 		eventThreeDPage = new  EventThreeDPage(driver);
 		attendeeManagerPage = new AttendeeManagerPage(driver);
-		
 		teamSettingsIndexPage = new TeamSettingsIndexPage(driver);
 		teamSettingsPage = new TeamSettingsPage(driver);
 

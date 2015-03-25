@@ -14,7 +14,7 @@
 	<!-- @NOTE: 1) Un-comment <test> tag to run respective test. 2) Comment 
 		<test> tag to unrun respective test. -->
 	<parameter name="selenium.browser" value="firefox" />
-	<parameter name="selenium.url" value="https://dev.socialtables.com/" />
+	<parameter name="selenium.url" value="https://lab.socialtables.com/" />
  
   <!-- <test 	name="To verify Create New Venue functionality.">
 	<classes>

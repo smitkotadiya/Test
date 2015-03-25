@@ -24,15 +24,8 @@ public class AttendeeManagerPage extends AbstractPage
 	
 	public boolean verifyAttendeeManagerPage()
 	{
-	
-		if(verifyAttendeePage.isDisplayed())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+
+		return verifyAttendeePage.isDisplayed();
 	}
 	
 	public boolean verifyAddedGuestInGrid(int numOfGuest,int addedGuest)

@@ -31,27 +31,13 @@ public class EventCreationPage extends AbstractPage
 
 	public boolean verifyEventCreationPage()
 	{
-		if(verifyEventCreationForm.isDisplayed())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return verifyEventCreationForm.isDisplayed();
 	}
 	
 	public boolean verifyRoomSettingPage()
 	{
 		common.pause(2);
-		if(verifyRoomSetingForm.isDisplayed())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return verifyRoomSetingForm.isDisplayed();
 	}
 
 	public boolean verifyEventNameHeader(String eventName)
@@ -71,14 +57,7 @@ public class EventCreationPage extends AbstractPage
 	
 	public boolean verifyAttendeeListEnable()
 	{
-		if(verifyAttedeeTab.isEnabled())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return verifyAttedeeTab.isEnabled();
 	}
 	
 	public boolean verifySearchedRoom(String searchString)
@@ -104,27 +83,13 @@ public class EventCreationPage extends AbstractPage
 	{
 		WebElement roomTab = driver.findElement(By.xpath("//ul[@id='sortable-rooms']/li/a[contains(.,'"+roomName+"')]"));
 		System.out.println(roomTab.getText());
-		if(roomTab.isDisplayed())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return roomTab.isDisplayed();
 	}
 	
 	public boolean verifyShareEventDialogBox()
 	{
 		
-		if(verifyShareDialog.isDisplayed())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return verifyShareDialog.isDisplayed();
 	}
 	
 	

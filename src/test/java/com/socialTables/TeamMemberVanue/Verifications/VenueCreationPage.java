@@ -27,38 +27,17 @@ public class VenueCreationPage extends AbstractPage
 
 	public boolean verifyVenuePage()
 	{
-		if(verifyCreateEventPage.isDisplayed())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return verifyCreateEventPage.isDisplayed();
 	}
 	
 	public boolean verifyBackgroundPage()
 	{
-		if(verifyBackgroundPage.isDisplayed())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return verifyBackgroundPage.isDisplayed();
 	}
 	
 	public boolean verifyFloorPlanPage()
 	{
-		if(verifyFloorPlanPage.isDisplayed())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return verifyFloorPlanPage.isDisplayed();
 	}
 	
 }

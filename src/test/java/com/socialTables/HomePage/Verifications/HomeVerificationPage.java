@@ -23,14 +23,7 @@ public class HomeVerificationPage extends AbstractPage
 
 	public boolean verifyInvalidLogin()
 	{
-		if(verifyInvalidLoginMsg.isDisplayed())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return verifyInvalidLoginMsg.isDisplayed();
 	}
 	
 }

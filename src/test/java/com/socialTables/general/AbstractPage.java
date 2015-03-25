@@ -7,10 +7,6 @@ import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 
 import com.socialTables.init.SeleniumInit;
 
-
-
-
-
 public abstract class AbstractPage extends SeleniumInit 
 {
 	

@@ -135,14 +135,7 @@ public class TeamMemberAndVenueVerificationPage extends AbstractPage
 	
 	public boolean verifyAddMemberFields()
 	{
-		if(txtMemberEmail.isDisplayed() && selectMemberRole.isDisplayed())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return txtMemberEmail.isDisplayed() && selectMemberRole.isDisplayed();
 	}
 	
 	public boolean verifyDrawVenueNotDisplay()
@@ -159,14 +152,7 @@ public class TeamMemberAndVenueVerificationPage extends AbstractPage
 	
 	public boolean verifyJoinTeamForm()
 	{
-		if(verifyJoinNowForm.isDisplayed())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return verifyJoinNowForm.isDisplayed();
 	}
 	
 	public boolean verifyPlannerAccess()

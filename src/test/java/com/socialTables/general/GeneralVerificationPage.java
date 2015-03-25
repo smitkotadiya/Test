@@ -58,98 +58,42 @@ public class GeneralVerificationPage extends AbstractPage
 	
 	public boolean verifyTeamMemberAndVenuePage()
 	{
-		if(verifyTeamMemberAndVenue.isDisplayed())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return verifyTeamMemberAndVenue.isDisplayed();
 	}
 	
 	public boolean verifyTeamSettings()
 	{
-		if(verifyTeamSettings.isDisplayed())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return verifyTeamSettings.isDisplayed();
 	}
 	
 	public boolean verifyStatistics()
 	{
-		if(verifyStatistics.isDisplayed())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return verifyStatistics.isDisplayed();
 	}
 	
 	public boolean verifyTableDesigner()
 	{
-		if(verifyTableDesigner.isDisplayed())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return verifyTableDesigner.isDisplayed();
 	}
 	
 	public boolean verifyMailInMailinatorInbox(String from)
 	{
 		String mailFrom = driver.findElement(By.xpath(".//*[@id='mailcontainer']/li/a/div[contains(@class,'from')]")).getText();
-		if(from.equalsIgnoreCase(mailFrom))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return from.equalsIgnoreCase(mailFrom);
 	}
 	
 	public boolean verifyChangePasswordPage()
 	{
-		if(verifyChangePassword.isDisplayed())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return verifyChangePassword.isDisplayed();
 	}
 	
 	public boolean verifyEventPage()
 	{
-		if(verifyEventpage.isDisplayed())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return verifyEventpage.isDisplayed();
 	}
 	
 	public boolean verifyLogout()
 	{
-		if(verifyLogout.isDisplayed())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return verifyLogout.isDisplayed();
 	}
 }

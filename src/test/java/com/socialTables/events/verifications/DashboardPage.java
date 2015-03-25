@@ -34,14 +34,7 @@ public class DashboardPage extends AbstractPage
 	
 	public boolean verifyDashboardPage()
 	{
-		if(verifyDashboardPage.isDisplayed())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return verifyDashboardPage.isDisplayed();
 	}
 	
 	public boolean verifyAddedEvent(int numOfEvents,String eventName)
@@ -331,13 +324,6 @@ public class DashboardPage extends AbstractPage
 	
 	public boolean verifyDashboardTutorial()
 	{
-		if(verifyDashboardTutorialLink.isDisplayed())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return verifyDashboardTutorialLink.isDisplayed();
 	}
 }
