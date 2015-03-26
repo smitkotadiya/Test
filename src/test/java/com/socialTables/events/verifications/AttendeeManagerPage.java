@@ -73,10 +73,21 @@ public class AttendeeManagerPage extends AbstractPage
 		return ele.isDisplayed();
 	}
 	
+	public boolean verifyAddedMeal(String mealName)
+	{
+		WebElement ele = driver.findElement(By.xpath("//li[contains(@class,'meal')]/ul/li/a[contains(.,'"+mealName+"')]"));
+		return ele.isDisplayed();
+	}
+	
 	public boolean verifyAssignedTag(String tagName)
 	{
 		WebElement ele = driver.findElement(By.xpath("//div[@id='glmContainer']/div[contains(@class,'glm-grid')]/div[@class='kgNoSelect']/div[@class='kgViewport']/div[@class='kgCanvas']/div/div[1]/div/div[contains(.,'"+tagName+"')]"));
 		return ele.isDisplayed();
 	}
 
+	public boolean verifyAssignedMeal(String mealName)
+	{
+		WebElement ele = driver.findElement(By.xpath("//div[@id='glmContainer']/div[contains(@class,'glm-grid')]/div[@class='kgNoSelect']/div[@class='kgViewport']/div[@class='kgCanvas']/div/div[1]/div/div[contains(.,'"+mealName+"')]"));
+		return ele.isDisplayed();
+	}
 }

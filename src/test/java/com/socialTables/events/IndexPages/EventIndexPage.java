@@ -134,6 +134,7 @@ public class EventIndexPage extends AbstractPage
 	{
 		if(criteria.equalsIgnoreCase("Add") && isAttendeeEnable)
 		{
+			common.pause(2);
 			common.type(txtEventName, eventName);
 			common.pause(2);
 			WebElement eventTypeButton=driver.findElement(By.xpath("//div[@class='event-type-container']/div/input[@value='"+eventType+"']"));
@@ -422,16 +423,46 @@ public class EventIndexPage extends AbstractPage
 		return new AttendeeManagerPage(driver);
 	}
 	
-	public AttendeeManagerPage assignAttributeToAttendee(String name)
+	
+	public AttendeeManagerPage assignTagToAttendee(String name)
 	{
-		WebElement checkBox = driver.findElement(By.xpath("//div[@id='glmContainer']/div[contains(@class,'glm-grid')]/div[@class='kgNoSelect']/div[@class='kgViewport']/div[@class='kgCanvas']/div/div[1]/div/div[contains(@class,'koCellCheckBox')]/div"));
+		WebElement checkBox = driver.findElement(By.xpath("//div[@id='glmContainer']/div[contains(@class,'glm-grid')]/div[@class='kgNoSelect']/div[@class='kgViewport']/div[@class='kgCanvas']/div/div[1]/div/div[contains(@class,'koCellCheckBox')]/div/div[contains(@class,'kgCheckbox')]"));
+		common.highlightElement(driver, checkBox);
 		checkBox.click();
 		common.pause(2);
 		driver.findElement(By.xpath("//li[contains(@class,'tags')]/ul/li/a[contains(.,'"+name+"')]")).click();
+		//driver.findElement(By.xpath("//li[contains(@class,'tags')]/ul/li[1]/input[@class='glm-tag-color']")).click();
 		common.pause(2);
 		//div[@id='glmContainer']/div[contains(@class,'glm-grid')]/div[@class='kgNoSelect']/div[@class='kgViewport']/div[@class='kgCanvas']/div/div[1]/div/div[contains(.,'sas')]
 		return new AttendeeManagerPage(driver);
 	}
+	
+	public AttendeeManagerPage enterMeal(String mealName)
+	{
+		tabAddMeal.click();
+		common.pause(2);
+		common.type(txtMealName, mealName);
+		common.pause(2);
+		txtTagName.sendKeys(Keys.RETURN);
+		common.pause(2);
+		
+		return new AttendeeManagerPage(driver);
+	}
+	
+	public AttendeeManagerPage assignMealToAttendee(String name)
+	{
+		WebElement checkBox = driver.findElement(By.xpath("//div[@id='glmContainer']/div[contains(@class,'glm-grid')]/div[@class='kgNoSelect']/div[@class='kgViewport']/div[@class='kgCanvas']/div/div[1]/div/div[contains(@class,'koCellCheckBox')]/div/div[contains(@class,'kgCheckbox')]"));
+		common.highlightElement(driver, checkBox);
+		checkBox.click();
+		common.pause(2);
+		List<WebElement> ele = driver.findElements(By.xpath("//li[contains(@class,'meals')]/ul/li/a[contains(.,'"+name+"')]"));
+		ele.get(0).click();
+		//driver.findElement(By.xpath("//li[contains(@class,'tags')]/ul/li[1]/input[@class='glm-tag-color']")).click();
+		common.pause(2);
+		//div[@id='glmContainer']/div[contains(@class,'glm-grid')]/div[@class='kgNoSelect']/div[@class='kgViewport']/div[@class='kgCanvas']/div/div[1]/div/div[contains(.,'sas')]
+		return new AttendeeManagerPage(driver);
+	}
+	
 	
 	
 }

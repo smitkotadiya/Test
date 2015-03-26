@@ -1736,10 +1736,11 @@ public class EventIndex extends SeleniumInit
 		String eventName = "Auto-"+RandomStringUtils.randomAlphanumeric(2);
 		String eventType = "gala";
 		String tagName = "Auto-Tag";
+		String mealName = "Auto-Meal";
 		int numOfGuestInGrid = 0;
 		boolean isAttendeeEnable = true;
 		log("<b><ul>Testcase ID: TC_EV_042</b></ul>");
-		log("<b><ul>TestScenario: To verify 'Add Attendee' functionality in 'Attendee Manager' page.</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Add Tag' functionality in 'Attendee Manager'.</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
@@ -1823,9 +1824,33 @@ public class EventIndex extends SeleniumInit
 			numOfFailure++;
 		}
 		log("Step 17: Assign Tag to any available attendee");
-		attendeeManagerPage = eventIndexPage.assignAttributeToAttendee(tagName);
+		attendeeManagerPage = eventIndexPage.assignTagToAttendee(tagName);
 		log("Step 18: Verify assigned tag");
 		if(attendeeManagerPage.verifyAssignedTag(tagName))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 19: Add meal by clicking on 'Meal' tab");
+		attendeeManagerPage = eventIndexPage.assignMealToAttendee(mealName);
+		log("Step 20: Verify added meal");
+		if(attendeeManagerPage.verifyAddedMeal(mealName))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 21: Assign Meal to any available attendee");
+		attendeeManagerPage = eventIndexPage.assignMealToAttendee(mealName);
+		log("Step 22: Verify assigned meal");
+		if(attendeeManagerPage.verifyAssignedMeal(mealName))
 		{
 			log("<Strong><font color=#008000>Pass</font></strong>");
 		}
