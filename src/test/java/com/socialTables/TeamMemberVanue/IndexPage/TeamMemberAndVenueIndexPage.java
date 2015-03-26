@@ -86,6 +86,9 @@ public class TeamMemberAndVenueIndexPage extends AbstractPage
 	@FindBy(xpath="//a[contains(.,'Back to Background Details')]")
 	private WebElement backToBackgroundLink;
 	
+	@FindBy(xpath="//button[contains(.,'Resend Email') and not(contains(@style,'display: none;'))]")
+	private WebElement btnResendButton;
+	
 	
 	Common common = new Common(driver);
 	public TeamMemberAndVenueIndexPage(WebDriver driver) 
@@ -339,4 +342,10 @@ public class TeamMemberAndVenueIndexPage extends AbstractPage
 		return new VenueCreationPage(driver);
 	}
 	
+	public TeamMemberAndVenueVerificationPage clickOnResendEmail()
+	{
+		btnResendButton.click();
+		common.pause(2);
+		return new TeamMemberAndVenueVerificationPage(driver);
+	}
 }

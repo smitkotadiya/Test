@@ -29,6 +29,7 @@ public class TeamMemberAndVenueVerificationPage extends AbstractPage
 	@FindBy(xpath="//div[@class='contextual-links']/a[contains(.,'Corporate Dashboard')]")
 	private WebElement verifyDashboardNotDisplay;
 	
+	
 	Common common = new Common(driver);
 	
 	public TeamMemberAndVenueVerificationPage(WebDriver driver) 
@@ -165,6 +166,37 @@ public class TeamMemberAndVenueVerificationPage extends AbstractPage
 		catch(Exception e)
 		{
 			return true;
+		}
+	}
+	
+	public boolean verifyInvitationEmail(String email)
+	{
+		common.openUrlInNewTab(driver, "http://mailinator.com/");
+		driver.findElement(By.id("inboxfield")).sendKeys(email);
+		driver.findElement(By.xpath("//btn[contains(.,'Check it')]")).click();
+		common.pause(2);
+		List<WebElement> eles = driver.findElements(By.xpath("//li[contains(@class,'message')]"));
+		if(eles.size()==1)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public boolean verifyResendEmailFunctionality()
+	{
+		common.pause(2);
+		List<WebElement> eles = driver.findElements(By.xpath("//li[contains(@class,'message')]"));
+		if(eles.size()==2)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
 		}
 	}
 }

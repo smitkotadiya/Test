@@ -2,6 +2,7 @@ package com.socialTables.TeamMemberVanue.Index;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -976,6 +977,96 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		}
 	}
 
+	@Test
+	public void verifyResendEmailFeature() throws InterruptedException
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		//String email= "auto_"+RandomStringUtils.randomAlphabetic(4)+"@mailinator.com";
+		String role = "admin";
+		String currentWindow = driver.getWindowHandle();
+		System.out.println("Current Window Handle>>>>>>>>>"+currentWindow);
+		log("<b><ul>Testcase ID: TC_TV_016</b></ul>");
+		log("<b><ul>TestScenario: To verify owner/admin should be able to add new member with role 'Admin'</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 6:Navigate to 'Team Member and Venue' Module");
+		generalVerificationPage = generalIndexPage.navigateToTeamMemberAndVenue();
+		log("Step 7:Verify 'Team Member and Venue' page");
+		if(generalVerificationPage.verifyTeamMemberAndVenuePage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 8: Click on 'New Member' Button");
+		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.clickOnNewMember();
+		log("Step 9: Verify 'Add Member' fields : Email and Role ");
+		if(teamMemberAndVenueVerificationPage.verifyAddMemberFields())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 10: Fill required member detail and click on done button");
+		log("<b> Member Email: </b>"+ emailID_Admin);
+		log("<b> Member Role: </b>"+ role);
+		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.fillNewMemberDetail(emailID_Admin, role);
+		log("Step 11: Verify 'Verification Email' on 'mailinator.com'.");
+		if(teamMemberAndVenueVerificationPage.verifyInvitationEmail(emailID_Admin))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		driver.findElement(By.xpath("//body")).sendKeys(Keys.COMMAND+"1");
+		common.pause(2);
+		log("Step 12: Now click on 'Resend Email' button");
+		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.clickOnResendEmail();
+		log("Step 13: Verify email on mailinator");
+		driver.findElement(By.xpath("//body")).sendKeys(Keys.COMMAND+"1");
+		driver.navigate().refresh();
+		if(teamMemberAndVenueVerificationPage.verifyResendEmailFunctionality())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+		
+	}
+	
 	@Test
 	public void removeExistingMember()
 	{

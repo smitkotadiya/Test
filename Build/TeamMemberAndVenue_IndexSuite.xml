@@ -80,6 +80,19 @@
 		</class>
 	</classes>
 </test> -->
+
+<test 	name="To verify 'Resend Email' functionality in add member">
+	<classes>
+		<class
+			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
+			<methods>
+				<include name="verifyResendEmailFeature" />
+			</methods>
+		</class>
+	</classes>
+</test>
+
+
 <!-- <test 	name="To verify owner/admin should be able to remove existing member">
 	<classes>
 		<class
@@ -167,7 +180,7 @@
 	</classes>
 </test> -->
 
-<test 	name="To verify 'Planner' should not able to view 'Team Member' tab">
+<!-- <test 	name="To verify 'Planner' should not able to view 'Team Member' tab">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -176,7 +189,7 @@
 			</methods>
 		</class>
 	</classes>
-</test>
+</test> -->
 
 
 </suite>
