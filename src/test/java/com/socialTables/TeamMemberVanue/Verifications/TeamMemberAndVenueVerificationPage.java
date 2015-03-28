@@ -96,15 +96,21 @@ public class TeamMemberAndVenueVerificationPage extends AbstractPage
 	
 	public boolean verifySearchVenue(String venueName)
 	{
-		String searchedVenue = driver.findElement(By.xpath("//div[contains(@class,'listings-container')]/div[contains(@class,'floorplan')][1]/div")).getText();
-		if(searchedVenue.equalsIgnoreCase(venueName))
+		boolean bool = false;
+		List<WebElement> searchedVenues = driver.findElements(By.xpath("//div[@class='listing-name']"));
+		for(WebElement ele: searchedVenues)
 		{
-			return true;
+			if(venueName.equalsIgnoreCase(ele.getText()))
+			{
+				bool = true;
+			}
+			else
+			{
+				bool = false;
+				break;
+			}
 		}
-		else
-		{
-			return false;
-		}
+		return bool;
 	}
 	
 	public boolean verifyDeleteMember(int numOfMemberBefore)

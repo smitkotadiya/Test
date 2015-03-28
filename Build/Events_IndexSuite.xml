@@ -12,10 +12,15 @@
 	
 
 	<!-- @NOTE: 1) Un-comment <test> tag to run respective test. 2) Comment 
-		<test> tag to unrun respective test. -->
+		<test> tag to unrun respective test. <listener class-name="com.socialTables.init.RetryConterManagerListener"/>  -->
 	<parameter name="selenium.browser" value="firefox" />
 	<parameter name="selenium.url" value="https://lab.socialtables.com/" />
  
+ <listeners>
+        <listener class-name="com.socialTables.init.RetryTestListener"/>
+         
+        
+ </listeners>
  
 <!-- <test 	name="To verify New Event functionality.">
 	<classes>
@@ -46,7 +51,7 @@
 			</methods>
 		</class>
 	</classes>
-</test>
+</test> -->
 <test 	name="To verify event counter label functionality.">
 	<classes>
 		<class
@@ -57,7 +62,7 @@
 		</class>
 	</classes>
 </test>
-<test 	name="To verify all Filtration functionality..">
+<!-- <test 	name="To verify all Filtration functionality..">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -97,8 +102,8 @@
 			</methods>
 		</class>
 	</classes>
-</test>
-
+</test> -->
+<!-- 
 <test 	name="To verify previous functionality in  Event ">
 	<classes>
 		<class
@@ -139,8 +144,8 @@
 			</methods>
 		</class>
 	</classes>
-</test>
-
+</test> -->
+<!-- 
 <test 	name="To verify 'Guest List Enable' functionality in 'Event Information'. ">
 	<classes>
 		<class
@@ -242,7 +247,7 @@
 <test 	name="To verify 'Delete' functionality in 'Attendee Manager' ">
 	<classes>
 		<class
-			name="com.socialTables.events.Index.EventIndex">
+			name="com.socialTables.events.Index.EventIndex">xss
 			<methods>
 				<include name="deleteAttendeeInAttendeeManager" />
 			</methods>

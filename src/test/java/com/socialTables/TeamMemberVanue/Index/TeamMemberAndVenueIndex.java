@@ -6,7 +6,7 @@ import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.socialTables.TeamMemberVanue.Verifications.VenueCreationPage;
+
 import com.socialTables.init.Common;
 import com.socialTables.init.SeleniumInit;
 

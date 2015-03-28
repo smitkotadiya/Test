@@ -48,6 +48,17 @@
 	</classes>
 </test> -->
 
+<test 	name="To verify Search Venue functionality">
+	<classes>
+		<class
+			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
+			<methods>
+				<include name="searchVenuefunctionality" />
+			</methods>
+		</class>
+	</classes>
+</test>
+
  <!-- <test 	name="To verify owner/admin should be able to add new member with role Admin.">
 	<classes>
 		<class
@@ -81,7 +92,7 @@
 	</classes>
 </test> -->
 
-<test 	name="To verify 'Resend Email' functionality in add member">
+<!-- <test 	name="To verify 'Resend Email' functionality in add member">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -90,7 +101,7 @@
 			</methods>
 		</class>
 	</classes>
-</test>
+</test> -->
 
 
 <!-- <test 	name="To verify owner/admin should be able to remove existing member">
