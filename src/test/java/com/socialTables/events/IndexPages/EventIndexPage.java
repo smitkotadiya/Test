@@ -443,7 +443,7 @@ public class EventIndexPage extends AbstractPage
 		common.pause(2);
 		common.type(txtMealName, mealName);
 		common.pause(2);
-		txtTagName.sendKeys(Keys.RETURN);
+		txtMealName.sendKeys(Keys.RETURN);
 		common.pause(2);
 		
 		return new AttendeeManagerPage(driver);

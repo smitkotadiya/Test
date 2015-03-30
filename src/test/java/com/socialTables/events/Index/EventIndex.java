@@ -1836,7 +1836,7 @@ public class EventIndex extends SeleniumInit
 			numOfFailure++;
 		}
 		log("Step 19: Add meal by clicking on 'Meal' tab");
-		attendeeManagerPage = eventIndexPage.assignMealToAttendee(mealName);
+		attendeeManagerPage = eventIndexPage.enterMeal(mealName);
 		log("Step 20: Verify added meal");
 		if(attendeeManagerPage.verifyAddedMeal(mealName))
 		{

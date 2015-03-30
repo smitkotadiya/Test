@@ -16,11 +16,11 @@
 	<parameter name="selenium.browser" value="firefox" />
 	<parameter name="selenium.url" value="https://lab.socialtables.com/" />
  
- <listeners>
+ <!-- <listeners>
         <listener class-name="com.socialTables.init.RetryTestListener"/>
          
         
- </listeners>
+ </listeners> -->
  
 <!-- <test 	name="To verify New Event functionality.">
 	<classes>
@@ -52,7 +52,7 @@
 		</class>
 	</classes>
 </test> -->
-<test 	name="To verify event counter label functionality.">
+<!-- <test 	name="To verify event counter label functionality.">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -61,8 +61,8 @@
 			</methods>
 		</class>
 	</classes>
-</test>
-<!-- <test 	name="To verify all Filtration functionality..">
+</test> -->
+ <!-- <test 	name="To verify all Filtration functionality..">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -81,8 +81,8 @@
 			</methods>
 		</class>
 	</classes>
-</test>
-<test 	name="To verify Clone  Event functionality..">
+</test> -->
+ <!-- <test 	name="To verify Clone  Event functionality..">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -93,48 +93,6 @@
 	</classes>
 </test>
 
-<test 	name="To verify Upcomming functionality in  Event ">
-	<classes>
-		<class
-			name="com.socialTables.events.Index.EventIndex">
-			<methods>
-				<include name="upCommingEventFunctionality" />
-			</methods>
-		</class>
-	</classes>
-</test> -->
-<!-- 
-<test 	name="To verify previous functionality in  Event ">
-	<classes>
-		<class
-			name="com.socialTables.events.Index.EventIndex">
-			<methods>
-				<include name="previousEventFunctionality" />
-			</methods>
-		</class>
-	</classes>
-</test>
-
-<test 	name="To verify Dashboard tutorial link ">
-	<classes>
-		<class
-			name="com.socialTables.events.Index.EventIndex">
-			<methods>
-				<include name="dashBoardTutorialLinkVerification" />
-			</methods>
-		</class>
-	</classes>
-</test>
-<test 	name="To verify All Header Links in  Event ">
-	<classes>
-		<class
-			name="com.socialTables.events.Index.EventIndex">
-			<methods>
-				<include name="verifyAllHeaderLinks" />
-			</methods>
-		</class>
-	</classes>
-</test>
 <test 	name="To verify 'View 3D' functionality. ">
 	<classes>
 		<class
@@ -144,9 +102,54 @@
 			</methods>
 		</class>
 	</classes>
+</test> 
+
+<test 	name="To verify Upcomming functionality in  Event ">
+	<classes>
+		<class
+			name="com.socialTables.events.Index.EventIndex">
+			<methods>
+				<include name="upCommingEventFunctionality" />
+			</methods>
+		</class>
+	</classes>
+</test>  -->
+
+<!-- <test 	name="To verify previous functionality in  Event ">
+	<classes>
+		<class
+			name="com.socialTables.events.Index.EventIndex">
+			<methods>
+				<include name="previousEventFunctionality" />
+			</methods>
+		</class>
+	</classes>
 </test> -->
-<!-- 
-<test 	name="To verify 'Guest List Enable' functionality in 'Event Information'. ">
+<!--
+<test 	name="To verify Dashboard tutorial link ">
+	<classes>
+		<class
+			name="com.socialTables.events.Index.EventIndex">
+			<methods>
+				<include name="dashBoardTutorialLinkVerification" />
+			</methods>
+		</class>
+	</classes>
+</test>-->
+<!-- <test 	name="To verify All Header Links in  Event ">
+	<classes>
+		<class
+			name="com.socialTables.events.Index.EventIndex">
+			<methods>
+				<include name="verifyAllHeaderLinks" />
+			</methods>
+		</class>
+	</classes>
+</test> -->
+
+
+ 
+<!-- <test 	name="To verify 'Guest List Enable' functionality in 'Event Information'. ">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -155,7 +158,7 @@
 			</methods>
 		</class>
 	</classes>
-</test>
+</test> -->
 
 <test 	name="To verify 'Search Venue' functionality in 'Room Settings' while create event. ">
 	<classes>
@@ -168,7 +171,7 @@
 	</classes>
 </test>
 
-<test 	name="To verify 'Customize Room' functionality in 'Room Settings'. ">
+<!-- <test 	name="To verify 'Customize Room' functionality in 'Room Settings'. ">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -177,7 +180,7 @@
 			</methods>
 		</class>
 	</classes>
-</test>
+</test> -->
 
 <test 	name="To verify 'Duplicate Room' functionality in 'Room Settings'. ">
 	<classes>
@@ -190,7 +193,7 @@
 	</classes>
 </test>
 
-<test 	name="To verify 'Add Room' functionality. ">
+<!-- <test 	name="To verify 'Add Room' functionality. ">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -199,7 +202,7 @@
 			</methods>
 		</class>
 	</classes>
-</test>
+</test> -->
 
 <test 	name="To verify 'Share' button functionality in 'Event Creation'. ">
 	<classes>
@@ -211,7 +214,7 @@
 		</class>
 	</classes>
 </test>
-<test 	name="To verify 'User Name' dropdown button functionality. ">
+<!-- <test 	name="To verify 'User Name' dropdown button functionality. ">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -220,7 +223,7 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
+</test>  -->
 
 <!-- <test 	name="To verify 'Add Attendee' functionality in 'Attendee Manager' page. ">
 	<classes>
@@ -255,7 +258,7 @@
 	</classes>
 </test> -->
 
-<test 	name="To verify 'Add Tag' functionality in 'Attendee Manager' ">
+<!-- <test 	name="To verify 'Add Tag' functionality in 'Attendee Manager' ">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -264,5 +267,5 @@
 			</methods>
 		</class>
 	</classes>
-</test> 
+</test>  -->
 </suite>

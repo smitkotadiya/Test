@@ -223,6 +223,7 @@ public class TeamMemberAndVenueIndexPage extends AbstractPage
 		select.selectByVisibleText(role);
 		common.pause(2);
 		btnDone.click();
+		common.pause(2);
 		
 		return new TeamMemberAndVenueVerificationPage(driver);
 	}
@@ -344,7 +345,10 @@ public class TeamMemberAndVenueIndexPage extends AbstractPage
 	
 	public TeamMemberAndVenueVerificationPage clickOnResendEmail()
 	{
-		btnResendButton.click();
+		common.pause(2);
+		driver.navigate().refresh();
+		driver.findElement(By.xpath("//button[contains(.,'Resend Email') and not(contains(@style,'display: none;'))]")).click();
+		//btnResendButton.click();
 		common.pause(2);
 		return new TeamMemberAndVenueVerificationPage(driver);
 	}

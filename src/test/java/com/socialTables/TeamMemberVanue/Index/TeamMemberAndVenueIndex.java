@@ -1049,7 +1049,7 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		log("Step 12: Now click on 'Resend Email' button");
 		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.clickOnResendEmail();
 		log("Step 13: Verify email on mailinator");
-		driver.findElement(By.xpath("//body")).sendKeys(Keys.COMMAND+"1");
+		driver.findElement(By.xpath("//body")).sendKeys(Keys.COMMAND+"2");
 		driver.navigate().refresh();
 		if(teamMemberAndVenueVerificationPage.verifyResendEmailFunctionality())
 		{
