@@ -115,6 +115,8 @@ public class EventIndexPage extends AbstractPage
 	private WebElement objectEditingTutorialLink;
 	@FindBy(xpath="//a/span[contains(.,'Room settings tutorial')]")
 	private WebElement roomSettingsTutorialLink;
+	@FindBy(id="btn-event-settings")
+	private WebElement btnEventSettings;
 	
 	//div[@id='glmContainer']/div[contains(@class,'glm-grid')]/div[@class='kgNoSelect']/div[@class='kgViewport']/div[@class='kgCanvas']/div/div[contains(@class,'odd')]/div/div[contains(@class,'col4')]
 	
@@ -141,7 +143,7 @@ public class EventIndexPage extends AbstractPage
 			common.pause(2);
 			common.type(txtEventName, eventName);
 			common.pause(1);
-			txtEventName.sendKeys(Keys.ENTER);
+			txtEventName.sendKeys(Keys.TAB);
 			common.pause(2);
 			WebElement eventTypeButton=driver.findElement(By.xpath("//div[@class='event-type-container']/div/input[@value='"+eventType+"']"));
 			eventTypeButton.click();
@@ -312,6 +314,13 @@ public class EventIndexPage extends AbstractPage
 		return new DashboardPage(driver);
 	}
 	
+	public EventCreationPage clickOnEventSettings()
+	{
+		btnEventSettings.click();
+		common.pause(2);
+		return new EventCreationPage(driver);
+	}
+	
 	public EventCreationPage clickOnDuplicateButton(String roomName)
 	{
 		btnDuplicateRoom.click();
@@ -337,8 +346,6 @@ public class EventIndexPage extends AbstractPage
 	{
 		btnShareEvent.click();
 		common.pause(2);
-		
-		
 		return new EventCreationPage(driver);
 	}
 	

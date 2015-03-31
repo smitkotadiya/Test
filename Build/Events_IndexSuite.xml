@@ -269,12 +269,23 @@
 	</classes>
 </test> --> 
 
-<test 	name="To verify 'Object editing tutorial' and 'Room Setting Tutorial' link.">
+<!-- <test 	name="To verify 'Object editing tutorial' and 'Room Setting Tutorial' link.">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
 			<methods>
 				<include name="verifyTutorialLinksOnEventCreationPage" />
+			</methods>
+		</class>
+	</classes>
+</test> -->
+
+<test 	name="To verify 'Event Settings' button functionality.">
+	<classes>
+		<class
+			name="com.socialTables.events.Index.EventIndex">
+			<methods>
+				<include name="verifyEventSettingsButton" />
 			</methods>
 		</class>
 	</classes>
