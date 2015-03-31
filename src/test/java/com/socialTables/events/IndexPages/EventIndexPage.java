@@ -111,6 +111,10 @@ public class EventIndexPage extends AbstractPage
 	private WebElement txtMealName;
 	@FindBy(id="guestGroupsBulk")
 	private WebElement tabGroup;
+	@FindBy(xpath="//a/span[contains(.,'Object editing tutorial')]")
+	private WebElement objectEditingTutorialLink;
+	@FindBy(xpath="//a/span[contains(.,'Room settings tutorial')]")
+	private WebElement roomSettingsTutorialLink;
 	
 	//div[@id='glmContainer']/div[contains(@class,'glm-grid')]/div[@class='kgNoSelect']/div[@class='kgViewport']/div[@class='kgCanvas']/div/div[contains(@class,'odd')]/div/div[contains(@class,'col4')]
 	
@@ -136,6 +140,8 @@ public class EventIndexPage extends AbstractPage
 		{
 			common.pause(2);
 			common.type(txtEventName, eventName);
+			common.pause(1);
+			txtEventName.sendKeys(Keys.ENTER);
 			common.pause(2);
 			WebElement eventTypeButton=driver.findElement(By.xpath("//div[@class='event-type-container']/div/input[@value='"+eventType+"']"));
 			eventTypeButton.click();
@@ -463,6 +469,19 @@ public class EventIndexPage extends AbstractPage
 		return new AttendeeManagerPage(driver);
 	}
 	
+	public EventCreationPage clickOnObjectEditingTutorial()
+	{
+		objectEditingTutorialLink.click();
+		common.pause(2);
+		
+		return new EventCreationPage(driver);
+	}
 	
-	
+	public EventCreationPage clickOnRoomSettingTutorial()
+	{
+		roomSettingsTutorialLink.click();
+		common.pause(2);
+		
+		return new EventCreationPage(driver);
+	}
 }

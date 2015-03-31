@@ -1865,5 +1865,94 @@ public class EventIndex extends SeleniumInit
 			Assert.assertTrue(false);
 		}
 	}
+
+	@Test
+	public void verifyTutorialLinksOnEventCreationPage()
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		String eventName = "Auto-"+RandomStringUtils.randomAlphanumeric(3);
+		String eventType = "gala"; 
+		boolean isAttendeeEnable = true;
+		log("<b><ul>Testcase ID: TC_EV_024</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Object editing tutorial' and 'Room Setting Tutorial' link..</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 6: Click On 'New Event' Button");
+		eventCreationPage = eventIndexPage.clickOnNewEvent();
+		log("Step 7: Verify 'Event Creation Page'");
+		if(eventCreationPage.verifyEventCreationPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 8: Enter mandetory fields to create event and Click on 'Done'");
+		eventCreationPage = eventIndexPage.fillEventInfo("Add",eventName, eventType,isAttendeeEnable);
+		log("Step 9: Verify Room Setting Page in Event Creation");
+		if(eventCreationPage.verifyRoomSettingPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 10: Select venue from library or customize room");
+		eventCreationPage = eventIndexPage.fillRoomSettingsForm("add");
+		log("Step 11: Now Click on 'object editing tutorial' Link");
+		eventCreationPage = eventIndexPage.clickOnObjectEditingTutorial();
+		log("Step 12: Verify video should be popup.");
+		if(eventCreationPage.verifyTutorialLinks())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		//driver.switchTo().frame(driver.findElement(By.xpath("//iframe[contains(@class,'fancybox-iframe')]")));
+		driver.findElement(By.xpath("//div[contains(@title,'Close')]")).click();
+		common.pause(2);
+		
+		log("Step 13: Now Click on 'Room Setting tutorial' Link");
+		eventCreationPage = eventIndexPage.clickOnRoomSettingTutorial();
+		log("Step 14: Verify video should be popup.");
+		if(eventCreationPage.verifyTutorialLinks())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+	}
 }
 
