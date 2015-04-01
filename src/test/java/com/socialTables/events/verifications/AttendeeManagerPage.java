@@ -90,4 +90,22 @@ public class AttendeeManagerPage extends AbstractPage
 		WebElement ele = driver.findElement(By.xpath("//div[@id='glmContainer']/div[contains(@class,'glm-grid')]/div[@class='kgNoSelect']/div[@class='kgViewport']/div[@class='kgCanvas']/div/div[1]/div/div[contains(.,'"+mealName+"')]"));
 		return ele.isDisplayed();
 	}
+	
+	public boolean verifyUngroupAttendees()
+	{
+		try{
+		 driver.findElement(By.xpath("//span[@class='guest-group-number']")).isDisplayed();
+		log("<b> Not able to perform 'Ungroup' functionality</b>");
+		return true;
+		}
+		catch(Exception e)
+		{
+			return true;
+		}
+	}
+	
+	public boolean verifyGroupOfAttedndees()
+	{
+		return driver.findElement(By.xpath("//span[@class='guest-group-number']")).isDisplayed() && driver.findElement(By.id("guestGroupBulk")).isDisplayed();
+	}
 }

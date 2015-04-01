@@ -117,6 +117,10 @@ public class EventIndexPage extends AbstractPage
 	private WebElement roomSettingsTutorialLink;
 	@FindBy(id="btn-event-settings")
 	private WebElement btnEventSettings;
+	@FindBy(xpath="//a[contains(.,'UNGROUP')]")
+	private WebElement tabUngroup;
+	
+	
 	
 	//div[@id='glmContainer']/div[contains(@class,'glm-grid')]/div[@class='kgNoSelect']/div[@class='kgViewport']/div[@class='kgCanvas']/div/div[contains(@class,'odd')]/div/div[contains(@class,'col4')]
 	
@@ -476,6 +480,29 @@ public class EventIndexPage extends AbstractPage
 		return new AttendeeManagerPage(driver);
 	}
 	
+	public AttendeeManagerPage groupUnGroupAttendee(String scenario)
+	{
+		List<WebElement> allEles = driver.findElements((By.xpath("//div[@id='glmContainer']/div[contains(@class,'glm-grid')]/div[@class='kgNoSelect']/div[@class='kgViewport']/div[@class='kgCanvas']/div/div/div/div[contains(@class,'koCellCheckBox')]/div/div[contains(@class,'kgCheckbox')]")));
+		for(WebElement ele:allEles)
+		{
+			ele.click();
+			common.pause(2);
+		}
+		if(scenario.equalsIgnoreCase("ungroup"))
+		{
+			tabUngroup.click();
+		}
+		else
+		{
+			tabGroup.click();
+			common.pause(2);
+			driver.findElement(By.id("addGuestGroup")).click();
+		}
+		
+		common.pause(2);
+		return new AttendeeManagerPage(driver);
+	}
+	
 	public EventCreationPage clickOnObjectEditingTutorial()
 	{
 		objectEditingTutorialLink.click();
@@ -491,4 +518,5 @@ public class EventIndexPage extends AbstractPage
 		
 		return new EventCreationPage(driver);
 	}
+	
 }

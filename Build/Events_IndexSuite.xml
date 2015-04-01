@@ -22,7 +22,7 @@
         
  </listeners> -->
  
-<!-- <test 	name="To verify New Event functionality.">
+ <!-- <test 	name="To verify New Event functionality.">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -263,11 +263,22 @@
 		<class
 			name="com.socialTables.events.Index.EventIndex">
 			<methods>
-				<include name="addTagMealGroupToAttendee" />
+				<include name="addTagMealToAttendee" />
 			</methods>
 		</class>
 	</classes>
-</test> --> 
+</test>  -->
+
+<!-- <test 	name="To verify 'UnGroups' functionality in 'Attendee Manager'.">
+	<classes>
+		<class
+			name="com.socialTables.events.Index.EventIndex">
+			<methods>
+				<include name="groupAndUngroupForAttendee" />
+			</methods>
+		</class>
+	</classes>
+</test> -->
 
 <!-- <test 	name="To verify 'Object editing tutorial' and 'Room Setting Tutorial' link.">
 	<classes>
@@ -280,7 +291,7 @@
 	</classes>
 </test> -->
 
-<test 	name="To verify 'Event Settings' button functionality.">
+<!-- <test 	name="To verify 'Event Settings' button functionality.">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -289,5 +300,7 @@
 			</methods>
 		</class>
 	</classes>
-</test>
+</test> -->
+
+
 </suite>
