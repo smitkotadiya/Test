@@ -10,7 +10,7 @@ import com.socialTables.init.SeleniumInit;
 public class HomePageIndex extends SeleniumInit
 {
 
-	@Test(groups={"login","Home Page"})
+	@Test
 	public void login_ValidCredential()
 	{
 		Common common = new Common(driver);
@@ -41,7 +41,7 @@ public class HomePageIndex extends SeleniumInit
 		}
 	}
 	
-	@Test(groups={"login","Home Page"})
+	@Test
 	public void login_InValidCredential()
 	{
 		Common common = new Common(driver);
@@ -74,7 +74,7 @@ public class HomePageIndex extends SeleniumInit
 		}
 	}
 	
-	@Test(groups={"login","Home Page"})
+	@Test
 	public void login_nullValidCredential()
 	{
 		Common common = new Common(driver);

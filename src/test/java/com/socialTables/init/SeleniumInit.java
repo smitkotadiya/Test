@@ -42,6 +42,8 @@ import com.socialTables.events.verifications.EventCreationPage;
 import com.socialTables.events.verifications.EventThreeDPage;
 import com.socialTables.general.GeneralIndexPage;
 import com.socialTables.general.GeneralVerificationPage;
+import com.socialTables.tableDesigner.IndexPage.TableDesignerIndexPage;
+import com.socialTables.tableDesigner.verifications.TableDesignerPage;
 import com.socialTables.teamSettings.Index.TeamSettingIndex;
 import com.socialTables.teamSettings.IndexPages.TeamSettingsIndexPage;
 import com.socialTables.teamSettings.verifications.TeamSettingsPage;
@@ -99,6 +101,10 @@ public class SeleniumInit  {
 
 	public TeamSettingsIndexPage teamSettingsIndexPage;
 	public TeamSettingsPage teamSettingsPage;
+	
+	//Table Designer
+	public TableDesignerIndexPage tableDesignerIndexPage;
+	public TableDesignerPage tableDesignerPage;
 	
 	
 	
@@ -297,6 +303,8 @@ public class SeleniumInit  {
 		attendeeManagerPage = new AttendeeManagerPage(driver);
 		teamSettingsIndexPage = new TeamSettingsIndexPage(driver);
 		teamSettingsPage = new TeamSettingsPage(driver);
+		tableDesignerIndexPage = new TableDesignerIndexPage(driver);
+		tableDesignerPage = new TableDesignerPage(driver);
 
 	} 
 	

@@ -289,7 +289,6 @@ public class DashboardPage extends AbstractPage
 		
 		if(eles.size()>0)
 		{
-			
 			Date currentDate = new Date();
 			DateFormat df = new SimpleDateFormat ("MM/dd/yyyy");
 			String currentDateString = df.format(currentDate);

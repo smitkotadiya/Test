@@ -103,7 +103,7 @@ public class AttendeeManagerPage extends AbstractPage
 			return true;
 		}
 	}
-	
+
 	public boolean verifyGroupOfAttedndees()
 	{
 		return driver.findElement(By.xpath("//span[@class='guest-group-number']")).isDisplayed() && driver.findElement(By.id("guestGroupBulk")).isDisplayed();
