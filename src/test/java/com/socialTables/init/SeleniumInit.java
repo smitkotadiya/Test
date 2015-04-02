@@ -108,6 +108,7 @@ public class SeleniumInit  {
 	
 	
 	
+	
 //	protected RegisteredPage registeredPage;
 	// And many more ...
 
@@ -303,6 +304,7 @@ public class SeleniumInit  {
 		attendeeManagerPage = new AttendeeManagerPage(driver);
 		teamSettingsIndexPage = new TeamSettingsIndexPage(driver);
 		teamSettingsPage = new TeamSettingsPage(driver);
+		
 		tableDesignerIndexPage = new TableDesignerIndexPage(driver);
 		tableDesignerPage = new TableDesignerPage(driver);
 

@@ -27,11 +27,18 @@ public class TableDesignerPage extends AbstractPage
 		return verifyCreateTableDesignerPage.isDisplayed();
 	}
 	
-	public boolean verifyAddedTableDesign(String tableName,int numOfTables)
+	public boolean verifyAddedTableDesign(String tableName,int numOfTableDesign)
 	{
 		List<WebElement> numOfTablesAfterAddition = driver.findElements(By.xpath(".//*[@id='tables-settings-tbody']/tr/td[1]"));
 		WebElement displayElement = driver.findElement(By.xpath(".//*[@id='tables-settings-tbody']/tr/td[contains(.,'"+tableName+"')]"));
 		
-		return (numOfTables==numOfTablesAfterAddition.size()-1) && displayElement.isDisplayed();
+		return (numOfTableDesign==numOfTablesAfterAddition.size()-1) && displayElement.isDisplayed();
+	}
+	
+	public boolean verifyDeletedTableDesign(int numOfTabelDesign)
+	{
+		List<WebElement> numOfTablesAfterDelete = driver.findElements(By.xpath(".//*[@id='tables-settings-tbody']/tr/td[1]"));
+		
+		return (numOfTablesAfterDelete.size()==numOfTabelDesign-1);
 	}
 }

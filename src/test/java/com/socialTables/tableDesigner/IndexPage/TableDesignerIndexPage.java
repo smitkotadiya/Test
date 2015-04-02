@@ -1,5 +1,8 @@
 package com.socialTables.tableDesigner.IndexPage;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -59,7 +62,29 @@ public class TableDesignerIndexPage extends AbstractPage
 	
 	public TableDesignerPage clickOnLogo()
 	{
-		btnLogo.click();
+		common.pause(2);
+		driver.findElement(By.xpath("//div[@id='header-left']/a[2]")).click();
+		//btnLogo.click();
+		return new TableDesignerPage(driver);
+	}
+	
+	public TableDesignerPage deleteTableDesign()
+	{
+		List<WebElement> allEles = driver.findElements(By.xpath(".//*[@id='tables-settings-tbody']/tr[contains(.,'Auto')]/td[6]/i[contains(@class,'tables-entry-delete')]"));
+		allEles.get(0).click();
+		common.pause(2);
+		driver.findElement(By.xpath("//button[contains(.,'OK')]")).click();
+		common.pause(2);
+		
+		return new TableDesignerPage(driver);
+	}
+	
+	public TableDesignerPage cloneTableDesign()
+	{
+		List<WebElement> allEles = driver.findElements(By.xpath(".//*[@id='tables-settings-tbody']/tr[contains(.,'Auto')]/td[6]/i[contains(@class,'tables-entry-clone')]"));
+		allEles.get(0).click();
+		common.pause(2);
+		
 		return new TableDesignerPage(driver);
 	}
 }

@@ -16,7 +16,7 @@
 	<parameter name="selenium.browser" value="firefox" />
 	<parameter name="selenium.url" value="https://lab.socialtables.com/" />
  
-  <!-- <test 	name="To verify Create New Venue functionality.">
+  <test 	name="To verify Create New Venue functionality.">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -25,9 +25,9 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
+</test>
 
-<!--  <test 	name="To verify Edit Venue functionality.">
+ <test 	name="To verify Edit Venue functionality.">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -36,8 +36,8 @@
 			</methods>
 		</class>
 	</classes>
-</test>  -->
-<!-- <test 	name="To verify Delete Venue functionality.">
+</test> 
+<test 	name="To verify Delete Venue functionality.">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -46,9 +46,9 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
+</test>
 
-<!-- <test 	name="To verify Search Venue functionality">
+<test 	name="To verify Search Venue functionality">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -57,7 +57,7 @@
 			</methods>
 		</class>
 	</classes>
-</test>-->
+</test>
  
  
  <test 	name="To verify create 'New Event' functionality for venue">
@@ -114,7 +114,7 @@
 		</class>
 	</classes>
 </test>  
- <!-- <test 	name="To verify owner/admin should be able to add new member with role Admin.">
+ <test 	name="To verify owner/admin should be able to add new member with role Admin.">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -145,9 +145,9 @@
 			</methods>
 		</class>
 	</classes>
-</test>  -->
+</test> 
 
-<!-- <test 	name="To verify 'Resend Email' functionality in add member">
+<test 	name="To verify 'Resend Email' functionality in add member">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -156,10 +156,10 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
+</test>
 
 
-<!-- <test 	name="To verify owner/admin should be able to remove existing member">
+<test 	name="To verify owner/admin should be able to remove existing member">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -168,10 +168,10 @@
 			</methods>
 		</class>
 	</classes>
-</test>-->
+</test>
 
 
-<!-- <test 	name="To verify 'cancel' functionality in Add member">
+<test 	name="To verify 'cancel' functionality in Add member">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -180,8 +180,8 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
-<!-- 
+</test>
+
 <test 	name="To verify 'Admin' not able to 'Draw venue'">
 	<classes>
 		<class
@@ -191,9 +191,9 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
+</test>
 
-<!-- <test 	name="To verify 'Planner' should not able to view 'Team Member' tab">
+<test 	name="To verify 'Planner' should not able to view 'Team Member' tab">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -202,7 +202,7 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
+</test>
 
 
 </suite>

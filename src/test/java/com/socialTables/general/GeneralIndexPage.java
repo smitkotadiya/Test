@@ -113,6 +113,4 @@ public class GeneralIndexPage extends AbstractPage
 		return new GeneralVerificationPage(driver);
 	}
 	
-	
-	
 }
