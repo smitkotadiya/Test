@@ -147,6 +147,7 @@ public class TabelDesignerIndex extends SeleniumInit
 			Assert.assertTrue(false);
 		}
 	}
+	
 	@Test
 	public void cloneTableDesign()
 	{
@@ -219,4 +220,64 @@ public class TabelDesignerIndex extends SeleniumInit
 			Assert.assertTrue(false);
 		}	
 	}
+	
+	@Test
+	public void searchTableDesign()
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		String tableName = "";
+		log("<b><ul>Testcase ID: TC_EC_021</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Clone' functionality of table design.</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 6:Navigate to 'Create Table Design' Module");
+		generalVerificationPage = generalIndexPage.navigateToTableDesigner();
+		log("Step 7:Verify 'Table Designer' page");
+		if(generalVerificationPage.verifyTableDesigner())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		tableName = driver.findElement(By.xpath(".//*[@id='tables-settings-tbody']/tr[1]/td[1]")).getText();
+		log("Step 8: Search any table design from grid");
+		tableDesignerPage = tableDesignerIndexPage.searchTableDesign(tableName);
+		log("Step 9: Verify search result");
+		if(tableDesignerPage.verifySearchedTableDesign(tableName))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}	
+		
+	}
+
 }

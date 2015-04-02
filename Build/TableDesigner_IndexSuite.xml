@@ -16,7 +16,7 @@
 	<parameter name="selenium.browser" value="firefox" />
 	<parameter name="selenium.url" value="https://lab.socialtables.com/" />
  
- <!-- <test 	name="To verify 'Create Table Design' button functionality..">
+ <test 	name="To verify 'Create Table Design' button functionality..">
 	<classes>
 		<class
 			name="com.socialTables.tableDesigner.Index.TabelDesignerIndex">
@@ -25,9 +25,9 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
+</test>
 
-<!-- <test 	name="To verify 'Delete' functionality of table design.">
+<test 	name="To verify 'Delete' functionality of table design.">
 	<classes>
 		<class
 			name="com.socialTables.tableDesigner.Index.TabelDesignerIndex">
@@ -36,7 +36,7 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
+</test>
 
 <test 	name="To verify 'Clone' functionality of table design.">
 	<classes>
@@ -44,6 +44,17 @@
 			name="com.socialTables.tableDesigner.Index.TabelDesignerIndex">
 			<methods>
 				<include name="cloneTableDesign" />
+			</methods>
+		</class>
+	</classes>
+</test>
+
+<test 	name="To verify 'Search' functionality of table design.">
+	<classes>
+		<class
+			name="com.socialTables.tableDesigner.Index.TabelDesignerIndex">
+			<methods>
+				<include name="searchTableDesign" />
 			</methods>
 		</class>
 	</classes>

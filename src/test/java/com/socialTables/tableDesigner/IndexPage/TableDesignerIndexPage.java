@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 
 import com.socialTables.general.AbstractPage;
 import com.socialTables.init.Common;
+import com.socialTables.tableDesigner.Index.TabelDesignerIndex;
 import com.socialTables.tableDesigner.verifications.TableDesignerPage;
 
 public class TableDesignerIndexPage extends AbstractPage 
@@ -38,6 +39,8 @@ public class TableDesignerIndexPage extends AbstractPage
 	private WebElement btnSettings;
 	@FindBy(xpath="//button[contains(.,'Save as Template')]")
 	private WebElement btnSaveAsTemplate;
+	@FindBy(id="search")
+	private WebElement txtSearch;
 	
 
 	Common common = new Common(driver);
@@ -85,6 +88,13 @@ public class TableDesignerIndexPage extends AbstractPage
 		allEles.get(0).click();
 		common.pause(2);
 		
+		return new TableDesignerPage(driver);
+	}
+	
+	public TableDesignerPage searchTableDesign(String searchString)
+	{
+		common.type(txtSearch, searchString);
+		common.pause(2);
 		return new TableDesignerPage(driver);
 	}
 }

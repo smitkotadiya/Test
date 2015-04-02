@@ -41,4 +41,23 @@ public class TableDesignerPage extends AbstractPage
 		
 		return (numOfTablesAfterDelete.size()==numOfTabelDesign-1);
 	}
+	
+	public boolean verifySearchedTableDesign(String searchString)
+	{
+		boolean bool = false;
+		List<WebElement> eles = driver.findElements(By.xpath(".//*[@id='tables-settings-tbody']/tr/td[1]"));
+		for(WebElement ele:eles)
+		{
+			if(searchString.equalsIgnoreCase(ele.getText()))
+			{
+				bool = true;
+			}
+			else
+			{
+				bool = false;
+				break;
+			}
+		}
+		return bool;
+	}
 }
