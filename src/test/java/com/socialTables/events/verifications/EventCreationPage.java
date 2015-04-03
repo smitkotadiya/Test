@@ -96,8 +96,5 @@ public class EventCreationPage extends AbstractPage
 	{
 		return driver.findElement(By.xpath("//iframe[contains(@class,'fancybox-iframe')]")).isDisplayed();
 	}
-	
-	
-	
-	
+
 }

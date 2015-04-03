@@ -19,7 +19,7 @@ import com.socialTables.init.Common;
 public class DashboardPage extends AbstractPage
 {
 
-	@FindBy(xpath=".//*[@id='main-header']/div/div/div[2]/div[1]/a")
+	@FindBy(xpath="//a[contains(.,'New Event')]")
 	private WebElement verifyDashboardPage;
 	@FindBy(xpath="//iframe[@class='fancybox-iframe wistia_embed']")
 	private WebElement verifyDashboardTutorialLink;
@@ -39,11 +39,11 @@ public class DashboardPage extends AbstractPage
 	
 	public boolean verifyAddedEvent(int numOfEvents,String eventName)
 	{
-		int numOfEventsAfterAdditon = common.getNumOfElements(driver, By.xpath(".//*[@id='list-container']/a"));
+		int numOfEventsAfterAdditon = common.getNumOfElements(driver, By.xpath("//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]"));
 		boolean bool = false;
 		if(numOfEventsAfterAdditon==numOfEvents+1)
 		{
-			List<WebElement> eles = driver.findElements(By.xpath(".//*[@id='list-container']/a/span[3]"));
+			List<WebElement> eles = driver.findElements(By.xpath("//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]/div/div/div/span"));
 			for(WebElement ele:eles)
 			{
 				if(ele.getText().equalsIgnoreCase(eventName))
@@ -88,11 +88,11 @@ public class DashboardPage extends AbstractPage
 	
 	public boolean verifyDeletedEvent(int numOfEvents,String eventName)
 	{
-		int numOfEventsAfterDelete = common.getNumOfElements(driver, By.xpath(".//*[@id='list-container']/a"));
+		int numOfEventsAfterDelete = common.getNumOfElements(driver, By.xpath("//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]/div/div/div/span"));
 		boolean bool = false;
 		if(numOfEventsAfterDelete==numOfEvents-1)
 		{
-			List<WebElement> eles = driver.findElements(By.xpath(".//*[@id='list-container']/a/span[3]"));
+			List<WebElement> eles = driver.findElements(By.xpath("//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]/div/div/div/span"));
 			for(WebElement ele:eles)
 			{
 				if(ele.getText().equalsIgnoreCase(eventName))
@@ -192,7 +192,6 @@ public class DashboardPage extends AbstractPage
 			log("There is no data available for this filteration criteria");
 			return true;
 		}
-		
 	}
 	
 	public boolean verifyFilterationByCategory(String value)
@@ -224,9 +223,8 @@ public class DashboardPage extends AbstractPage
 	public boolean verifySearchFunctionality(String seachString)
 	{
 		boolean bool=false;
-		List<WebElement> eles = driver.findElements(By.xpath(".//*[@id='list-container']/a[not(contains(@style,'display: none;'))]/span[@class='name']"));
-		
-		for(WebElement ele:eles)
+		List<WebElement> allEles = driver.findElements(By.xpath("//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]/div/div/div/span"));
+		for(WebElement ele:allEles)
 		{
 			if(ele.getText().equalsIgnoreCase(seachString))
 			{
@@ -279,7 +277,6 @@ public class DashboardPage extends AbstractPage
 			bool = true;
 		}
 		return bool;
-		
 	}
 	
 	public boolean verifyPreviousEvents() throws ParseException

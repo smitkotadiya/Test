@@ -22,7 +22,7 @@
         
  </listeners> -->
  
- <!-- <test 	name="To verify New Event functionality.">
+  <!-- <test 	name="To verify New Event functionality.">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -31,8 +31,8 @@
 			</methods>
 		</class>
 	</classes>
-</test>
-<test 	name="To verify View Event functionality.">
+</test> -->
+<!-- <test 	name="To verify View Event functionality.">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -41,8 +41,8 @@
 			</methods>
 		</class>
 	</classes>
-</test> 
-<test 	name="To verify Delete Event functionality.">
+</test>  -->
+<!-- <test 	name="To verify Delete Event functionality.">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -51,8 +51,8 @@
 			</methods>
 		</class>
 	</classes>
-</test>
-<test 	name="To verify event counter label functionality.">
+</test> -->
+<!--<test 	name="To verify event counter label functionality.">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -71,7 +71,7 @@
 			</methods>
 		</class>
 	</classes>
-</test>
+</test>-->
 <test 	name="To verify Seach  Event functionality..">
 	<classes>
 		<class
@@ -82,6 +82,7 @@
 		</class>
 	</classes>
 </test>
+<!-- 
  <test 	name="To verify Clone  Event functionality..">
 	<classes>
 		<class

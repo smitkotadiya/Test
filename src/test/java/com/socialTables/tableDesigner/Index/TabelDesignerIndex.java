@@ -2,6 +2,7 @@ package com.socialTables.tableDesigner.Index;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -227,8 +228,8 @@ public class TabelDesignerIndex extends SeleniumInit
 		Common common = new Common(driver);
 		int numOfFailure=0;
 		String tableName = "";
-		log("<b><ul>Testcase ID: TC_EC_021</b></ul>");
-		log("<b><ul>TestScenario: To verify 'Clone' functionality of table design.</b></ul>");
+		log("<b><ul>Testcase ID: TC_EC_019</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Search' functionality of table design.</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
@@ -277,7 +278,6 @@ public class TabelDesignerIndex extends SeleniumInit
 		{
 			Assert.assertTrue(false);
 		}	
-		
 	}
 
 }

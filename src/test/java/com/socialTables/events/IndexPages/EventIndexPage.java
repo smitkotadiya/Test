@@ -2,6 +2,7 @@ package com.socialTables.events.IndexPages;
 
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -18,7 +19,7 @@ import com.socialTables.init.Common;
 
 public class EventIndexPage extends AbstractPage
 {
-	@FindBy(xpath=".//*[@id='newEvent']/a")
+	@FindBy(xpath="//a[contains(.,'New Event')]")
 	private WebElement btnNewEvent;
 	@FindBy(id="s-name")
 	private WebElement txtEventName;
@@ -48,7 +49,7 @@ public class EventIndexPage extends AbstractPage
 	@FindBy(id="filterLocation")
 	private WebElement filterLocation;
 	
-	@FindBy(id="search")
+	@FindBy(xpath="//input[@class='events-table-search']")
 	private WebElement txtSearch;
 	
 	@FindBy(id="showPreviousEvents")
@@ -121,6 +122,7 @@ public class EventIndexPage extends AbstractPage
 	private WebElement tabUngroup;
 	
 	
+	//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]
 	
 	//div[@id='glmContainer']/div[contains(@class,'glm-grid')]/div[@class='kgNoSelect']/div[@class='kgViewport']/div[@class='kgCanvas']/div/div[contains(@class,'odd')]/div/div[contains(@class,'col4')]
 	
@@ -231,20 +233,37 @@ public class EventIndexPage extends AbstractPage
 	public EventCreationPage clickOnEvent()
 	{
 		try{
-		driver.findElement(By.xpath(".//*[@id='list-container']/a[not(contains(@style,'display: none;'))][1]")).click();
+			common.pause(2);
+			List<WebElement> allEles = driver.findElements(By.xpath("//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]/div/div/div/span"));
+			
+			common.highlightElement(driver, allEles.get(0));
+			allEles.get(0).click();
+			common.pause(2);
 		}
 		catch(Exception e)
 		{
 			log("There is no existing event available to view");
 		}
-		common.pause(4);
+		common.pause(2);
+		Set<String> windowHandles = driver.getWindowHandles();
+		System.out.println("Total Available Windows Are-->"+windowHandles.size());
+		System.out.println(windowHandles);
+		for(String winHandle: windowHandles)
+		{
+			System.out.println("Driver switch on new window:---->"+winHandle);
+			driver.switchTo().window(winHandle);
+			common.pause(2);
+		}
 		return new EventCreationPage(driver);
 	}
 	
 	public DashboardPage clickOnDeleteEvent()
 	{
 		try{
-		driver.findElement(By.xpath(".//*[@id='list-container']/a[not(contains(@style,'display: none;'))][1]/span[@class='eventTools']/i[1]")).click();
+		 List<WebElement> allDelEles = driver.findElements(By.xpath("//i[contains(@class,'event-delete-icon')]"));
+		 common.highlightElement(driver, allDelEles.get(0));
+		 common.pause(2);
+		 allDelEles.get(0).click();
 		}
 		catch(Exception e)
 		{

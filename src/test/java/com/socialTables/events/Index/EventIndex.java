@@ -48,7 +48,7 @@ public class EventIndex extends SeleniumInit
 			log("Fail");
 			numOfFailure++;
 		}
-		numOfEventsInGrid = common.getNumOfElements(driver, By.xpath(".//*[@id='list-container']/a"));
+		numOfEventsInGrid = common.getNumOfElements(driver, By.xpath("//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]"));
 		log("Step 6: Click On 'New Event' Button");
 		eventCreationPage = eventIndexPage.clickOnNewEvent();
 		log("Step 7: Verify 'Event Creation Page'");
@@ -95,7 +95,7 @@ public class EventIndex extends SeleniumInit
 		}
 	}
 	
-	@Test(groups={"Events"})
+	@Test
 	public void viewEventFunctionality()
 	{
 		Common common = new Common(driver);
@@ -121,7 +121,8 @@ public class EventIndex extends SeleniumInit
 			log("Fail");
 			numOfFailure++;
 		}
-		eventName = driver.findElement(By.xpath(".//*[@id='list-container']/a[not(contains(@style,'display: none;'))][1]/span[@class='name']")).getText();
+		List<WebElement> allEles = driver.findElements(By.xpath("//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]/div/div/div/span"));
+		eventName = allEles.get(0).getText();
 		System.out.println("========"+eventName);
 		log("Step 6: Click on any existing event");
 		eventCreationPage = eventIndexPage.clickOnEvent();
@@ -175,8 +176,9 @@ public class EventIndex extends SeleniumInit
 			log("Fail");
 			numOfFailure++;
 		}
-		eventName = driver.findElement(By.xpath(".//*[@id='list-container']/a[1]")).getText();
-		numOfEventsInGrid = common.getNumOfElements(driver, By.xpath(".//*[@id='list-container']/a"));
+		List<WebElement> allEles = driver.findElements(By.xpath("//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]/div/div/div/span"));
+		eventName = allEles.get(0).getText();
+		numOfEventsInGrid = common.getNumOfElements(driver, By.xpath("//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]/div/div/div/span"));
 		log("Step 6: Try to delete any existing event");
 		dashboardPage = eventIndexPage.clickOnDeleteEvent();
 		try{
@@ -493,7 +495,8 @@ public class EventIndex extends SeleniumInit
 			log("Fail");
 			numOfFailure++;
 		}
-		String searchString = driver.findElement(By.xpath(".//*[@id='list-container']/a[not(contains(@style,'display: none;'))]/span[@class='name']")).getText();
+		List<WebElement> allEles = driver.findElements(By.xpath("//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]/div/div/div/span"));
+		String searchString = allEles.get(0).getText();
 		log("Step 6: Search any existing event");
 		dashboardPage = eventIndexPage.searchEvent(searchString);
 		log("Step 7: Verify Ssearch result");
@@ -2145,7 +2148,6 @@ public class EventIndex extends SeleniumInit
 			Assert.assertTrue(false);
 		}
 	}
-	
 	
 }
 
