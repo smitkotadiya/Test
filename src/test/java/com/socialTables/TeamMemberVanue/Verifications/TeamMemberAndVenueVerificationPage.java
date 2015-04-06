@@ -40,6 +40,7 @@ public class TeamMemberAndVenueVerificationPage extends AbstractPage
 
 	public boolean verifyAddedVenue(int numOfVenueBefore,String venueName)
 	{
+		common.pause(2);
 		List<WebElement> eles = driver.findElements(By.xpath("//div[contains(@class,'listings-container')]/div[contains(@class,'floorplan')]/div"));
 		int numOfVenueAfter = eles.size();
 		boolean bool= false;
@@ -63,7 +64,7 @@ public class TeamMemberAndVenueVerificationPage extends AbstractPage
 	
 	public boolean verifyDeletedVenue(int numOfVenueBefore)
 	{
-		driver.navigate().refresh();
+		//driver.navigate().refresh();
 		common.pause(2);
 		By by = By.xpath("//div[contains(@class,'listings-container')]/div[contains(@class,'floorplan')]/div");
 		int numOfVenueAfter = common.getNumOfElements(driver, by);

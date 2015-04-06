@@ -57,6 +57,7 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 			log("Fail");
 			numOfFailure++;
 		}
+		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.clickOnVenueLibrary();
 		numOfVenueInList = common.getNumOfElements(driver, By.xpath("//div[contains(@class,'listings-container')]/div[contains(@class,'floorplan')]/div"));
 		log("Step 8: Click on 'New Venue' Button");
 		venueCreationPage = teamMemberAndVenueIndexPage.newOrEditVenue(isEditable);
@@ -97,6 +98,9 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		log("Step 14: Select any existing 'Floor Plan' and click on 'Done' button");
 		log("Step 15: Click on 'Ok' button");
 		venueCreationPage = teamMemberAndVenueIndexPage.selectAnyWallTexture();
+		log("Step 16: Click on 'Venue Library'");
+		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.clickOnVenueLibrary();
+		log("Step 17: Verify added venue");
 		if(teamMemberAndVenueVerificationPage.verifyAddedVenue(numOfVenueInList, venueName))
 		{
 			log("<Strong><font color=#008000>Pass</font></strong>");
@@ -152,7 +156,7 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 			log("Fail");
 			numOfFailure++;
 		}
-		//numOfVenueInList = common.getNumOfElements(driver, By.xpath("//div[contains(@class,'listings-container')]/div[contains(@class,'floorplan')]/div"));
+		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.clickOnVenueLibrary();
 		log("Step 8: Mouse Hover on any existing venue and click on edit icon ");
 		venueCreationPage = teamMemberAndVenueIndexPage.newOrEditVenue(isEditable);
 		log("Step 9: Verify event creation page");
@@ -192,6 +196,7 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		log("Step 14: Select any existing 'Floor Plan' and click on 'Done' button");
 		log("Step 15: Click on 'Ok' button");
 		venueCreationPage = teamMemberAndVenueIndexPage.selectAnyWallTexture();
+		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.clickOnVenueLibrary();
 		log("Step 16: Verify edited venue on 'Team settings and venue page'");
 		if(teamMemberAndVenueVerificationPage.verifyEditedVenue(venueName))
 		{
@@ -246,10 +251,12 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 			log("Fail");
 			numOfFailure++;
 		}
+		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.clickOnVenueLibrary();
 		numOfVenueInList = common.getNumOfElements(driver, By.xpath("//div[contains(@class,'listings-container')]/div[contains(@class,'floorplan')]/div"));
 		log("Step 8: Mouse Hover on any existing venue and click on Delete icon");
 		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.deleteVenue();
-		log("Step 9: Verify deleted venue");
+		log("Step 9:Click on Venue Library and Verify deleted venue");
+		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.clickOnVenueLibrary();
 		if(teamMemberAndVenueVerificationPage.verifyDeletedVenue(numOfVenueInList))
 		{
 			log("<Strong><font color=#008000>Pass</font></strong>");
@@ -263,8 +270,6 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		{
 			Assert.assertTrue(false);
 		}
-		
-		
 	}
 	
 	@Test
@@ -295,7 +300,8 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 			log("Fail");
 			numOfFailure++;
 		}
-		numOfEventsInGrid = common.getNumOfElements(driver, By.xpath(".//*[@id='list-container']/a"));
+		
+		numOfEventsInGrid = common.getNumOfElements(driver, By.xpath("//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]"));
 		log("Step 6:Navigate to 'Team Member and Venue' Module");
 		generalVerificationPage = generalIndexPage.navigateToTeamMemberAndVenue();
 		log("Step 7:Verify 'Team Member and Venue' page");
@@ -308,7 +314,8 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 			log("Fail");
 			numOfFailure++;
 		}
-		String venueName = driver.findElement(By.xpath("//div[contains(@class,'listings-container')]/div[contains(@class,'floorplan')][1]/div")).getText();
+		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.clickOnVenueLibrary();
+		//String venueName = driver.findElement(By.xpath("//div[contains(@class,'listings-container')]/div[contains(@class,'floorplan')][1]/div")).getText();
 		log("Step 8: Mouse Hover on any existing venue and click on 'New Event' ");
 		eventCreationPage = teamMemberAndVenueIndexPage.createEventForVenue();
 		log("Step 9: Verify event creation page ");
@@ -326,7 +333,7 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		log("Step 9: Navigate to 'Event' Page by clicking on logo");
 		dashboardPage = eventIndexPage.clickOnLogo();
 		log("Step 10: Verify Added Event with selected venue");
-		if(dashboardPage.verifyAddedEventWithSpecificVenue(numOfEventsInGrid, eventName,venueName))
+		if(dashboardPage.verifyAddedEvent(numOfEventsInGrid, eventName))
 		{
 			log("<Strong><font color=#008000>Pass</font></strong>");
 		}
@@ -381,6 +388,7 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 			log("Fail");
 			numOfFailure++;
 		}
+		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.clickOnVenueLibrary();
 		String venueSeach = driver.findElement(By.xpath("//div[contains(@class,'listings-container')]/div[contains(@class,'floorplan')][1]/div")).getText();
 		log("Step 8: Serach any existing venue and click on 'Search' button");
 		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.searchVenue(venueSeach);

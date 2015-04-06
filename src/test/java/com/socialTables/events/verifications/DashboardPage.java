@@ -66,7 +66,7 @@ public class DashboardPage extends AbstractPage
 	
 	public boolean verifyAddedEventWithSpecificVenue(int numOfEvents,String eventName,String venueName)
 	{
-		int numOfEventsAfterAdditon = common.getNumOfElements(driver, By.xpath(".//*[@id='list-container']/a"));
+		int numOfEventsAfterAdditon = common.getNumOfElements(driver, By.xpath("//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]"));
 		boolean bool = false;
 		if(numOfEventsAfterAdditon==numOfEvents+1)
 		{

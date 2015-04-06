@@ -88,6 +88,8 @@ public class TeamMemberAndVenueIndexPage extends AbstractPage
 	
 	@FindBy(xpath="//button[contains(.,'Resend Email') and not(contains(@style,'display: none;'))]")
 	private WebElement btnResendButton;
+	@FindBy(xpath="//span[contains(.,'Venue Library')]")
+	private WebElement venuelibrary;
 	
 	
 	Common common = new Common(driver);
@@ -119,6 +121,12 @@ public class TeamMemberAndVenueIndexPage extends AbstractPage
 		return new VenueCreationPage(driver);
 	}
 	
+	public TeamMemberAndVenueVerificationPage clickOnVenueLibrary()
+	{
+		venuelibrary.click();
+		common.pause(2);
+		return new TeamMemberAndVenueVerificationPage(driver);
+	}
 	
 	public VenueCreationPage fillVenueDetail(String venueName,boolean isEditable) throws InterruptedException
 	{
