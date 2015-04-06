@@ -27,7 +27,7 @@
 	</classes>
 </test>
 
- <test 	name="To verify Edit Venue functionality.">
+ <!-- <test 	name="To verify Edit Venue functionality.">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -46,9 +46,9 @@
 			</methods>
 		</class>
 	</classes>
-</test>
+</test> -->
 
-<test 	name="To verify Search Venue functionality">
+<!-- <test 	name="To verify Search Venue functionality">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -202,7 +202,7 @@
 			</methods>
 		</class>
 	</classes>
-</test>
+</test> -->
 
 
 </suite>

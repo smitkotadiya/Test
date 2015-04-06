@@ -280,15 +280,15 @@ public class EventIndexPage extends AbstractPage
 	{
 		if(criteria.equalsIgnoreCase("Author"))
 		{
-			common.selectFromComboByVisibleElement(filterAuthor, value);
+			driver.findElement(By.xpath("//div[@class='Select-option'][contains(.,'"+value+"')]")).click();
 		}
 		else if(criteria.equalsIgnoreCase("Category"))
 		{
-			common.selectFromComboByVisibleElement(filterCategory, value);
+			driver.findElement(By.xpath("//div[@class='Select-option'][contains(.,'"+value+"')]")).click();
 		}
 		else
 		{
-			common.selectFromComboByVisibleElement(filterLocation, value);
+			driver.findElement(By.xpath("//div[@class='Select-option'][contains(.,'"+value+"')]")).click();
 		}
 		
 		return new DashboardPage(driver);
@@ -302,17 +302,43 @@ public class EventIndexPage extends AbstractPage
 	
 	public EventCreationPage clickOnCloneIcone()
 	{
-		driver.findElement(By.xpath(".//*[@id='list-container']/a[not(contains(@style,'display: none;'))][1]/span[@class='eventTools']/i[2]")).click();
+		List<WebElement> allDelEles = driver.findElements(By.xpath("//i[contains(@class,'event-duplicate-icon')]"));
+		//common.highlightElement(driver, allDelEles.get(0));
 		common.pause(2);
+		allDelEles.get(0).click();
 		driver.findElement(By.xpath("//button[contains(.,'OK')]")).click();
 		common.pause(2);
+		Set<String> windowHandles = driver.getWindowHandles();
+		for(String winHandle: windowHandles)
+		{
+			System.out.println("Driver switch on new window:---->"+winHandle);
+			driver.switchTo().window(winHandle);
+			common.pause(2);
+		}
 		return new EventCreationPage(driver);
 	}
 	
 	public EventThreeDPage clickOnViewThreeDIcone()
 	{
-		driver.findElement(By.xpath(".//*[@id='list-container']/a[not(contains(@style,'display: none;'))][1]/span[@class='eventTools']/i[3]")).click();
-		common.pause(2);
+		
+		try{
+			 List<WebElement> allDelEles = driver.findElements(By.xpath("//i[contains(@class,'event-3d-icon')]"));
+			 common.highlightElement(driver, allDelEles.get(0));
+			 common.pause(2);
+			 allDelEles.get(0).click();
+			 common.pause(3);
+			}
+			catch(Exception e)
+			{
+				log("There is no existing event available to view in 3D");
+			}
+		Set<String> windowHandles = driver.getWindowHandles();
+		for(String winHandle: windowHandles)
+		{
+			System.out.println("Driver switch on new window:---->"+winHandle);
+			driver.switchTo().window(winHandle);
+			common.pause(2);
+		}
 		return new EventThreeDPage(driver);
 	}
 	

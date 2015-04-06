@@ -3,6 +3,7 @@ package com.socialTables.general;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -111,6 +112,30 @@ public class GeneralIndexPage extends AbstractPage
 		common.pause(2);
 		
 		return new GeneralVerificationPage(driver);
+	}
+	
+	public String getRandomFilterationStringInEventPage(By by)
+	{
+		String selectedOption = "";
+		driver.findElement(by).click();
+		List<WebElement> allOptions = driver.findElements(By.xpath("//div[@class='Select-option']"));
+		ArrayList<String> arrayOfAllOption=new ArrayList<String>();
+		for(WebElement ele:allOptions)
+		{
+			if(!ele.getText().startsWith("All"))
+			{
+				arrayOfAllOption.add(ele.getText());
+			}
+		}
+		int index = new Random().nextInt(arrayOfAllOption.size());
+		if(Integer.signum(index)==-1)
+		{
+			index = -index;
+			//index=Math.abs(index);
+		}
+		selectedOption = arrayOfAllOption.get(index);
+		
+		return selectedOption;
 	}
 	
 }

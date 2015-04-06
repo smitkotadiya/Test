@@ -15,6 +15,8 @@ public class EventCreationPage extends AbstractPage
 
 	@FindBy(xpath=".//*[@id='dialog-header']/h3[contains(.,'Event Information')]")
 	private WebElement verifyEventCreationForm;
+	@FindBy(id="logo")
+	private WebElement verifyLogoOnEventCreation;
 	@FindBy(xpath=".//*[@id='dialog-header']/h3[contains(.,'Room Settings')]")
 	private WebElement verifyRoomSetingForm;
 	@FindBy(id="tabGuest")
@@ -34,6 +36,10 @@ public class EventCreationPage extends AbstractPage
 		return verifyEventCreationForm.isDisplayed();
 	}
 	
+	public boolean verifyLogoInEventCreationPage()
+	{
+		return verifyLogoOnEventCreation.isDisplayed();
+	}
 	public boolean verifyRoomSettingPage()
 	{
 		common.pause(2);

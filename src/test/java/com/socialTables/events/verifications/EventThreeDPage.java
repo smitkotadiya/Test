@@ -21,7 +21,7 @@ public class EventThreeDPage extends AbstractPage
 
 	public boolean verifyThreeDView()
 	{
-		common.pause(10);
+		common.pause(8);
 		if(verifyThreeDPage.isDisplayed())
 		{
 			return true;

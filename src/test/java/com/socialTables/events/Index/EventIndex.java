@@ -322,7 +322,7 @@ public class EventIndex extends SeleniumInit
 			log("Fail");
 			numOfFailure++;
 		}
-		String numOfEventInLable =driver.findElement(By.xpath("//div[@class='count_box']")).getText();
+		String numOfEventInLable =driver.findElement(By.xpath("//span[@class='events-results-text']/span[1]")).getText();
 		numOfEventsInLableCount = Integer.parseInt(numOfEventInLable);
 		log("Step 6: Click On 'New Event' Button");
 		eventCreationPage = eventIndexPage.clickOnNewEvent();
@@ -362,7 +362,7 @@ public class EventIndex extends SeleniumInit
 			log("Fail");
 			numOfFailure++;
 		}
-		numOfEventInLable =driver.findElement(By.xpath("//div[@class='count_box']")).getText();
+		numOfEventInLable =driver.findElement(By.xpath("//span[@class='events-results-text']/span[1]")).getText();
 		numOfEventsInLableCount = Integer.parseInt(numOfEventInLable);
 		log("Step 13:Now, Try to delete any existing event");
 		dashboardPage = eventIndexPage.clickOnDeleteEvent();
@@ -418,10 +418,10 @@ public class EventIndex extends SeleniumInit
 			log("Fail");
 			numOfFailure++;
 		}
-		By By_Author = By.id("filterAuthor");
-		By By_Category = By.id("filterCategory");
-		By By_Location = By.id("filterLocation");
-		authorName = common.selectRandomOptionFromCombo(By_Author, driver);
+		By By_Author = By.xpath("//div[contains(@class,'events-table-dropdown-owner')]/div/div");
+		By By_Category = By.xpath("//div[contains(@class,'events-table-dropdown-category')]/div/div");
+		By By_Location = By.xpath("//div[contains(@class,'events-table-dropdown-location')]/div/div");
+		authorName = generalIndexPage.getRandomFilterationStringInEventPage(By_Author);
 		log("Step 6: Select any author from combo box. ");
 		dashboardPage = eventIndexPage.filteration("Author", authorName);
 		log("Step 7: Verify filteration By Author.");
@@ -435,7 +435,7 @@ public class EventIndex extends SeleniumInit
 			numOfFailure++;
 		}
 		common.refresh(driver);
-		categoryName = common.selectRandomOptionFromCombo(By_Category, driver);
+		categoryName = generalIndexPage.getRandomFilterationStringInEventPage(By_Category);
 		
 		log("Step 8: Select any category from combo box. ");
 		dashboardPage = eventIndexPage.filteration("Category", categoryName);
@@ -450,7 +450,7 @@ public class EventIndex extends SeleniumInit
 			numOfFailure++;
 		}
 		common.refresh(driver);
-		locationName = common.selectRandomOptionFromCombo(By_Location, driver);
+		locationName = generalIndexPage.getRandomFilterationStringInEventPage(By_Location);
 		log("Step 10: Select any location from combo box. ");
 		dashboardPage = eventIndexPage.filteration("location", locationName);
 		log("Step 11: Verify filteration By location.");
@@ -523,7 +523,6 @@ public class EventIndex extends SeleniumInit
 		int numOfFailure=0;
 		int numOfEventsInGrid = 0;
 		String eventName = "Auto-clone";
-		boolean isAttendeeEnable = true;
 		log("<b><ul>Testcase ID: TC_EV_009</b></ul>");
 		log("<b><ul>TestScenario: To verify 'Clone Event' functionality.</b></ul>");
 		log("Step 1: Click on 'login' tab");
@@ -544,11 +543,11 @@ public class EventIndex extends SeleniumInit
 			log("Fail");
 			numOfFailure++;
 		}
-		numOfEventsInGrid = common.getNumOfElements(driver, By.xpath(".//*[@id='list-container']/a"));
+		numOfEventsInGrid = common.getNumOfElements(driver, By.xpath("//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]/div/div/div/span"));
 		log("Step 6: Click on clone icone of any existing event");
 		eventCreationPage = eventIndexPage.clickOnCloneIcone();
 		log("Step 7: Verify event creation page");
-		if(eventCreationPage.verifyEventCreationPage())
+		if(eventCreationPage.verifyLogoInEventCreationPage())
 		{
 			log("<Strong><font color=#008000>Pass</font></strong>");
 		}
@@ -557,12 +556,9 @@ public class EventIndex extends SeleniumInit
 			log("Fail");
 			numOfFailure++;
 		}
-		log("Step 8: Now, Save the event");
-		eventCreationPage = eventIndexPage.fillEventInfo("Clone",eventName,null,isAttendeeEnable);
-		eventCreationPage = eventIndexPage.fillRoomSettingsForm("Clone");
-		log("Step 9: Navigate to dashboard page by clicking on logo");
+		log("Step 8: Navigate to dashboard page by clicking on logo");
 		dashboardPage = eventIndexPage.clickOnLogo();
-		log("Step 10: Verify Dashboard Page and added event");
+		log("Step 9: Verify Dashboard Page and added event");
 		if(dashboardPage.verifyAddedEvent(numOfEventsInGrid, eventName))
 		{
 			log("<Strong><font color=#008000>Pass</font></strong>");

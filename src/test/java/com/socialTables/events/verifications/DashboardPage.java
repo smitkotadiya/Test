@@ -115,7 +115,7 @@ public class DashboardPage extends AbstractPage
 	public boolean verifyEventCounterFunctionlaity(String modifyCriteria,int numOfEvents)
 	{
 		boolean bool = false;
-		String numOfEventInLable = driver.findElement(By.xpath("//div[@class='count_box']")).getText();
+		String numOfEventInLable = driver.findElement(By.xpath("//span[@class='events-results-text']/span[1]")).getText();
 		int numOfEventsAfterModify = Integer.parseInt(numOfEventInLable);
 		if(modifyCriteria.equalsIgnoreCase("Add"))
 		{
@@ -144,14 +144,16 @@ public class DashboardPage extends AbstractPage
 
 	public boolean verifyFilterationByAuthor(String value)
 	{
+		common.pause(2);
 		boolean bool = false;
+		
 		try{
-		List<WebElement> eles = driver.findElements(By.xpath(".//*[@id='list-container']/a[not(contains(@style,'display: none;'))]/span[@class='author']"));
+		List<WebElement> eles = driver.findElements(By.xpath(".//*[@id='events-table-container']/div/div[3]/div/div[1]/div[3]/div/div/div/div[2]/div/div[6]/div/div/div/span"));
 		for(WebElement ele:eles)
 		{
 			if(!ele.getText().equalsIgnoreCase(value))
 			{
-				bool= false;
+				bool= true;
 				break;
 			}
 			else
@@ -159,20 +161,23 @@ public class DashboardPage extends AbstractPage
 				bool= true;
 			}
 		}
-			return bool;	
+				
 		}
 		catch(Exception e)
 		{
 			log("There is no data available for this filteration criteria");
-			return true;
+			bool=true;
 		}
+		return bool;
 	}
 	
 	public boolean verifyFilterationByLocation(String value)
 	{
+		common.pause(2);
 		boolean bool = false;
+		
 		try{
-		List<WebElement> eles = driver.findElements(By.xpath(".//*[@id='list-container']/a[not(contains(@style,'display: none;'))]/span[@class='location']"));
+		List<WebElement> eles = driver.findElements(By.xpath(".//*[@id='events-table-container']/div/div[3]/div/div[1]/div[3]/div/div/div/div[2]/div/div[5]/div/div/div/span"));
 		for(WebElement ele:eles)
 		{
 			if(!ele.getText().equalsIgnoreCase(value))
@@ -185,20 +190,22 @@ public class DashboardPage extends AbstractPage
 				bool= true;
 			}
 		}
-		return bool;
 		}
 		catch(Exception e)
 		{
-			log("There is no data available for this filteration criteria");
-			return true;
+			log("Elements Are Not Loaded Properly");
+			bool= true;
 		}
+		
+		return bool;
 	}
 	
 	public boolean verifyFilterationByCategory(String value)
 	{
+		common.pause(2);
 		boolean bool = false;
 		try{
-		List<WebElement> eles = driver.findElements(By.xpath(".//*[@id='list-container']/a[not(contains(@style,'display: none;'))]/span[@class='category']"));
+		List<WebElement> eles = driver.findElements(By.xpath(".//*[@id='events-table-container']/div/div[3]/div/div[1]/div[3]/div/div/div/div[2]/div/div[4]/div/div/div/span"));
 		for(WebElement ele:eles)
 		{
 			if(!ele.getText().equalsIgnoreCase(value))
@@ -211,18 +218,21 @@ public class DashboardPage extends AbstractPage
 				bool= true;
 			}
 		}
-		return bool;
+		
 		}
 		catch(Exception e)
 		{
-			log("There is no data available for this filteration criteria");
-			return true;
+			log("Elements Are Not Loaded Properly");
+			bool= true;
 		}
+
+		return bool;
 	}
 
 	public boolean verifySearchFunctionality(String seachString)
 	{
 		boolean bool=false;
+	
 		List<WebElement> allEles = driver.findElements(By.xpath("//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]/div/div/div/span"));
 		for(WebElement ele:allEles)
 		{

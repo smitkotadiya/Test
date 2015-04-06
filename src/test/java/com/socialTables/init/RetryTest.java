@@ -15,7 +15,7 @@ public class RetryTest implements IRetryAnalyzer
 		 {
             System.out.println("Retrying test Execution: " + result.getName() + " with status "
                     + getResultStatusName(result.getStatus()) + " for the " + (retryCounter+1) + " time(s).");
-            maxRetryCounter++;
+            retryCounter++;
             return true;
 	      }
 	        return false;
