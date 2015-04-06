@@ -1,10 +1,12 @@
 package com.socialTables.teamSettings.Index;
 
+import java.util.List;
+
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
-
+import org.openqa.selenium.WebElement;
 
 import com.socialTables.init.Common;
 import com.socialTables.init.SeleniumInit;
@@ -407,6 +409,66 @@ public class TeamSettingIndex extends SeleniumInit
 			Assert.assertTrue(false);
 		}
 	}
-
+	
+	@Test
+	public void verifyAvaiblityInTeamSettings() throws InterruptedException
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		log("<b><ul>Testcase ID: TC_TS_001</b></ul>");
+		log("<b><ul>TestScenario: To verify All links in Team setting.</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 6:Navigate to 'Team Settings' Module");
+		generalVerificationPage = generalIndexPage.navigateToTeamSettings();
+		log("Step 7:Verify 'Team Setting' page");
+		if(generalVerificationPage.verifyTeamSettings())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 8: Click on 'Table & Object' tab ");
+		teamSettingsPage = teamSettingsIndexPage.clickOnTableAndObject();
+		log("Step 9: Verify Table & object page");
+		if(teamSettingsPage.verifyTableAndObjectPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		List<WebElement> allVisibleEles = driver.findElements(By.xpath("//div[@class='folder'][1]/div[contains(@class,'visible')]/button"));
+		List<WebElement> allVsisbleElesForClass = driver.findElements(By.xpath("//div[@class='folder'][1]/div[contains(@class,'visible')]/i"));
+		List<WebElement> allVisibleElesForLable = driver.findElements(By.xpath("//div[@class='folder'][1]/div[contains(@class,'visible')]/div"));
+		
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+	}
 	
 }

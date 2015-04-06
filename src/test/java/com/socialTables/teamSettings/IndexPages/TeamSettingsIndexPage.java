@@ -45,9 +45,6 @@ public class TeamSettingsIndexPage extends AbstractPage
 	@FindBy(xpath="//div[@class='save-cancel-elem']/button[contains(.,'Save')]")
 	private WebElement btnSave;
 	
-	
-	
-	
 	Common common = new Common(driver);
 
 	public TeamSettingsIndexPage(WebDriver driver) 
@@ -159,6 +156,13 @@ public class TeamSettingsIndexPage extends AbstractPage
 		{
 			log("<b> There is no custom object available to delete </b>");
 		}
+		return new TeamSettingsPage(driver);
+	}
+	
+	public TeamSettingsPage clickOnAnyAvailableObject(WebElement elementToClick)
+	{
+	
+	
 		return new TeamSettingsPage(driver);
 	}
 	
