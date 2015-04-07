@@ -121,6 +121,9 @@ public class EventIndexPage extends AbstractPage
 	@FindBy(xpath="//a[contains(.,'UNGROUP')]")
 	private WebElement tabUngroup;
 	
+	@FindBy(xpath="//div[@id='left-object-search']/input[@class='search']")
+	private WebElement txtSearchObject;
+	
 	
 	//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]
 	
@@ -209,7 +212,6 @@ public class EventIndexPage extends AbstractPage
 		common.pause(2);
 		btnDoneInRoomSetting.click();
 		common.pause(2);
-		
 		return new DashboardPage(driver);
 	}
 	
@@ -318,6 +320,13 @@ public class EventIndexPage extends AbstractPage
 		return new EventCreationPage(driver);
 	}
 	
+	public EventCreationPage searchObjects(String objectName)
+	{
+		common.type(txtSearchObject, objectName);
+		common.pause(2);
+		return new EventCreationPage(driver);
+	}
+	
 	public EventThreeDPage clickOnViewThreeDIcone()
 	{
 		
@@ -390,7 +399,7 @@ public class EventIndexPage extends AbstractPage
 		
 		return new EventCreationPage(driver);
 	}
-	
+
 	public EventCreationPage clickOnShareEvent()
 	{
 		btnShareEvent.click();
@@ -543,7 +552,6 @@ public class EventIndexPage extends AbstractPage
 			common.pause(2);
 			driver.findElement(By.id("addGuestGroup")).click();
 		}
-		
 		common.pause(2);
 		return new AttendeeManagerPage(driver);
 	}
@@ -552,7 +560,6 @@ public class EventIndexPage extends AbstractPage
 	{
 		objectEditingTutorialLink.click();
 		common.pause(2);
-		
 		return new EventCreationPage(driver);
 	}
 	
@@ -560,7 +567,6 @@ public class EventIndexPage extends AbstractPage
 	{
 		roomSettingsTutorialLink.click();
 		common.pause(2);
-		
 		return new EventCreationPage(driver);
 	}
 	

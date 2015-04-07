@@ -97,7 +97,7 @@ public class TeamSettingsIndexPage extends AbstractPage
 		common.selectFromComboByVisibleElement(selectCategoryIcon, categoryIcon);
 		common.pause(2);
 		driver.findElement(By.xpath("//*[@id='custom_event_categories_table']/tbody/tr["+(rowNum)+"]/td[4]/button[1]")).click();
-		
+			
 		return new TeamSettingsPage(driver);
 	}
 	
@@ -159,10 +159,10 @@ public class TeamSettingsIndexPage extends AbstractPage
 		return new TeamSettingsPage(driver);
 	}
 	
-	public TeamSettingsPage clickOnAnyAvailableObject(WebElement elementToClick)
+	public TeamSettingsPage clickOnAnyObject(WebElement elementToClick)
 	{
-	
-	
+		elementToClick.click();
+		common.pause(2);
 		return new TeamSettingsPage(driver);
 	}
 	

@@ -118,5 +118,10 @@ public class TeamSettingsPage extends AbstractPage
 		int numOfObjectsAfterDeletion = common.getNumOfElements(driver, By.xpath("//div[@class='chair-content']/span[@class='chair-name']/span[2]"));
 		return (numOfObjectsAfterDeletion==numOfRow-1);
 	}
+	
+	public boolean verifyButtonLable(WebElement ele)
+	{
+		return "Hide".equalsIgnoreCase(ele.getText());
+	}
 
 }

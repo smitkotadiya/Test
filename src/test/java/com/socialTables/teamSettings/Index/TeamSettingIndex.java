@@ -1,6 +1,7 @@
 package com.socialTables.teamSettings.Index;
 
 import java.util.List;
+import java.util.Random;
 
 import org.testng.annotations.Test;
 import org.testng.Assert;
@@ -411,12 +412,12 @@ public class TeamSettingIndex extends SeleniumInit
 	}
 	
 	@Test
-	public void verifyAvaiblityInTeamSettings() throws InterruptedException
+	public void verifyHideObjectInTeamSettings() throws InterruptedException
 	{
 		Common common = new Common(driver);
 		int numOfFailure=0;
-		log("<b><ul>Testcase ID: TC_TS_001</b></ul>");
-		log("<b><ul>TestScenario: To verify All links in Team setting.</b></ul>");
+		log("<b><ul>Testcase ID: TC_TS_002</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Hide' functionality in Table & Objects.</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
@@ -464,6 +465,133 @@ public class TeamSettingIndex extends SeleniumInit
 		List<WebElement> allVsisbleElesForClass = driver.findElements(By.xpath("//div[@class='folder'][1]/div[contains(@class,'visible')]/i"));
 		List<WebElement> allVisibleElesForLable = driver.findElements(By.xpath("//div[@class='folder'][1]/div[contains(@class,'visible')]/div"));
 		
+		Random r = new Random();
+		int index = r.nextInt(allVisibleEles.size());
+		String objectName = allVisibleElesForLable.get(index).getText();
+		String className = allVsisbleElesForClass.get(index).getAttribute("class");
+		System.out.println("Selected Class is---->"+className);
+		log("Step 10: Now hide any object");
+		teamSettingsPage = teamSettingsIndexPage.clickOnAnyObject(allVisibleEles.get(index));
+		log("Step 11: Verify Button lable ");
+		if(teamSettingsPage.verifyButtonLable(allVisibleEles.get(index)))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 12: Navigate to 'Event' Page");
+		generalVerificationPage = generalIndexPage.navigateToEvent();
+		log("Step 13: Now click on any existing event and ");
+		eventCreationPage = eventIndexPage.clickOnEvent();
+		log("Step 14: Now Search relevant object.");
+		eventCreationPage = eventIndexPage.searchObjects(objectName);
+		log("Step 15: Verify 'Hide' object should not appear in object panel ");
+		if(eventCreationPage.verifySearchedObjectIsDisplay(className))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+	}
+	
+	@Test
+	public void verifyShowObjectInTeamSettings() throws InterruptedException
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		log("<b><ul>Testcase ID: TC_TS_003</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Show' functionality in Table & Objects..</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 6:Navigate to 'Team Settings' Module");
+		generalVerificationPage = generalIndexPage.navigateToTeamSettings();
+		log("Step 7:Verify 'Team Setting' page");
+		if(generalVerificationPage.verifyTeamSettings())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 8: Click on 'Table & Object' tab ");
+		teamSettingsPage = teamSettingsIndexPage.clickOnTableAndObject();
+		log("Step 9: Verify Table & object page");
+		if(teamSettingsPage.verifyTableAndObjectPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		List<WebElement> allVisibleEles = driver.findElements(By.xpath("//div[@class='folder'][1]/div[not(contains(@class,'visible'))]/button"));
+		List<WebElement> allVsisbleElesForClass = driver.findElements(By.xpath("//div[@class='folder'][1]/div[not(contains(@class,'visible'))]/i"));
+		List<WebElement> allVisibleElesForLable = driver.findElements(By.xpath("//div[@class='folder'][1]/div[not(contains(@class,'visible'))]/div"));
+		
+		Random r = new Random();
+		int index = r.nextInt(allVisibleEles.size());
+		String objectName = allVisibleElesForLable.get(index).getText();
+		String className = allVsisbleElesForClass.get(index).getAttribute("class");
+		System.out.println("Selected Class is---->"+className);
+		log("Step 10: Now Show any object");
+		teamSettingsPage = teamSettingsIndexPage.clickOnAnyObject(allVisibleEles.get(index));
+		log("Step 11: Verify Button lable ");
+		if(teamSettingsPage.verifyButtonLable(allVisibleEles.get(index)))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 12: Navigate to 'Event' Page");
+		generalVerificationPage = generalIndexPage.navigateToEvent();
+		log("Step 13: Now click on any existing event and ");
+		eventCreationPage = eventIndexPage.clickOnEvent();
+		log("Step 14: Now Search relevant object.");
+		eventCreationPage = eventIndexPage.searchObjects(objectName);
+		log("Step 15: Verify 'Show' object should appear in object panel ");
+		if(eventCreationPage.verifySearchedObjectIsDisplay(className))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
 		
 		if(numOfFailure>0)
 		{

@@ -94,13 +94,25 @@ public class EventCreationPage extends AbstractPage
 	
 	public boolean verifyShareEventDialogBox()
 	{
-		
 		return verifyShareDialog.isDisplayed();
 	}
 	
 	public boolean verifyTutorialLinks()
 	{
 		return driver.findElement(By.xpath("//iframe[contains(@class,'fancybox-iframe')]")).isDisplayed();
+	}
+	
+	public boolean verifySearchedObjectIsDisplay(String className)
+	{
+		try
+		{
+			driver.findElement(By.xpath("//i[contains(@class,'"+className+"')]")).isDisplayed();
+			return false;
+		}
+		catch(Exception e)
+		{
+			return true;
+		}
 	}
 
 }

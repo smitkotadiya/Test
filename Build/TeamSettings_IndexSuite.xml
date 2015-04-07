@@ -16,7 +16,7 @@
 	<parameter name="selenium.browser" value="firefox" />
 	<parameter name="selenium.url" value="https://lab.socialtables.com/" />
  
- <test 	name="To verify All links in Team setting.">
+ <!-- <test 	name="To verify All links in Team setting.">
 	<classes>
 		<class
 			name="com.socialTables.teamSettings.Index.TeamSettingIndex">
@@ -25,7 +25,7 @@
 			</methods>
 		</class>
 	</classes>
-</test>
+</test> -->
  
   <!-- <test 	name="To verify 'Add Custom Category' functionality..">
 	<classes>
@@ -69,6 +69,28 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
+</test> --> 
+
+<test 	name="To verify 'Hide' Functionality in 'Table And Object'.">
+	<classes>
+		<class
+			name="com.socialTables.teamSettings.Index.TeamSettingIndex">
+			<methods>
+				<include name="verifyHideObjectInTeamSettings" />
+			</methods>
+		</class>
+	</classes>
+</test>
+
+<test 	name="To verify 'Show' Functionality in 'Table And Object'.">
+	<classes>
+		<class
+			name="com.socialTables.teamSettings.Index.TeamSettingIndex">
+			<methods>
+				<include name="verifyShowObjectInTeamSettings" />
+			</methods>
+		</class>
+	</classes>
+</test>
 
 </suite>
