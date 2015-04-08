@@ -115,7 +115,6 @@ public class TeamSettingsIndexPage extends AbstractPage
 		{
 			log("<b> There is no custom category available to delete </b>");
 		}
-		
 		return new TeamSettingsPage(driver);
 	}
 	
@@ -165,6 +164,4 @@ public class TeamSettingsIndexPage extends AbstractPage
 		common.pause(2);
 		return new TeamSettingsPage(driver);
 	}
-	
-
 }

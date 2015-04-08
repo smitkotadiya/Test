@@ -128,6 +128,18 @@ public class TeamMemberAndVenueIndexPage extends AbstractPage
 		return new TeamMemberAndVenueVerificationPage(driver);
 	}
 	
+	public TeamMemberAndVenueVerificationPage changeRoleOfAnyUser(String selectedUser)
+	{
+		List<WebElement> eles = driver.findElements(By.xpath(".//*[@id='members-table']/tbody/tr[contains(.,'Auto')]/td[3]"));
+		eles.get(0).click();
+		common.pause(2);
+		WebElement selectRole = eles.get(0).findElement(By.xpath("//select"));
+		common.selectFromComboByVisibleElement(selectRole, selectedUser);
+		common.pause(2);
+		
+		return new TeamMemberAndVenueVerificationPage(driver);
+	}
+	
 	public VenueCreationPage fillVenueDetail(String venueName,boolean isEditable) throws InterruptedException
 	{
 		if(!isEditable)

@@ -30,7 +30,6 @@ public class EventCreationPage extends AbstractPage
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
-
 	public boolean verifyEventCreationPage()
 	{
 		return verifyEventCreationForm.isDisplayed();
@@ -114,5 +113,4 @@ public class EventCreationPage extends AbstractPage
 			return true;
 		}
 	}
-
 }

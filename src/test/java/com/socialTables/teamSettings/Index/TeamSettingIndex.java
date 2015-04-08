@@ -473,7 +473,7 @@ public class TeamSettingIndex extends SeleniumInit
 		log("Step 10: Now hide any object");
 		teamSettingsPage = teamSettingsIndexPage.clickOnAnyObject(allVisibleEles.get(index));
 		log("Step 11: Verify Button lable ");
-		if(teamSettingsPage.verifyButtonLable(allVisibleEles.get(index)))
+		if(teamSettingsPage.verifyShowButtonLable(allVisibleEles.get(index)))
 		{
 			log("<Strong><font color=#008000>Pass</font></strong>");
 		}
@@ -567,7 +567,7 @@ public class TeamSettingIndex extends SeleniumInit
 		log("Step 10: Now Show any object");
 		teamSettingsPage = teamSettingsIndexPage.clickOnAnyObject(allVisibleEles.get(index));
 		log("Step 11: Verify Button lable ");
-		if(teamSettingsPage.verifyButtonLable(allVisibleEles.get(index)))
+		if(teamSettingsPage.verifyHideButtonLable(allVisibleEles.get(index)))
 		{
 			log("<Strong><font color=#008000>Pass</font></strong>");
 		}

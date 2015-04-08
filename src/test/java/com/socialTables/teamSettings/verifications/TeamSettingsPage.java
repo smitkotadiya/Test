@@ -2,6 +2,7 @@ package com.socialTables.teamSettings.verifications;
 
 import java.util.List;
 
+import org.apache.regexp.recompile;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -80,13 +81,17 @@ public class TeamSettingsPage extends AbstractPage
 		}
 	}
 	
+	public boolean verify()
+	{
+		return true;
+	}
+	
 	public boolean verifyDeletedCategory(int numOfRow)
 	{
 		common.pause(2);
 		int numOfRowAfterDeletion = common.getNumOfElements(driver, By.xpath(".//*[@id='custom_event_categories_table']/tbody/tr"));
 		return (numOfRow==numOfRowAfterDeletion+1);
 	}
-	
 	
 	public boolean verifyAddedObject(String name,int numOfObjects)
 	{
@@ -113,15 +118,21 @@ public class TeamSettingsPage extends AbstractPage
 		return bool;
 	}
 	
+	
 	public boolean verifyDeletedObject(int numOfRow)
 	{
 		int numOfObjectsAfterDeletion = common.getNumOfElements(driver, By.xpath("//div[@class='chair-content']/span[@class='chair-name']/span[2]"));
 		return (numOfObjectsAfterDeletion==numOfRow-1);
 	}
 	
-	public boolean verifyButtonLable(WebElement ele)
+	public boolean verifyHideButtonLable(WebElement ele)
 	{
 		return "Hide".equalsIgnoreCase(ele.getText());
+	}
+	
+	public boolean verifyShowButtonLable(WebElement ele)
+	{
+		return "Show".equalsIgnoreCase(ele.getText());
 	}
 
 }

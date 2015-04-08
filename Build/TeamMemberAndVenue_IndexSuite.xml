@@ -115,7 +115,7 @@
 	</classes>
 </test>   -->
  
- <test 	name="To verify owner/admin should be able to add new member with role Admin.">
+<!--  <test 	name="To verify owner/admin should be able to add new member with role Admin.">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -125,8 +125,8 @@
 		</class>
 	</classes>
 </test>
-
-<test 	name="To verify owner/admin should be able to add new member with role Planner">
+-->
+<!-- <test 	name="To verify owner/admin should be able to add new member with role Planner">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -203,7 +203,17 @@
 			</methods>
 		</class>
 	</classes>
-</test> 
+</test>   -->
 
+<test 	name="To verify user change 'Role' of an existing member">
+	<classes>
+		<class
+			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
+			<methods>
+				<include name="changeUserRole" />
+			</methods>
+		</class>
+	</classes>
+</test> 
 
 </suite>

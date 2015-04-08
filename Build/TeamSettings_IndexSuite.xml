@@ -71,7 +71,7 @@
 	</classes>
 </test> --> 
 
-<test 	name="To verify 'Hide' Functionality in 'Table And Object'.">
+<!-- <test 	name="To verify 'Hide' Functionality in 'Table And Object'.">
 	<classes>
 		<class
 			name="com.socialTables.teamSettings.Index.TeamSettingIndex">
@@ -91,6 +91,6 @@
 			</methods>
 		</class>
 	</classes>
-</test>
+</test> -->
 
 </suite>

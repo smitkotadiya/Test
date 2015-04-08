@@ -1,11 +1,15 @@
 package com.socialTables.TeamMemberVanue.Index;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 
 import com.socialTables.init.Common;
 import com.socialTables.init.SeleniumInit;
@@ -1345,5 +1349,78 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		{
 			Assert.assertTrue(false);
 		}
+	}
+
+	@Test
+	public void changeUserRole() throws InterruptedException
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		//String email= "auto_"+RandomStringUtils.randomAlphabetic(4)+"@mailinator.com";
+		String currentWindow = driver.getWindowHandle();
+		System.out.println("Current Window Handle>>>>>>>>>"+currentWindow);
+		log("<b><ul>Testcase ID: TC_TV_022</b></ul>");
+		log("<b><ul>TestScenario: To verify user change 'Role' of an existing member</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 6:Navigate to 'Team Member and Venue' Module");
+		generalVerificationPage = generalIndexPage.navigateToTeamMemberAndVenue();
+		log("Step 7:Verify 'Team Member and Venue' page");
+		if(generalVerificationPage.verifyTeamMemberAndVenuePage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		List<WebElement> eles = driver.findElements(By.xpath(".//*[@id='members-table']/tbody/tr[contains(.,'Auto')]/td[3]"));
+		String role = eles.get(0).getText();
+		ArrayList<String> arrlist = new ArrayList<String>();
+		String[] AllRoles = {"admin","Planner","Limited Planner"};
+		for(int i=0;i<AllRoles.length;i++)
+		{
+			if(!AllRoles[i].equalsIgnoreCase(role))
+			{
+				arrlist.add(AllRoles[i]);
+			}
+		}
+		int index = new Random().nextInt(arrlist.size());
+		String selectedRole = arrlist.get(index);
+		log("Step 8: Now change the role of user");
+		teamMemberAndVenueVerificationPage = teamMemberAndVenueIndexPage.changeRoleOfAnyUser(selectedRole);
+		log("Step 9: Verify changed role of user");
+		if(teamMemberAndVenueVerificationPage.verifyChangeRole(selectedRole))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+		
 	}
 }

@@ -144,6 +144,14 @@ public class TeamMemberAndVenueVerificationPage extends AbstractPage
 		}
 	}
 	
+	public boolean verifyChangeRole(String selectedRole)
+	{
+		List<WebElement> eles = driver.findElements(By.xpath(".//*[@id='members-table']/tbody/tr[contains(.,'Auto')]/td[3]"));
+		System.out.println("Selected Role is --->"+selectedRole);
+		System.out.println("Role After Changed---->"+eles.get(0).getText());
+		return selectedRole.equalsIgnoreCase(eles.get(0).getText());
+	}
+	
 	public boolean verifyAddMemberFields()
 	{
 		return txtMemberEmail.isDisplayed() && selectMemberRole.isDisplayed();
