@@ -43,7 +43,7 @@ public class HomeVerificationPage extends AbstractPage
 	 
 	 public boolean verifyInvalidPassReset()
 	 {
-	  log("<b>Message:</b>"+verifyInvalidLoginMsg.getText());
+	  log("Message:"+verifyInvalidLoginMsg.getText());
 	  return verifyInvalidPassResetMsg.isDisplayed();
 	 }
 	 

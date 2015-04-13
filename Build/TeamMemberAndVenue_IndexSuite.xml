@@ -215,7 +215,7 @@
 		</class>
 	</classes>
 </test>  -->
-<test  name="To verify Team details display properly.">
+<!-- <test  name="To verify Team details display properly.">
 	 <classes>
  		 <class
    			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -224,6 +224,8 @@
    			</methods>
   		</class>
  	</classes>
-</test> 
+</test>  -->
+
+
 
 </suite>

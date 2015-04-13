@@ -108,72 +108,67 @@ public class HomePageIndex extends SeleniumInit
 	}
 
 	@Test
-	 public void forgotpass_ValidCredential() {
-	  Common common = new Common(driver);
-	  int numOfFailure = 0;
-	  String email = "socialtabs@mailinator.com";
+	public void forgotpass_ValidCredential() 
+	{
+		Common common = new Common(driver);
+		int numOfFailure = 0;
+		String email = "socialtabs@mailinator.com";
 	 
-	  String url="https://mailinator.com";
+		String url="https://mailinator.com";
 	  
-	  log("<b><ul>Testcase ID: TC_HP_005</b></ul>");
-	  log("Step 1: Click on 'login' tab");
-	  generalIndexPage.clickOnLoginTab();
-	  log("Step 2: Click on 'Forgot Password' link");
-	  generalIndexPage.clickonForgotpasslink();
-	  log("Step 3: Enter Valid Email");
-	  log("<strong>Email ID: </strong>" + email);
-	  log("Step 4: Click on Reset Button");
-	  dashboardPage = homePageIndexPage.ForgotPassReset(email);
-	  log("Step 5: Open Mailmnator");
-	  dashboardPage = homePageIndexPage.ResetPassCheck(url, email);
-	  log("Step 6: Verify Reset email");
-	  
-	 
-	  
-	  
+		log("<b><ul>Testcase ID: TC_HP_005</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Click on 'Forgot Password' link");
+		generalIndexPage.clickonForgotpasslink();
+		log("Step 3: Enter Valid Email");
+		log("<strong>Email ID: </strong>" + email);
+		log("Step 4: Click on Reset Button");
+		dashboardPage = homePageIndexPage.ForgotPassReset(email);
+		log("Step 5: Open Mailmnator");
+	  	dashboardPage = homePageIndexPage.ResetPassCheck(url, email);
+	  	log("Step 6: Verify Reset email");
 
-	  if (homeVerificationPage.verifyResetMail()) {
-	   log("<Strong><font color=#008000>Pass</font></strong>");
-	  } else {
-	   log("Fail");
-	   numOfFailure++;
-	  }
+	  	if (homeVerificationPage.verifyResetMail()) {
+	  		log("<Strong><font color=#008000>Pass</font></strong>");
+	  	} else {
+	  		log("Fail");
+	  		numOfFailure++;
+	  	}
 
-	  if (numOfFailure > 0) {
-	   Assert.assertTrue(false);
-	  }
+	  	if (numOfFailure > 0) {
+	  		Assert.assertTrue(false);
+	  	}
 
 	 }
 	 
 	 @Test 
 	 public void forgotpass_InvalidCredential()
 	 {
-	  Common common = new Common(driver);
-	  int numOfFailure = 0;
-	  String email = "piyushpatel@kiwiqa.com";
-	  log("<b><ul>Testcase ID: TC_HP_006</b></ul>");
-	  log("Step 1: Click on 'login' tab");
-	  generalIndexPage.clickOnLoginTab();
-	  log("Step 2: Click on 'Forgot Password' link");
-	  generalIndexPage.clickonForgotpasslink();
-	  log("Step 3: Enter Invalid Email");
-	  log("<strong>Email ID: </strong>" + email);
-	  log("Step 4: Click on Reset Button");
-	  dashboardPage = homePageIndexPage.ForgotPassReset(email);
+		 Common common = new Common(driver);
+		 int numOfFailure = 0;
+		 String email = "piyushpatel@kiwiqa.com";
+		 log("<b><ul>Testcase ID: TC_HP_006</b></ul>");
+		 log("Step 1: Click on 'login' tab");
+		 generalIndexPage.clickOnLoginTab();
+		 log("Step 2: Click on 'Forgot Password' link");
+		 generalIndexPage.clickonForgotpasslink();
+	  	log("Step 3: Enter Invalid Email");
+	  	log("<strong>Email ID: </strong>" + email);
+	  	log("Step 4: Click on Reset Button");
+	  	dashboardPage = homePageIndexPage.ForgotPassReset(email);
 	 
-	  
-	  if (homeVerificationPage.verifyInvalidPassReset()) {
+	  	if (homeVerificationPage.verifyInvalidPassReset()) {
 	   
-	   log("<Strong><font color=#008000>Pass</font></strong>");
-	  } else {
-	   log("Fail");
-	   numOfFailure++;
-	  }
+	  		log("<Strong><font color=#008000>Pass</font></strong>");
+	  	} else {
+	  		log("Fail");
+	  		numOfFailure++;
+	  	}
 
-	  if (numOfFailure > 0) {
-	   Assert.assertTrue(false);
-	  }
-
+	  	if (numOfFailure > 0) {
+	  		Assert.assertTrue(false);
+	  	}
 	 }
 	 
 	 @Test 

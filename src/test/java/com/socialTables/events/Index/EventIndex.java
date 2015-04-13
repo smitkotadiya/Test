@@ -2145,5 +2145,68 @@ public class EventIndex extends SeleniumInit
 		}
 	}
 	
+	@Test
+	public void verifySearchObjectInEventCreationPage()
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		String eventName = "";
+		log("<b><ul>Testcase ID: TC_EV_023</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		log("<b><ul>TestScenario: To verify 'Search Objects' functionality in 'Event Creation'.</b></ul>");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		List<WebElement> allEles = driver.findElements(By.xpath("//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]/div/div/div/span"));
+		eventName = allEles.get(0).getText();
+		System.out.println("========"+eventName);
+		log("Step 6: Click on any existing event");
+		eventCreationPage = eventIndexPage.clickOnEvent();
+		log("Step 7: Verify Event Creation Page");
+		if(eventCreationPage.verifyEventNameHeader(eventName))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		List<WebElement> allObjects = driver.findElements(By.xpath(".//*[@id='element-group-tables']/div"));
+		String objectName = allObjects.get(0).findElement(By.xpath("//div/p")).getText();
+		String className = allObjects.get(0).getAttribute("class");
+		log("Step 8: Now enter search string(Object Name) in to search text box");
+		eventCreationPage = eventIndexPage.searchObjects(objectName);
+		log("Step 9: Verify seach result");
+		if(eventCreationPage.verifySearchedObjectIsDisplay(className))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+	}
 }
 

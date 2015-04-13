@@ -67,7 +67,6 @@ public class HomePageIdexPage extends AbstractPage
 	  {
 	   common.pause(2);
 	   common.type(txtemail, email);
-	   common.pause(2);
 	   resetbtn.click();
 	   common.pause(2);
 	   
@@ -90,9 +89,6 @@ public class HomePageIdexPage extends AbstractPage
 	  common.type(mailnatortxt,email);
 	  common.pause(2);
 	  chckbtn.click();
-	 
-	  
-	  
 	  return new DashboardPage(driver);
 	 }
 	 

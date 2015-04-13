@@ -275,7 +275,9 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 			Assert.assertTrue(false);
 		}
 	}
-	
+	/**
+	 * Create event for particular venue.
+	 */
 	@Test
 	public void createEventFromVenue()
 	{
@@ -1351,6 +1353,10 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		}
 	}
 
+	/**
+	 * Test scenario for Change User Role. 
+	 * @throws InterruptedException
+	 */
 	@Test
 	public void changeUserRole() throws InterruptedException
 	{
