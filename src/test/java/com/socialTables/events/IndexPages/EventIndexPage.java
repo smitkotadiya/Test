@@ -124,6 +124,11 @@ public class EventIndexPage extends AbstractPage
 	@FindBy(xpath="//div[@id='left-object-search']/input[@class='search']")
 	private WebElement txtSearchObject;
 	
+	@FindBy(xpath=".//*[@id='minimap-show']")
+	private WebElement btnThreedPrivew;
+	@FindBy(xpath=".//*[@id='minimap-3D-header-button-container']/button[contains(@class,'ui-icon-plusthick')]")
+	private WebElement btnPlus;
+	
 	
 	//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]
 	
@@ -567,6 +572,18 @@ public class EventIndexPage extends AbstractPage
 	{
 		roomSettingsTutorialLink.click();
 		common.pause(2);
+		return new EventCreationPage(driver);
+	}
+	
+	public EventCreationPage clickOnThreeDPreview()
+	{
+		btnThreedPrivew.click();
+		return new EventCreationPage(driver);
+	}
+	
+	public EventCreationPage clickOnPlusButton()
+	{
+		btnPlus.click();
 		return new EventCreationPage(driver);
 	}
 	

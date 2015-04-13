@@ -23,6 +23,11 @@ public class EventCreationPage extends AbstractPage
 	private WebElement verifyAttedeeTab;
 	@FindBy(xpath="//h3[contains(.,'Share')]")
 	private WebElement verifyShareDialog;
+	@FindBy(xpath=".//*[@id='minimap-3D']")
+	private WebElement verifyThreeDPriview;
+	@FindBy(xpath=".//*[@id='minimap-3D-header-button-container']/button[contains(@class,'ui-icon-minusthick')]")
+	private WebElement verifyFullThreeDScreen;
+	
 	
 	Common common = new Common(driver);
 	public EventCreationPage(WebDriver driver) 
@@ -112,5 +117,15 @@ public class EventCreationPage extends AbstractPage
 		{
 			return true;
 		}
+	}
+	
+	public boolean verifyThreedPriview()
+	{
+		return verifyThreeDPriview.isDisplayed();
+	}
+	
+	public boolean verifyFullThreeDScreen()
+	{
+		return verifyFullThreeDScreen.isDisplayed();
 	}
 }

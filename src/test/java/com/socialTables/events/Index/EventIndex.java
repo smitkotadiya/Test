@@ -2208,5 +2208,77 @@ public class EventIndex extends SeleniumInit
 			Assert.assertTrue(false);
 		}
 	}
+	
+	@Test
+	public void verifyThreeDPreview()
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		log("<b><ul>Testcase ID: TC_EV_029</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		log("<b><ul>TestScenario: To verify '3D preview' functionality in 'Event Creation'.</b></ul>");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		List<WebElement> allEles = driver.findElements(By.xpath("//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]/div/div/div/span"));
+		String eventName = allEles.get(0).getText();
+		System.out.println("========"+eventName);
+		log("Step 6: Click on any existing event");
+		eventCreationPage = eventIndexPage.clickOnEvent();
+		log("Step 7: Verify Event Creation Page");
+		if(eventCreationPage.verifyEventNameHeader(eventName))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 8: Click on '3D Preview'");
+		eventCreationPage = eventIndexPage.clickOnThreeDPreview();
+		log("Step 9: Verify 3D preview is display on event creation page");
+		if(eventCreationPage.verifyThreedPriview())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 10: Maximize 3D Preview by click on '+' button");
+		eventCreationPage = eventIndexPage.clickOnPlusButton();
+		log("Step 11: Verify maximized window on event creation page");
+		if(eventCreationPage.verifyFullThreeDScreen())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+	}
 }
 

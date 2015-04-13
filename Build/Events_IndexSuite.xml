@@ -302,7 +302,7 @@
 		</class>
 	</classes>
 </test> -->
-<test  name="To verify 'Search Objects' functionality in 'Event Creation'.">
+<!-- <test  name="To verify 'Search Objects' functionality in 'Event Creation'.">
 	 <classes>
  		 <class
    			name="com.socialTables.events.Index.EventIndex">
@@ -311,6 +311,17 @@
    			</methods>
   		</class>
  	</classes>
-</test>
+</test> -->
 
+<test  name="To verify '3D preview' functionality in 'Event Creation'.">
+	 <classes>
+ 		 <class
+   			name="com.socialTables.events.Index.EventIndex">
+   			<methods>
+   				 <include name="verifyThreeDPreview" />
+   			</methods>
+  		</class>
+ 	</classes>
+</test>
+verifyThreeDPreview
 </suite>
