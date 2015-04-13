@@ -29,6 +29,12 @@ public class GeneralIndexPage extends AbstractPage
 	private WebElement events;
 	@FindBy(xpath="//div[@class='contextual-links']/a[contains(.,'Table Designer')]")
 	private WebElement tableDesigner;
+	@FindBy(xpath = ".//*[@id='forgot-password']/a")
+	 private WebElement clickonForgotpasslink;
+	 @FindBy(xpath = ".//*[@id='main-header']/div/div[2]/div[1]/a/span")
+	 private WebElement clickonusername;
+	 @FindBy(xpath = ".//*[@id='main-header']/div/div[2]/div[1]/ul/li[6]/a")
+	 private WebElement clickOnChangePassword;
 	
 	Common common = new Common(driver);
 	
@@ -137,5 +143,23 @@ public class GeneralIndexPage extends AbstractPage
 		
 		return selectedOption;
 	}
+	
+	public void clickonForgotpasslink() {
+		  clickonForgotpasslink.click();
+		  common.pause(2);
+		 }
+
+		 public void clickonUserDropdown() {
+		  clickonusername.click();
+		  common.pause(2);
+		 }
+
+		 public void clickOnchangePass() {
+		  clickOnChangePassword.click();
+
+		  common.pause(2);
+		 }
+	
+	
 	
 }

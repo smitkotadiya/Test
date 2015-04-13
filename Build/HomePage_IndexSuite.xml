@@ -16,7 +16,7 @@
 	<parameter name="selenium.browser" value="firefox" />
 	<parameter name="selenium.url" value="https://lab.socialtables.com/" />
  
-  <test 	name="To verify login functionality with valid credentials.">
+  <!-- <test 	name="To verify login functionality with valid credentials.">
 	<classes>
 		<class
 			name="com.socialTables.HomePage.Index.HomePageIndex">
@@ -47,7 +47,49 @@
 			</methods>
 		</class>
 	</classes>
-</test> 
+</test>  -->
  
+ <test  name="To verify Reset Password with Valid Credentials.">
+ 	<classes>
+  		<class
+   			name="com.socialTables.HomePage.Index.HomePageIndex">
+   			<methods>
+    			<include name="forgotpass_ValidCredential" />
+   			</methods>
+  		</class>
+ 	</classes>
+</test> 
+
+   <test  name="To verify Reset Password with Invalid Credentials.">
+ 	<classes>
+  		<class
+  			 name="com.socialTables.HomePage.Index.HomePageIndex">
+  			 <methods>
+    			<include name="forgotpass_InvalidCredential" />
+   			</methods>
+  		</class>
+ 	</classes>
+</test> 
+
+ <test  name="To verify Reset Password with NullCredentials.">
+ 	<classes>
+  		<class
+  		 name="com.socialTables.HomePage.Index.HomePageIndex">
+  		 <methods>
+  			  <include name="forgotpass_nullCredential" />
+   		</methods>
+  		</class>
+ 	</classes>
+</test> 
+<test  name="To verify Change Password with Valid Credential.">
+	 <classes>
+ 		 <class
+   			name="com.socialTables.HomePage.Index.HomePageIndex">
+   			<methods>
+    			<include name="change_password" />
+   			</methods>
+ 		 </class>
+ 	</classes>
+</test>
 
 </suite>

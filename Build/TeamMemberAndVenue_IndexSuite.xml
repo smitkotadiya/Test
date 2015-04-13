@@ -205,7 +205,7 @@
 	</classes>
 </test>   -->
 
-<test 	name="To verify user change 'Role' of an existing member">
+<!-- <test 	name="To verify user change 'Role' of an existing member">
 	<classes>
 		<class
 			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
@@ -214,6 +214,16 @@
 			</methods>
 		</class>
 	</classes>
+</test>  -->
+<test  name="To verify Team details display properly.">
+	 <classes>
+ 		 <class
+   			name="com.socialTables.TeamMemberVanue.Index.TeamMemberAndVenueIndex">
+   			<methods>
+   				 <include name="displayrole" />
+   			</methods>
+  		</class>
+ 	</classes>
 </test> 
 
 </suite>

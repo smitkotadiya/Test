@@ -1,5 +1,7 @@
 package com.socialTables.HomePage.indexPages;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,6 +20,22 @@ public class HomePageIdexPage extends AbstractPage
 	private WebElement txtPassword;
 	@FindBy(xpath=".//*[@id='login-form']/div/input[@value='Log In']")
 	private WebElement btnLogin;
+	@FindBy(xpath=".//*[@id='forgot-password-form']/div/div/div/div/form/div[1]/input")
+	 private WebElement txtemail;
+	 @FindBy(xpath=".//*[@id='forgot-password-form']/div/div/div/div/form/div[2]/input")
+	 private WebElement resetbtn;
+	 @FindBy(xpath=".//*[@id='inboxfield']")
+	 private WebElement mailnatortxt;
+	 @FindBy(xpath=".//*[contains(text(),'Check it')]")
+	 private WebElement chckbtn;
+	 @FindBy(xpath=".//*[@id='mailcontainer']/li[1]/a/div[2]")
+	 private WebElement resetmsg;
+	 @FindBy(xpath=".//*[@id='reset-password-form']/div[1]/input")
+	 private WebElement txtpass1;
+	 @FindBy(xpath=".//*[@id='reset-password-form']/div[2]/input")
+	 private WebElement txtpass2;
+	 @FindBy(xpath=".//*[@id='reset-password-form']/div[3]/input")
+	 private WebElement updatepassbtn;
 	
 	Common common = new Common(driver);
 	public HomePageIdexPage(WebDriver driver) 
@@ -43,5 +61,60 @@ public class HomePageIdexPage extends AbstractPage
 		
 		return new DashboardPage(driver);
 	}
+	public DashboardPage ForgotPassReset(String email)
+	 { 
+	  if (email.length()>0)
+	  {
+	   common.pause(2);
+	   common.type(txtemail, email);
+	   common.pause(2);
+	   resetbtn.click();
+	   common.pause(2);
+	   
+	  }
+	  else
+	  {
+	   resetbtn.click();
+	   common.pause(5);
+	  }
+	  
+	  
+	  return new DashboardPage(driver);
+	 }
+	 
+	 public DashboardPage ResetPassCheck(String url,String email)
+	 {
+	  driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL+ "t");
+	  driver.get(url);
+	  common.pause(2);
+	  common.type(mailnatortxt,email);
+	  common.pause(2);
+	  chckbtn.click();
+	 
+	  
+	  
+	  return new DashboardPage(driver);
+	 }
+	 
+	 
+	 public DashboardPage ChangePass(String pass)
+	 {
+	  if(pass.length()>0){
+	   common.pause(2);
+	   common.type(txtpass1, pass);
+	   common.type(txtpass2, pass);
+	   common.pause(2);
+	   updatepassbtn.click();
+	  
+	 }
+	 else
+	 {
+	  updatepassbtn.click();
+	  common.pause(5);
+	 }
+	 
+	 
+	  return new DashboardPage(driver);
+	 }
 
 }

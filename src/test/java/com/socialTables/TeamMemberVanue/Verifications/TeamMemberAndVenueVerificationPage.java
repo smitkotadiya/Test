@@ -28,6 +28,12 @@ public class TeamMemberAndVenueVerificationPage extends AbstractPage
 	private WebElement verifyTeamSettingsNotDisplay;
 	@FindBy(xpath="//div[@class='contextual-links']/a[contains(.,'Corporate Dashboard')]")
 	private WebElement verifyDashboardNotDisplay;
+	@FindBy(xpath=".//*[@id='members-table']/tbody/tr[1]/td[1]")
+	private WebElement txtname;
+	@FindBy(xpath=".//*[@id='members-table']/tbody/tr[1]/td[2]")
+	private WebElement txtemail;
+	@FindBy(xpath=".//*[@id='members-table']/tbody/tr[1]/td[3]")
+	private WebElement txtrole;
 	
 	
 	Common common = new Common(driver);
@@ -217,4 +223,14 @@ public class TeamMemberAndVenueVerificationPage extends AbstractPage
 			return false;
 		}
 	}
+	
+	public boolean verifydata()
+	 {
+	  common.pause(2);
+	  log(txtname.getText());
+	  log(txtemail.getText());
+	  log(txtrole.getText());
+	  common.pause(2);
+	  return true;
+	 }
 }
