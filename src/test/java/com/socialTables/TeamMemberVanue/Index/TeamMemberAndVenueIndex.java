@@ -1394,7 +1394,7 @@ public class TeamMemberAndVenueIndex extends SeleniumInit
 		List<WebElement> eles = driver.findElements(By.xpath(".//*[@id='members-table']/tbody/tr[contains(.,'Auto')]/td[3]"));
 		String role = eles.get(0).getText();
 		ArrayList<String> arrlist = new ArrayList<String>();
-		String[] AllRoles = {"admin","Planner","Limited Planner"};
+		String[] AllRoles = {"admin","planner","limited planner"};
 		for(int i=0;i<AllRoles.length;i++)
 		{
 			if(!AllRoles[i].equalsIgnoreCase(role))

@@ -130,7 +130,7 @@ public class TeamMemberAndVenueIndexPage extends AbstractPage
 	
 	public TeamMemberAndVenueVerificationPage changeRoleOfAnyUser(String selectedUser)
 	{
-		List<WebElement> eles = driver.findElements(By.xpath(".//*[@id='members-table']/tbody/tr[contains(.,'Auto')]/td[3]"));
+		List<WebElement> eles = driver.findElements(By.xpath(".//*[@id='members-table']/tbody/tr[contains(.,'Auto')]/td[3]/span"));
 		eles.get(0).click();
 		common.pause(2);
 		WebElement selectRole = eles.get(0).findElement(By.xpath("//select"));
