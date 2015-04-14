@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import com.socialTables.HomePage.Verifications.HomeVerificationPage;
 import com.socialTables.events.verifications.DashboardPage;
 import com.socialTables.general.AbstractPage;
 import com.socialTables.init.Common;
@@ -21,21 +22,25 @@ public class HomePageIdexPage extends AbstractPage
 	@FindBy(xpath=".//*[@id='login-form']/div/input[@value='Log In']")
 	private WebElement btnLogin;
 	@FindBy(xpath=".//*[@id='forgot-password-form']/div/div/div/div/form/div[1]/input")
-	 private WebElement txtemail;
-	 @FindBy(xpath=".//*[@id='forgot-password-form']/div/div/div/div/form/div[2]/input")
-	 private WebElement resetbtn;
-	 @FindBy(xpath=".//*[@id='inboxfield']")
-	 private WebElement mailnatortxt;
-	 @FindBy(xpath=".//*[contains(text(),'Check it')]")
-	 private WebElement chckbtn;
-	 @FindBy(xpath=".//*[@id='mailcontainer']/li[1]/a/div[2]")
-	 private WebElement resetmsg;
-	 @FindBy(xpath=".//*[@id='reset-password-form']/div[1]/input")
-	 private WebElement txtpass1;
-	 @FindBy(xpath=".//*[@id='reset-password-form']/div[2]/input")
-	 private WebElement txtpass2;
-	 @FindBy(xpath=".//*[@id='reset-password-form']/div[3]/input")
-	 private WebElement updatepassbtn;
+	private WebElement txtemail;
+	@FindBy(xpath=".//*[@id='forgot-password-form']/div/div/div/div/form/div[2]/input")
+	private WebElement resetbtn;
+	@FindBy(xpath=".//*[@id='inboxfield']")
+	private WebElement mailnatortxt;
+	@FindBy(xpath=".//*[contains(text(),'Check it')]")
+	private WebElement chckbtn;
+	@FindBy(xpath=".//*[@id='mailcontainer']/li[1]/a/div[2]")
+	private WebElement resetmsg;
+	@FindBy(xpath=".//*[@id='reset-password-form']/div[1]/input")
+	private WebElement txtpass1;
+	@FindBy(xpath=".//*[@id='reset-password-form']/div[2]/input")
+	private WebElement txtpass2;
+	@FindBy(xpath=".//*[@id='reset-password-form']/div[3]/input")
+	private WebElement updatepassbtn;
+	@FindBy(id="signup-button")
+	private WebElement btnTryNow;
+	@FindBy(xpath="//input[contains(@value,'Create Your Free Account')]")
+	private WebElement btnCreateAccount;
 	
 	Common common = new Common(driver);
 	public HomePageIdexPage(WebDriver driver) 
@@ -98,13 +103,28 @@ public class HomePageIdexPage extends AbstractPage
 		   common.type(txtpass2, pass);
 		   common.pause(2);
 		   updatepassbtn.click();
+	   }
+	   else
+	   {
+		   updatepassbtn.click();
+		   common.pause(5);
+	   }
+	   return new DashboardPage(driver);
 	 }
-	 else
+	 
+	 public HomeVerificationPage clickOnTryNow()
 	 {
-		  updatepassbtn.click();
-		  common.pause(5);
+		 common.pause(2);
+		 btnTryNow.click();
+		 common.pause(2);
+		 return new HomeVerificationPage(driver);
 	 }
-	  return new DashboardPage(driver);
+	 
+	 public HomeVerificationPage clickOnCreateFreeAccount()
+	 {
+		 btnCreateAccount.click();
+		 common.pause(2);
+		 return new HomeVerificationPage(driver);
 	 }
 
 }

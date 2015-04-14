@@ -22,6 +22,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.IResultMap;
+import org.testng.ISuite;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.Reporter;
@@ -69,8 +70,6 @@ public class SeleniumInit  {
 	public String userName_Planner="viral.patel@kiwiqa.com";
 	public String userName_LPlanner="smit.kotadiya@kiwiqa.com";
 	public String password_Owner="patel22781";
-	
-	
 	
 	// screen-shot folder
 	protected static String screenshot_folder_path = null;
@@ -123,8 +122,6 @@ public class SeleniumInit  {
 	@BeforeTest(alwaysRun = true)
 	public void fetchSuiteConfiguration(ITestContext testContext) 
 	{
-
-		System.out.println("-------------------------------------------------------in fetch config");
 		testUrl = testContext.getCurrentXmlTest().getParameter("selenium.url");
 		System.out.println("======"+testUrl+"=========");
 		seleniumHub = testContext.getCurrentXmlTest().getParameter(
@@ -136,7 +133,6 @@ public class SeleniumInit  {
 
 	}
 	
-
 	/**
 	 * WebDriver initialization
 	 * 
@@ -145,7 +141,7 @@ public class SeleniumInit  {
 	 * @throws InterruptedException
 	 */
 	@BeforeMethod(alwaysRun = true)
-	public void setUp(Method method) throws IOException, InterruptedException {
+	public void setUp(Method method,ITestContext testContext) throws IOException, InterruptedException {
 
 		
 		/*Runtime runtime = Runtime.getRuntime();
@@ -314,7 +310,7 @@ public class SeleniumInit  {
 	} 
 	
 	/**
-	 * Failure Reason Method.
+	 * Log For Failure Test Exception.
 	 * @param tests
 	 */
 	private void getShortException(IResultMap tests) {
@@ -342,7 +338,6 @@ public class SeleniumInit  {
         }
     }
 	
-
 	/**
 	 * After Method
 	 * 
@@ -408,47 +403,7 @@ public class SeleniumInit  {
 				System.out.println("message from tear down"+throwable.getMessage());
 		}
 	}
-
-	/*public static void log(String msg, final int logger_status) {
-
-		switch (logger_status) {
-
-		case ILoggerStatus.NORMAL:
-			Reporter.log("<br>" + msg + "</br>");
-			break;
-
-		case ILoggerStatus.ITALIC:
-			log("<i>" + msg + "</i>");
-			break;
-
-		case ILoggerStatus.STRONG:
-			Reporter.log("<strong>" + msg + "</br>");
-			break;
-		}
-	}
-
-	public static void logStatus(final int test_status) {
-
-		switch (test_status) {
-
-		case ITestStatus.PASSED:
-			log("<font color=238E23>--Passed</font>");
-			break;
-
-		case ITestStatus.FAILED:
-			log("<font color=#FF0000>--Failed</font>");
-			break;
-
-		case ITestStatus.SKIPPED:
-			log("<font color=#FFFF00>--Skipped</font>");
-			break;
-
-		default:
-			break;
-		}
-
-	}*/
-
+	
 	/**
 	 * Log given message to Reporter output.
 	 * 

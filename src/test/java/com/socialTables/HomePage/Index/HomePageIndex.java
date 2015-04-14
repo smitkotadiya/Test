@@ -107,6 +107,8 @@ public class HomePageIndex extends SeleniumInit
 		}
 	}
 
+	
+	
 	@Test
 	public void forgotpass_ValidCredential() 
 	{
@@ -142,97 +144,129 @@ public class HomePageIndex extends SeleniumInit
 
 	 }
 	 
-	 @Test 
-	 public void forgotpass_InvalidCredential()
-	 {
+	@Test 
+	public void forgotpass_InvalidCredential()
+	{
+		Common common = new Common(driver);
+		int numOfFailure = 0;
+		String email = "piyushpatel@kiwiqa.com";
+		log("<b><ul>Testcase ID: TC_HP_006</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Click on 'Forgot Password' link");
+		generalIndexPage.clickonForgotpasslink();
+	  	log("Step 3: Enter Invalid Email");
+	  	log("<strong>Email ID: </strong>" + email);
+	  	log("Step 4: Click on Reset Button");
+	   	dashboardPage = homePageIndexPage.ForgotPassReset(email);
+	 
+	  	if (homeVerificationPage.verifyInvalidPassReset()) {
+	   
+	  		log("<Strong><font color=#008000>Pass</font></strong>");
+	  	} else {
+	  		log("Fail");
+	  		numOfFailure++;
+	  	}
+	  	if (numOfFailure > 0) {
+	  		Assert.assertTrue(false);
+	  	}
+	 }
+	 
+	@Test 
+	public void forgotpass_nullCredential()
+	{
 		 Common common = new Common(driver);
 		 int numOfFailure = 0;
-		 String email = "piyushpatel@kiwiqa.com";
-		 log("<b><ul>Testcase ID: TC_HP_006</b></ul>");
+		 String email = "";
+		 log("<b><ul>Testcase ID: TC_HP_007</b></ul>");
 		 log("Step 1: Click on 'login' tab");
 		 generalIndexPage.clickOnLoginTab();
 		 log("Step 2: Click on 'Forgot Password' link");
 		 generalIndexPage.clickonForgotpasslink();
-	  	 log("Step 3: Enter Invalid Email");
-	  	 log("<strong>Email ID: </strong>" + email);
-	  	 log("Step 4: Click on Reset Button");
-	   	 dashboardPage = homePageIndexPage.ForgotPassReset(email);
-	 
-	  	 if (homeVerificationPage.verifyInvalidPassReset()) {
-	   
-	  		log("<Strong><font color=#008000>Pass</font></strong>");
-	  	 } else {
-	  		 log("Fail");
-	  		 numOfFailure++;
-	  	 }
-	  	 if (numOfFailure > 0) {
-	  		 Assert.assertTrue(false);
-	  	}
-	 }
-	 
-	 @Test 
-	 public void forgotpass_nullCredential()
-	 {
-		  Common common = new Common(driver);
-		  int numOfFailure = 0;
-		  String email = "";
-		  log("<b><ul>Testcase ID: TC_HP_007</b></ul>");
-		  log("Step 1: Click on 'login' tab");
-		  generalIndexPage.clickOnLoginTab();
-		  log("Step 2: Click on 'Forgot Password' link");
-		  generalIndexPage.clickonForgotpasslink();
-		  log("Step 3: Enter Invalid Email");
-		  log("<strong>Email ID: </strong>" + email);
-		  log("Step 4: Click on Reset Button");
-		  dashboardPage = homePageIndexPage.ForgotPassReset(email);
+		 log("Step 3: Enter Invalid Email");
+		 log("<strong>Email ID: </strong>" + email);
+		 log("Step 4: Click on Reset Button");
+		 dashboardPage = homePageIndexPage.ForgotPassReset(email);
 		 
-		  
-		  if (homeVerificationPage.verifyNullPassReset()) {
-		   log("<Strong><font color=#008000>Pass</font></strong>");
+		 if (homeVerificationPage.verifyNullPassReset()) {
+		  log("<Strong><font color=#008000>Pass</font></strong>");
 		  } else {
-		   log("Fail");
-		   numOfFailure++;
+			  log("Fail");
+			  numOfFailure++;
 		  }
 	
-		  if (numOfFailure > 0) {
-		   Assert.assertTrue(false);
-		  }
+		 if (numOfFailure > 0) {
+		 Assert.assertTrue(false);
+		 }
 	 }
 	 
-	 @Test
-	 public void change_password()
-	 {
-		  Common common = new Common(driver);
-		  int numOfFailure=0;
-		  String pass="patel22781";
-		  log("Step 1: Click on 'login' tab");
-		  generalIndexPage.clickOnLoginTab();
-		  log("Step 2: Enter User Name");
-		  log("Step 3: Enter Password");
-		  log("<strong>User Name: </strong>" + userName_Owner);
-		  log("<strong>Password: </strong>" + password_Owner);
-		  log("Step 4: Click On 'Login' Button");
-		  dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+	@Test
+	public void change_password()
+	{
+		 Common common = new Common(driver);
+		 int numOfFailure=0;
+		 String pass="patel22781";
+		 log("Step 1: Click on 'login' tab");
+		 generalIndexPage.clickOnLoginTab();
+		 log("Step 2: Enter User Name");
+		 log("Step 3: Enter Password");
+		 log("<strong>User Name: </strong>" + userName_Owner);
+		 log("<strong>Password: </strong>" + password_Owner);
+		 log("Step 4: Click On 'Login' Button");
+		 dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
 		  
-		  log("Step5: Click On 'User Name DropDown'");
-		  generalIndexPage.clickonUserDropdown();
-		  log("Step6: Click On 'Change Password'");
-		  generalIndexPage.clickOnchangePass();
-		  log("Step7: Enter New Password");
-		  log("Step8: Enter Confirm Password");
-		  log("Step9: Click on 'Reset Password' Button");
-		  dashboardPage=homePageIndexPage.ChangePass(pass);
-		  if (!homeVerificationPage.verifyPassChng())
-		  {
-		   log("<Strong><font color=#008000>Pass</font></strong>");
-		  }else {
-		   log("Fail");
-		   numOfFailure++;
-		  }
+		 log("Step5: Click On 'User Name DropDown'");
+		 generalIndexPage.clickonUserDropdown();
+		 log("Step6: Click On 'Change Password'");
+		 generalIndexPage.clickOnchangePass();
+		 log("Step7: Enter New Password");
+		 log("Step8: Enter Confirm Password");
+		 log("Step9: Click on 'Reset Password' Button");
+		 dashboardPage=homePageIndexPage.ChangePass(pass);
+		 if (!homeVerificationPage.verifyPassChng())
+		 {
+		  log("<Strong><font color=#008000>Pass</font></strong>");
+		 }else {
+			 log("Fail");
+			 numOfFailure++;
+		 }
 	
-		  if (numOfFailure > 0) {
-		   Assert.assertTrue(false);
-		  }
-	 }
+		 if (numOfFailure > 0) {
+			 Assert.assertTrue(false);
+		 }
+	}
 	
+	@Test
+	public void verifyValidationWhileCreateAccount()
+	{
+		 Common common = new Common(driver);
+		 int numOfFailure=0;
+		 log("Step 1: Click on 'Try Now' Button");
+		 homeVerificationPage = homePageIndexPage.clickOnTryNow();
+		 log("Step 2: Verify Account Creation Page");
+		 if(homeVerificationPage.verifyAccountCreationPage())
+		 {
+			 log("<Strong><font color=#008000>Pass</font></strong>");
+		 }
+		 else {
+			 log("Fail");
+			 numOfFailure++;
+		 }
+		 log("Step 3: Now click On 'Create Your Free Account' button without filling any details");
+		 homeVerificationPage = homePageIndexPage.clickOnCreateFreeAccount();
+		 log("Step 4: Verify validation Message");
+		 if(homeVerificationPage.verifyCreateAccountValidations())
+		 {
+			 log("<Strong><font color=#008000>Pass</font></strong>");
+		 }
+		 else {
+			 log("Fail");
+			 numOfFailure++;
+		 }
+		 
+		 if (numOfFailure > 0) {
+			 Assert.assertTrue(false);
+		 }
+		 
+	}
 }

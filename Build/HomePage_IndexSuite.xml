@@ -49,7 +49,7 @@
 	</classes>
 </test>  -->
  
- <test  name="To verify Reset Password with Valid Credentials.">
+<!--  <test  name="To verify Reset Password with Valid Credentials.">
  	<classes>
   		<class
    			name="com.socialTables.HomePage.Index.HomePageIndex">
@@ -87,6 +87,17 @@
    			name="com.socialTables.HomePage.Index.HomePageIndex">
    			<methods>
     			<include name="change_password" />
+   			</methods>
+ 		 </class>
+ 	</classes>
+</test> -->
+
+<test  name="To verify validation message for all mandatory fields.">
+	 <classes>
+ 		 <class
+   			name="com.socialTables.HomePage.Index.HomePageIndex">
+   			<methods>
+    			<include name="verifyValidationWhileCreateAccount" />
    			</methods>
  		 </class>
  	</classes>
