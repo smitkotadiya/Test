@@ -11,6 +11,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -68,6 +69,8 @@ public class SeleniumInit  {
 	public String userName_Planner="viral.patel@kiwiqa.com";
 	public String userName_LPlanner="smit.kotadiya@kiwiqa.com";
 	public String password_Owner="patel22781";
+	
+	
 	
 	// screen-shot folder
 	protected static String screenshot_folder_path = null;
@@ -397,6 +400,7 @@ public class SeleniumInit  {
 			System.out.println("here is test status--------------------"+testResult.getStatus());
 
 			driver.manage().deleteAllCookies();
+			driver.close();
 			driver.quit();
 			
 

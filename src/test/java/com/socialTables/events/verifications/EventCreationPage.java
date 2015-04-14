@@ -28,6 +28,35 @@ public class EventCreationPage extends AbstractPage
 	@FindBy(xpath=".//*[@id='minimap-3D-header-button-container']/button[contains(@class,'ui-icon-minusthick')]")
 	private WebElement verifyFullThreeDScreen;
 	
+	//Verify Help DropDown Links
+	@FindBy(xpath="//h2[contains(.,'Support Center')]")
+	private WebElement verifySupportCenterPage;
+	@FindBy(xpath="//div[@id='project_description']")
+	private WebElement verifyVideoTutorialPage;
+	@FindBy(xpath="//img[@class='st-logo-training']")
+	private WebElement verifyTrainingPage;
+	@FindBy(xpath="//img[@class='uvMastheadLogo']")
+	private WebElement verifyFeedbackPage;
+	@FindBy(xpath=".//*[@id='habla_topbar_div']")
+	private WebElement verifyLiveChatWindow;
+	
+	//Help Drop Down Xpath
+	@FindBy(xpath="//button[contains(.,'Help')]")
+	private WebElement btnHelpDropdown;
+	@FindBy(xpath="//a[contains(.,'Support Center')]")
+	private WebElement btnSupportCenter;
+	@FindBy(xpath="//a[contains(.,'Video Tutorials')]")
+	private WebElement btnVideoTutorial;
+	@FindBy(xpath="//a[contains(.,'Training')]")
+	private WebElement btnTraining;
+	@FindBy(xpath="//a[contains(.,'Walkthrough')]")
+	private WebElement btnWalkThrough;
+	@FindBy(xpath="//a[contains(.,'Feedback')]")
+	private WebElement btnFeedback;
+	@FindBy(xpath="//a[contains(.,'Live chat')]")
+	private WebElement btnLiveChat;
+	
+	
 	
 	Common common = new Common(driver);
 	public EventCreationPage(WebDriver driver) 
@@ -128,4 +157,40 @@ public class EventCreationPage extends AbstractPage
 	{
 		return verifyFullThreeDScreen.isDisplayed();
 	}
+	
+	public boolean verifyHelpDropDown()
+	{
+		return btnFeedback.isDisplayed() && 
+				btnLiveChat.isDisplayed() &&
+				btnSupportCenter.isDisplayed() &&
+				btnTraining.isDisplayed() &&
+				btnLiveChat.isDisplayed() &&
+				btnWalkThrough.isDisplayed();
+	}
+	
+	public boolean verifySupportCenter()
+	{
+		return verifySupportCenterPage.isDisplayed();
+	}
+	
+	public boolean verifyVideoTutorial()
+	{
+		return verifyVideoTutorialPage.isDisplayed();
+	}
+	
+	public boolean verifyTraining()
+	{
+		return verifyTrainingPage.isDisplayed(); 
+	}
+	
+	public boolean verifyFeedbackPage()
+	{
+		return verifyFeedbackPage.isDisplayed();
+	}
+	
+	public boolean verifyLiveChat()
+	{
+		return verifyLiveChatWindow.isDisplayed();
+	}
+	
 }

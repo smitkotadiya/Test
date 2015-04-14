@@ -37,7 +37,7 @@ import org.testng.Reporter;
 /**
  * Define Common Webdriver
  */
-public class Common {
+public class Common{
 
 	Date date = new Date();
 	protected Wait<WebDriver> wait;
@@ -833,11 +833,20 @@ public class Common {
 		return i;
 	}
 	
+	/**
+	 * Refresh Current Page
+	 * @param driver
+	 */
 	public void refresh(WebDriver driver)
 	{
 		driver.navigate().refresh();
 	}
 	
+	/**
+	 * Open URL in New Window
+	 * @param driver
+	 * @param url
+	 */
 	public void openUrlInNewTab(WebDriver driver,String url)
 	{
 		if(System.getProperty("os.name").equalsIgnoreCase("windows"))
@@ -851,6 +860,28 @@ public class Common {
 		driver.get(url);
 	}
 	
+	/**
+	 * Close Current Tab In Web Browser
+	 * @param driver
+	 */
+	public void closeCurrentTab(WebDriver driver)
+	{
+		if(System.getProperty("os.name").equalsIgnoreCase("windows"))
+		{
+			driver.findElement(By.tagName("body")).sendKeys(Keys.CONTROL+"w");
+		}
+		else
+		{
+			driver.findElement(By.tagName("body")).sendKeys(Keys.COMMAND+"w");
+		}
+		
+	}
+	
+	/**
+	 * Highlight Element
+	 * @param driver
+	 * @param element
+	 */
 	public void highlightElement(WebDriver driver, WebElement element) {
 		  /*
 		   * for (int i = 0; i < 2; i++) { JavascriptExecutor js =
@@ -867,6 +898,8 @@ public class Common {
 		    "arguments[0].style.border = '3px solid yellow'", element);
 		  pause(2);
 	}
+	
+	
 
 	
 }

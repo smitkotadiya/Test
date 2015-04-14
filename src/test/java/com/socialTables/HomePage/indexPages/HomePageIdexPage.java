@@ -65,51 +65,45 @@ public class HomePageIdexPage extends AbstractPage
 	 { 
 	  if (email.length()>0)
 	  {
-	   common.pause(2);
-	   common.type(txtemail, email);
-	   resetbtn.click();
-	   common.pause(2);
-	   
+		   common.pause(2);
+		   common.type(txtemail, email);
+		   resetbtn.click();
+		   common.pause(2);
 	  }
 	  else
 	  {
-	   resetbtn.click();
-	   common.pause(5);
+		   resetbtn.click();
+		   common.pause(5);
 	  }
-	  
 	  
 	  return new DashboardPage(driver);
 	 }
 	 
 	 public DashboardPage ResetPassCheck(String url,String email)
 	 {
-	  driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL+ "t");
-	  driver.get(url);
-	  common.pause(2);
-	  common.type(mailnatortxt,email);
-	  common.pause(2);
-	  chckbtn.click();
-	  return new DashboardPage(driver);
+		  driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL+ "t");
+		  driver.get(url);
+		  common.pause(2);
+		  common.type(mailnatortxt,email);
+		  common.pause(2);
+		  chckbtn.click();
+		  return new DashboardPage(driver);
 	 }
-	 
 	 
 	 public DashboardPage ChangePass(String pass)
 	 {
-	  if(pass.length()>0){
-	   common.pause(2);
-	   common.type(txtpass1, pass);
-	   common.type(txtpass2, pass);
-	   common.pause(2);
-	   updatepassbtn.click();
-	  
+	   if(pass.length()>0){
+		   common.pause(2);
+		   common.type(txtpass1, pass);
+		   common.type(txtpass2, pass);
+		   common.pause(2);
+		   updatepassbtn.click();
 	 }
 	 else
 	 {
-	  updatepassbtn.click();
-	  common.pause(5);
+		  updatepassbtn.click();
+		  common.pause(5);
 	 }
-	 
-	 
 	  return new DashboardPage(driver);
 	 }
 

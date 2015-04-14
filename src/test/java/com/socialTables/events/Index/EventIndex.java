@@ -102,8 +102,8 @@ public class EventIndex extends SeleniumInit
 		int numOfFailure=0;
 		String eventName = "";
 		log("<b><ul>Testcase ID: TC_EV_002</b></ul>");
-		log("Step 1: Click on 'login' tab");
 		log("<b><ul>TestScenario: To verify 'View Event' functionality.</b></ul>");
+		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
 		log("Step 3: Enter Password");
@@ -2152,8 +2152,8 @@ public class EventIndex extends SeleniumInit
 		int numOfFailure=0;
 		String eventName = "";
 		log("<b><ul>Testcase ID: TC_EV_023</b></ul>");
-		log("Step 1: Click on 'login' tab");
 		log("<b><ul>TestScenario: To verify 'Search Objects' functionality in 'Event Creation'.</b></ul>");
+		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
 		log("Step 3: Enter Password");
@@ -2215,8 +2215,8 @@ public class EventIndex extends SeleniumInit
 		Common common = new Common(driver);
 		int numOfFailure=0;
 		log("<b><ul>Testcase ID: TC_EV_029</b></ul>");
-		log("Step 1: Click on 'login' tab");
 		log("<b><ul>TestScenario: To verify '3D preview' functionality in 'Event Creation'.</b></ul>");
+		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
 		log("Step 2: Enter User Name");
 		log("Step 3: Enter Password");
@@ -2274,6 +2274,78 @@ public class EventIndex extends SeleniumInit
 			numOfFailure++;
 		}
 		
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+	}
+
+	@Test
+	public void verifyHelpDropdown()
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		log("<b><ul>Testcase ID: TC_EV_029</b></ul>");
+		log("<b><ul>TestScenario: To verify '3D preview' functionality in 'Event Creation'.</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		List<WebElement> allEles = driver.findElements(By.xpath("//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]/div/div/div/span"));
+		String eventName = allEles.get(0).getText();
+		System.out.println("========"+eventName);
+		log("Step 6: Click on any existing event");
+		eventCreationPage = eventIndexPage.clickOnEvent();
+		log("Step 7: Verify Event Creation Page");
+		if(eventCreationPage.verifyEventNameHeader(eventName))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 8: Click on 'Help' dropdown");
+		eventCreationPage=eventIndexPage.clickOnHelpDropDown();
+		log("Step 9: Verify all links should be display on page");
+		if(eventCreationPage.verifyHelpDropDown())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 10: Open On Support Center");
+		eventCreationPage = eventIndexPage.openSupportCenter();
+		log("Step 11: Verify Support Center Page");
+		if(eventCreationPage.verifySupportCenter())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		//common.closeCurrentTab(driver);
 		
 		if(numOfFailure>0)
 		{

@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.support.FindBy;
 
 import com.socialTables.events.verifications.AttendeeManagerPage;
@@ -16,6 +17,7 @@ import com.socialTables.events.verifications.EventCreationPage;
 import com.socialTables.events.verifications.EventThreeDPage;
 import com.socialTables.general.AbstractPage;
 import com.socialTables.init.Common;
+import org.openqa.selenium.interactions.Actions;
 
 public class EventIndexPage extends AbstractPage
 {
@@ -128,6 +130,22 @@ public class EventIndexPage extends AbstractPage
 	private WebElement btnThreedPrivew;
 	@FindBy(xpath=".//*[@id='minimap-3D-header-button-container']/button[contains(@class,'ui-icon-plusthick')]")
 	private WebElement btnPlus;
+	
+	//Help Drop Down Xpath
+	@FindBy(xpath="//button[contains(.,'Help')]")
+	private WebElement btnHelpDropdown;
+	@FindBy(xpath="//a[contains(.,'Support Center')]")
+	private WebElement btnSupportCenter;
+	@FindBy(xpath="//a[contains(.,'Video Tutorials')]")
+	private WebElement btnVideoTutorial;
+	@FindBy(xpath="//a[contains(.,'Training')]")
+	private WebElement btnTraining;
+	@FindBy(xpath="//a[contains(.,'Walkthrough')]")
+	private WebElement btnWalkThrough;
+	@FindBy(xpath="//a[contains(.,'Feedback')]")
+	private WebElement btnFeedback;
+	@FindBy(xpath="//a[contains(.,'Live chat')]")
+	private WebElement btnLiveChat;
 	
 	
 	//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]
@@ -499,7 +517,6 @@ public class EventIndexPage extends AbstractPage
 		return new AttendeeManagerPage(driver);
 	}
 	
-	
 	public AttendeeManagerPage assignTagToAttendee(String name)
 	{
 		WebElement checkBox = driver.findElement(By.xpath("//div[@id='glmContainer']/div[contains(@class,'glm-grid')]/div[@class='kgNoSelect']/div[@class='kgViewport']/div[@class='kgCanvas']/div/div[1]/div/div[contains(@class,'koCellCheckBox')]/div/div[contains(@class,'kgCheckbox')]"));
@@ -584,6 +601,72 @@ public class EventIndexPage extends AbstractPage
 	public EventCreationPage clickOnPlusButton()
 	{
 		btnPlus.click();
+		return new EventCreationPage(driver);
+	}
+	
+	public EventCreationPage clickOnHelpDropDown()
+	{
+		btnHelpDropdown.click();
+		return new EventCreationPage(driver);
+	}
+	
+	public EventCreationPage openSupportCenter()
+	{
+		Actions action = new Actions(driver);
+		btnHelpDropdown.click();
+		common.pause(2);
+		btnSupportCenter.click();
+		common.pause(2);
+		Set<String> windowHandles = driver.getWindowHandles();
+		System.out.println("Total Available Windows Are-->"+windowHandles.size());
+		System.out.println(windowHandles);
+		for(String winHandle: windowHandles)
+		{
+			System.out.println("Driver switch on new window:---->"+winHandle);
+			driver.switchTo().window(winHandle);
+			common.pause(2);
+		}
+
+		return new EventCreationPage(driver);
+	}
+	
+	public EventCreationPage openVideoTutorial()
+	{
+		btnHelpDropdown.click();
+		common.pause(2);
+		btnVideoTutorial.click();
+		return new EventCreationPage(driver);
+	}
+	
+	public EventCreationPage openTraining()
+	{
+		btnHelpDropdown.click();
+		common.pause(2);
+		btnTraining.click();
+		return new EventCreationPage(driver);
+	}
+	
+	public EventCreationPage clickOnWalkThrough()
+	{
+		btnHelpDropdown.click();
+		common.pause(2);
+		btnWalkThrough.click();
+		return new EventCreationPage(driver);
+	}
+	
+	public EventCreationPage openFeedback()
+	{
+		btnHelpDropdown.click();
+		common.pause(2);
+		btnFeedback.click();
+		return new EventCreationPage(driver);
+	}
+	
+	public EventCreationPage openLiveChat()
+	{
+		btnHelpDropdown.click();
+		common.pause(2);
+		btnLiveChat.click();
 		return new EventCreationPage(driver);
 	}
 	

@@ -153,52 +153,50 @@ public class HomePageIndex extends SeleniumInit
 		 generalIndexPage.clickOnLoginTab();
 		 log("Step 2: Click on 'Forgot Password' link");
 		 generalIndexPage.clickonForgotpasslink();
-	  	log("Step 3: Enter Invalid Email");
-	  	log("<strong>Email ID: </strong>" + email);
-	  	log("Step 4: Click on Reset Button");
-	  	dashboardPage = homePageIndexPage.ForgotPassReset(email);
+	  	 log("Step 3: Enter Invalid Email");
+	  	 log("<strong>Email ID: </strong>" + email);
+	  	 log("Step 4: Click on Reset Button");
+	   	 dashboardPage = homePageIndexPage.ForgotPassReset(email);
 	 
-	  	if (homeVerificationPage.verifyInvalidPassReset()) {
+	  	 if (homeVerificationPage.verifyInvalidPassReset()) {
 	   
 	  		log("<Strong><font color=#008000>Pass</font></strong>");
-	  	} else {
-	  		log("Fail");
-	  		numOfFailure++;
-	  	}
-
-	  	if (numOfFailure > 0) {
-	  		Assert.assertTrue(false);
+	  	 } else {
+	  		 log("Fail");
+	  		 numOfFailure++;
+	  	 }
+	  	 if (numOfFailure > 0) {
+	  		 Assert.assertTrue(false);
 	  	}
 	 }
 	 
 	 @Test 
 	 public void forgotpass_nullCredential()
 	 {
-	  Common common = new Common(driver);
-	  int numOfFailure = 0;
-	  String email = "";
-	  log("<b><ul>Testcase ID: TC_HP_007</b></ul>");
-	  log("Step 1: Click on 'login' tab");
-	  generalIndexPage.clickOnLoginTab();
-	  log("Step 2: Click on 'Forgot Password' link");
-	  generalIndexPage.clickonForgotpasslink();
-	  log("Step 3: Enter Invalid Email");
-	  log("<strong>Email ID: </strong>" + email);
-	  log("Step 4: Click on Reset Button");
-	  dashboardPage = homePageIndexPage.ForgotPassReset(email);
-	 
-	  
-	  if (homeVerificationPage.verifyNullPassReset()) {
-	   log("<Strong><font color=#008000>Pass</font></strong>");
-	  } else {
-	   log("Fail");
-	   numOfFailure++;
-	  }
-
-	  if (numOfFailure > 0) {
-	   Assert.assertTrue(false);
-	  }
-
+		  Common common = new Common(driver);
+		  int numOfFailure = 0;
+		  String email = "";
+		  log("<b><ul>Testcase ID: TC_HP_007</b></ul>");
+		  log("Step 1: Click on 'login' tab");
+		  generalIndexPage.clickOnLoginTab();
+		  log("Step 2: Click on 'Forgot Password' link");
+		  generalIndexPage.clickonForgotpasslink();
+		  log("Step 3: Enter Invalid Email");
+		  log("<strong>Email ID: </strong>" + email);
+		  log("Step 4: Click on Reset Button");
+		  dashboardPage = homePageIndexPage.ForgotPassReset(email);
+		 
+		  
+		  if (homeVerificationPage.verifyNullPassReset()) {
+		   log("<Strong><font color=#008000>Pass</font></strong>");
+		  } else {
+		   log("Fail");
+		   numOfFailure++;
+		  }
+	
+		  if (numOfFailure > 0) {
+		   Assert.assertTrue(false);
+		  }
 	 }
 	 
 	 @Test
