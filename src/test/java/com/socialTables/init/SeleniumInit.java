@@ -55,6 +55,7 @@ import com.socialTables.teamSettings.verifications.TeamSettingsPage;
 public class SeleniumInit  {
 
 
+	public String suiteName="";
 	public String testName="";
 	/* Minimum requirement for test configuration */
 	protected String testUrl; // Test url
@@ -62,7 +63,8 @@ public class SeleniumInit  {
 	protected String seleniumHubPort; // Selenium hub port
 	protected String targetBrowser; // Target browser
 	protected static String test_data_folder_path = null;
-	public String currentWindowHandle = "";
+	public String currentWindowHandle = "";//Get Current Window handle
+	
 
 	// Variables For Login 
 	public String userName_Owner="piyush.patel@kiwiqa.com";
@@ -107,12 +109,6 @@ public class SeleniumInit  {
 	//Table Designer
 	public TableDesignerIndexPage tableDesignerIndexPage;
 	public TableDesignerPage tableDesignerPage;
-	
-	
-	
-	
-//	protected RegisteredPage registeredPage;
-	// And many more ...
 
 	/**
 	 * Fetches suite-configuration from XML suite file.
@@ -130,7 +126,8 @@ public class SeleniumInit  {
 				"selenium.port");
 		targetBrowser = testContext.getCurrentXmlTest().getParameter(
 				"selenium.browser");
-
+	//	suiteName = testContext.getSuite().getName();
+		
 	}
 	
 	/**
@@ -288,25 +285,42 @@ public class SeleniumInit  {
 		currentWindowHandle = driver.getWindowHandle();
 		System.out.println("Current Window Handle ID:--->"+currentWindowHandle);
 		
-		//Initialization of object.
+		suiteName  = testContext.getSuite().getName();
+		System.out.println("Current Xml Suite is:---->"+suiteName);
+		
+		//Page Objetc Initialization According To Its Test Suite.
+		
+		if(suiteName.equalsIgnoreCase("Social Tables Automation - Events Module"))
+		{
+			eventIndexPage = new EventIndexPage(driver);
+			eventCreationPage = new EventCreationPage(driver);
+			attendeeManagerPage = new AttendeeManagerPage(driver);
+			eventThreeDPage = new  EventThreeDPage(driver);
+		}
+		else if(suiteName.equalsIgnoreCase("Social Tables Automation - HomePage Module"))
+		{
+			homePageIndexPage = new HomePageIdexPage(driver);
+			homeVerificationPage = new HomeVerificationPage(driver);
+		}
+		else if(suiteName.equalsIgnoreCase("Social Tables Automation - Table Designer Module"))
+		{
+			tableDesignerIndexPage = new TableDesignerIndexPage(driver);
+			tableDesignerPage = new TableDesignerPage(driver);
+		}
+		else if(suiteName.equalsIgnoreCase("Social Tables Automation - Team Member And Venue Module"))
+		{
+			teamMemberAndVenueIndexPage = new TeamMemberAndVenueIndexPage(driver);
+			teamMemberAndVenueVerificationPage = new TeamMemberAndVenueVerificationPage(driver);
+			venueCreationPage = new VenueCreationPage(driver);
+		}
+		else if(suiteName.equalsIgnoreCase("Social Tables Automation - Team Settings Module"))
+		{
+			teamSettingsIndexPage = new TeamSettingsIndexPage(driver);
+			teamSettingsPage = new TeamSettingsPage(driver);
+		}
 		generalIndexPage = new GeneralIndexPage(driver);
 		generalVerificationPage = new GeneralVerificationPage(driver);
-		homePageIndexPage = new HomePageIdexPage(driver);
-		homeVerificationPage = new HomeVerificationPage(driver);
-		eventIndexPage = new EventIndexPage(driver);
-		eventCreationPage = new EventCreationPage(driver);
 		dashboardPage = new DashboardPage(driver);
-		venueCreationPage = new VenueCreationPage(driver);
-		teamMemberAndVenueIndexPage = new TeamMemberAndVenueIndexPage(driver);
-		teamMemberAndVenueVerificationPage = new TeamMemberAndVenueVerificationPage(driver);
-		eventThreeDPage = new  EventThreeDPage(driver);
-		attendeeManagerPage = new AttendeeManagerPage(driver);
-		teamSettingsIndexPage = new TeamSettingsIndexPage(driver);
-		teamSettingsPage = new TeamSettingsPage(driver);
-		
-		tableDesignerIndexPage = new TableDesignerIndexPage(driver);
-		tableDesignerPage = new TableDesignerPage(driver);
-
 	} 
 	
 	/**

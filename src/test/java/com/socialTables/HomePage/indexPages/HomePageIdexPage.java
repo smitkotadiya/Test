@@ -63,9 +63,9 @@ public class HomePageIdexPage extends AbstractPage
 			btnLogin.click();
 			common.pause(5);
 		}
-		
 		return new DashboardPage(driver);
 	}
+
 	public DashboardPage ForgotPassReset(String email)
 	 { 
 	  if (email.length()>0)
@@ -111,7 +111,7 @@ public class HomePageIdexPage extends AbstractPage
 	   }
 	   return new DashboardPage(driver);
 	 }
-	 
+	
 	 public HomeVerificationPage clickOnTryNow()
 	 {
 		 common.pause(2);

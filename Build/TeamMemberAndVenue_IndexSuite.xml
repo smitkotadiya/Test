@@ -9,12 +9,17 @@
 
 	<!-- Put target browser name as below: 1) Firefox : firefox 2) chrome : 
 		chrome 3) IExplorer : ie8 / ie9 -->
-	
-
-	<!-- @NOTE: 1) Un-comment <test> tag to run respective test. 2) Comment 
-		<test> tag to unrun respective test. -->
 	<parameter name="selenium.browser" value="firefox" />
 	<parameter name="selenium.url" value="https://lab.socialtables.com/" />
+
+	<!-- Put target platform name as Below:
+	1) Sauce Labs: Cloud
+	2) Local: local -->
+	<parameter name="selenium.plateform" value="Cloud"/>
+
+	<!-- @NOTE: 1) Un-comment <test> tag to run respective test. 2) Comment 
+		<test> tag to not run respective test. -->
+	
  
   <!-- <test 	name="To verify Create New Venue functionality.">
 	<classes>

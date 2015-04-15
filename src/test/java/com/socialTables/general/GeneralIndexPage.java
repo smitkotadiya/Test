@@ -30,11 +30,11 @@ public class GeneralIndexPage extends AbstractPage
 	@FindBy(xpath="//div[@class='contextual-links']/a[contains(.,'Table Designer')]")
 	private WebElement tableDesigner;
 	@FindBy(xpath = ".//*[@id='forgot-password']/a")
-	 private WebElement clickonForgotpasslink;
-	 @FindBy(xpath = ".//*[@id='main-header']/div/div[2]/div[1]/a/span")
-	 private WebElement clickonusername;
-	 @FindBy(xpath = ".//*[@id='main-header']/div/div[2]/div[1]/ul/li[6]/a")
-	 private WebElement clickOnChangePassword;
+	private WebElement clickonForgotpasslink;
+	@FindBy(xpath = ".//*[@id='main-header']/div/div[2]/div[1]/a/span")
+	private WebElement clickonusername;
+	@FindBy(xpath = ".//*[@id='main-header']/div/div[2]/div[1]/ul/li[6]/a")
+	private WebElement clickOnChangePassword;
 	
 	Common common = new Common(driver);
 	
