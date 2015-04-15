@@ -202,7 +202,7 @@ public class SeleniumInit  {
 		    {
 		    	 path="c:\\Downloads_new";
 		    }
-		
+
 			profile.setPreference("dom.max_chrome_script_run_time", "999");
 			profile.setPreference("dom.max_script_run_time", "999");
 			profile.setPreference("browser.download.folderList", 2);
@@ -297,11 +297,6 @@ public class SeleniumInit  {
 			attendeeManagerPage = new AttendeeManagerPage(driver);
 			eventThreeDPage = new  EventThreeDPage(driver);
 		}
-		else if(suiteName.equalsIgnoreCase("Social Tables Automation - HomePage Module"))
-		{
-			homePageIndexPage = new HomePageIdexPage(driver);
-			homeVerificationPage = new HomeVerificationPage(driver);
-		}
 		else if(suiteName.equalsIgnoreCase("Social Tables Automation - Table Designer Module"))
 		{
 			tableDesignerIndexPage = new TableDesignerIndexPage(driver);
@@ -318,6 +313,9 @@ public class SeleniumInit  {
 			teamSettingsIndexPage = new TeamSettingsIndexPage(driver);
 			teamSettingsPage = new TeamSettingsPage(driver);
 		}
+		
+		homePageIndexPage = new HomePageIdexPage(driver);
+		homeVerificationPage = new HomeVerificationPage(driver);
 		generalIndexPage = new GeneralIndexPage(driver);
 		generalVerificationPage = new GeneralVerificationPage(driver);
 		dashboardPage = new DashboardPage(driver);

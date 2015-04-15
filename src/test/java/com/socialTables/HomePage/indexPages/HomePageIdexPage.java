@@ -1,5 +1,7 @@
 package com.socialTables.HomePage.indexPages;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -41,6 +43,7 @@ public class HomePageIdexPage extends AbstractPage
 	private WebElement btnTryNow;
 	@FindBy(xpath="//input[contains(@value,'Create Your Free Account')]")
 	private WebElement btnCreateAccount;
+	
 	
 	Common common = new Common(driver);
 	public HomePageIdexPage(WebDriver driver) 
@@ -123,6 +126,14 @@ public class HomePageIdexPage extends AbstractPage
 	 public HomeVerificationPage clickOnCreateFreeAccount()
 	 {
 		 btnCreateAccount.click();
+		 common.pause(2);
+		 return new HomeVerificationPage(driver);
+	 }
+	 
+	 public HomeVerificationPage clickOnTryWithoutAccount()
+	 {
+		 List<WebElement> allEles = driver.findElements(By.xpath("//a[contains(.,'try now without creating an account')]"));
+		 allEles.get(0).click();
 		 common.pause(2);
 		 return new HomeVerificationPage(driver);
 	 }

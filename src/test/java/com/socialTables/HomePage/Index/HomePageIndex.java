@@ -106,8 +106,6 @@ public class HomePageIndex extends SeleniumInit
 			Assert.assertTrue(false);
 		}
 	}
-
-	
 	
 	@Test
 	public void forgotpass_ValidCredential() 
@@ -267,6 +265,27 @@ public class HomePageIndex extends SeleniumInit
 		 if (numOfFailure > 0) {
 			 Assert.assertTrue(false);
 		 }
+	}
+	
+	@Test
+	public void verifyTryNowWithoutCreateAccount()
+	{
+		 Common common = new Common(driver);
+		 int numOfFailure=0;
+		 log("Step 1: Click on 'Try now without creating account' Button");
+		 homeVerificationPage = homePageIndexPage.clickOnTryWithoutAccount();
+		 log("Step 2: Verify Event Planning Page");
+		 if(homeVerificationPage.verifyTryWithoutCreateEvent())
+		 {
+			 log("<Strong><font color=#008000>Pass</font></strong>");
+		 }
+		 else {
+			 log("Fail");
+			 numOfFailure++;
+		 }
 		 
+		 if (numOfFailure > 0) {
+			 Assert.assertTrue(false);
+		 }
 	}
 }

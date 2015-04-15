@@ -25,6 +25,8 @@ public class HomeVerificationPage extends AbstractPage
 	private WebElement verifyValidation;
 	@FindBy(xpath="//input[@value='Create Your Free Account']")
 	private WebElement verifyAccountCreationPage;
+	@FindBy(xpath="//h1[ contains(.,'What kind of event matters to you?')]")
+	private WebElement verifyTryWithoutCreatAccount;
 	
 
 	Common common = new Common(driver);
@@ -75,5 +77,10 @@ public class HomeVerificationPage extends AbstractPage
 	 public boolean verifyAccountCreationPage()
 	 {
 		 return verifyAccountCreationPage.isDisplayed();
+	 }
+	 
+	 public boolean verifyTryWithoutCreateEvent()
+	 {
+		 return verifyTryWithoutCreatAccount.isDisplayed();
 	 }
 }

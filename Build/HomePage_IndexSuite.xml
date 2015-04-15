@@ -20,7 +20,7 @@
 	<!-- @NOTE: 1) Un-comment <test> tag to run respective test. 2) Comment 
 		<test> tag to unrun respective test. -->
 	 
- <test 	name="To verify login functionality with valid credentials.">
+<test 	name="To verify login functionality with valid credentials.">
 	<classes>
 		<class
 			name="com.socialTables.HomePage.Index.HomePageIndex">
@@ -64,7 +64,7 @@
  	</classes>
 </test> 
 
-   <test  name="To verify Reset Password with Invalid Credentials.">
+<test  name="To verify Reset Password with Invalid Credentials.">
  	<classes>
   		<class
   			 name="com.socialTables.HomePage.Index.HomePageIndex">
@@ -75,7 +75,7 @@
  	</classes>
 </test> 
 
- <test  name="To verify Reset Password with NullCredentials.">
+<test  name="To verify Reset Password with NullCredentials.">
  	<classes>
   		<class
   		 name="com.socialTables.HomePage.Index.HomePageIndex">
@@ -85,6 +85,7 @@
   		</class>
  	</classes>
 </test> 
+
 <test  name="To verify Change Password with Valid Credential.">
 	 <classes>
  		 <class
@@ -95,6 +96,7 @@
  		 </class>
  	</classes>
 </test>
+
 <test  name="To verify validation message for all mandatory fields.">
 	 <classes>
  		 <class
@@ -104,6 +106,18 @@
    			</methods>
  		 </class>
  	</classes>
+</test> 
+
+<test  name="To verify 'try it now without creating account' link on Signup page">
+	 <classes>
+ 		 <class
+   			name="com.socialTables.HomePage.Index.HomePageIndex">
+   			<methods>
+    			<include name="verifyTryNowWithoutCreateAccount" />
+   			</methods>
+ 		 </class>
+ 	</classes>
 </test>
+
 
 </suite>

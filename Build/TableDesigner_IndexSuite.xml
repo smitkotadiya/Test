@@ -43,7 +43,7 @@
 	</classes>
 </test>
 
-<test 	name="To verify 'Clone' functionality of table design.">
+<!-- <test 	name="To verify 'Clone' functionality of table design.">
 	<classes>
 		<class
 			name="com.socialTables.tableDesigner.Index.TabelDesignerIndex">
@@ -63,6 +63,6 @@
 			</methods>
 		</class>
 	</classes>
-</test>
+</test> -->
 
 </suite>
