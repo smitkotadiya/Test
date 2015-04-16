@@ -39,27 +39,22 @@ public class DashboardPage extends AbstractPage
 	
 	public boolean verifyAddedEvent(int numOfEvents,String eventName)
 	{
-		int numOfEventsAfterAdditon = common.getNumOfElements(driver, By.xpath("//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]"));
 		boolean bool = false;
-		if(numOfEventsAfterAdditon==numOfEvents+1)
+		common.pause(2);
+		driver.findElement(By.xpath("//input[@class='events-table-search']")).sendKeys(eventName);
+		common.pause(2);
+		List<WebElement> eles = driver.findElements(By.xpath("//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]/div/div/div/span"));
+		for(WebElement ele:eles)
 		{
-			List<WebElement> eles = driver.findElements(By.xpath("//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]/div/div/div/span"));
-			for(WebElement ele:eles)
+			if(ele.getText().equalsIgnoreCase(eventName))
 			{
-				if(ele.getText().equalsIgnoreCase(eventName))
-				{
-					bool = true;
-					break;
-				}
-				else
-				{
-					bool = false;
-				}
+				bool = true;
+				break;
 			}
-		}
-		else
-		{
-			bool = false;
+			else
+			{
+				bool = false;
+			}
 		}
 		return bool;
 	}

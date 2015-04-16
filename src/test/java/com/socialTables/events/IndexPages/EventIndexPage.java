@@ -147,7 +147,7 @@ public class EventIndexPage extends AbstractPage
 	@FindBy(xpath="//a[contains(.,'Live chat')]")
 	private WebElement btnLiveChat;
 	
-	
+
 	//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]
 	
 	//div[@id='glmContainer']/div[contains(@class,'glm-grid')]/div[@class='kgNoSelect']/div[@class='kgViewport']/div[@class='kgCanvas']/div/div[contains(@class,'odd')]/div/div[contains(@class,'col4')]
@@ -173,12 +173,13 @@ public class EventIndexPage extends AbstractPage
 		if(criteria.equalsIgnoreCase("Add") && isAttendeeEnable)
 		{
 			common.pause(2);
+			log("<b>Event Name: </b>"+eventName);
 			common.type(txtEventName, eventName);
-			common.pause(1);
 			txtEventName.sendKeys(Keys.TAB);
 			common.pause(2);
-			WebElement eventTypeButton=driver.findElement(By.xpath("//div[@class='event-type-container']/div/input[@value='"+eventType+"']"));
-			eventTypeButton.click();
+			common.selectFromComboByVisibleElement(driver.findElement(By.id("s-chairtype")), eventType);
+			//WebElement eventTypeButton=driver.findElement(By.xpath("//div[@class='event-type-container']/div/input[@value='"+eventType+"']"));
+			//eventTypeButton.click();
 			common.pause(2);
 			usesMatricUnitCheckBox.click();
 			btnDoneInEventInfo.click();

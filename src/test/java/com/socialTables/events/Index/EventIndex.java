@@ -25,7 +25,7 @@ public class EventIndex extends SeleniumInit
 		Common common = new Common(driver);
 		int numOfFailure=0;
 		String eventName = "Auto-"+RandomStringUtils.randomAlphanumeric(3);
-		String eventType = "gala"; 
+		String eventType = "Gala"; 
 		int numOfEventsInGrid = 0;
 		boolean isAttendeeEnable = true;
 		log("<b><ul>Testcase ID: TC_EV_001</b></ul>");

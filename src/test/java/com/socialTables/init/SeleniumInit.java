@@ -63,7 +63,9 @@ public class SeleniumInit  {
 	protected String seleniumHubPort; // Selenium hub port
 	protected String targetBrowser; // Target browser
 	protected static String test_data_folder_path = null;
-	public String currentWindowHandle = "";//Get Current Window handle
+	public static String currentWindowHandle = "";//Get Current Window handle
+	public static String browserVersion = "";
+	public static String osName="";
 	
 
 	// Variables For Login 
@@ -126,10 +128,8 @@ public class SeleniumInit  {
 				"selenium.port");
 		targetBrowser = testContext.getCurrentXmlTest().getParameter(
 				"selenium.browser");
-	//	suiteName = testContext.getSuite().getName();
-		
 	}
-	
+
 	/**
 	 * WebDriver initialization
 	 * 
@@ -178,6 +178,7 @@ public class SeleniumInit  {
 		  }
 		
 		currentTest = method.getName(); // get Name of current test.
+		
 
 		URL remote_grid = new URL("http://" + seleniumHub + ":"
 				+ seleniumHubPort + "/wd/hub");
@@ -228,6 +229,9 @@ public class SeleniumInit  {
 			capability = DesiredCapabilities.firefox();
 			capability.setJavascriptEnabled(true);
 			capability.setCapability(FirefoxDriver.PROFILE, profile);
+			browserVersion = capability.getVersion();
+			osName = capability.getPlatform().name();
+			
 			System.out.println("========="+"firefox Driver "+"==========");
 		} else if (targetBrowser.contains("ie8")) {
 
@@ -243,6 +247,8 @@ public class SeleniumInit  {
 					CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION,
 					true);
 			capability.setJavascriptEnabled(true);
+			browserVersion = capability.getVersion();
+			osName = capability.getPlatform().name();
 		} else if (targetBrowser.contains("chrome")) {
 
 			capability = DesiredCapabilities.chrome();
@@ -252,6 +258,8 @@ public class SeleniumInit  {
 			// URL("http://localhost:4444/wd/hub"), capability);
 			capability.setBrowserName("chrome");
 			capability.setJavascriptEnabled(true);
+			browserVersion = capability.getVersion();
+			osName = capability.getPlatform().name();
 		} else if (targetBrowser.contains("ie9")) {
 			capability = DesiredCapabilities.internetExplorer();
 			capability.setBrowserName("internet explorer");
@@ -263,16 +271,20 @@ public class SeleniumInit  {
 					CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION,
 					true);
 			capability.setJavascriptEnabled(true);
+			browserVersion = capability.getVersion();
+			osName = capability.getPlatform().name();
 		}else if (targetBrowser.contains("safari")) {
 			
 		//System.setProperty("webdriver.safari.driver","/Users/jesus/Desktop/SafariDriver.safariextz");
 		//driver = new SafariDriver();
-		SafariDriver profile = new SafariDriver();	
+			SafariDriver profile = new SafariDriver();	
 		
-		capability = DesiredCapabilities.safari();
+			capability = DesiredCapabilities.safari();
 	
 			capability.setJavascriptEnabled(true);
 			capability.setBrowserName("safari");
+			browserVersion = capability.getVersion();
+			osName = capability.getPlatform().name();
 			//capability.setCapability(SafariDriver.CLEAN_SESSION_CAPABILITY, profile);
 			 this.driver = new SafariDriver(capability);
 		}		
@@ -319,7 +331,10 @@ public class SeleniumInit  {
 		generalIndexPage = new GeneralIndexPage(driver);
 		generalVerificationPage = new GeneralVerificationPage(driver);
 		dashboardPage = new DashboardPage(driver);
+		
 	} 
+	
+	
 	
 	/**
 	 * Log For Failure Test Exception.
@@ -379,6 +394,7 @@ public class SeleniumInit  {
 						+ testName;
 				Reporter.log("<br> <b>Please look to the screenshot - </b>");
 				common.makeScreenshot(driver, screenshotName);
+				//Reporter.log(testResult.getThrowable().getMessage());
 				getShortException(ex.getFailedTests());
 			} 
 			else 
@@ -387,10 +403,10 @@ public class SeleniumInit  {
 				try
 				{
 					common.pause(2);
-					driver.findElement(By.xpath(".//*[@id='top']/div/ul/li[3]/a")).click();
-					common.pause(4);
+					driver.findElement(By.xpath(".//*[@id='main-header']/div/div[2]/div[1]/a/span")).click();
+					common.pause(2);
 					driver.findElement(By.xpath("//a[contains(.,'Logout')]")).click();
-					common.pause(4);
+					common.pause(2);
 				}
 				catch(Exception e)
 				{

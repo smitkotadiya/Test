@@ -24,8 +24,11 @@
  <!-- <listeners>
         <listener class-name="com.socialTables.init.RetryTestListener"/>
  </listeners> -->
+ 	<listeners>
+  			<listener class-name="com.socialTables.utility.CustomReporter" />
+    </listeners>
  
-  <!-- <test 	name="To verify New Event functionality.">
+ <test 	name="To verify New Event functionality.">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -34,8 +37,8 @@
 			</methods>
 		</class>
 	</classes>
-</test> -->
-<!-- <test 	name="To verify View Event functionality.">
+</test>
+<test 	name="To verify View Event functionality.">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -44,7 +47,7 @@
 			</methods>
 		</class>
 	</classes>
-</test>  -->
+</test> 
 <!-- <test 	name="To verify Delete Event functionality.">
 	<classes>
 		<class
@@ -325,7 +328,7 @@
  	</classes>
 </test> -->
 
-<test  name="To verify '3D preview' functionality in 'Event Creation'.">
+<!-- <test  name="To verify '3D preview' functionality in 'Event Creation'.">
 	 <classes>
  		 <class
    			name="com.socialTables.events.Index.EventIndex">
@@ -334,7 +337,7 @@
    			</methods>
   		</class>
  	</classes>
-</test>
+</test> -->
 
 
 </suite>
