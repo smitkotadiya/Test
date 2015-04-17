@@ -18,6 +18,7 @@ import com.socialTables.events.verifications.EventThreeDPage;
 import com.socialTables.general.AbstractPage;
 import com.socialTables.init.Common;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 
 public class EventIndexPage extends AbstractPage
 {
@@ -66,6 +67,9 @@ public class EventIndexPage extends AbstractPage
 	private WebElement txtRoomName;
 	@FindBy(id="room-tab")
 	private WebElement CustomizeRoomTab;
+	
+	@FindBy(xpath=".//*[@id='delete-space']")
+	private WebElement btnDeleteRoom;
 	@FindBy(id="search")
 	private WebElement txtSerachRoom;
 	@FindBy(xpath="//button[contains(.,'Search')]")
@@ -459,6 +463,24 @@ public class EventIndexPage extends AbstractPage
 		common.pause(3);
 		return new EventCreationPage(driver);
 	}
+	
+	public EventCreationPage clickOnCreatedRoom(String eventName)
+	{
+		driver.findElement(By.xpath(".//*[@id='sortable-rooms']/li/a[contains(.,'"+eventName+"')]")).click();
+		common.pause(2);
+		return new EventCreationPage(driver);
+	}
+	
+	public EventCreationPage clickOnDeleteButton()
+	{
+		btnDeleteRoom.click();
+		common.pause(2);
+		driver.findElement(By.xpath("//div[@class='dialog-buttons']/button[contains(.,'OK')]")).click();
+		common.pause(2);
+		return new EventCreationPage(driver);
+	}
+	
+	
 	
 	public AttendeeManagerPage clickOnGuestTab()
 	{

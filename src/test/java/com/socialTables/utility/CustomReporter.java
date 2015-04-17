@@ -366,8 +366,7 @@ public class CustomReporter extends CustomReporterListener
 	        }
 	    }
 
-	    
-	    
+
 	    /**
 	     * Write the first line of the stack trace
 	     * 

@@ -121,7 +121,7 @@ public class EventIndex extends SeleniumInit
 			log("Fail");
 			numOfFailure++;
 		}
-		List<WebElement> allEles = driver.findElements(By.xpath("//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]/div/div/div/span/inpuy"));
+		List<WebElement> allEles = driver.findElements(By.xpath("//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]/div/div/div/span"));
 		eventName = allEles.get(0).getText();
 		System.out.println("========"+eventName);
 		log("Step 6: Click on any existing event");
@@ -1192,7 +1192,7 @@ public class EventIndex extends SeleniumInit
 		String roomName = "Auto-room-"+RandomStringUtils.randomAlphanumeric(3);
 		String eventType = "gala"; 
 		boolean isAttendeeEnable = true;
-		log("<b><ul>Testcase ID: TC_EC_027</b></ul>");
+		log("<b><ul>Testcase ID: TC_EC_020</b></ul>");
 		log("<b><ul>TestScenario: To verify 'Add Room' functionality.</b></ul>");
 		log("Step 1: Click on 'login' tab");
 		generalIndexPage.clickOnLoginTab();
@@ -1243,6 +1243,95 @@ public class EventIndex extends SeleniumInit
 		eventCreationPage = eventIndexPage.addRoomInEvent(roomName);
 		log("Step 12: Verify added room in footer");
 		if(eventCreationPage.verifyAddedRoomInFooter(roomName))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		if(numOfFailure>0)
+		{
+			Assert.assertTrue(false);
+		}
+	}
+	
+	@Test
+	public void deleteRoomFunctionalityInCreateEvent()
+	{
+		Common common = new Common(driver);
+		int numOfFailure=0;
+		String eventName = "Auto-"+RandomStringUtils.randomAlphanumeric(3);
+		String roomName = "Auto-room-"+RandomStringUtils.randomAlphanumeric(3);
+		String eventType = "gala"; 
+		boolean isAttendeeEnable = true;
+		log("<b><ul>Testcase ID: TC_EC_020</b></ul>");
+		log("<b><ul>TestScenario: To verify 'Delete Room' functionality.</b></ul>");
+		log("Step 1: Click on 'login' tab");
+		generalIndexPage.clickOnLoginTab();
+		log("Step 2: Enter User Name");
+		log("Step 3: Enter Password");
+		log("<strong>User Name: </strong>"+userName_Owner);
+		log("<strong>Password: </strong>"+password_Owner);
+		log("Step 4: Click On 'Login' Button");
+		dashboardPage = homePageIndexPage.login(userName_Owner, password_Owner);
+		log("Step 5: Verify user logged in successfully");
+		if(dashboardPage.verifyDashboardPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		
+		log("Step 6: Click On 'New Event' Button");
+		eventCreationPage = eventIndexPage.clickOnNewEvent();
+		log("Step 7: Verify 'Event Creation Page'");
+		if(eventCreationPage.verifyEventCreationPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 8: Enter mandetory fields to create event and Click on 'Done'");
+		eventCreationPage = eventIndexPage.fillEventInfo("Add",eventName, eventType,isAttendeeEnable);
+		log("Step 9: Verify Room Setting Page in Event Creation");
+		if(eventCreationPage.verifyRoomSettingPage())
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 10: Select venue from library or customize room");
+		eventCreationPage = eventIndexPage.fillRoomSettingsForm("add");
+		log("Step 11: Now Click on '+' botton in footer");
+		eventCreationPage = eventIndexPage.addRoomInEvent(roomName);
+		log("Step 12: Verify added room in footer");
+		if(eventCreationPage.verifyAddedRoomInFooter(roomName))
+		{
+			log("<Strong><font color=#008000>Pass</font></strong>");
+		}
+		else
+		{
+			log("Fail");
+			numOfFailure++;
+		}
+		log("Step 13: Click On Created Room.");
+		eventCreationPage = eventIndexPage.clickOnCreatedRoom(eventName);
+		log("Step 14: Click On 'Delete' button to delete room.");
+		eventCreationPage = eventIndexPage.clickOnDeleteButton();
+		log("Step 15: Verify deleted room should not display on footer");
+		if(eventCreationPage.verifyDeletedRoom(eventName))
 		{
 			log("<Strong><font color=#008000>Pass</font></strong>");
 		}

@@ -29,7 +29,7 @@
   			<listener class-name="com.socialTables.utility.RetryTestListener"/>
     </listeners>
  
- <!-- <test 	name="To verify New Event functionality.">
+<!-- <test 	name="To verify New Event functionality.">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -39,7 +39,7 @@
 		</class>
 	</classes>
 </test> -->
-<test 	name="To verify View Event functionality.">
+<!-- <test 	name="To verify View Event functionality.">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -48,7 +48,7 @@
 			</methods>
 		</class>
 	</classes>
-</test> 
+</test>  -->
 <!-- <test 	name="To verify Delete Event functionality.">
 	<classes>
 		<class
@@ -208,8 +208,19 @@
 			</methods>
 		</class>
 	</classes>
-</test>
+</test>-->
 
+<test 	name="To verify 'Delete Room' functionality. ">
+	<classes>
+		<class
+			name="com.socialTables.events.Index.EventIndex">
+			<methods>
+				<include name="deleteRoomFunctionalityInCreateEvent" />
+			</methods>
+		</class>
+	</classes>
+</test>
+<!--  
 <test 	name="To verify 'Share' button functionality in 'Event Creation'. ">
 	<classes>
 		<class

@@ -193,4 +193,16 @@ public class EventCreationPage extends AbstractPage
 		return verifyLiveChatWindow.isDisplayed();
 	}
 	
+	public boolean verifyDeletedRoom(String eventName)
+	{
+		try{
+			driver.findElement(By.xpath(".//*[@id='sortable-rooms']/li/a[contains(.,'"+eventName+"')]")).isDisplayed();
+			return false;
+		}
+		catch(Exception e)
+		{
+			return true;
+		}
+	}
+	
 }
