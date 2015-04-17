@@ -50,8 +50,6 @@ import com.socialTables.teamSettings.Index.TeamSettingIndex;
 import com.socialTables.teamSettings.IndexPages.TeamSettingsIndexPage;
 import com.socialTables.teamSettings.verifications.TeamSettingsPage;
 
-
-
 public class SeleniumInit  {
 
 
@@ -178,8 +176,6 @@ public class SeleniumInit  {
 		  }
 		
 		currentTest = method.getName(); // get Name of current test.
-		
-
 		URL remote_grid = new URL("http://" + seleniumHub + ":"
 				+ seleniumHubPort + "/wd/hub");
 
@@ -229,8 +225,9 @@ public class SeleniumInit  {
 			capability = DesiredCapabilities.firefox();
 			capability.setJavascriptEnabled(true);
 			capability.setCapability(FirefoxDriver.PROFILE, profile);
-			browserVersion = capability.getVersion();
-			osName = capability.getPlatform().name();
+			browserVersion = capability.getBrowserName();
+			
+			osName = Platform.getCurrent().name();
 			
 			System.out.println("========="+"firefox Driver "+"==========");
 		} else if (targetBrowser.contains("ie8")) {
@@ -247,7 +244,7 @@ public class SeleniumInit  {
 					CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION,
 					true);
 			capability.setJavascriptEnabled(true);
-			browserVersion = capability.getVersion();
+			browserVersion = capability.getBrowserName();
 			osName = capability.getPlatform().name();
 		} else if (targetBrowser.contains("chrome")) {
 
@@ -271,7 +268,7 @@ public class SeleniumInit  {
 					CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION,
 					true);
 			capability.setJavascriptEnabled(true);
-			browserVersion = capability.getVersion();
+			browserVersion = capability.getBrowserName();
 			osName = capability.getPlatform().name();
 		}else if (targetBrowser.contains("safari")) {
 			
@@ -283,12 +280,11 @@ public class SeleniumInit  {
 	
 			capability.setJavascriptEnabled(true);
 			capability.setBrowserName("safari");
-			browserVersion = capability.getVersion();
+			browserVersion = capability.getBrowserName();
 			osName = capability.getPlatform().name();
 			//capability.setCapability(SafariDriver.CLEAN_SESSION_CAPABILITY, profile);
 			 this.driver = new SafariDriver(capability);
 		}		
-		
 		
 		driver = new RemoteWebDriver(remote_grid, capability);
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -333,8 +329,6 @@ public class SeleniumInit  {
 		dashboardPage = new DashboardPage(driver);
 		
 	} 
-	
-	
 	
 	/**
 	 * Log For Failure Test Exception.
@@ -413,12 +407,7 @@ public class SeleniumInit  {
 					log("<br></br> Not able to perform logout");
 				}
 				
-				System.out.println("TEST PASSED - " + testName + "\n"); // Print
-																		// test
-																		// result
-																		// to
-																		// Jenkins
-																		// Console
+				System.out.println("TEST PASSED - " + testName + "\n"); // Print test resule to Jenkins Console
 			}
 			System.out.println("here is test status--------------------"+testResult.getStatus());
 

@@ -121,7 +121,7 @@ public class EventIndex extends SeleniumInit
 			log("Fail");
 			numOfFailure++;
 		}
-		List<WebElement> allEles = driver.findElements(By.xpath("//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]/div/div/div/span"));
+		List<WebElement> allEles = driver.findElements(By.xpath("//div[contains(@class,'events-table-name-row-cell') and not(contains(.,'Name'))]/div/div/div/span/inpuy"));
 		eventName = allEles.get(0).getText();
 		System.out.println("========"+eventName);
 		log("Step 6: Click on any existing event");
@@ -197,7 +197,6 @@ public class EventIndex extends SeleniumInit
 		{
 			log("There may be problem to verify delete event or page loading issue");
 		}
-		
 		
 		if(numOfFailure>0)
 		{

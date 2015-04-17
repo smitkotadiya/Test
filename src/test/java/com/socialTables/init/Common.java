@@ -142,7 +142,7 @@ public class Common{
 	{
 		
 		Actions dragger=new Actions(driver);
-		  WebElement draggablePartOfScrollbar = element;
+		WebElement draggablePartOfScrollbar = element;
 
 	         // drag downwards
 	      int numberOfPixelsToDragTheScrollbarDown = 50;
@@ -150,9 +150,9 @@ public class Common{
 	      {
 	          try
 	          {  
-	         // this causes a gradual drag of the scroll bar, 10 units at a time
-	         dragger.moveToElement(draggablePartOfScrollbar).clickAndHold().moveByOffset(numberOfPixelsToDragTheScrollbarDown,0).release().perform();
-	         Thread.sleep(1000L);
+	        	 // this causes a gradual drag of the scroll bar, 10 units at a time
+		         dragger.moveToElement(draggablePartOfScrollbar).clickAndHold().moveByOffset(numberOfPixelsToDragTheScrollbarDown,0).release().perform();
+		         Thread.sleep(1000L);
 	          } catch(Exception e1){
 	        	  
 	          }

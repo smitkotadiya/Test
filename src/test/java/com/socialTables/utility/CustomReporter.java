@@ -328,7 +328,7 @@ public class CustomReporter extends CustomReporterListener
 	        
 	        m_out.println("<tr><td colspan='4'><center><h2>Failed Test Cases Analysis</h2></center></td></tr>");
 	       // m_out.println("<tr><td colspan='4'>To view Full Report : <a href=\"http://52.0.218.82:8080/job/dev2_Pley_Chrome/HTML_Report/\">http://52.0.218.82:8080/job/dev2_Pley_Chrome/HTML_Report</a></td></tr>");
-	        m_out.println("<tr><td colspan='4'>Overall test suite completion : <b>"+Time+" minutes</b></br> Date and Time of Run: <b>"+sdf.format(date)+"</b></br> Browser Version : <b>"+SeleniumInit.browserVersion+"</b></br>OS: <b>"+SeleniumInit.osName+"</b> </br>Total Test cases : <b>131</b></td></tr>");
+	        m_out.println("<tr><td colspan='4'>Overall test suite completion : <b>"+Time+" minutes</b></br> Date and Time of Run: <b>"+sdf.format(date)+"</b></br> Browser Version : <b>"+SeleniumInit.browserVersion+"</b></br>OS: <b>"+SeleniumInit.osName+"</b></td></tr>");
 	        m_out.println("<tr bgcolor='grey'><th>Test Cases</th>"
 	                + "<th>Failure Reason</th><th>Failure Error</th><th>Total Time<br/>(sec.)</th></tr>");
 	        m_row = 0;

@@ -1,4 +1,4 @@
-package com.socialTables.init;
+package com.socialTables.utility;
 
 import java.util.Set;
 import org.testng.ITestContext;
@@ -8,7 +8,6 @@ import org.testng.ITestResult;
 
 public class RetryConterManagerListener implements ITestListener
 {
-
 	public void onTestStart(ITestResult result) {
 		// TODO Auto-generated method stub
 		
@@ -39,6 +38,11 @@ public class RetryConterManagerListener implements ITestListener
 		
 	}
 
+	/**
+	 * Manage Retry Analyzer Counter if Test Fail
+	 * 
+	 * @param context
+	 */
 	public void onFinish(ITestContext context) 
 	{
 		Set<ITestResult> failedTests = context.getFailedTests().getAllResults();

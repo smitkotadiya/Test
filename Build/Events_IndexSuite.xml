@@ -22,13 +22,14 @@
 	
  
  <!-- <listeners>
-        <listener class-name="com.socialTables.init.RetryTestListener"/>
+        
  </listeners> -->
  	<listeners>
   			<listener class-name="com.socialTables.utility.CustomReporter" />
+  			<listener class-name="com.socialTables.utility.RetryTestListener"/>
     </listeners>
  
- <test 	name="To verify New Event functionality.">
+ <!-- <test 	name="To verify New Event functionality.">
 	<classes>
 		<class
 			name="com.socialTables.events.Index.EventIndex">
@@ -37,7 +38,7 @@
 			</methods>
 		</class>
 	</classes>
-</test>
+</test> -->
 <test 	name="To verify View Event functionality.">
 	<classes>
 		<class
